@@ -1,0 +1,62 @@
+import 'package:app_ui/app_ui.dart';
+import 'package:flutter/material.dart';
+
+/// {@template app_phone_text_field}
+/// A phone text field component.
+/// {@endtemplate}
+class UIPasswordTextField extends StatelessWidget {
+  /// {@macro app_phone_text_field}
+  const UIPasswordTextField({
+    super.key,
+    this.controller,
+    this.hintText,
+    this.labelText,
+    this.suffix,
+    this.readOnly,
+    this.onChanged,
+    this.errorText,
+  });
+
+  /// Controls the text being edited.
+  final TextEditingController? controller;
+
+  /// Text that suggests what sort of input the field accepts.
+  final String? hintText;
+
+  /// Text input label text
+  final String? labelText;
+
+  /// A widget that appears after the editable part of the text field.
+  final Widget? suffix;
+
+  /// Called when the user inserts or deletes texts in the text field.
+  final ValueChanged<String>? onChanged;
+
+  /// Whether the text field should be read-only.
+  /// Defaults to false.
+  final bool? readOnly;
+
+  /// Input error message
+  final String? errorText;
+
+  @override
+  Widget build(BuildContext context) {
+    return UITextField(
+      labelText: labelText,
+      controller: controller,
+      readOnly: readOnly,
+      hintText: hintText,
+      keyboardType: TextInputType.visiblePassword,
+      autoFillHints: const [AutofillHints.password],
+      autocorrect: false,
+      obscureText: true,
+      prefix: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: const Icon(Icons.key_outlined),
+      ),
+      onChanged: onChanged,
+      suffix: suffix,
+      errorText: errorText,
+    );
+  }
+}
