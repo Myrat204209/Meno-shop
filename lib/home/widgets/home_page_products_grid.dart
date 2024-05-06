@@ -12,6 +12,7 @@ class HomePageProductsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
+      key: const Key('Products '),
       itemCount: products.length,
       itemBuilder: (context, index) {
         return Column(
