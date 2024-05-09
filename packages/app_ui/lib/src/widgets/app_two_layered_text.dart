@@ -1,6 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTwoLayeredTextWidget extends StatelessWidget {
   const AppTwoLayeredTextWidget({
@@ -17,7 +16,7 @@ class AppTwoLayeredTextWidget extends StatelessWidget {
           '1400 TMT',
           style: UITextStyle.subtitle2.copyWith(
             color: UIColors.primary,
-            fontSize: 12.sp,
+            fontSize: 12,
             decoration: TextDecoration.lineThrough,
           ),
         ),
@@ -25,7 +24,7 @@ class AppTwoLayeredTextWidget extends StatelessWidget {
           '550 TMT',
           style: UITextStyle.headline4.copyWith(
             color: UIColors.primary,
-            fontSize: 14.sp,
+            fontSize: 14,
           ),
         ),
         // const Text()

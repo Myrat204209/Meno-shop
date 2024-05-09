@@ -1,6 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryProductsPage extends StatelessWidget {
   const CategoryProductsPage({super.key});
@@ -12,8 +11,8 @@ class CategoryProductsPage extends StatelessWidget {
         title: AppBorderColorBox(
           borderColor: UIColors.primary,
           child: SizedBox(
-            height: 40.h,
-            width: 255.w,
+            height: 40,
+            width: 255,
             child: UITextField(
               prefix: Icon(
                 Icons.search,
@@ -23,19 +22,19 @@ class CategoryProductsPage extends StatelessWidget {
             ),
           ),
         ),
-        actions: [
+        actions: const [
           Icon(
             Icons.menu_open_sharp,
-            size: 24.sp,
+            size: 24,
           ),
           SizedBox(
-            width: 16.w,
+            width: 16,
           )
         ],
       ),
       backgroundColor: UIColors.quaterniary,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,10 +56,10 @@ class CategoryProductsPage extends StatelessWidget {
                 '1234 products',
                 style: UITextStyle.subtitle2.copyWith(
                   color: UIColors.neutral.shade500,
-                  fontSize: 12.sp,
+                  fontSize: 12,
                 ),
               ),
-              SizedBox(height: 10.h),
+              const SizedBox(height: 10),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.74,
                 width: MediaQuery.of(context).size.width,

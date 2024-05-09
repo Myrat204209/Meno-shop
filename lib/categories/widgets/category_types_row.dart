@@ -8,15 +8,14 @@ class CategoryTypesRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      prototypeItem: const AppCategoryItem(),
+    return ListView.separated(
       itemCount: 5,
       itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: AppCategoryItem(),
-        );
+        return const AppCategoryItem();
       },
+      separatorBuilder: (context, index) => const SizedBox(
+        height: 10,
+      ),
     );
   }
 }

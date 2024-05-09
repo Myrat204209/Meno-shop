@@ -25,13 +25,13 @@ abstract class UITextStyle {
     height: 1.5,
   );
   static final TextStyle subtitle1 = _baseTextStyle.copyWith(
-    fontSize: 16,
-    fontWeight: AppFontWeight.medium,
-    height: 1.5,
-  );
-  static final TextStyle subtitle2 = _baseTextStyle.copyWith(
     fontSize: 14,
     fontWeight: AppFontWeight.medium,
-    height: 1.5,
+    height: 1.3,
+  );
+  static final TextStyle subtitle2 = _baseTextStyle.copyWith(
+    fontSize: 12,
+    fontWeight: AppFontWeight.medium,
+    height: 1,
   );
 }

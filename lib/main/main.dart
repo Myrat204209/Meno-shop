@@ -29,7 +29,6 @@ void main() {
       httpClient: httpClient,
       tokenStorage: tokenStorage,
     );
-    //TODO: Create profileClient repo
     final userRepository = UserRepository(
       authenticationClient: authenticationClient,
       storage: userStorage,

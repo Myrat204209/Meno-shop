@@ -7,30 +7,23 @@ class AppCategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxHeight: 150,
-      ),
+    return AppBorderColorBox(
+      expand: 3,
+      borderColor: UIColors.neutral.shade100,
       child: AppBorderColorBox(
-        expand: 3,
-        borderColor: UIColors.neutral.shade100,
-        child: AppBorderColorBox(
-          borderColor: UIColors.quaterniary,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              AppBorderColorBox(
-                borderColor: UIColors.quaterniary,
-                child: Image.asset(
-                  'assets/friends.jpg',
-                  fit: BoxFit.fill,
-                ),
+        borderColor: UIColors.quaterniary,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            AppBorderColorBox(
+              borderColor: UIColors.quaterniary,
+              child: Image.asset(
+                'assets/friends.jpg',
+                fit: BoxFit.fill,
               ),
-              Text('Friends'),
-              Text('Friends'),
-              Text('Friends'),
-            ],
-          ),
+            ),
+            Text('Friends'),
+          ],
         ),
       ),
     );

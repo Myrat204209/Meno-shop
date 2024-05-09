@@ -1,7 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:meno_shop/authentication/authentication.dart';
 
@@ -44,9 +43,9 @@ class _LoginContent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(height: 5.h),
+                const SizedBox(height: 5),
                 const _PhoneInput(),
-                SizedBox(height: 10.h),
+                const SizedBox(height: 10),
                 const _LoginButton(),
                 TextButton(
                   onPressed: () {

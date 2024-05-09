@@ -1,6 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
@@ -25,8 +24,8 @@ class NotificationsPage extends StatelessWidget {
         itemBuilder: (context, index) {
           const String notRead = '🔴';
           return SizedBox(
-            height: 112.h,
-            width: 360.w,
+            height: 112,
+            width: 360,
             child: AppBorderColorBox(
               borderColor: UIColors.neutral.shade300,
               child: Column(
@@ -37,14 +36,14 @@ class NotificationsPage extends StatelessWidget {
                     style: UITextStyle.headline5.copyWith(
                       color: UIColors.primary,
                       fontWeight: FontWeight.w700,
-                      fontSize: 14.sp,
+                      fontSize: 14,
                     ),
                   ),
                   Text(
                     'WU881911 - 21.02.2023 / 13:21 was accepted on You can see the complete details in your profile',
                     style: UITextStyle.subtitle2.copyWith(
                       color: UIColors.primary,
-                      fontSize: 14.sp,
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
                   )

@@ -2,7 +2,6 @@
 
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetailsColorSelector extends StatefulWidget {
   const ProductDetailsColorSelector({
@@ -46,9 +45,9 @@ class _ProductDetailsColorSelectorState
                 checkedIndex = index;
               });
             },
-            borderRadius: BorderRadius.circular(20.r),
+            borderRadius: BorderRadius.circular(20),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(4.r),
+              borderRadius: BorderRadius.circular(4),
               child: ColoredBox(
                 color: widget.colors[index],
                 child: checkedIndex == index

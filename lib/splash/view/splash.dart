@@ -1,6 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -16,14 +15,14 @@ class SplashPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 100.h),
+            const SizedBox(height: 100),
             Text(
               'Meno Logistics',
               style: theme.primaryTextTheme.headlineMedium?.copyWith(
                 color: UIColors.quaterniary,
               ),
             ),
-            SizedBox(height: 100.h),
+            const SizedBox(height: 100),
             Text(
               '.Shop',
               style: theme.primaryTextTheme.titleLarge,

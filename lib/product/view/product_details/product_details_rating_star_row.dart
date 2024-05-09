@@ -2,7 +2,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 class ProductDetailsRatingStarRow extends StatefulWidget {
@@ -60,7 +59,7 @@ class _ProductDetailsRatingStarRowState
           '212 revievs',
           style: UITextStyle.headline5.copyWith(
             color: UIColors.primary,
-            fontSize: 16.sp,
+            fontSize: 16,
           ),
         )
       ],

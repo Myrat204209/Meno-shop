@@ -12,7 +12,6 @@ class HomePageProductsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
-      key: const Key('Products '),
       itemCount: products.length,
       itemBuilder: (context, index) {
         return Column(
@@ -21,13 +20,13 @@ class HomePageProductsGrid extends StatelessWidget {
             const AppTitledWithViewAllRow(title: 'Select Products'),
             GridView.builder(
               shrinkWrap: true,
-              itemCount: 4,
+              itemCount: products.length,
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisExtent: 320,
+                mainAxisExtent: 300,
                 mainAxisSpacing: 10,
-                crossAxisSpacing: 20,
+                crossAxisSpacing: 10,
               ),
               itemBuilder: (context, index) {
                 return products[index];
@@ -37,12 +36,15 @@ class HomePageProductsGrid extends StatelessWidget {
         );
       },
       separatorBuilder: (context, index) {
-        return AppBannerCard(
-          imageLink: 'assets/jeans.jpg',
-          title: 'FROM ONLINE STORE',
-          subtitle: 'MEN\'S LIFESTYLE COLLECTION',
-          content: '',
-          onButtonPressed: () {},
+        return Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: AppBannerCard(
+            imageLink: 'assets/jeans.jpg',
+            title: 'FROM ONLINE STORE',
+            subtitle: 'MEN\'S LIFESTYLE COLLECTION',
+            content: '',
+            onButtonPressed: () {},
+          ),
         );
       },
     );

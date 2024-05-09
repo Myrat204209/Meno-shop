@@ -29,8 +29,8 @@ class AppActionsButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 10),
       child: MaterialButton(
-        minWidth: 55,
-        height: 55,
+        minWidth: 45,
+        height: 45,
         padding: EdgeInsets.zero,
         color: backgroundColor ?? UIColors.neutral.shade700,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

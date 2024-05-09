@@ -2,13 +2,14 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meno_shop/authentication/authentication.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/connectivity/connectivity.dart';
 import 'package:meno_shop/favorites/favorites.dart';
+import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/navigation/navigation.dart';
 import 'package:meno_shop/profile/profile.dart';
-import '../home.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -19,7 +20,7 @@ class HomeView extends StatelessWidget {
         context.select((HomeCubit cubit) => cubit.state.tabIndex);
     return MultiBlocListener(
       listeners: [
-        BlocListener(
+        BlocListener<AuthenticationBloc, AuthenticationState>(
           listener: (context, state) {
             FocusManager.instance.primaryFocus?.unfocus();
           },

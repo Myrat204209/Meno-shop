@@ -1,9 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-part 'app_view_all_text.dart';
 
 class AppTitledWithViewAllRow extends StatelessWidget {
   const AppTitledWithViewAllRow({
@@ -17,7 +14,7 @@ class AppTitledWithViewAllRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: 20.h,
+        vertical: 20,
         horizontal: padding ?? 0,
       ),
       child: Row(
@@ -27,11 +24,47 @@ class AppTitledWithViewAllRow extends StatelessWidget {
             title,
             style: UITextStyle.headline4.copyWith(
               color: UIColors.primary,
-              fontSize: 16.sp,
+              fontSize: 16,
             ),
           ),
           const AppViewAllText(),
         ],
+      ),
+    );
+  }
+}
+
+class AppViewAllText extends StatelessWidget {
+  const AppViewAllText({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'View All',
+      style: UITextStyle.subtitle2.copyWith(
+        color: UIColors.secondary,
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+      ),
+    );
+  }
+}
+
+class AppDefaultLabelTextWidget extends StatelessWidget {
+  const AppDefaultLabelTextWidget({
+    super.key,
+    required this.label,
+  });
+  final String label;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      label,
+      style: UITextStyle.headline4.copyWith(
+        color: UIColors.primary,
+        fontSize: 20,
       ),
     );
   }

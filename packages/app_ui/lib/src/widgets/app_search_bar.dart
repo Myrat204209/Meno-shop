@@ -1,14 +1,14 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
-class AppSearchField extends StatefulWidget {
-  const AppSearchField({super.key});
+class AppSearchBar extends StatefulWidget {
+  const AppSearchBar({super.key});
+
   @override
-  State<AppSearchField> createState() => _AppSearchFieldState();
+  State<AppSearchBar> createState() => _AppSearchBarState();
 }
 
-class _AppSearchFieldState extends State<AppSearchField> {
+class _AppSearchBarState extends State<AppSearchBar> {
   late final TextEditingController _controller;
   @override
   void initState() {

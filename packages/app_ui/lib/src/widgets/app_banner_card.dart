@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 /// A widget representing a banner card that displays an image, title, subtitle, content, and a button.
 class AppBannerCard extends StatelessWidget {
@@ -54,25 +55,22 @@ class AppBannerImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: 220.0,
-          maxWidth: 500.0,
-        ),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            color: Colors.black,
-            image: DecorationImage(
-              opacity: 0.69,
-              image: image,
-              fit: BoxFit.fill,
-            ),
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxHeight: 200.0,
+        maxWidth: 520.0,
+      ),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          color: Colors.black,
+          image: DecorationImage(
+            opacity: 0.69,
+            image: image,
+            fit: BoxFit.cover,
           ),
-          child: child,
         ),
+        child: child,
       ),
     );
   }
@@ -95,7 +93,7 @@ class AppBannerOverlayContent extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
-          top: 50.0,
+          top: 40.0,
           left: 15.0,
           child: child,
         ),
@@ -131,20 +129,22 @@ class AppBannerTextColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           title,
           style: UITextStyle.subtitle2.copyWith(
             color: UIColors.quaterniary,
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.w400,
           ),
         ),
+        Gap(5),
         Text(
           subtitle,
           style: UITextStyle.headline5.copyWith(
             color: UIColors.quaterniary,
-            fontSize: 17,
+            fontSize: 14,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -170,7 +170,7 @@ class AppBannerRichText extends StatelessWidget {
             text: 'Discount ',
             style: UITextStyle.subtitle2.copyWith(
               color: UIColors.quaterniary,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -178,7 +178,7 @@ class AppBannerRichText extends StatelessWidget {
             text: '50% OFF',
             style: UITextStyle.headline5.copyWith(
               color: UIColors.quaterniary,
-              fontSize: 18,
+              fontSize: 15,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -186,7 +186,7 @@ class AppBannerRichText extends StatelessWidget {
             text: ' This week ',
             style: UITextStyle.subtitle2.copyWith(
               color: UIColors.quaterniary,
-              fontSize: 16,
+              fontSize: 15,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -213,13 +213,13 @@ class AppBannerButton extends StatelessWidget {
       color: UIColors.quaterniary,
       onPressed: onPressed,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 15),
         child: Text(
           'Shop now',
           textAlign: TextAlign.center,
           style: UITextStyle.headline5.copyWith(
             color: UIColors.primary,
-            fontSize: 18,
+            fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
         ),

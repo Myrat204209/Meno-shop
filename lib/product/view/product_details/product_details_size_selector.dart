@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetailsSizeSelector extends StatefulWidget {
   const ProductDetailsSizeSelector({
@@ -36,7 +35,7 @@ class _ProductDetailsSizeSelectorState
     return DecoratedBox(
       decoration: BoxDecoration(
         border: Border.all(color: UIColors.neutral.shade300),
-        borderRadius: BorderRadius.circular(6.r),
+        borderRadius: BorderRadius.circular(6),
       ),
       child: ConstrainedBox(
         constraints: const BoxConstraints(
@@ -45,11 +44,11 @@ class _ProductDetailsSizeSelectorState
           minWidth: 50,
         ),
         child: SizedBox(
-          width: (31 * (length * 2 - 1)).w,
+          width: (31 * (length * 2 - 1)),
           child: ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 3.w),
+            padding: const EdgeInsets.symmetric(horizontal: 3),
             itemCount: length * 2 - 1,
-            itemExtent: 30.w,
+            itemExtent: 30,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.only(right: 0),
@@ -58,7 +57,7 @@ class _ProductDetailsSizeSelectorState
                       ? const DotIcon()
                       : null
                   : InkWell(
-                      borderRadius: BorderRadius.circular(10.r),
+                      borderRadius: BorderRadius.circular(10),
                       onTap: () {
                         log(index.toString());
                         setState(() {
@@ -71,7 +70,7 @@ class _ProductDetailsSizeSelectorState
                                 widget.sizes[index ~/ 2],
                                 style: UITextStyle.subtitle2.copyWith(
                                   color: UIColors.neutral.shade500,
-                                  fontSize: 16.sp,
+                                  fontSize: 16,
                                 ),
                               ),
                             )
@@ -83,7 +82,7 @@ class _ProductDetailsSizeSelectorState
                                   selectedSize,
                                   style: UITextStyle.headline5.copyWith(
                                     color: UIColors.secondary,
-                                    fontSize: 17.sp,
+                                    fontSize: 17,
                                   ),
                                 ),
                                 const SelectedLineIndicator()
@@ -105,12 +104,12 @@ class SelectedLineIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(5.r)),
+    return const ClipRRect(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(5)),
       child: SizedBox(
-        height: 2.h,
+        height: 2,
         width: 36,
-        child: const ColoredBox(
+        child: ColoredBox(
           color: UIColors.secondary,
         ),
       ),

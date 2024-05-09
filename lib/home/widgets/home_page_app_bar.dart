@@ -9,7 +9,7 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const AppSearchField(),
+      title: const AppSearchBar(),
       actions: [
         AppActionsButton(
           icon: Icons.notifications_none_outlined,
@@ -19,7 +19,6 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  //TODO: Search for more information on this widget
   @override
-  Size get preferredSize => const Size(200, 70);
+  Size get preferredSize => const Size(double.infinity, 70);
 }

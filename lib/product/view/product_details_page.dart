@@ -2,7 +2,6 @@
 
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 import 'view.dart';
@@ -36,12 +35,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           )
         ],
       ),
-      body: Padding(
+      body: const Padding(
         padding: EdgeInsets.only(
-          left: 16.w,
-          right: 16.w,
+          left: 16,
+          right: 16,
         ),
-        child: const SingleChildScrollView(
+        child: SingleChildScrollView(
           child: SizedBox(
             height: 2000,
             child: Column(

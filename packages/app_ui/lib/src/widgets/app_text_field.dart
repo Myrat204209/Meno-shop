@@ -1,7 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UITextField extends StatelessWidget {
   const UITextField({
@@ -11,7 +11,7 @@ class UITextField extends StatelessWidget {
     this.controller,
     this.inputFormatters,
     this.autocorrect = false,
-    this.readOnly = false,
+    this.readOnly,
     this.hintText,
     this.labelText,
     this.errorText,
@@ -33,7 +33,7 @@ class UITextField extends StatelessWidget {
     this.initialValue,
     this.controller,
     this.inputFormatters,
-    this.readOnly = false,
+    thiseadOnly = false,
     this.hintText,
     this.errorText,
     this.prefixText,
@@ -45,6 +45,7 @@ class UITextField extends StatelessWidget {
     this.onSubmitted,
     this.onTap,
     this.obscureText,
+    this.readOnly,
   })  : keyboardType = TextInputType.emailAddress,
         autoFillHints = const [AutofillHints.email],
         autocorrect = false;
@@ -57,7 +58,7 @@ class UITextField extends StatelessWidget {
     this.initialValue,
     this.controller,
     this.inputFormatters,
-    this.readOnly = false,
+    thiseadOnly = false,
     this.errorText,
     this.prefixText,
     this.maxLength,
@@ -69,6 +70,7 @@ class UITextField extends StatelessWidget {
     this.keyboardType,
     this.autoFillHints,
     this.prefix,
+    this.readOnly,
   })  : hintText = 'Password',
         obscureText = true,
         autocorrect = false;
@@ -155,7 +157,7 @@ class UITextField extends StatelessWidget {
         ),
         decoration: InputDecoration(
           hintStyle:
-              UITextStyle.subtitle1.copyWith(color: UIColors.neutral.shade500),
+              UITextStyle.subtitle1.copyWith(color: UIColors.neutral.shade700),
           labelStyle: UITextStyle.headline6.copyWith(color: UIColors.primary),
           floatingLabelStyle:
               UITextStyle.headline6.copyWith(color: UIColors.neutral.shade500),
@@ -163,12 +165,12 @@ class UITextField extends StatelessWidget {
           filled: true,
           fillColor: UIColors.neutral.shade100,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.r),
+            borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide.none,
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: UIColors.secondary),
-            borderRadius: BorderRadius.circular(8.r),
+            borderRadius: BorderRadius.circular(8),
           ),
           prefixText: prefixText,
           labelText: labelText,

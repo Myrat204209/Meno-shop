@@ -2,7 +2,6 @@
 
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 class AppProductItem extends StatelessWidget {
@@ -76,7 +75,7 @@ class AppProductContentText extends StatelessWidget {
           category,
           style: UITextStyle.subtitle2.copyWith(
             color: UIColors.neutral.shade700,
-            fontSize: 11.sp,
+            fontSize: 11,
           ),
         ),
         Gap(10),
@@ -84,7 +83,7 @@ class AppProductContentText extends StatelessWidget {
           label,
           style: UITextStyle.headline5.copyWith(
             color: UIColors.primary,
-            fontSize: 13.sp,
+            fontSize: 13,
             fontWeight: AppFontWeight.semiBold,
           ),
         ),
