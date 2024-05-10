@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:data_provider/data_provider.dart';
 import 'package:dio/dio.dart';
 
@@ -14,12 +12,8 @@ class AuthenticationClient {
   })  : _http = httpClient,
         _tokenStorage = tokenStorage;
 
-  //TODO: Change password
-  /// Fetch user endpoint using JWT token
-
   Future<AuthenticationUser> getUser() async {
     final token = await _tokenStorage.readToken();
-    log('----getUser-------Access token $token-----------------');
     final response = await _http.get<dynamic>(
       '/api/v1/user/getUser',
       options: Options(
@@ -50,7 +44,6 @@ class AuthenticationClient {
     );
     final authResponse =
         AuthResponse.fromJson(response.data as Map<String, dynamic>);
-    log('-----register authResponse- ${authResponse}');
 
     final token = authResponse.token;
     if (token != null) {
@@ -71,7 +64,6 @@ class AuthenticationClient {
     );
     final authResponse =
         AuthResponse.fromJson(response.data as Map<String, dynamic>);
-    log('-----login authResponse- ${authResponse}');
     final token = authResponse.token;
     if (token != null) {
       await _tokenStorage.saveToken(token);

@@ -1,4 +1,5 @@
 import 'package:data_provider/data_provider.dart';
+import 'package:meno_shop/env/env.dart';
 import 'package:meno_shop/main/bootstrap/bootstrap.dart';
 import 'package:secure_storage/secure_storage.dart';
 import 'package:user_repository/user_repository.dart';
@@ -10,8 +11,7 @@ void main() {
     exceptionStream,
   ) async {
     /// Constants
-    /// TODO: Change baseURL with ENV URL
-    const defaultBaseUrl = 'http://192.168.43.28:3000/api/v1';
+    const defaultBaseUrl = Env.serverUrl;
 
     /// Storages
     final tokenStorage = InMemoryTokenStorage();
