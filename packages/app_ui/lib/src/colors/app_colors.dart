@@ -8,7 +8,7 @@ abstract class UIColors {
 
   static const Color secondary = Color(0xFF4F46E5);
 
-  // static const Color secondary = Color(0xFFED0303);
+  static const Color secondary2 = Color(0xFFED0303);
 
   /// Stars color
   static const Color starsColor = Color(0xFFFBA13A);

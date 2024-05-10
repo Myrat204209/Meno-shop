@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/navigation/navigation.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
@@ -12,81 +13,28 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
+      backgroundColor: UIColors.quaterniary,
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+      height: 70,
+      indicatorColor: Colors.transparent,
+      elevation: 0,
       destinations: const [
-        NavigationDestination(
-          icon: Icon(
-            Icons.home_outlined,
-            color: UIColors.secondary,
-            size: 32,
-          ),
-          label: 'Home',
-          selectedIcon: Icon(
-            Icons.home,
-            color: UIColors.secondary,
-            size: 32,
-          ),
+        BottomNavBarIcon(
+          icon: Icons.home_outlined,
         ),
-        NavigationDestination(
-          icon: Icon(
-            Icons.grid_view_outlined,
-            color: UIColors.secondary,
-            size: 32,
-          ),
-          selectedIcon: Icon(
-            Icons.grid_view_rounded,
-            color: UIColors.secondary,
-            size: 32,
-          ),
-          label: 'Category',
+        BottomNavBarIcon(
+          icon: Icons.grid_view_outlined,
         ),
-        NavigationDestination(
-          icon: Badge(
-            backgroundColor: UIColors.secondary,
-            offset: Offset(8, -1),
-            label: Text('2'),
-            child: Icon(
-              Icons.shopping_bag_outlined,
-              color: UIColors.secondary,
-              size: 32,
-            ),
-          ),
-          selectedIcon: Badge(
-            backgroundColor: UIColors.secondary,
-            offset: Offset(8, -1),
-            label: Text('2'),
-            child: Icon(
-              Icons.shopping_bag,
-              color: UIColors.secondary,
-              size: 32,
-            ),
-          ),
-          label: 'Cart',
+        BottomNavBarIcon(
+          icon: Icons.shopping_bag_outlined,
+          isBadged: true,
+          badgeText: '2',
         ),
-        NavigationDestination(
-          icon: Icon(
-            Icons.favorite_border_outlined,
-            size: 32,
-            color: UIColors.secondary,
-          ),
-          label: 'Favorite',
-          selectedIcon: Icon(
-            Icons.favorite,
-            size: 32,
-            color: UIColors.secondary,
-          ),
+        BottomNavBarIcon(
+          icon: Icons.favorite_border_outlined,
         ),
-        NavigationDestination(
-          icon: Icon(
-            Icons.person_outlined,
-            color: UIColors.secondary,
-            size: 32,
-          ),
-          selectedIcon: Icon(
-            Icons.person,
-            size: 32,
-            color: UIColors.secondary,
-          ),
-          label: 'Profile',
+        BottomNavBarIcon(
+          icon: Icons.person_outlined,
         ),
       ],
       selectedIndex: currentIndex,

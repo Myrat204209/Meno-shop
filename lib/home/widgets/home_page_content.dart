@@ -12,7 +12,7 @@ class HomePageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: CustomScrollView(
         slivers: [
           const HomePageBannerCard(),
