@@ -9,12 +9,12 @@ class UserRepository {
   /// {@macro user_repository}
 
   UserRepository({
-    required AuthenticationClient authenticationClient,
+    required AuthClient authClient,
     required UserStorage storage,
-  })  : _authenticationClient = authenticationClient,
+  })  : _authClient = authClient,
         _storage = storage;
 
-  final AuthenticationClient _authenticationClient;
+  final AuthClient _authClient;
   final StreamController<User> _userStream = StreamController();
   final UserStorage _storage;
 
@@ -36,36 +36,14 @@ class UserRepository {
     }
   }
 
-  Future<User?> getUser() async {
-    try {
-      final authUser = await _authenticationClient.getUser();
-      if (authUser != AuthenticationUser.anonymous) {
-        final newUser =
-            User.fromAuthenticationUser(authenticationUser: authUser);
-        _userStream.add(newUser);
-        return newUser;
-      } else {
-        return User.anonymous;
-      }
-    } catch (error, stackTrace) {
-      Error.throwWithStackTrace(RegisterFailure(error), stackTrace);
-    }
-  }
-
   /// Starts the Register with phone, name, surname
   ///
   /// Throws a [RegisterFailure] if an exception occurs
   Future<AuthResponse> register({
     required String phone,
-    required String name,
-    required String surname,
   }) async {
     try {
-      final response = await _authenticationClient.register(
-        name: name,
-        surname: surname,
-        phone: phone,
-      );
+      final response = await _authClient.register(body: AuthRequestBody(phone));
       await _storage.setAppUserPhone(phone);
       return response;
     } catch (error, stackTrace) {
@@ -80,9 +58,7 @@ class UserRepository {
     required String phone,
   }) async {
     try {
-      final response = await _authenticationClient.logIn(
-        phone: phone,
-      );
+      final response = await _authClient.logIn(body: AuthRequestBody(phone));
       await _storage.setAppUserPhone(phone);
       return response;
     } catch (error, stackTrace) {
@@ -95,7 +71,7 @@ class UserRepository {
   /// Throws a [LogOutFailure] if an exception occurs
   Future<void> logOut() async {
     try {
-      await _authenticationClient.logOut();
+      await _authClient.logOut();
       _userStream.add(User.anonymous);
       await _storage.clearAppUser();
     } catch (error, stackTrace) {

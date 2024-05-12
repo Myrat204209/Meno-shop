@@ -1,1 +1,1 @@
-export 'authentication_client.dart';
+export 'auth_client.dart';

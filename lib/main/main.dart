@@ -25,12 +25,12 @@ void main() {
     );
 
     /// Authentication and User
-    final authenticationClient = AuthenticationClient(
+    final authClient = AuthClient(
       httpClient: httpClient,
       tokenStorage: tokenStorage,
     );
     final userRepository = UserRepository(
-      authenticationClient: authenticationClient,
+      authClient: authClient,
       storage: userStorage,
     );
     return App(

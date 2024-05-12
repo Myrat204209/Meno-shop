@@ -15,30 +15,21 @@ class BottomNavBar extends StatelessWidget {
     return NavigationBar(
       backgroundColor: UIColors.quaterniary,
       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-      height: 70,
+      height: 65,
       indicatorColor: Colors.transparent,
-      elevation: 0,
-      destinations: const [
-        BottomNavBarIcon(
-          icon: Icons.home_outlined,
-        ),
-        BottomNavBarIcon(
-          icon: Icons.grid_view_outlined,
-        ),
-        BottomNavBarIcon(
-          icon: Icons.shopping_bag_outlined,
-          isBadged: true,
-          badgeText: '2',
-        ),
-        BottomNavBarIcon(
-          icon: Icons.favorite_border_outlined,
-        ),
-        BottomNavBarIcon(
-          icon: Icons.person_outlined,
-        ),
-      ],
+      elevation: 0.6,
+      destinations: bottomNavBarList,
       selectedIndex: currentIndex,
       onDestinationSelected: onTap,
     );
   }
 }
+
+const List<BottomNavBarIcon> bottomNavBarList = [
+  BottomNavBarIcon(icon: Icons.home_outlined),
+  BottomNavBarIcon(icon: Icons.grid_view_outlined),
+  BottomNavBarIcon(
+      icon: Icons.shopping_bag_outlined, isBadged: true, badgeText: '2'),
+  BottomNavBarIcon(icon: Icons.favorite_border_outlined),
+  BottomNavBarIcon(icon: Icons.person_outlined),
+];
