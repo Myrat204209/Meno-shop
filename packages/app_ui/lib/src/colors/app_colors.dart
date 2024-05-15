@@ -6,7 +6,7 @@ abstract class UIColors {
 
   /// Secondary
 
-  static const Color secondary = Color(0xFF4F46E5);
+  static const Color secondary = Color(0xFFC01C15);
 
   static const Color secondary2 = Color(0xFFED0303);
 

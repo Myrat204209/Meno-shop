@@ -21,10 +21,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async {
     try {
       emit(state.copyWith(status: ProfileStatus.loading));
-      final user = await _userRepository.getUser();
-      if (user != null) {
-        emit(ProfileState.populated(user));
-      }
     } catch (error, stackTrace) {
       addError(error, stackTrace);
     }

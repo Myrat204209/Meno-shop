@@ -1,14 +1,16 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
-class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomePageAppBar({
+class HomePageSliverAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  const HomePageSliverAppBar({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return SliverAppBar(
+      pinned: true,
       title: const AppSearchBar(),
       actions: [
         AppActionsButton(
@@ -20,5 +22,5 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size(double.infinity, 70);
+  Size get preferredSize => const Size(double.infinity, 80);
 }

@@ -15,6 +15,7 @@ class HomePageContent extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: CustomScrollView(
         slivers: [
+          const HomePageSliverAppBar(),
           const HomePageBannerCard(),
           HomePageCategoriesList(images: images),
           HomePageProductsGrid(products: products),

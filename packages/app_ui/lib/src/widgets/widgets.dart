@@ -10,5 +10,4 @@ export 'app_banner_card.dart';
 export 'app_two_layered_text.dart';
 export 'app_title_with_view_all_row.dart';
 export 'app_search_bar.dart';
-export 'app_category_item.dart';
 export 'app_actions_button.dart';

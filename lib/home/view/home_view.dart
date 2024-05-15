@@ -31,14 +31,13 @@ class HomeView extends StatelessWidget {
       ],
       child: Scaffold(
         backgroundColor: UIColors.quaterniary,
-        appBar: const HomePageAppBar(),
         body: IndexedStack(
           index: selectedTab,
           children: [
             HomePageContent(
               products: products,
             ),
-            const CategoryTypesPage(),
+            const CategoriesPage(),
             const CartPage(),
             const FavoritesPage(),
             const ProfilePage(),

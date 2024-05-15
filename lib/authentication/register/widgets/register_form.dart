@@ -44,10 +44,6 @@ class _RegisterContent extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const SizedBox(height: 40),
-                const _NameInput(),
-                const SizedBox(height: 2),
-                const _SurnameInput(),
-                const SizedBox(height: 2),
                 const _PhoneInput(),
                 const SizedBox(height: 2),
                 const _RegisterButton(),
