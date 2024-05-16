@@ -12,9 +12,9 @@ class CategoryPageGridView extends StatelessWidget {
     return GridView.builder(
       itemCount: 10,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisExtent: 110,
+        mainAxisExtent: 120,
         crossAxisCount: 3,
-        crossAxisSpacing: 10,
+        crossAxisSpacing: 5,
         mainAxisSpacing: 10,
       ),
       itemBuilder: (context, index) {

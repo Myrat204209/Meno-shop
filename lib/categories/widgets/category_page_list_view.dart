@@ -18,7 +18,7 @@ class AppCategoryListView extends StatelessWidget {
     return ListView.builder(
       scrollDirection: scrollDirection,
       itemCount: images.length,
-      itemExtent: 150,
+      itemExtent: scrollDirection == Axis.horizontal ? 110 : 140,
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return Padding(

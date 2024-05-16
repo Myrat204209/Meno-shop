@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/product/product_details/product_details.dart';
 
 class HomePageProductsGrid extends StatelessWidget {
   const HomePageProductsGrid({
@@ -24,12 +25,22 @@ class HomePageProductsGrid extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisExtent: 300,
+                mainAxisExtent: 310,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
               ),
               itemBuilder: (context, index) {
-                return products[index];
+                return AppProductItem(
+                  price: products[index].price,
+                  image: products[index].image,
+                  label: products[index].label,
+                  category: products[index].category,
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ProductDetailsPage(),
+                    ));
+                  },
+                );
               },
             ),
           ],
@@ -37,7 +48,7 @@ class HomePageProductsGrid extends StatelessWidget {
       },
       separatorBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 20, bottom: 10),
           child: AppBannerCard(
             imageLink: 'assets/jeans.jpg',
             title: 'FROM ONLINE STORE',

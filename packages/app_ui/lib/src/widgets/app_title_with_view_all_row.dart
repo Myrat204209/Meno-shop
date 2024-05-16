@@ -14,7 +14,7 @@ class AppTitledWithViewAllRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: 20,
+        vertical: 10,
         horizontal: padding ?? 0,
       ),
       child: Row(

@@ -9,12 +9,6 @@ class CategoryPageAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       title: const AppSearchBar(),
-      actions: [
-        AppActionsButton(
-          icon: Icons.notifications_none_outlined,
-          onPressed: () {},
-        ),
-      ],
     );
   }
 

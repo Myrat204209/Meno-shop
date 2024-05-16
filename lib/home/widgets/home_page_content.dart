@@ -14,6 +14,7 @@ class HomePageContent extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: CustomScrollView(
+        shrinkWrap: true,
         slivers: [
           const HomePageSliverAppBar(),
           const HomePageBannerCard(),

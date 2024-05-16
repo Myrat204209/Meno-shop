@@ -21,14 +21,15 @@ class _CategoriesPageState extends State<CategoriesPage> {
       body: Row(
         children: [
           Expanded(
+            flex: 3,
             child: AppCategoryListView(
               images: images,
               scrollDirection: Axis.vertical,
             ),
           ),
-          const SizedBox(width: 20),
+          const SizedBox(width: 15),
           const Expanded(
-            flex: 2,
+            flex: 7,
             child: CategoryPageGridView(),
           ),
         ],

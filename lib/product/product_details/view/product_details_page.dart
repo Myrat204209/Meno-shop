@@ -3,8 +3,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
-import 'view.dart';
+import 'package:meno_shop/product/product_details/product_details.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({super.key});
@@ -17,25 +16,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   int selectedIndex = 5;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: UIColors.quaterniary,
-      appBar: AppBar(
-        title: Text(
-          'Product Details',
-          style: UITextStyle.headline4.copyWith(color: UIColors.primary),
-        ),
-        centerTitle: true,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: Icon(
-              Icons.favorite_border_outlined,
-              size: 30,
-            ),
-          )
-        ],
-      ),
-      body: const Padding(
+      appBar: ProductDetailsAppBar(),
+      body: Padding(
         padding: EdgeInsets.only(
           left: 16,
           right: 16,
@@ -106,6 +90,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     );
   }
 }
+
+
 /**
  * Positioned(
           bottom: 20,
