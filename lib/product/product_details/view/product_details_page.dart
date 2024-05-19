@@ -2,7 +2,8 @@
 
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+import 'package:flutter/widgets.dart';
+
 import 'package:meno_shop/product/product_details/product_details.dart';
 
 class ProductDetailsPage extends StatefulWidget {
@@ -16,75 +17,83 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   int selectedIndex = 5;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: UIColors.quaterniary,
-      appBar: ProductDetailsAppBar(),
-      body: Padding(
-        padding: EdgeInsets.only(
+    return Scaffold(
+      appBar: const ProductDetailsAppBar(),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.only(
           left: 16,
           right: 16,
         ),
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: 2000,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ProductDetailsImageSlider(
-                  imageLinks: ['asa', 'asdasd', 'asdasdasdas'],
-                ),
-                Gap(15),
-                ProductDetailsLabelText(label: 'Friends Printed'),
-                Gap(20),
-                ProductDetailRichText(),
-                Gap(15),
-                ProductDetailsRow(onSalePercent: 50),
-                Gap(15),
-                ProductDetailsRatingStarRow(initialRating: 1),
-                Gap(20),
-                ProductDetailsDescriptionText(
-                  descriptionText: '',
-                ),
-                Gap(25),
-                ProductDetailsLabelText(label: 'Choose color'),
-                Gap(10),
-                ProductDetailsColorSelector(
-                  colors: [
-                    Colors.red,
-                    Colors.black,
-                    Colors.blue,
-                    Colors.green,
-                  ],
-                  checkedColorIndex: 0,
-                ),
-                Gap(10),
-                ProductDetailsLabelText(label: 'Select size'),
-                Gap(10),
-                ProductDetailsSizeSelector(
-                  sizes: ['32', '36', '38', '40', '42'],
-                  selectedSize: '38',
-                ),
-                //TODO: Comments section implemetation
-
-                // LayoutBuilder(
-                //   builder: (context, constraints) => GridView.builder(
-                //     itemCount: 2,
-                //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                //       mainAxisExtent: constraints.maxHeight,
-                //       crossAxisCount: 2,
-                //     ),
-                //     itemBuilder: (context, index) {
-                //       return const AppProduct(
-                //         price: 30,
-                //         label: 'asdas',
-                //         category: 'asas',
-                //       );
-                //     },
-                //   ),
-                // )
-              ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const ProductDetailsImageSlider(
+              imageLinks: ['asa', 'asdasd', 'asdasdasdas'],
             ),
-          ),
+            const SizedBox(height: 10),
+            const ProductDetailsLabelText(label: 'Friends Printed'),
+
+            const SizedBox(height: 10),
+            const ProductDetailRichText(),
+            const SizedBox(height: 10),
+            const ProductDetailsRow(onSalePercent: 50),
+            const SizedBox(height: 10),
+            const ProductDetailsRatingStarRow(initialRating: 1),
+            const SizedBox(height: 10),
+            const ProductDetailsDescriptionText(descriptionText: ''),
+            const SizedBox(height: 10),
+            const ProductDetailsLabelText(label: 'Choose color'),
+            const SizedBox(height: 10),
+            const ProductDetailsColorSelector(
+              colors: [
+                Colors.red,
+                Colors.black,
+                Colors.blue,
+                Colors.green,
+              ],
+              checkedColorIndex: 0,
+            ),
+            const SizedBox(height: 10),
+            const ProductDetailsLabelText(label: 'Select size'),
+            const SizedBox(height: 10),
+            const ProductDetailsSizeSelector(
+              sizes: ['32', '36', '38', '40', '42'],
+              selectedSize: '38',
+            ),
+            const SizedBox(height: 10),
+            GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
+              itemBuilder: (context, index) {
+                return const AppProductItem(
+                  price: 1,
+                  label: 'as',
+                  category: 'as',
+                  image: 'assets/coat.png',
+                );
+              },
+            ),
+
+            //TODO: Comments section implemetation
+
+            // LayoutBuilder(
+            //   builder: (context, constraints) => GridView.builder(
+            //     itemCount: 2,
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //       mainAxisExtent: constraints.maxHeight,
+            //       crossAxisCount: 2,
+            //     ),
+            //     itemBuilder: (context, index) {
+            //       return const AppProduct(
+            //         price: 30,
+            //         label: 'asdas',
+            //         category: 'asas',
+            //       );
+            //     },
+            //   ),
+            // )
+          ],
         ),
       ),
     );

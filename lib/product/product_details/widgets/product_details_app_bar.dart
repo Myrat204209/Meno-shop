@@ -15,13 +15,10 @@ class ProductDetailsAppBar extends StatelessWidget
         style: UITextStyle.headline5.copyWith(color: UIColors.primary),
       ),
       centerTitle: true,
-      actions: const [
-        Padding(
-          padding: EdgeInsets.only(right: 10),
-          child: Icon(
-            Icons.favorite_border_outlined,
-            size: 30,
-          ),
+      actions: [
+        AppActionsButton(
+          onPressed: () {},
+          icon: Icons.favorite_border_outlined,
         )
       ],
     );

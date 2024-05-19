@@ -30,12 +30,12 @@ class _ProductDetailsColorSelectorState
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(
-        maxHeight: 50,
-        minWidth: 50,
+        maxHeight: 40,
+        minWidth: 40,
       ),
       child: ListView.builder(
         itemCount: widget.colors.length,
-        itemExtent: 60,
+        itemExtent: 50,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.only(right: 10),
@@ -47,7 +47,7 @@ class _ProductDetailsColorSelectorState
             },
             borderRadius: BorderRadius.circular(20),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(8),
               child: ColoredBox(
                 color: widget.colors[index],
                 child: checkedIndex == index

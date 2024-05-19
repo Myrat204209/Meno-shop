@@ -8,7 +8,7 @@ class AppProductItem extends StatelessWidget {
   const AppProductItem({
     super.key,
     this.onTap,
-    this.image,
+    required this.image,
     required this.price,
     required this.label,
     required this.category,
