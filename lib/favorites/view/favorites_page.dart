@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
@@ -5,9 +6,9 @@ const List<String> categoryChipList = [
   'Accessories',
   'Shoes',
   'PC',
-  'Camera',
   'Kids',
-  'Jewelry'
+  'Jewelry',
+  'Camera',
 ];
 const List<String> sizeChipList = [
   'S',
@@ -33,86 +34,18 @@ class FavoritesPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const AppTitledWithViewAllRow(title: 'Categories'),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: categoryChipList
-                  .map(
-                    (element) => ActionChip(
-                      color:
-                          MaterialStatePropertyAll(UIColors.neutral.shade300),
-                      onPressed: () {},
-                      label: Text(
-                        element,
-                        style: UITextStyle.subtitle1
-                            .copyWith(color: UIColors.primary),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(color: Colors.transparent),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  )
-                  .toList(),
+            const SizedBox(height: 30),
+            const FilterPageWrap(
+              label: '',
+              children: [],
             ),
-            const Divider(),
-            const SizedBox(
-              height: 20,
+            const FilterPageWrap(
+              children: categoryChipList,
+              label: 'Categories',
             ),
-            const AppTitledWithViewAllRow(title: 'Size'),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: sizeChipList
-                  .map(
-                    (element) => ActionChip(
-                      color:
-                          MaterialStatePropertyAll(UIColors.neutral.shade300),
-                      onPressed: () {},
-                      label: Text(
-                        element,
-                        style: UITextStyle.subtitle1
-                            .copyWith(color: UIColors.primary),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(color: Colors.transparent),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
-            const Divider(),
-            const SizedBox(
-              height: 20,
-            ),
-            const AppTitledWithViewAllRow(title: 'Brand'),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: brandChipList
-                  .map(
-                    (element) => ActionChip(
-                      color:
-                          MaterialStatePropertyAll(UIColors.neutral.shade300),
-                      onPressed: () {},
-                      label: Text(
-                        element,
-                        style: UITextStyle.subtitle1
-                            .copyWith(color: UIColors.primary),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(color: Colors.transparent),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
-            const Expanded(
-              child: SizedBox(),
-            ),
+            const FilterPageWrap(children: sizeChipList, label: 'Size'),
+            const FilterPageWrap(children: brandChipList, label: 'Brands'),
+            const Expanded(child: SizedBox()),
             AppButton(
               type: AppButtonType.large,
               text: 'Close',
@@ -121,6 +54,68 @@ class FavoritesPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class FilterPageWrap extends StatelessWidget {
+  const FilterPageWrap({
+    super.key,
+    this.children,
+    required this.label,
+  });
+  final List<String?>? children;
+  final String label;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppTitledWithViewAllRow(title: label),
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: children == null
+              ? []
+              : children!
+                  .map((element) => FilterPageChip(
+                        isSelected: false,
+                        label: element,
+                      ))
+                  .toList(),
+        ),
+        const Divider(),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
+}
+
+class FilterPageChip extends StatelessWidget {
+  const FilterPageChip({
+    super.key,
+    required this.isSelected,
+    required this.label,
+  });
+  final bool isSelected;
+  final String? label;
+  @override
+  Widget build(BuildContext context) {
+    return FilterChip(
+      color: MaterialStatePropertyAll(UIColors.neutral.shade300),
+      label: Text(
+        label ?? '',
+        style: UITextStyle.subtitle2
+            .copyWith(color: UIColors.primary, fontSize: 13),
+      ),
+      selected: isSelected,
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(color: Colors.transparent),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      onSelected: (bool value) {},
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     );
   }
 }
