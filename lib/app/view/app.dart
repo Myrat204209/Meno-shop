@@ -5,7 +5,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/auth/Auth.dart';
+import 'package:meno_shop/auth/auth.dart';
 import 'package:meno_shop/exception_handler/exception_handler.dart';
 import 'package:meno_shop/exception_handler/view/exception_handler_view.dart';
 import 'package:user_repository/user_repository.dart';
