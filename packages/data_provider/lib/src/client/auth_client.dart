@@ -1,6 +1,6 @@
 import 'package:data_provider/data_provider.dart';
 
-/// Authentication client
+/// Auth client
 class AuthClient {
   final Http _http;
   final TokenStorage _tokenStorage;

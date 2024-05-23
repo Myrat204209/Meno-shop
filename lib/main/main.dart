@@ -24,7 +24,7 @@ void main() {
       tokenProvider: tokenStorage.readToken,
     );
 
-    /// Authentication and User
+    /// Auth and User
     final authClient = AuthClient(
       httpClient: httpClient,
       tokenStorage: tokenStorage,

@@ -5,7 +5,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/authentication/authentication.dart';
+import 'package:meno_shop/auth/Auth.dart';
 import 'package:meno_shop/exception_handler/exception_handler.dart';
 import 'package:meno_shop/exception_handler/view/exception_handler_view.dart';
 import 'package:user_repository/user_repository.dart';
@@ -31,7 +31,7 @@ class App extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => AuthenticationBloc(
+            create: (_) => AuthBloc(
               userRepository: _userRepository,
             ),
           ),
@@ -43,12 +43,11 @@ class App extends StatelessWidget {
         ],
         child: MultiBlocListener(
           listeners: [
-            BlocListener<AuthenticationBloc, AuthenticationState>(
+            BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {
-                if (state.status == AuthenticationStatus.authenticated) {
+                if (state.status == AuthStatus.authenticated) {
                   //TODO: Authenticated
-                } else if (state.status ==
-                    AuthenticationStatus.unauthenticated) {
+                } else if (state.status == AuthStatus.unauthenticated) {
                   //TODO: Unauthenticated
                 }
               },
@@ -83,9 +82,9 @@ class AppView extends StatelessWidget {
         fontFamily: 'Poppins',
       ),
       home: ExceptionHandlerView(
-        child: FlowBuilder<AuthenticationStatus>(
+        child: FlowBuilder<AuthStatus>(
           state: context.select(
-            (AuthenticationBloc bloc) => bloc.state.status,
+            (AuthBloc bloc) => bloc.state.status,
           ),
           onGeneratePages: onGenerateAppViewPages,
           // onGeneratePages: onGenerateAppViewPages,

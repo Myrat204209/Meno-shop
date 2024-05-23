@@ -1,10 +1,10 @@
 part of 'user_repository.dart';
 
-/// {@template authentication_exception}
-/// Exceptions from the authentication client.
+/// {@template Auth_exception}
+/// Exceptions from the Auth client.
 /// {@endtemplate}
 abstract class UserException implements Exception {
-  /// {@macro authentication_exception}
+  /// {@macro Auth_exception}
   const UserException(this.error);
 
   /// The error which was caught.

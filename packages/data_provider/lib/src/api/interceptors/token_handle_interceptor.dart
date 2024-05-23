@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-/// Signature for the authentication token provider.
+/// Signature for the Auth token provider.
 typedef TokenProvider = Future<String?> Function();
 
 /// Token adder for the request header

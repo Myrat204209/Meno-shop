@@ -3,7 +3,7 @@ import 'package:data_provider/data_provider.dart';
 /// {@template user}
 /// User model represents the current user
 /// {@endtemplate}
-class User extends AuthenticationUser {
+class User extends AuthUser {
   /// {@macro user}
   const User({
     required super.id,
@@ -12,15 +12,15 @@ class User extends AuthenticationUser {
     String? surname,
   }) : super(phoneNumber: phone);
 
-  /// Converts [AuthenticationUser] to [User].
-  factory User.fromAuthenticationUser({
-    required AuthenticationUser authenticationUser,
+  /// Converts [AuthUser] to [User].
+  factory User.fromAuthUser({
+    required AuthUser authUser,
   }) =>
       User(
-        id: authenticationUser.id,
-        name: authenticationUser.name,
-        surname: authenticationUser.surname,
-        phone: authenticationUser.phoneNumber,
+        id: authUser.id,
+        name: authUser.name,
+        surname: authUser.surname,
+        phone: authUser.phoneNumber,
       );
 
   /// Whether the current user is anonymous.

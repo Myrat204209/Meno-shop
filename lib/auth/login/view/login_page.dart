@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meno_shop/authentication/authentication.dart';
+import 'package:meno_shop/auth/Auth.dart';
 
 import 'package:user_repository/user_repository.dart';
 

@@ -2,7 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
-import 'package:meno_shop/authentication/authentication.dart';
+import 'package:meno_shop/auth/Auth.dart';
 
 part 'register_form_fields.dart';
 

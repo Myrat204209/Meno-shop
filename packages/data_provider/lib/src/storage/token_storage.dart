@@ -1,5 +1,5 @@
 /// {@template token_storage}
-/// Token storage for the authentication client.
+/// Token storage for the Auth client.
 /// {@endtemplate}
 abstract class TokenStorage {
   /// Returns the current token.
@@ -13,7 +13,7 @@ abstract class TokenStorage {
 }
 
 /// {@template in_memory_token_storage}
-/// In-memory token storage for the authentication client.
+/// In-memory token storage for the Auth client.
 /// {@endtemplate}
 class InMemoryTokenStorage implements TokenStorage {
   String? _token;

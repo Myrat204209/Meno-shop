@@ -1,4 +1,4 @@
-export 'authentication_user/authentication_user.dart';
+export 'auth_user/auth_user.dart';
 export 'auth/auth.dart';
 export 'cart/cart.dart';
 export 'category/category.dart';
