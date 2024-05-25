@@ -12,9 +12,7 @@ class AuthClient {
         _tokenStorage = tokenStorage;
 
   /// Register endpoints using phone and name and username
-  Future<AuthResponse> register({
-    required AuthRequestBody body,
-  }) async {
+  Future<AuthResponse> register(RegisterRequestBody body) async {
     final response = await _http.post<Map<String, dynamic>>(
       '/auth/register',
       data: body.toJson(),
@@ -29,9 +27,7 @@ class AuthClient {
   }
 
   /// Log In endpoints using phone
-  Future<AuthResponse> logIn({
-    required AuthRequestBody body,
-  }) async {
+  Future<AuthResponse> login(LoginRequestBody body) async {
     final response = await _http.post<Map<String, dynamic>>(
       'auth/login',
       data: body.toJson(),
@@ -44,9 +40,7 @@ class AuthClient {
     return authResponse;
   }
 
-  Future<AuthResponse> sendOtp({
-    required AuthRequestBody body,
-  }) async {
+  Future<AuthResponse> sendOtp(AuthOtpBody body) async {
     final response = await _http.post<Map<String, dynamic>>(
       'auth/sendOtp',
       data: body.toJson(),
@@ -59,9 +53,7 @@ class AuthClient {
     return authResponse;
   }
 
-  Future<dynamic> checkOtp({
-    required AuthOtpBody body,
-  }) async {
+  Future<dynamic> checkOtp(AuthOtpBody body) async {
     final response = await _http.post<Map<String, dynamic>>(
       'auth/checkOtp',
       data: body.toJson(),

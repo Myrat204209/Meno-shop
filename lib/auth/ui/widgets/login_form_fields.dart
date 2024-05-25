@@ -51,8 +51,8 @@ class _LoginButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.onSecondary),
       key: const Key('loginForm_loginButton'),
-      onPressed: state.isValid
-          ? () => context.read<LoginBloc>().add(LoginStarted())
+      onPressed: state.valid
+          ? () => context.read<LoginBloc>().add(LoginPhoneSubmitted())
           : null,
       child: state.status.isInProgress
           ? const SizedBox.square(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:meno_shop/auth/auth.dart';
+import 'package:meno_shop/auth/ui/bloc/login_bloc.dart';
 
 part 'login_form_fields.dart';
 

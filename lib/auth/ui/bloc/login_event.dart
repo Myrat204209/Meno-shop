@@ -1,13 +1,13 @@
 part of 'login_bloc.dart';
 
-abstract class LoginEvent extends Equatable {
+sealed class LoginEvent extends Equatable {
   const LoginEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class LoginPhoneChanged extends LoginEvent {
+final class LoginPhoneChanged extends LoginEvent {
   const LoginPhoneChanged(this.phone);
 
   final String phone;
@@ -16,4 +16,4 @@ class LoginPhoneChanged extends LoginEvent {
   List<Object> get props => [phone];
 }
 
-class LoginStarted extends LoginEvent {}
+final class LoginPhoneSubmitted extends LoginEvent {}
