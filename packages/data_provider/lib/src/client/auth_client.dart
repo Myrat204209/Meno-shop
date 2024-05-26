@@ -13,7 +13,7 @@ class AuthClient {
 
   /// Register endpoints using phone and name and username
   Future<AuthResponse> register(RegisterRequestBody body) async {
-    final response = await _http.post<Map<String, dynamic>>(
+    final response = await _http.post<JsonType>(
       '/auth/register',
       data: body.toJson(),
     );
@@ -28,7 +28,7 @@ class AuthClient {
 
   /// Log In endpoints using phone
   Future<AuthResponse> login(LoginRequestBody body) async {
-    final response = await _http.post<Map<String, dynamic>>(
+    final response = await _http.post<JsonType>(
       'auth/login',
       data: body.toJson(),
     );
@@ -41,7 +41,7 @@ class AuthClient {
   }
 
   Future<AuthResponse> sendOtp(AuthOtpBody body) async {
-    final response = await _http.post<Map<String, dynamic>>(
+    final response = await _http.post<JsonType>(
       'auth/sendOtp',
       data: body.toJson(),
     );
@@ -54,7 +54,7 @@ class AuthClient {
   }
 
   Future<dynamic> checkOtp(AuthOtpBody body) async {
-    final response = await _http.post<Map<String, dynamic>>(
+    final response = await _http.post<JsonType>(
       'auth/checkOtp',
       data: body.toJson(),
     );

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:data_provider/data_provider.dart' show JsonType;
 
 part 'auth_user.g.dart';
 
@@ -33,9 +34,8 @@ class AuthUser extends Equatable {
 
   static const anonymous = AuthUser(id: '');
 
-  Map<String, dynamic> toJson() => _$AuthUserToJson(this);
-  factory AuthUser.fromJson(Map<String, dynamic> json) =>
-      _$AuthUserFromJson(json);
+  JsonType toJson() => _$AuthUserToJson(this);
+  factory AuthUser.fromJson(JsonType json) => _$AuthUserFromJson(json);
 
   @override
   List<Object?> get props => [

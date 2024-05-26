@@ -1,4 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:data_provider/data_provider.dart' show JsonType;
+
 part 'product_item.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -24,7 +26,6 @@ class ProductItem {
     this.discount,
     this.discountedPrice,
   });
-  Map<String, dynamic> toJson() => _$ProductItemToJson(this);
-  factory ProductItem.fromJson(Map<String, dynamic> json) =>
-      _$ProductItemFromJson(json);
+  JsonType toJson() => _$ProductItemToJson(this);
+  factory ProductItem.fromJson(JsonType json) => _$ProductItemFromJson(json);
 }

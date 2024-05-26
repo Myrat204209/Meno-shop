@@ -6,20 +6,21 @@ class RegisterState extends Equatable {
   const RegisterState({
     this.phone = const Phone.pure(),
     this.status = FormzSubmissionStatus.initial,
+    this.valid = false,
   });
   final Phone phone;
   final FormzSubmissionStatus status;
-  bool get isValid => Formz.validate([phone]);
-  bool get isLoginStartable =>
-      isValid && status != FormzSubmissionStatus.inProgress;
+  final bool valid;
 
   RegisterState copyWith({
     Phone? phone,
     FormzSubmissionStatus? status,
+    bool? valid,
   }) {
     return RegisterState(
       phone: phone ?? this.phone,
       status: status ?? this.status,
+      valid: valid ?? this.valid,
     );
   }
 
@@ -27,5 +28,6 @@ class RegisterState extends Equatable {
   List<Object> get props => [
         phone,
         status,
+        valid,
       ];
 }

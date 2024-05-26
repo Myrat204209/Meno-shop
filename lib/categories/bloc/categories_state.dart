@@ -19,7 +19,7 @@ class CategoriesState extends Equatable {
       : this(
           status: CategoriesStatus.initial,
         );
-  // factory CategoriesState.fromJson(Map<String, dynamic> json) =>
+  // factory CategoriesState.fromJson(JsonType json) =>
   //     _$CategoriesStateFromJson(json);
 
   final CategoriesStatus status;
@@ -45,5 +45,5 @@ class CategoriesState extends Equatable {
     );
   }
 
-  // Map<String, dynamic> toJson() => _$CategoriesStateToJson(this);
+  // JsonType toJson() => _$CategoriesStateToJson(this);
 }

@@ -7,10 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:meno_shop/main/bootstrap/app_bloc_observer.dart';
 
-typedef AppBuilder = Future<Widget> Function(
-  SharedPreferences sharedPreferences,
-  StreamController<Exception> exceptionStream,
-);
+typedef AppBuilder = Future<Widget> Function({
+  required SharedPreferences sharedPreferences,
+  required StreamController<Exception> exceptionStream,
+});
 
 Future<void> bootStrap(AppBuilder builder) async {
   await runZonedGuarded<Future<void>>(
@@ -35,8 +35,8 @@ Future<void> bootStrap(AppBuilder builder) async {
 
       runApp(
         await builder(
-          sharedPreferences,
-          exceptionStream,
+          sharedPreferences: sharedPreferences,
+          exceptionStream: exceptionStream,
         ),
       );
     },

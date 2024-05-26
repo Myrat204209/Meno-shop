@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/auth/ui/bloc/register_bloc.dart';
 import 'package:meno_shop/auth/ui/widgets/register_form.dart';
-import 'package:user_repository/user_repository.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -11,9 +10,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => RegisterBloc(
-        userRepository: context.read<UserRepository>(),
-      ),
+      create: (_) => RegisterBloc(),
       child: const RegisterView(),
     );
   }

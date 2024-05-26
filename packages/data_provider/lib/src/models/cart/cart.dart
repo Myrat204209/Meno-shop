@@ -8,9 +8,8 @@ class CartResponse {
   final Cart? data;
 
   CartResponse({this.data});
-  Map<String, dynamic> toJson() => _$CartResponseToJson(this);
-  factory CartResponse.fromJson(Map<String, dynamic> json) =>
-      _$CartResponseFromJson(json);
+  JsonType toJson() => _$CartResponseToJson(this);
+  factory CartResponse.fromJson(JsonType json) => _$CartResponseFromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -24,8 +23,8 @@ class Cart {
     this.quantity,
     this.items,
   });
-  Map<String, dynamic> toJson() => _$CartToJson(this);
-  factory Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
+  JsonType toJson() => _$CartToJson(this);
+  factory Cart.fromJson(JsonType json) => _$CartFromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -43,7 +42,6 @@ class CartItem {
     this.quantity,
     this.product,
   });
-  Map<String, dynamic> toJson() => _$CartItemToJson(this);
-  factory CartItem.fromJson(Map<String, dynamic> json) =>
-      _$CartItemFromJson(json);
+  JsonType toJson() => _$CartItemToJson(this);
+  factory CartItem.fromJson(JsonType json) => _$CartItemFromJson(json);
 }

@@ -14,4 +14,4 @@ class RegisterPhoneChanged extends RegisterEvent {
   List<Object> get props => [phone];
 }
 
-class RegisterStarted extends RegisterEvent {}
+final class RegisterSubmitted extends RegisterEvent {}

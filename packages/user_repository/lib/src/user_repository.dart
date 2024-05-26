@@ -58,7 +58,7 @@ class UserRepository {
     required String phone,
   }) async {
     try {
-      final response = await _authClient.logIn(body: AuthRequestBody(phone));
+      final response = await _authClient.logIn(AuthRequestBody(phone));
       await _storage.setAppUserPhone(phone);
       return response;
     } catch (error, stackTrace) {

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:data_provider/data_provider.dart' show JsonType;
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -25,12 +26,11 @@ class LanguageBloc extends HydratedBloc<LanguageEvent, Locale> {
   }
 
   @override
-  Locale? fromJson(Map<String, dynamic> json) {
+  Locale? fromJson(JsonType json) {
     final languageCode = json['languageCode'];
     return languageCode != null ? Locale(languageCode) : kDefaultLocale;
   }
 
   @override
-  Map<String, dynamic>? toJson(Locale state) =>
-      {'languageCode': state.languageCode};
+  JsonType? toJson(Locale state) => {'languageCode': state.languageCode};
 }
