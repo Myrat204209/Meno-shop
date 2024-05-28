@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meno_shop/auth/ui/bloc/login_bloc.dart';
 import 'package:meno_shop/auth/ui/widgets/login_form.dart';
-
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -11,12 +8,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => LoginBloc(
-        authRepository: ,
-      ),
-      child: const LoginView(),
-    );
+    return const LoginView();
   }
 }
 

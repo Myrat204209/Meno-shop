@@ -5,36 +5,24 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/auth/auth.dart';
 import 'package:meno_shop/exception_handler/exception_handler.dart';
 import 'package:meno_shop/exception_handler/view/exception_handler_view.dart';
-import 'package:user_repository/user_repository.dart';
 import 'package:flow_builder/flow_builder.dart';
 
 class App extends StatelessWidget {
   const App({
-    required UserRepository userRepository,
     required StreamController<Exception> exceptionStream,
     super.key,
-  })  : _userRepository = userRepository,
-        _exceptionStream = exceptionStream;
+  }) : _exceptionStream = exceptionStream;
 
-  final UserRepository _userRepository;
   final StreamController<Exception> _exceptionStream;
 
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider.value(value: _userRepository),
-      ],
+      providers: const [],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(
-            create: (_) => AuthBloc(
-              userRepository: _userRepository,
-            ),
-          ),
           BlocProvider(
             create: (_) => ExceptionHandlerBloc(
               exceptionStream: _exceptionStream,
@@ -42,17 +30,7 @@ class App extends StatelessWidget {
           ),
         ],
         child: MultiBlocListener(
-          listeners: [
-            BlocListener<AuthBloc, AuthState>(
-              listener: (context, state) {
-                if (state.status == AuthStatus.authenticated) {
-                  //TODO: Authenticated
-                } else if (state.status == AuthStatus.unauthenticated) {
-                  //TODO: Unauthenticated
-                }
-              },
-            ),
-          ],
+          listeners: const [],
           child: AppView(
             exceptionStream: _exceptionStream,
           ),
@@ -82,10 +60,7 @@ class AppView extends StatelessWidget {
         fontFamily: 'Poppins',
       ),
       home: ExceptionHandlerView(
-        child: FlowBuilder<AuthStatus>(
-          state: context.select(
-            (AuthBloc bloc) => bloc.state.status,
-          ),
+        child: FlowBuilder(
           onGeneratePages: onGenerateAppViewPages,
           // onGeneratePages: onGenerateAppViewPages,
         ),

@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart' show immutable;
 import 'package:dio/dio.dart';
-import 'package:user_repository/user_repository.dart';
 
 part 'exception_handler_event.dart';
 part 'exception_handler_state.dart';
@@ -39,10 +38,10 @@ class ExceptionHandlerBloc
       }
 
       /// UserException
-      if (error is UserException) {
-        content = error.error.toString();
-        checkForDioException(error.error);
-      }
+      // if (error is UserException) {
+      //   content = error.error.toString();
+      //   checkForDioException(error.error);
+      // }
 
       /// DioException badResponse
       if (dioException?.type == DioExceptionType.badResponse) {
