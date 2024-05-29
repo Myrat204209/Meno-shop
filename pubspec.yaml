@@ -21,8 +21,6 @@ dependencies:
     path: ./packages/storage/secure_storage
   persistent_storage:
     path: ./packages/storage/persistent_storage
-  user_repository:
-    path: packages/user_repository
   flutter:
     sdk: flutter
   # flutter_localizations:
@@ -54,7 +52,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
   envied_generator: ^0.5.4+1
   build_runner: ^2.4.9
   json_serializable: ^6.8.0

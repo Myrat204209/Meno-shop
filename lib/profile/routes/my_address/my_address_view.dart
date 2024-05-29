@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app_ui/app_ui.dart';
-import 'package:meno_shop/address/address.dart';
+import 'package:meno_shop/addresses/address.dart';
 
 class MyAddressView extends StatelessWidget {
   const MyAddressView({super.key});

@@ -12,3 +12,4 @@ export 'product_list_response/product_list_response.dart';
 export 'query_parameters/query_parameters.dart';
 export 'slider_item/slider_item.dart';
 export 'slider_list_response/slider_list_response.dart';
+export 'cart_update_request_body/cart_update_request_body.dart';
