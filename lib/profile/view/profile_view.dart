@@ -107,7 +107,7 @@ class ProfilePageButton extends StatelessWidget {
                         style: UITextStyle.subtitle2
                             .copyWith(color: UIColors.primary),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.chevron_right_rounded,
                         weight: 0.1,
                         color: UIColors.primary,

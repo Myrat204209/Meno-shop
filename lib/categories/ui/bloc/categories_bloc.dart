@@ -1,18 +1,38 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
+import 'package:data_provider/data_provider.dart' show CategoryItem;
 import 'package:equatable/equatable.dart';
+import 'package:meno_shop/categories/categories.dart';
 
 part 'categories_event.dart';
 part 'categories_state.dart';
 
 class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
-  CategoriesBloc() : super(const CategoriesState.initial()) {
-    on<CategoriesEvent>((event, emit) {});
+  CategoriesBloc({
+    required CategoryRepository categoryRepository,
+  })  : _categoryRepository = categoryRepository,
+        super(const CategoriesState.initial()) {
+    on<CategoriesRequested>(_onCategoriesRequested);
   }
-}
 
-//TODO: Replace with actual Category with json_serialization
-class Category {
-  final String? name;
+  final CategoryRepository _categoryRepository;
 
-  Category({required this.name});
+  FutureOr<void> _onCategoriesRequested(
+    CategoriesRequested event,
+    Emitter<CategoriesState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: CategoriesStatus.loading));
+      final response = await _categoryRepository.getCategories();
+      emit(state.copyWith(
+        status: CategoriesStatus.populated,
+        categories: response.data,
+      ));
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: CategoriesStatus.initial));
+      addError(error, stackTrace);
+    }
+    return null;
+  }
 }

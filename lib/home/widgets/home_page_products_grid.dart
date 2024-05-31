@@ -1,6 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:meno_shop/product/product_details/product_details.dart';
+import 'package:meno_shop/product/ui/product_details/product_details.dart';
 
 class HomePageProductsGrid extends StatelessWidget {
   const HomePageProductsGrid({

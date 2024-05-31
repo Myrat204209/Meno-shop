@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class UIColors {
   ///Primary
-  static final Color primary = Color(0xFF1B3363);
+  static const Color primary = Color(0xFF1B3363);
 
   /// Secondary
 

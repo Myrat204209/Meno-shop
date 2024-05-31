@@ -1,10 +1,15 @@
+import 'dart:io';
+
+import 'package:meno_shop/main/bootstrap/bootstrap.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/foundation.dart';
-import 'package:hive/hive.dart';
+import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/auth/auth.dart';
+import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/env/env.dart';
-import 'package:meno_shop/main/bootstrap/bootstrap.dart';
+import 'package:meno_shop/product/product.dart';
+import 'package:hive/hive.dart';
 import '../app/app.dart';
 
 void main() {
@@ -19,8 +24,6 @@ void main() {
     final tokenStorage = InMemoryTokenStorage();
     // const secureStorage = SecureStorage();
 
-    // /// Only for development
-    //   HttpOverrides.global = MyHttpOverrides();
     /// HTTP Client
     final httpClient = Http(
       enableLogger: kDebugMode,
@@ -28,6 +31,9 @@ void main() {
       tokenProvider: tokenStorage.readToken,
       languageProvider: () async => 'tm',
     );
+
+    /// Only for development
+    HttpOverrides.global = MyHttpOverrides();
 
     // /// Sliders
     // final sliderClient = SliderClient(httpClient: httpClient);
@@ -43,28 +49,31 @@ void main() {
     // final brandRepository = BrandRepository(brandClient: brandClient);
 
     /// Products
-    // final productClient = ProductClient(httpClient: httpClient);
-    // final productRepository = ProductRepository(productClient: productClient);
+    final productClient = ProductClient(httpClient: httpClient);
+    final productRepository = ProductRepository(productClient: productClient);
 
-    // /// Auth
-    // final authClient = AuthClient(
-    //   httpClient: httpClient,
-    //   tokenStorage: tokenStorage,
-    // );
+    /// Auth
+    final authClient =
+        AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
+    final authRepository = AuthRepository(authClient: authClient);
 
-    // /// Addresses
-    // Hive.registerAdapter(AddressModelAdapter());
-    // final userAddressBox =
-    //     await Hive.openBox<AddressModel>(HiveBoxKeys.userAddresses);
-    // final addressRepository = AddressRepository(userAddressBox: userAddressBox);
+    /// Addresses
+    Hive.registerAdapter(AddressModelAdapter());
+    final userAddressBox =
+        await Hive.openBox<AddressModel>(HiveBoxKeys.userAddresses);
+    final addressRepository = AddressRepository(userAddressBox: userAddressBox);
 
     // /// Cart
     final cartClient = CartClient(httpClient: httpClient);
     final cartRepository = CartRepository(cartClient: cartClient);
 
-    final authRepository = AuthRepository(authClient: authClient);
-    return App(
+    return AppPage(
       exceptionStream: exceptionStream,
+      categoryRepository: categoryRepository,
+      productRepository: productRepository,
+      authRepository: authRepository,
+      addressRepository: addressRepository,
+      cartRepository: cartRepository,
     );
   });
 }

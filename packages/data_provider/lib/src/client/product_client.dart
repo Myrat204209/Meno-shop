@@ -1,13 +1,15 @@
 import 'package:data_provider/data_provider.dart';
 
 class ProductClient {
-  final Http _http;
+  final Http _httpClient;
 
-  ProductClient({required Http http}) : _http = http;
+  ProductClient({
+    required Http httpClient,
+  }) : _httpClient = httpClient;
   Future<ProductListResponse> getProducts([
     GetProductListQueryParameters? queryParameters,
   ]) async {
-    final response = await _http.get<JsonType>(
+    final response = await _httpClient.get<JsonType>(
       '/products',
       queryParameters: queryParameters?.toJson(),
     );

@@ -29,7 +29,7 @@ class OrderInformationView extends StatelessWidget {
             const SizedBox(height: 10),
             const ProductListTile(),
             const SizedBox(height: 220),
-            Divider(
+            const Divider(
               color: UIColors.primary,
               thickness: 0,
             ),

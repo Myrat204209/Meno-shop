@@ -12,7 +12,7 @@ class FilterPageChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilterChip(
-      color: MaterialStatePropertyAll(UIColors.neutral.shade300),
+      color: WidgetStatePropertyAll(UIColors.neutral.shade300),
       label: Text(
         label ?? '',
         style: UITextStyle.subtitle2

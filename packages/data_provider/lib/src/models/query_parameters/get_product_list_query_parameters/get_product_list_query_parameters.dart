@@ -6,8 +6,6 @@ part 'get_product_list_query_parameters.g.dart';
 class GetProductListQueryParameters {
   @JsonKey(name: 'category', includeIfNull: false)
   final String? categoryId;
-  @JsonKey(name: 'brands', includeIfNull: false)
-  final String? brandId;
   @JsonKey(includeIfNull: false)
   final String? page;
   @JsonKey(includeIfNull: false)
@@ -17,7 +15,6 @@ class GetProductListQueryParameters {
 
   GetProductListQueryParameters({
     this.categoryId,
-    this.brandId,
     this.page,
     this.limit,
     this.search,

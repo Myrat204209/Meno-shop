@@ -8,42 +8,30 @@ enum CategoriesStatus {
   failure,
 }
 
-// @JsonSerializable()
-class CategoriesState extends Equatable {
+final class CategoriesState extends Equatable {
   const CategoriesState({
     required this.status,
-    this.categories,
-    this.selectedCategory,
+    this.categories = const [],
   });
-  const CategoriesState.initial()
-      : this(
-          status: CategoriesStatus.initial,
-        );
-  // factory CategoriesState.fromJson(JsonType json) =>
-  //     _$CategoriesStateFromJson(json);
+
+  const CategoriesState.initial() : this(status: CategoriesStatus.initial);
 
   final CategoriesStatus status;
-  final List<Category>? categories;
-  final Category? selectedCategory;
+  final List<CategoryItem> categories;
 
   @override
-  List<Object?> get props => [
+  List<Object> get props => [
         status,
         categories,
-        selectedCategory,
       ];
 
   CategoriesState copyWith({
     CategoriesStatus? status,
-    List<Category>? categories,
-    Category? selectedCategory,
+    List<CategoryItem>? categories,
   }) {
     return CategoriesState(
       status: status ?? this.status,
       categories: categories ?? this.categories,
-      selectedCategory: selectedCategory ?? this.selectedCategory,
     );
   }
-
-  // JsonType toJson() => _$CategoriesStateToJson(this);
 }
