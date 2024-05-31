@@ -48,6 +48,7 @@ dependencies:
   gap: ^3.0.1
   cupertino_icons: ^1.0.6
   json_annotation: ^4.9.0
+  hive: ^2.2.3
 
 dev_dependencies:
   flutter_test:
