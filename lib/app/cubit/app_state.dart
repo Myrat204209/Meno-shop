@@ -1,29 +1,12 @@
-// // ignore_for_file: public_member_api_docs, sort_constructors_first
-// part of 'app_cubit.dart';
+part of 'app_cubit.dart';
 
-// class AppState extends Equatable {
-//   const AppState({
-//     required this.currentBottomNavigationBarType,
-//   });
+enum AppState {
+  home(0),
+  category(1),
+  cart(2),
+  favorite(3),
+  profile(4);
 
-//   const AppState.initial()
-//       : this(
-//           currentBottomNavigationBarType: BottomNavigationBarItemType.home,
-//         );
-
-//   final BottomNavigationBarItemType currentBottomNavigationBarType;
-
-//   @override
-//   List<Object> get props => [
-//         currentBottomNavigationBarType,
-//       ];
-
-//   AppState copyWith({
-//     BottomNavigationBarItemType? currentBottomNavigationBarType,
-//   }) {
-//     return AppState(
-//       currentBottomNavigationBarType:
-//           currentBottomNavigationBarType ?? this.currentBottomNavigationBarType,
-//     );
-//   }
-// }
+  const AppState(this.tabIndex);
+  final int tabIndex;
+}

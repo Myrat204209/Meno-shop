@@ -9,8 +9,8 @@ class HomePageBannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      // key: const Key('Banner Card'),
-      child: AppBannerCard(
+      child: // key: const Key('Banner Card'),
+          AppBannerCard(
         imageLink: 'assets/jeans.jpg',
         title: 'FROM ONLINE STORE',
         subtitle: 'MEN\'S LIFESTYLE COLLECTION',

@@ -2,6 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meno_shop/app/app.dart' show AppCubit;
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/favorites.dart';
@@ -31,7 +32,7 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     final selectedTab =
-        context.select((HomeCubit cubit) => cubit.state.tabIndex);
+        context.select((AppCubit cubit) => cubit.state.tabIndex);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '.shop',
@@ -45,17 +46,17 @@ class _AppViewState extends State<AppView> {
       home: Scaffold(
         body: IndexedStack(
           index: selectedTab,
-          children: [
-            HomePageContent(products: products),
-            const CategoriesPage(),
-            const CartPage(),
-            const FavoritesPage(),
-            const ProfilePage(),
+          children: const [
+            HomePage(),
+            CategoriesPage(),
+            CartPage(),
+            FavoritesPage(),
+            ProfilePage(),
           ],
         ),
         bottomNavigationBar: BottomNavBar(
           currentIndex: selectedTab,
-          onTap: (value) => context.read<HomeCubit>().setTab(value),
+          onTap: (value) => context.read<AppCubit>().setTab(value),
         ),
       ),
     );

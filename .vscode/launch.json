@@ -1,0 +1,89 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "meno_shop",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "meno_shop (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "meno_shop (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "app_ui",
+            "cwd": "packages\\app_ui",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "app_ui (profile mode)",
+            "cwd": "packages\\app_ui",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "app_ui (release mode)",
+            "cwd": "packages\\app_ui",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "data_provider",
+            "cwd": "packages\\data_provider",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "form_inputs",
+            "cwd": "packages\\form_inputs",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "persistent_storage",
+            "cwd": "packages\\storage\\persistent_storage",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "persistent_storage (profile mode)",
+            "cwd": "packages\\storage\\persistent_storage",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "persistent_storage (release mode)",
+            "cwd": "packages\\storage\\persistent_storage",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "secure_storage",
+            "cwd": "packages\\storage\\secure_storage",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "storage",
+            "cwd": "packages\\storage\\storage",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}

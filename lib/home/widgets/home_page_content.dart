@@ -18,7 +18,7 @@ class HomePageContent extends StatelessWidget {
         slivers: [
           const HomePageBannerCard(),
           HomePageCategoriesList(images: images),
-          HomePageProductsGrid(products: products),
+          HomePageProductsList(products: products),
 
           // HomePageProductsGrid(products: products),
         ],

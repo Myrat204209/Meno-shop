@@ -44,10 +44,6 @@ void main() {
     final categoryRepository =
         CategoryRepository(categoryClient: categoryClient);
 
-    // /// Brands
-    // final brandClient = BrandClient(httpClient: httpClient);
-    // final brandRepository = BrandRepository(brandClient: brandClient);
-
     /// Products
     final productClient = ProductClient(httpClient: httpClient);
     final productRepository = ProductRepository(productClient: productClient);
@@ -67,7 +63,7 @@ void main() {
     final cartClient = CartClient(httpClient: httpClient);
     final cartRepository = CartRepository(cartClient: cartClient);
 
-    return AppPage(
+    return App(
       exceptionStream: exceptionStream,
       categoryRepository: categoryRepository,
       productRepository: productRepository,

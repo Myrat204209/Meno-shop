@@ -1,17 +1,21 @@
-// import 'package:bloc/bloc.dart';
-// import 'package:equatable/equatable.dart';
-// import 'package:ylham_motors/navigation/navigation.dart';
+import 'package:bloc/bloc.dart';
 
-// part 'app_state.dart';
+part 'app_state.dart';
 
-// class AppCubit extends Cubit<AppState> {
-//   AppCubit() : super(const AppState.initial());
-
-//   void updateAppSource(AppSource appSource) {
-//     emit(state.copyWith(appSource: appSource));
-//   }
-
-//   void updateAppBottomNavigationBarItemType(BottomNavigationBarItemType type) {
-//     emit(state.copyWith(currentBottomNavigationBarType: type));
-//   }
-// }
+class AppCubit extends Cubit<AppState> {
+  AppCubit() : super(AppState.home);
+  void setTab(int selectedTab) {
+    switch (selectedTab) {
+      case 0:
+        return emit(AppState.home);
+      case 1:
+        return emit(AppState.category);
+      case 2:
+        return emit(AppState.cart);
+      case 3:
+        return emit(AppState.favorite);
+      case 4:
+        return emit(AppState.profile);
+    }
+  }
+}
