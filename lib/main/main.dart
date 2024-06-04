@@ -2,15 +2,15 @@ import 'dart:io';
 
 import 'package:meno_shop/main/bootstrap/bootstrap.dart';
 import 'package:data_provider/data_provider.dart';
-import 'package:flutter/foundation.dart';
-import 'package:meno_shop/addresses/address.dart';
-import 'package:meno_shop/auth/auth.dart';
-import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/env/env.dart';
 import 'package:meno_shop/product/product.dart';
-import 'package:hive/hive.dart';
+import 'package:flutter/foundation.dart';
 import '../app/app.dart';
+// import 'package:hive/hive.dart';
+// import 'package:meno_shop/addresses/address.dart';
+// import 'package:meno_shop/auth/auth.dart';
+// import 'package:meno_shop/cart/cart.dart';
 
 void main() {
   bootStrap(({
@@ -49,27 +49,27 @@ void main() {
     final productRepository = ProductRepository(productClient: productClient);
 
     /// Auth
-    final authClient =
-        AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
-    final authRepository = AuthRepository(authClient: authClient);
+    // final authClient =
+    //     AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
+    // final authRepository = AuthRepository(authClient: authClient);
 
     /// Addresses
-    Hive.registerAdapter(AddressModelAdapter());
-    final userAddressBox =
-        await Hive.openBox<AddressModel>(HiveBoxKeys.userAddresses);
-    final addressRepository = AddressRepository(userAddressBox: userAddressBox);
+    // Hive.registerAdapter(AddressModelAdapter());
+    // final userAddressBox =
+    //     await Hive.openBox<AddressModel>(HiveBoxKeys.userAddresses);
+    // final addressRepository = AddressRepository(userAddressBox: userAddressBox);
 
     // /// Cart
-    final cartClient = CartClient(httpClient: httpClient);
-    final cartRepository = CartRepository(cartClient: cartClient);
+    // final cartClient = CartClient(httpClient: httpClient);
+    // final cartRepository = CartRepository(cartClient: cartClient);
 
     return App(
-      exceptionStream: exceptionStream,
+      // exceptionStream: exceptionStream,
       categoryRepository: categoryRepository,
       productRepository: productRepository,
-      authRepository: authRepository,
-      addressRepository: addressRepository,
-      cartRepository: cartRepository,
+      // authRepository: authRepository,
+      // addressRepository: addressRepository,
+      // cartRepository: cartRepository,
     );
   });
 }

@@ -48,12 +48,15 @@ dependencies:
   gap: ^3.0.1
   cupertino_icons: ^1.0.6
   json_annotation: ^4.9.0
-  cached_network_image: ^3.3.0
+  cached_network_image: ^3.3.1
   shimmer: ^3.0.0
   flutter_hooks: ^0.20.5
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   turkmen_localization_support: ^0.0.7
+  carousel_slider: ^4.2.1
+  dots_indicator: ^3.0.0
+  flutter_native_splash: ^2.4.0
 
 dev_dependencies:
   flutter_test:

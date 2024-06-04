@@ -14,4 +14,5 @@ export 'slider_item/slider_item.dart';
 export 'slider_list_response/slider_list_response.dart';
 export 'cart_update_request_body/cart_update_request_body.dart';
 export 'address_model/address_model.dart';
-export 'photo_model/photo_model.dart';
+export 'photo_item/photo_item.dart';
+export 'photo_relation/photo_relation.dart';

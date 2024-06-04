@@ -21,14 +21,11 @@ class AppCategoryListView extends StatelessWidget {
       itemExtent: scrollDirection == Axis.horizontal ? 110 : 140,
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          child: CategoryModelWidget(
-            label: index.toString(),
-            color: UIColors.neutral.shade100,
-            elementColor: UIColors.primary,
-            imagePath: 'assets/${images[index]}',
-          ),
+        return CategoryModelWidget(
+          label: index.toString(),
+          color: UIColors.neutral.shade100,
+          elementColor: UIColors.primary,
+          imagePath: 'assets/${images[index]}',
         );
       },
     );
@@ -41,53 +38,45 @@ class CategoryModelWidget extends StatelessWidget {
     required this.color,
     required this.elementColor,
     // required this.onTap,
-    this.imagePath = 'assets/friends.jpg',
+    required this.imagePath,
     required this.label,
   });
   final Color color;
   final Color elementColor;
-  final String? imagePath;
+  final String imagePath;
   // final VoidCallback onTap;
   final String label;
   @override
   Widget build(BuildContext context) {
-    return AppBorderColorBox(
-      borderColor: color,
-      expand: 0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            flex: 7,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-              child: SizedBox(
-                width: 80,
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: size.width * 0.21,
+      child: AspectRatio(
+        aspectRatio: 60 / 69,
+        child: AppBorderColorBox(
+          borderColor: color,
+          // expand: 2,
+          child: Column(
+            children: [
+              AspectRatio(
+                aspectRatio: 6 / 5,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     border: Border.all(color: UIColors.neutral.shade300),
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: AssetImage(imagePath!),
+                      image: AssetImage(imagePath),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Text(
-              label,
-              textAlign: TextAlign.center,
-              style: UITextStyle.subtitle1.copyWith(
-                fontSize: 13,
-                color: elementColor,
+              Expanded(
+                child: Text(imagePath.split('.').first.split('/').last),
               ),
-            ),
-          )
-        ],
+            ],
+          ),
+        ),
       ),
     );
   }

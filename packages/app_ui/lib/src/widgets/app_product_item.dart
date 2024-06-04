@@ -13,41 +13,71 @@ class AppProductItem extends StatelessWidget {
     required this.label,
     required this.category,
   });
+
   final VoidCallback? onTap;
   final String? image;
   final double price;
   final String label;
   final String category;
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: UIColors.quaterniary,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(10),
-        child: Column(
-          children: [
-            Expanded(child: AppProductImage(image: image)),
-            Gap(10),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: size.width * 0.43,
+      child: AspectRatio(
+        aspectRatio: 155 / 235,
+        child: Material(
+          color: UIColors.quaterniary,
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(10),
+            child: Column(
               children: [
-                AppProductContentText(
-                  category: category,
-                  label: label,
-                  price: price,
+                AspectRatio(
+                  aspectRatio: 155 / 160,
+                  child: AppProductImage(image: image),
                 ),
-                AppButton(
-                  type: AppButtonType.small,
-                  text: null,
-                  onTap: () {
-                    //TODO: Go to the Orders Page
-                  },
-                )
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Expanded(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AppProductContentText(
+                                category: category,
+                                label: label,
+                              ),
+                              AppButton(
+                                type: AppButtonType.small,
+                                text: null,
+                                onTap: () {
+                                  //TODO: Go to the Orders Page
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        Text(
+                          '${price.toInt()} TMT',
+                          style: UITextStyle.subtitle1.copyWith(
+                            color: UIColors.primary,
+                            fontWeight: AppFontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -59,12 +89,10 @@ class AppProductContentText extends StatelessWidget {
     super.key,
     required this.category,
     required this.label,
-    required this.price,
   });
 
   final String category;
   final String label;
-  final double price;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +106,7 @@ class AppProductContentText extends StatelessWidget {
             fontSize: 11,
           ),
         ),
-        Gap(10),
+        Gap(5),
         Text(
           label,
           style: UITextStyle.headline5.copyWith(
@@ -87,14 +115,7 @@ class AppProductContentText extends StatelessWidget {
             fontWeight: AppFontWeight.semiBold,
           ),
         ),
-        Gap(10),
-        Text(
-          '${price.toInt()} TMT',
-          style: UITextStyle.headline6.copyWith(
-            color: UIColors.primary,
-            fontWeight: AppFontWeight.bold,
-          ),
-        ),
+        Gap(5),
       ],
     );
   }

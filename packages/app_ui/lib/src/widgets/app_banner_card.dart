@@ -22,21 +22,15 @@ class AppBannerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        AppBannerImage(
-          // TODO: Change to the CachedNetworkImage for optimized image loading
-          image: AssetImage(imageLink),
-          child: AppBannerOverlayContent(
-            onButtonPressed: onButtonPressed,
-            child: AppBannerTextColumn(
-              title: title,
-              subtitle: subtitle,
-            ),
-          ),
+    return AppBannerImage(
+      image: AssetImage(imageLink),
+      child: AppBannerOverlayContent(
+        onButtonPressed: onButtonPressed,
+        child: AppBannerTextColumn(
+          title: title,
+          subtitle: subtitle,
         ),
-      ],
+      ),
     );
   }
 }
@@ -55,23 +49,17 @@ class AppBannerImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxHeight: 200.0,
-        maxWidth: 520.0,
-      ),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: Colors.black,
-          image: DecorationImage(
-            opacity: 0.69,
-            image: image,
-            fit: BoxFit.cover,
-          ),
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: Colors.black,
+        image: DecorationImage(
+          opacity: 0.69,
+          image: image,
+          fit: BoxFit.cover,
         ),
-        child: child,
       ),
+      child: child,
     );
   }
 }

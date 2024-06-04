@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'package:app_ui/app_ui.dart';
+// import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
 import 'package:meno_shop/product/ui/product_details/product_details.dart';
@@ -16,34 +16,34 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   int selectedIndex = 5;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const ProductDetailsAppBar(),
+    return const Scaffold(
+      appBar: ProductDetailsAppBar(),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: 16,
           right: 16,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ProductDetailsImageSlider(
+            ProductDetailsImageSlider(
               imageLinks: ['asa', 'asdasd', 'asdasdasdas'],
             ),
-            const SizedBox(height: 10),
-            const ProductDetailsLabelText(label: 'Friends Printed'),
+            SizedBox(height: 10),
+            ProductDetailsLabelText(label: 'Friends Printed'),
 
-            const SizedBox(height: 10),
-            const ProductDetailRichText(),
-            const SizedBox(height: 10),
-            const ProductDetailsRow(onSalePercent: 50),
-            const SizedBox(height: 10),
-            const ProductDetailsRatingStarRow(initialRating: 1),
-            const SizedBox(height: 10),
-            const ProductDetailsDescriptionText(descriptionText: ''),
-            const SizedBox(height: 10),
-            const ProductDetailsLabelText(label: 'Choose color'),
-            const SizedBox(height: 10),
-            const ProductDetailsColorSelector(
+            SizedBox(height: 10),
+            ProductDetailRichText(),
+            SizedBox(height: 10),
+            ProductDetailsRow(onSalePercent: 50),
+            SizedBox(height: 10),
+            ProductDetailsRatingStarRow(initialRating: 1),
+            SizedBox(height: 10),
+            ProductDetailsDescriptionText(descriptionText: ''),
+            SizedBox(height: 10),
+            ProductDetailsLabelText(label: 'Choose color'),
+            SizedBox(height: 10),
+            ProductDetailsColorSelector(
               colors: [
                 Colors.red,
                 Colors.black,
@@ -52,27 +52,27 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               ],
               checkedColorIndex: 0,
             ),
-            const SizedBox(height: 10),
-            const ProductDetailsLabelText(label: 'Select size'),
-            const SizedBox(height: 10),
-            const ProductDetailsSizeSelector(
+            SizedBox(height: 10),
+            ProductDetailsLabelText(label: 'Select size'),
+            SizedBox(height: 10),
+            ProductDetailsSizeSelector(
               sizes: ['32', '36', '38', '40', '42'],
               selectedSize: '38',
             ),
-            const SizedBox(height: 10),
-            GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              itemBuilder: (context, index) {
-                return const AppProductItem(
-                  price: 1,
-                  label: 'as',
-                  category: 'as',
-                  image: 'assets/coat.png',
-                );
-              },
-            ),
+            SizedBox(height: 10),
+            // GridView.builder(
+            //   shrinkWrap: true,
+            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: 2),
+            //   itemBuilder: (context, index) {
+            //     return const AppProductItem(
+            //       price: 1,
+            //       label: 'as',
+            //       category: 'as',
+            //       image: 'assets/coat.png',
+            //     );
+            //   },
+            // ),
 
             //TODO: Comments section implemetation
 

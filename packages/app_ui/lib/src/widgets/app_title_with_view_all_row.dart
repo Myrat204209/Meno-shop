@@ -7,9 +7,13 @@ class AppTitledWithViewAllRow extends StatelessWidget {
     super.key,
     required this.title,
     this.padding,
+    this.onViewAllTap,
   });
+
+  final VoidCallback? onViewAllTap;
   final String title;
   final double? padding;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,7 +31,7 @@ class AppTitledWithViewAllRow extends StatelessWidget {
               fontSize: 16,
             ),
           ),
-          const AppViewAllText(),
+          AppViewAllText(onTap: onViewAllTap),
         ],
       ),
     );
@@ -37,17 +41,21 @@ class AppTitledWithViewAllRow extends StatelessWidget {
 class AppViewAllText extends StatelessWidget {
   const AppViewAllText({
     super.key,
+    this.onTap,
   });
-
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'View All',
-      style: UITextStyle.subtitle2.copyWith(
-        color: UIColors.secondary,
-        fontWeight: FontWeight.w400,
-        fontSize: 12,
+    return TextButton(
+      child: Text(
+        'View All',
+        style: UITextStyle.subtitle2.copyWith(
+          color: UIColors.secondary,
+          fontWeight: FontWeight.w400,
+          fontSize: 12,
+        ),
       ),
+      onPressed: onTap,
     );
   }
 }

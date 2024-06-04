@@ -1,7 +1,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-
-import 'widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meno_shop/home/home.dart';
 
 class HomePageContent extends StatelessWidget {
   const HomePageContent({
@@ -11,18 +11,31 @@ class HomePageContent extends StatelessWidget {
   final List<AppProductItem> products;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: CustomScrollView(
-        shrinkWrap: true,
-        slivers: [
-          const HomePageBannerCard(),
-          HomePageCategoriesList(images: images),
-          HomePageProductsList(products: products),
-
-          // HomePageProductsGrid(products: products),
-        ],
-      ),
+    final categories = context.select((HomeBloc bloc) => bloc.state.categories);
+    final isLoading = context
+        .select((HomeBloc bloc) => bloc.state.status == HomeStatus.loading);
+    if (products.isEmpty ?? true) {
+      return const SliverPadding(padding: EdgeInsets.zero);
+    }
+    return CustomScrollView(
+      // shrinkWrap: true,a
+      slivers: [
+        const HomePageBannerCard(),
+        HomePageCategoriesList(images: images),
+        HomePageProductsList(
+          products: products,
+          title: 'Select Products',
+        ),
+        HomePageProductsList(
+          title: 'Active Subcategories',
+          products: products,
+        ),
+        HomePageProductsList(
+          title: 'Latest Products',
+          products: products,
+        ),
+        // HomePageProductsGrid(products: products),
+      ],
     );
   }
 }
