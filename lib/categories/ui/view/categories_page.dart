@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:meno_shop/categories/categories.dart';
-import 'package:meno_shop/home/home.dart';
-import 'package:meno_shop/home/widgets/home_page_fake_data.dart';
 
 class CategoriesPage extends StatefulWidget {
   const CategoriesPage({super.key});
@@ -16,19 +14,12 @@ class _CategoriesPageState extends State<CategoriesPage> {
   // int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CategoryPageAppBar(),
+    return const Scaffold(
+      appBar: CategoryPageAppBar(),
       body: Row(
         children: [
+          SizedBox(width: 15),
           Expanded(
-            flex: 3,
-            child: AppCategoryListView(
-              images: images,
-              scrollDirection: Axis.vertical,
-            ),
-          ),
-          const SizedBox(width: 15),
-          const Expanded(
             flex: 7,
             child: CategoryPageGridView(),
           ),

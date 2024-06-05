@@ -6,8 +6,16 @@ class CategoryClient {
   }) : _httpClient = httpClient;
 
   final Http _httpClient;
-  Future<CategoryListResponse> getCategories() async {
-    final response = await _httpClient.get<JsonType>('/categories');
-    return CategoryListResponse.fromJson(response.data!);
+  Future<List<CategoryItem>?> getCategories([
+    GetQueryParameters? queryParameters,
+  ]) async {
+    final response = await _httpClient.get<JsonType>(
+      '/categories',
+      queryParameters: queryParameters?.toJson(),
+    );
+    Iterable jsonList = response.data as Iterable;
+    List<CategoryItem> categories = List<CategoryItem>.from(
+        jsonList.map((model) => CategoryItem.fromJson(model)));
+    return categories;
   }
 }

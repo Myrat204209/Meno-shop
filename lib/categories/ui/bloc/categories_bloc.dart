@@ -27,12 +27,11 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
       final response = await _categoryRepository.getCategories();
       emit(state.copyWith(
         status: CategoriesStatus.populated,
-        categories: response.data,
+        categories: response,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CategoriesStatus.initial));
       addError(error, stackTrace);
     }
-    return null;
   }
 }

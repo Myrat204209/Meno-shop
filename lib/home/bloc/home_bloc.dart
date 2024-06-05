@@ -23,11 +23,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     try {
       emit(state.copyWith(status: HomeStatus.loading));
-      final response = await _categoryRepository.getCategories();
+      final response =
+          await _categoryRepository.getCategories(GetQueryParameters(populate: [
+        'photo',
+      ]));
 
       emit(state.copyWith(
         status: HomeStatus.populated,
-        categories: response.data,
+        categories: response,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: HomeStatus.failure));

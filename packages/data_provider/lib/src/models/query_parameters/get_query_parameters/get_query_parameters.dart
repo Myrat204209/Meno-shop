@@ -1,13 +1,13 @@
 import 'package:data_provider/data_provider.dart' show JsonType;
 import 'package:json_annotation/json_annotation.dart';
-part 'get_product_list_query_parameters.g.dart';
+part 'get_query_parameters.g.dart';
 
 enum FilterEnum { categoryId, name, description, createdAt, updatedAt }
 
 enum SortEnum { ASC, DESC }
 
 @JsonSerializable(explicitToJson: true)
-class GetProductListQueryParameters {
+class GetQueryParameters {
   @JsonKey(includeIfNull: false)
   final String? offset;
   @JsonKey(includeIfNull: false)
@@ -21,7 +21,7 @@ class GetProductListQueryParameters {
   @JsonKey(includeIfNull: false)
   final List<String>? populate;
 
-  GetProductListQueryParameters({
+  GetQueryParameters({
     this.offset,
     this.limit,
     this.sort,
@@ -30,7 +30,7 @@ class GetProductListQueryParameters {
     this.populate,
   });
 
-  JsonType toJson() => _$GetProductListQueryParametersToJson(this);
-  factory GetProductListQueryParameters.fromJson(JsonType json) =>
-      _$GetProductListQueryParametersFromJson(json);
+  JsonType toJson() => _$GetQueryParametersToJson(this);
+  factory GetQueryParameters.fromJson(JsonType json) =>
+      _$GetQueryParametersFromJson(json);
 }

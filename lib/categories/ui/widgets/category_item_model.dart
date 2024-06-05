@@ -1,36 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-class AppCategoryListView extends StatelessWidget {
-  const AppCategoryListView({
-    super.key,
-    required this.images,
-    required this.scrollDirection,
-  });
-
-  final List<String> images;
-  final Axis scrollDirection;
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: scrollDirection,
-      itemCount: images.length,
-      itemExtent: scrollDirection == Axis.horizontal ? 110 : 140,
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return CategoryModelWidget(
-          label: index.toString(),
-          color: UIColors.neutral.shade100,
-          elementColor: UIColors.primary,
-          imagePath: 'assets/${images[index]}',
-        );
-      },
-    );
-  }
-}
 
 class CategoryModelWidget extends StatelessWidget {
   const CategoryModelWidget({
@@ -65,7 +38,7 @@ class CategoryModelWidget extends StatelessWidget {
                     border: Border.all(color: UIColors.neutral.shade300),
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: AssetImage(imagePath),
+                      image: CachedNetworkImageProvider(imagePath),
                       fit: BoxFit.cover,
                     ),
                   ),

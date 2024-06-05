@@ -9,7 +9,4 @@ sealed class CategoriesEvent extends Equatable {
 
 class CategoriesRequested extends CategoriesEvent {
   const CategoriesRequested();
-
-  @override
-  List<Object> get props => [];
 }

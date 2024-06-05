@@ -12,16 +12,18 @@ class HomePageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categories = context.select((HomeBloc bloc) => bloc.state.categories);
-    final isLoading = context
-        .select((HomeBloc bloc) => bloc.state.status == HomeStatus.loading);
-    if (products.isEmpty ?? true) {
-      return const SliverPadding(padding: EdgeInsets.zero);
-    }
+    // final isLoading = context
+    //     .select((HomeBloc bloc) => bloc.state.status == HomeStatus.loading);
+    // if (products.isEmpty ?? true) {
+    //   return const SliverPadding(padding: EdgeInsets.zero);
+    // }
     return CustomScrollView(
       // shrinkWrap: true,a
       slivers: [
         const HomePageBannerCard(),
-        HomePageCategoriesList(images: images),
+        HomePageCategoriesList(
+          categories: categories,
+        ),
         HomePageProductsList(
           products: products,
           title: 'Select Products',

@@ -73,3 +73,5 @@ void main() {
     );
   });
 }
+
+const defaultBaseUrl = Env.serverUrl;

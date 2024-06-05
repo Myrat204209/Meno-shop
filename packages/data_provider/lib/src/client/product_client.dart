@@ -7,7 +7,7 @@ class ProductClient {
     required Http httpClient,
   }) : _httpClient = httpClient;
   Future<ProductListResponse> getProducts([
-    GetProductListQueryParameters? queryParameters,
+    GetQueryParameters? queryParameters,
   ]) async {
     final response = await _httpClient.get<JsonType>(
       '/products',
