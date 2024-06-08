@@ -9,9 +9,9 @@ enum SortEnum { ASC, DESC }
 @JsonSerializable(explicitToJson: true)
 class GetQueryParameters {
   @JsonKey(includeIfNull: false)
-  final String? offset;
+  final int? offset;
   @JsonKey(includeIfNull: false)
-  final String? limit;
+  final int? limit;
   @JsonKey(includeIfNull: false)
   final SortEnum? sort;
   @JsonKey(includeIfNull: false)

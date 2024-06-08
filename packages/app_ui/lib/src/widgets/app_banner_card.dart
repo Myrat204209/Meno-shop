@@ -22,8 +22,9 @@ class AppBannerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBannerImage(
-      image: AssetImage(imageLink),
+    return AppCachedNetworkImage(
+      imageLink: imageLink,
+      color: Colors.black,
       child: AppBannerOverlayContent(
         onButtonPressed: onButtonPressed,
         child: AppBannerTextColumn(
@@ -31,35 +32,6 @@ class AppBannerCard extends StatelessWidget {
           subtitle: subtitle,
         ),
       ),
-    );
-  }
-}
-
-/// A widget representing the image portion of the AppBannerCard.
-class AppBannerImage extends StatelessWidget {
-  /// Creates a new instance of AppBannerImage.
-  const AppBannerImage({
-    super.key,
-    required this.child, // The widget to be displayed on top of the image.
-    required this.image, // The image provider that specifies the image to be displayed.
-  });
-
-  final Widget child;
-  final ImageProvider<Object> image;
-
-  @override
-  Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: Colors.black,
-        image: DecorationImage(
-          opacity: 0.69,
-          image: image,
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: child,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:app_ui/app_ui.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class OrderInformationView extends StatelessWidget {
@@ -85,8 +86,8 @@ class ProductListTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(
-            'assets/friends.jpg',
+          CachedNetworkImage(
+            imageUrl: 'assets/friends.jpg',
             fit: BoxFit.cover,
             width: 90,
             height: 90,

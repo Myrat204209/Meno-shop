@@ -2,6 +2,7 @@ export 'app_actions_button.dart';
 export 'app_banner_card.dart';
 export 'app_border_color_box.dart';
 export 'app_button.dart';
+export 'app_cached_network_image.dart';
 export 'app_category_item.dart';
 export 'app_horizontal_list_view.dart';
 export 'app_name_text_field.dart';

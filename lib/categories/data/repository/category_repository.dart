@@ -27,7 +27,7 @@ class CategoryRepository {
   Future<List<CategoryItem>?> getCategories(
       [GetQueryParameters? queryParameters]) async {
     try {
-      return await _categoryClient.getCategories();
+      return await _categoryClient.getCategories(queryParameters);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetCategoryListFailure(error), stackTrace);
     }

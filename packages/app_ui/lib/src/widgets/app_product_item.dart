@@ -15,7 +15,7 @@ class AppProductItem extends StatelessWidget {
   });
 
   final VoidCallback? onTap;
-  final String? image;
+  final String image;
   final double price;
   final String label;
   final String category;
@@ -36,7 +36,7 @@ class AppProductItem extends StatelessWidget {
               children: [
                 AspectRatio(
                   aspectRatio: 155 / 160,
-                  child: AppProductImage(image: image),
+                  child: AppProductImage(imageLink: image),
                 ),
                 Expanded(
                   child: Padding(
@@ -124,21 +124,21 @@ class AppProductContentText extends StatelessWidget {
 class AppProductImage extends StatelessWidget {
   const AppProductImage({
     super.key,
-    required this.image,
+    required this.imageLink,
   });
 
-  final String? image;
+  final String imageLink;
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: AppBorderColorBox(
+        expand: 2,
         borderColor: UIColors.neutral.shade300,
-        child: Image.asset(
-          image!,
+        child: AppCachedNetworkImage(
+          imageLink: imageLink,
           width: double.infinity,
-          fit: BoxFit.cover,
         ),
       ),
     );
