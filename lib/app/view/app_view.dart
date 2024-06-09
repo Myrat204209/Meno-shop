@@ -19,16 +19,6 @@ class AppView extends StatefulWidget {
 
 class _AppViewState extends State<AppView> {
   @override
-  void initState() {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.green,
-      ),
-    );
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final selectedTab =
         context.select((AppCubit cubit) => cubit.state.tabIndex);
