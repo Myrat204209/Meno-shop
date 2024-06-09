@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:data_provider/data_provider.dart'
-    show ProductClient, ProductListResponse, GetQueryParameters;
+import 'package:data_provider/data_provider.dart';
 
 /// A base failure for the product repository failures
 abstract class ProductFailure with EquatableMixin implements Exception {
@@ -17,6 +16,18 @@ class GetProductsFailure extends ProductFailure {
   const GetProductsFailure(super.error);
 }
 
+class GetFavoritesFailure extends ProductFailure {
+  const GetFavoritesFailure(super.error);
+}
+
+class AddFavoriteFailure extends ProductFailure {
+  const AddFavoriteFailure(super.error);
+}
+
+class RemoveFavoriteFailure extends ProductFailure {
+  const RemoveFavoriteFailure(super.error);
+}
+
 class ProductRepository {
   const ProductRepository({
     required ProductClient productClient,
@@ -24,8 +35,9 @@ class ProductRepository {
 
   final ProductClient _productClient;
 
-  Future<ProductListResponse> getProducts(
-      [GetQueryParameters? queryParameters]) async {
+  Future<List<ProductItem>?> getProducts([
+    GetProductListQueryParameters? queryParameters,
+  ]) async {
     try {
       return await _productClient.getProducts(queryParameters);
     } catch (error, stackTrace) {

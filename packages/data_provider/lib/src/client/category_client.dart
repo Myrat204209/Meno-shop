@@ -9,7 +9,7 @@ class CategoryClient {
 
   final Http _httpClient;
   Future<List<CategoryItem>?> getCategories([
-    GetQueryParameters? queryParameters,
+    GetProductListQueryParameters? queryParameters,
   ]) async {
     final response = await _httpClient.get<List<dynamic>>(
       '/categories',
