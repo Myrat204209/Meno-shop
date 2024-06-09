@@ -73,4 +73,4 @@ void main() {
   });
 }
 
-const kDefaultBaseUrl = 'http://192.168.30.90:3000';
+const kDefaultBaseUrl = 'http://192.168.30.96:3000';

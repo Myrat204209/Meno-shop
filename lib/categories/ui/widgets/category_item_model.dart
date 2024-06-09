@@ -33,20 +33,8 @@ class CategoryModelWidget extends StatelessWidget {
               AspectRatio(
                 aspectRatio: 6 / 5,
                 child: AppCachedNetworkImage(imageLink: imageLink),
-                // DecoratedBox(
-                //   decoration: BoxDecoration(
-                //     border: Border.all(color: UIColors.neutral.shade300),
-                //     borderRadius: BorderRadius.circular(10),
-                //     image: DecorationImage(
-                //       image: CachedNetworkImageProvider(imagePath),
-                //       fit: BoxFit.cover,
-                //     ),
-                //   ),
-                // ),
               ),
-              Expanded(
-                child: Text(imageLink.split('.').first.split('/').last),
-              ),
+              Expanded(child: Text(label)),
             ],
           ),
         ),

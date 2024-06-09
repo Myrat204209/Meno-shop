@@ -23,7 +23,7 @@ class AppCachedNetworkImage extends StatelessWidget {
       imageUrl: imageLink,
       color: color,
       fit: BoxFit.cover,
-      imageBuilder: (context, imageProvider) => SizedBox(child: child),
+      // imageBuilder: (context, imageProvider) => SizedBox(child: child),
       errorWidget: (context, url, error) => Image.asset(
         'assets/placeholder.jpg',
         fit: BoxFit.cover,

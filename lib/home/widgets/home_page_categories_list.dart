@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart' show CategoryItem;
 import 'package:flutter/material.dart';
@@ -32,6 +34,7 @@ class HomePageCategoriesList extends StatelessWidget {
               final CategoryItem category = categories[index];
               String? name = category.name;
               String? path = category.photo?.first.path;
+              log("Photo link $kDefaultBaseUrl\\$path\n");
               return CategoryModelWidget(
                 label: name ?? 'meno',
                 color: UIColors.neutral.shade100,
