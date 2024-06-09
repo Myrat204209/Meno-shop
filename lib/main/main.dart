@@ -17,7 +17,7 @@ void main() {
     required exceptionStream,
   }) async {
     /// Constants
-    const defaultBaseUrl = 'http://192.168.30.90:3000/api/v1';
+    const defaultBaseUrl = 'http://192.168.30.96:3000/api/v1';
 
     /// Storages
     // const secureStorage = SecureStorage();

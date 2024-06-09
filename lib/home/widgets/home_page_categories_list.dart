@@ -36,7 +36,7 @@ class HomePageCategoriesList extends StatelessWidget {
                 label: name ?? 'meno',
                 color: UIColors.neutral.shade100,
                 elementColor: UIColors.primary,
-                imageLink: '$kDefaultBaseUrl/$path',
+                imageLink: '$kDefaultBaseUrl\\$path',
               );
             },
           ),
