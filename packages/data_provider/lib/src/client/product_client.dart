@@ -6,6 +6,7 @@ class ProductClient {
   ProductClient({
     required Http httpClient,
   }) : _httpClient = httpClient;
+
   Future<ProductListResponse> getProducts([
     GetQueryParameters? queryParameters,
   ]) async {

@@ -45,7 +45,7 @@ class Http extends DioForNative {
         PrettyDioLogger(
           requestHeader: true,
           requestBody: true,
-          compact: false,
+          compact: true,
         ),
     ]);
   }

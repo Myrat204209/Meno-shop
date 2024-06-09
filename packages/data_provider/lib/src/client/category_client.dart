@@ -14,6 +14,11 @@ class CategoryClient {
     final response = await _httpClient.get<List<dynamic>>(
       '/categories',
       queryParameters: queryParameters?.toJson(),
+      // queryParameters: {
+      //   'populate': [
+      //     'photo',
+      //   ],
+      // }
     );
 
     // log('''My Json Response looks like this: ${response.data.toString()}

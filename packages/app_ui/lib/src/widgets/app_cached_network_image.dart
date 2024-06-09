@@ -28,7 +28,8 @@ class AppCachedNetworkImage extends StatelessWidget {
         'assets/placeholder.jpg',
         fit: BoxFit.cover,
       ),
-      placeholder: (_, url) => CircularProgressIndicator.adaptive(),
+      placeholder: (_, url) =>
+          Center(child: CircularProgressIndicator.adaptive()),
       height: height,
       width: width,
       // child: DecoratedBox(

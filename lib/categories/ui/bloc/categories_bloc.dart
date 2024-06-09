@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:data_provider/data_provider.dart' show CategoryItem;
+import 'package:data_provider/data_provider.dart'
+    show CategoryItem, GetQueryParameters;
 import 'package:equatable/equatable.dart';
 import 'package:meno_shop/categories/categories.dart';
 
@@ -24,13 +25,19 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   ) async {
     try {
       emit(state.copyWith(status: CategoriesStatus.loading));
-      final response = await _categoryRepository.getCategories();
+      final response = await _categoryRepository.getCategories(
+        GetQueryParameters(
+          populate: [
+            'photos',
+          ],
+        ),
+      );
       emit(state.copyWith(
         status: CategoriesStatus.populated,
         categories: response,
       ));
     } catch (error, stackTrace) {
-      emit(state.copyWith(status: CategoriesStatus.initial));
+      emit(state.copyWith(status: CategoriesStatus.failure));
       addError(error, stackTrace);
     }
   }

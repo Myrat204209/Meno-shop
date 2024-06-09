@@ -2,10 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:meno_shop/addresses/address.dart';
-// import 'dart:async';
-// import 'package:meno_shop/auth/auth.dart';
-// import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/language/language.dart';
@@ -35,11 +31,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appCubit = AppCubit();
-    final homeBloc = HomeBloc(categoryRepository: _categoryRepository);
+    final homeBloc = HomeBloc(categoryRepository: _categoryRepository)
+      ..add(HomeRequested());
     final languageBloc = LanguageBloc();
-    final categoriesBloc = CategoriesBloc(
-      categoryRepository: _categoryRepository,
-    )..add(const CategoriesRequested());
+    final categoriesBloc =
+        CategoriesBloc(categoryRepository: _categoryRepository);
     // final addressBloc = AddressBloc(
     //   addressRepository: _addressRepository,
     // )..add(AddressesRequested());

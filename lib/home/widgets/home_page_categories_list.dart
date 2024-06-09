@@ -31,12 +31,12 @@ class HomePageCategoriesList extends StatelessWidget {
             itemBuilder: (context, index) {
               final CategoryItem category = categories[index];
               String? name = category.name;
-              String? path = category.photo!.first.path;
+              String? path = category.photo?.first.path;
               return CategoryModelWidget(
                 label: name ?? 'meno',
                 color: UIColors.neutral.shade100,
                 elementColor: UIColors.primary,
-                imageLink: '$defaultBaseUrl/$path',
+                imageLink: '$kDefaultBaseUrl/$path',
               );
             },
           ),

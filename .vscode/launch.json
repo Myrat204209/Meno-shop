@@ -7,7 +7,8 @@
         {
             "name": "meno_shop",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "program": "lib/main/main.dart"
         },
         {
             "name": "meno_shop (profile mode)",

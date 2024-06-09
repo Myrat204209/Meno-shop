@@ -21,8 +21,8 @@ void main() {
     const defaultBaseUrl = Env.serverUrl;
 
     /// Storages
-    final tokenStorage = InMemoryTokenStorage();
     // const secureStorage = SecureStorage();
+    final tokenStorage = InMemoryTokenStorage();
 
     /// HTTP Client
     final httpClient = Http(
@@ -74,4 +74,4 @@ void main() {
   });
 }
 
-const defaultBaseUrl = Env.serverUrl;
+const kDefaultBaseUrl = 'http://192.168.30.90:3000';
