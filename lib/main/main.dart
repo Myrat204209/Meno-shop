@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:meno_shop/main/bootstrap/bootstrap.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:meno_shop/categories/categories.dart';
-import 'package:meno_shop/env/env.dart';
 import 'package:meno_shop/product/product.dart';
 import 'package:flutter/foundation.dart';
 import '../app/app.dart';
@@ -18,7 +17,7 @@ void main() {
     required exceptionStream,
   }) async {
     /// Constants
-    const defaultBaseUrl = Env.serverUrl;
+    const defaultBaseUrl = 'http://192.168.30.90:3000/api/v1';
 
     /// Storages
     // const secureStorage = SecureStorage();
