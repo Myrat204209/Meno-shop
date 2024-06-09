@@ -22,8 +22,7 @@ class _AppViewState extends State<AppView> {
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.light,
-        statusBarColor: UIColors.primary,
+        statusBarColor: Colors.green,
       ),
     );
     super.initState();
@@ -38,25 +37,24 @@ class _AppViewState extends State<AppView> {
       title: '.shop',
       theme: ThemeData(
         scaffoldBackgroundColor: UIColors.quaterniary,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: UIColors.secondary,
-        ),
         fontFamily: 'Poppins',
       ),
-      home: Scaffold(
-        body: IndexedStack(
-          index: selectedTab,
-          children: const [
-            HomePage(),
-            CategoriesPage(),
-            CartPage(),
-            FavoritesPage(),
-            ProfilePage(),
-          ],
-        ),
-        bottomNavigationBar: BottomNavBar(
-          currentIndex: selectedTab,
-          onTap: (value) => context.read<AppCubit>().setTab(value),
+      home: SafeArea(
+        child: Scaffold(
+          body: IndexedStack(
+            index: selectedTab,
+            children: const [
+              HomePage(),
+              CategoriesPage(),
+              CartPage(),
+              FavoritesPage(),
+              ProfilePage(),
+            ],
+          ),
+          bottomNavigationBar: BottomNavBar(
+            currentIndex: selectedTab,
+            onTap: (value) => context.read<AppCubit>().setTab(value),
+          ),
         ),
       ),
     );

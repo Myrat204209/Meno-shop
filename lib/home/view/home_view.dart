@@ -10,7 +10,6 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: UIColors.quaterniary,
-      appBar: const HomePageAppBar(),
       body: HomePageContent(products: products),
     );
   }

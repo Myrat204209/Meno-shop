@@ -20,6 +20,7 @@ class HomePageContent extends StatelessWidget {
     return CustomScrollView(
       // shrinkWrap: true,a
       slivers: [
+        const HomePageAppBar(),
         const HomePageBannerCard(),
         HomePageCategoriesList(
           categories: categories,

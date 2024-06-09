@@ -8,7 +8,7 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return SliverAppBar(
       title: const AppSearchBar(),
       actions: [
         AppActionsButton(
@@ -16,6 +16,7 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {},
         ),
       ],
+      backgroundColor: UIColors.transparent,
     );
   }
 
