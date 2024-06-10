@@ -1,6 +1,8 @@
 import 'package:app_ui/app_ui.dart';
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/home/home.dart';
 
 class HomePageContent extends StatelessWidget {
@@ -11,20 +13,24 @@ class HomePageContent extends StatelessWidget {
   final List<AppProductItem> products;
   @override
   Widget build(BuildContext context) {
-    final categories = context.select((HomeBloc bloc) => bloc.state.categories);
-    // final isLoading = context
-    //     .select((HomeBloc bloc) => bloc.state.status == HomeStatus.loading);
-    // if (products.isEmpty ?? true) {
-    //   return const SliverPadding(padding: EdgeInsets.zero);
-    // }
+    // final categories = context.select((HomeBloc bloc) => bloc.state.categories);
+    final banners = context.select((HomeBloc bloc) => bloc.state.banners);
     return CustomScrollView(
       // shrinkWrap: true,a
       slivers: [
         const HomePageAppBar(),
-        const HomePageBannerCard(),
-        HomePageCategoriesList(
-          categories: categories,
-        ),
+        // const HomePageBannerCard(),
+        if (banners.isNotEmpty)
+          SliverToBoxAdapter(
+            child: AppAdsBanner(
+              banners: banners.map<BannerItem>((banner) => banner).nonNulls,
+            ),
+          )
+        else
+          const SliverToBoxAdapter(
+            child: SizedBox(height: AppSpacing.md),
+          ),
+
         HomePageProductsList(
           products: products,
           title: 'Select Products',

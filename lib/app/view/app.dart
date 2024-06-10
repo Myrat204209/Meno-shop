@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/language/language.dart';
@@ -14,16 +15,19 @@ class App extends StatelessWidget {
     // required StreamController<Exception> exceptionStream,
     required CategoryRepository categoryRepository,
     required ProductRepository productRepository,
+    required BannerRepository bannerRepository,
     // required AuthRepository authRepository,
     // required AddressRepository addressRepository,
     // required CartRepository cartRepository,
   })  : _categoryRepository = categoryRepository,
-        _productRepository =
-            productRepository; // _authRepository = authRepository,
+        _productRepository = productRepository,
+        _bannerRepository = bannerRepository;
+  // _authRepository = authRepository,
   // _addressRepository = addressRepository,
   // _cartRepository = cartRepository;
   final CategoryRepository _categoryRepository;
   final ProductRepository _productRepository;
+  final BannerRepository _bannerRepository;
   // final AuthRepository _authRepository;
   // final AddressRepository _addressRepository;
   // final CartRepository _cartRepository;
@@ -31,9 +35,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appCubit = AppCubit();
-    final homeBloc = HomeBloc(categoryRepository: _categoryRepository)
-      ..add(HomeRequested());
     final languageBloc = LanguageBloc();
+    final homeBloc = HomeBloc(
+      categoryRepository: _categoryRepository,
+      productRepository: _productRepository,
+      bannerRepository: _bannerRepository,
+    )..add(HomeRequested());
     final categoriesBloc =
         CategoriesBloc(categoryRepository: _categoryRepository);
     // final addressBloc = AddressBloc(
@@ -44,6 +51,7 @@ class App extends StatelessWidget {
 
     return MultiRepositoryProvider(
       providers: [
+        RepositoryProvider.value(value: _bannerRepository),
         RepositoryProvider.value(value: _categoryRepository),
         // RepositoryProvider.value(value: _cartRepository),
         RepositoryProvider.value(value: _productRepository),

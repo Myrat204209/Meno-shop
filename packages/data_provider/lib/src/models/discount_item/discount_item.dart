@@ -6,27 +6,27 @@ part 'discount_item.g.dart';
 @JsonSerializable()
 class DiscountItem {
   DiscountItem({
-    required this.uuid,
-    required this.fastDelivery,
-    required this.freeDelivery,
-    required this.oneToOne,
-    required this.twoToOne,
-    required this.oneToGift,
-    required this.pay_online,
-    required this.pay_money,
-    required this.advantageProduct,
-    required this.discount,
+    this.uuid,
+    this.fastDelivery,
+    this.freeDelivery,
+    this.oneToOne,
+    this.twoToOne,
+    this.oneToGift,
+    this.pay_online,
+    this.pay_money,
+    this.advantageProduct,
+    this.discount,
   });
   final String? uuid;
-  final bool fastDelivery;
-  final bool freeDelivery;
-  final bool oneToOne;
-  final bool twoToOne;
-  final bool oneToGift;
-  final bool pay_online;
-  final bool pay_money;
-  final int advantageProduct;
-  final double discount;
+  final bool? fastDelivery;
+  final bool? freeDelivery;
+  final bool? oneToOne;
+  final bool? twoToOne;
+  final bool? oneToGift;
+  final bool? pay_online;
+  final bool? pay_money;
+  final int? advantageProduct;
+  final double? discount;
 
   factory DiscountItem.fromJson(JsonType json) => _$DiscountItemFromJson(json);
 

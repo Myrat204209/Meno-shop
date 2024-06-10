@@ -1,6 +1,7 @@
 export 'address_model/address_model.dart';
 export 'auth/auth.dart';
 export 'auth_user/auth_user.dart';
+export 'banner_item/banner_item.dart';
 export 'cart/cart.dart';
 export 'cart_update_request_body/cart_update_request_body.dart';
 export 'category_item/category_item.dart';
@@ -14,5 +15,3 @@ export 'product_list_response/product_list_response.dart';
 export 'profile/profile.dart';
 export 'query_parameters/query_parameters.dart';
 export 'register_request_body/register_request_body.dart';
-export 'slider_item/slider_item.dart';
-export 'slider_list_response/slider_list_response.dart';

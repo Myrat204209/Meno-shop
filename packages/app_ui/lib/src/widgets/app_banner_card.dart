@@ -2,41 +2,46 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-/// A widget representing a banner card that displays an image, title, subtitle, content, and a button.
+/// A widget representing a banner card that displays an image, label, title, subtitle, and a button.
 class AppBannerCard extends StatelessWidget {
   /// Creates a new instance of AppBannerCard.
   const AppBannerCard({
-    required this.imageLink, // The URL of the image to be displayed.
-    required this.title, // The title text of the banner.
-    required this.subtitle, // The subtitle text of the banner.
-    required this.content, // The content text of the banner.
-    required this.onButtonPressed, // A callback function called when the button is pressed.
+    this.imageLink, // The URL of the image to be displayed.
+    this.label, // The label text of the banner.
+    this.title, // The title text of the banner.
+    this.subtitle, // The subtitle text of the banner.
+    this.onButtonPressed, // A callback function called when the button is pressed.
     super.key,
   });
 
-  final String imageLink;
-  final String title;
-  final String subtitle;
-  final String content;
-  final VoidCallback onButtonPressed;
+  final String? imageLink;
+  final String? label;
+  final String? title;
+  final String? subtitle;
+  final VoidCallback? onButtonPressed;
 
   @override
   Widget build(BuildContext context) {
-    return AppCachedNetworkImage(
-      imageLink: imageLink,
-      color: Colors.black,
-      child: AppBannerOverlayContent(
-        onButtonPressed: onButtonPressed,
-        child: AppBannerTextColumn(
-          title: title,
-          subtitle: subtitle,
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        AppCachedNetworkImage(
+          imageLink: imageLink ?? 'placeholder',
+          width: double.infinity,
         ),
-      ),
+        AppBannerOverlayContent(
+          onButtonPressed: onButtonPressed ?? () {},
+          child: AppBannerTextColumn(
+            label: label ?? 'asdas',
+            title: title ?? 'asdaskldklasjlkd',
+          ),
+        )
+      ],
     );
   }
 }
 
-/// A widget representing the content overlaid on top of the AppBannerImage.
+/// A widget representing the subtitle overlaid on top of the AppBannerImage.
 class AppBannerOverlayContent extends StatelessWidget {
   /// Creates a new instance of AppBannerOverlayContent.
   const AppBannerOverlayContent({
@@ -54,11 +59,9 @@ class AppBannerOverlayContent extends StatelessWidget {
       children: [
         Positioned(
           top: 40.0,
-          left: 15.0,
           child: child,
         ),
         Positioned(
-          left: 15.0,
           bottom: 30.0,
           child: AppBannerButton(
             onPressed: onButtonPressed,
@@ -75,15 +78,15 @@ class AppBannerTextColumn extends StatelessWidget {
   const AppBannerTextColumn({
     super.key,
 
+    /// The label text of the banner.
+    required this.label,
+
     /// The title text of the banner.
     required this.title,
-
-    /// The subtitle text of the banner.
-    required this.subtitle,
   });
 
+  final String label;
   final String title;
-  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -92,18 +95,18 @@ class AppBannerTextColumn extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          title,
+          label,
           style: UITextStyle.subtitle2.copyWith(
-            color: UIColors.quaterniary,
+            color: UIColors.primary,
             fontSize: 14,
             fontWeight: FontWeight.w400,
           ),
         ),
         Gap(5),
         Text(
-          subtitle,
+          title,
           style: UITextStyle.headline5.copyWith(
-            color: UIColors.quaterniary,
+            color: UIColors.primary,
             fontSize: 14,
             fontWeight: FontWeight.w700,
           ),
@@ -114,7 +117,7 @@ class AppBannerTextColumn extends StatelessWidget {
   }
 }
 
-/// A widget displaying rich text content within the AppBannerTextColumn.
+/// A widget displaying rich text subtitle within the AppBannerTextColumn.
 class AppBannerRichText extends StatelessWidget {
   /// Creates a new instance of AppBannerRichText.
   const AppBannerRichText({
@@ -129,7 +132,7 @@ class AppBannerRichText extends StatelessWidget {
           TextSpan(
             text: 'Discount ',
             style: UITextStyle.subtitle2.copyWith(
-              color: UIColors.quaterniary,
+              color: UIColors.primary,
               fontSize: 16,
               fontWeight: FontWeight.w400,
             ),
@@ -137,7 +140,7 @@ class AppBannerRichText extends StatelessWidget {
           TextSpan(
             text: '50% OFF',
             style: UITextStyle.headline5.copyWith(
-              color: UIColors.quaterniary,
+              color: UIColors.primary,
               fontSize: 15,
               fontWeight: FontWeight.w700,
             ),
@@ -145,7 +148,7 @@ class AppBannerRichText extends StatelessWidget {
           TextSpan(
             text: ' This week ',
             style: UITextStyle.subtitle2.copyWith(
-              color: UIColors.quaterniary,
+              color: UIColors.primary,
               fontSize: 15,
               fontWeight: FontWeight.w400,
             ),

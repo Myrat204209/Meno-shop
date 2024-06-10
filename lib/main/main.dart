@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/main/bootstrap/bootstrap.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:meno_shop/categories/categories.dart';
@@ -17,7 +18,7 @@ void main() {
     required exceptionStream,
   }) async {
     /// Constants
-    const defaultBaseUrl = 'http://192.168.30.96:3000/api/v1';
+    const defaultBaseUrl = 'http://192.168.30.238:3000/api/v1';
 
     /// Storages
     // const secureStorage = SecureStorage();
@@ -34,9 +35,9 @@ void main() {
     /// Only for development
     HttpOverrides.global = MyHttpOverrides();
 
-    // /// Sliders
-    // final sliderClient = SliderClient(httpClient: httpClient);
-    // final sliderRepository = SliderRepository(sliderClient: sliderClient);
+    /// Banners
+    final bannerClient = BannerClient(httpClient: httpClient);
+    final bannerRepository = BannerRepository(bannerClient: bannerClient);
 
     /// Categories
     final categoryClient = CategoryClient(httpClient: httpClient);
@@ -64,6 +65,7 @@ void main() {
 
     return App(
       // exceptionStream: exceptionStream,
+      bannerRepository: bannerRepository,
       categoryRepository: categoryRepository,
       productRepository: productRepository,
       // authRepository: authRepository,
@@ -73,4 +75,4 @@ void main() {
   });
 }
 
-const kDefaultBaseUrl = 'http://192.168.30.96:3000';
+const kDefaultBaseUrl = 'http://192.168.30.238:3000';

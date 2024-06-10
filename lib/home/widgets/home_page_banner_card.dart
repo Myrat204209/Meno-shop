@@ -30,7 +30,7 @@ class _HomePageBannerCardState extends State<HomePageBannerCard> {
                 imageLink: 'assets/${images[index]}',
                 title: 'FROM ONLINE STORE',
                 subtitle: 'MEN\'S LIFESTYLE COLLECTION',
-                content: '',
+                label: '',
                 onButtonPressed: () {},
               ),
             ),

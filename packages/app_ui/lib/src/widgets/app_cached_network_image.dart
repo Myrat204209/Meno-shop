@@ -6,14 +6,12 @@ class AppCachedNetworkImage extends StatelessWidget {
   const AppCachedNetworkImage({
     super.key,
     required this.imageLink,
-    this.child,
     this.color,
     this.width,
     this.height,
   });
 
   final String imageLink;
-  final Widget? child;
   final Color? color;
   final double? width;
   final double? height;
@@ -28,22 +26,11 @@ class AppCachedNetworkImage extends StatelessWidget {
         'assets/placeholder.jpg',
         fit: BoxFit.cover,
       ),
-      placeholder: (_, url) =>
-          Center(child: CircularProgressIndicator.adaptive()),
+      placeholder: (_, url) => Center(
+        child: CircularProgressIndicator.adaptive(),
+      ),
       height: height,
       width: width,
-      // child: DecoratedBox(
-      //   decoration: BoxDecoration(
-      //     borderRadius: BorderRadius.circular(10.0),
-      //     color: Colors.black,
-      //     image: DecorationImage(
-      //       opacity: 0.69,
-      //       image: image,
-      //       fit: BoxFit.cover,
-      //     ),
-      //   ),
-      //   child: child,
-      // ),
     );
   }
 }

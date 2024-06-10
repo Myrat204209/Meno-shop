@@ -13,9 +13,9 @@ class ProductItem {
   final String? description;
   final String? image;
   final String? rating;
-  final double? discount;
   final List<PhotoItem>? photo;
   final List<DiscountItem>? discounts;
+  final List<CategoryItem>? categories;
   ProductItem({
     // this.photo,
     this.uuid,
@@ -25,9 +25,9 @@ class ProductItem {
     this.description,
     this.image,
     this.rating,
-    this.discount,
     this.photo,
     this.discounts,
+    this.categories,
   });
 
   factory ProductItem.fromJson(JsonType json) => _$ProductItemFromJson(json);
