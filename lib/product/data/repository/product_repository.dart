@@ -36,7 +36,7 @@ class ProductRepository {
   final ProductClient _productClient;
 
   Future<List<ProductItem>?> getProducts([
-    GetProductListQueryParameters? queryParameters,
+    GetQueryParameters? queryParameters,
   ]) async {
     try {
       return await _productClient.getProducts(queryParameters);

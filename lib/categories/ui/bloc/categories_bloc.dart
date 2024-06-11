@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:data_provider/data_provider.dart'
-    show CategoryItem, GetProductListQueryParameters;
+    show CategoryItem, GetQueryParameters;
 import 'package:equatable/equatable.dart';
 import 'package:meno_shop/categories/categories.dart';
 
@@ -26,7 +26,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     try {
       emit(state.copyWith(status: CategoriesStatus.loading));
       final response = await _categoryRepository.getCategories(
-        GetProductListQueryParameters(
+        GetQueryParameters(
           populate: [
             'photos',
           ],

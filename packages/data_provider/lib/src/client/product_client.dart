@@ -8,7 +8,7 @@ class ProductClient {
   final Http _httpClient;
 
   Future<List<ProductItem>?> getProducts([
-    GetProductListQueryParameters? queryParameters,
+    GetQueryParameters? queryParameters,
   ]) async {
     final response = await _httpClient.get<List<dynamic>>(
       '/products',

@@ -15,7 +15,7 @@ class AppProductItem extends StatelessWidget {
   });
 
   final VoidCallback? onTap;
-  final String image;
+  final String? image;
   final double price;
   final String label;
   final String category;
@@ -36,7 +36,7 @@ class AppProductItem extends StatelessWidget {
               children: [
                 AspectRatio(
                   aspectRatio: 155 / 160,
-                  child: AppProductImage(imageLink: image),
+                  child: AppProductImage(imageLink: image ?? ''),
                 ),
                 Expanded(
                   child: Padding(
@@ -50,9 +50,11 @@ class AppProductItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              AppProductContentText(
-                                category: category,
-                                label: label,
+                              Flexible(
+                                child: AppProductContentText(
+                                  category: category,
+                                  label: label,
+                                ),
                               ),
                               AppButton(
                                 type: AppButtonType.small,
@@ -103,8 +105,10 @@ class AppProductContentText extends StatelessWidget {
           category,
           style: UITextStyle.subtitle2.copyWith(
             color: UIColors.neutral.shade700,
-            fontSize: 11,
+            fontSize: 12,
           ),
+          softWrap: true,
+          maxLines: 3,
         ),
         Gap(5),
         Text(
@@ -114,6 +118,8 @@ class AppProductContentText extends StatelessWidget {
             fontSize: 13,
             fontWeight: AppFontWeight.semiBold,
           ),
+          maxLines: 3,
+          softWrap: true,
         ),
         Gap(5),
       ],

@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'discount_item.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class DiscountItem {
   DiscountItem({
     this.uuid,

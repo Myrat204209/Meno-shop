@@ -8,12 +8,14 @@ import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/language/language.dart';
 import 'package:meno_shop/product/product.dart';
 import 'package:meno_shop/app/app.dart' show AppView, AppCubit;
+import 'package:meno_shop/subcategories/subcategories.dart';
 
 class App extends StatelessWidget {
   const App({
     super.key,
     // required StreamController<Exception> exceptionStream,
     required CategoryRepository categoryRepository,
+    required SubcategoryRepository subcategoryRepository,
     required ProductRepository productRepository,
     required BannerRepository bannerRepository,
     // required AuthRepository authRepository,
@@ -21,11 +23,13 @@ class App extends StatelessWidget {
     // required CartRepository cartRepository,
   })  : _categoryRepository = categoryRepository,
         _productRepository = productRepository,
-        _bannerRepository = bannerRepository;
+        _bannerRepository = bannerRepository,
+        _subcategoryRepository = subcategoryRepository;
   // _authRepository = authRepository,
   // _addressRepository = addressRepository,
   // _cartRepository = cartRepository;
   final CategoryRepository _categoryRepository;
+  final SubcategoryRepository _subcategoryRepository;
   final ProductRepository _productRepository;
   final BannerRepository _bannerRepository;
   // final AuthRepository _authRepository;
@@ -37,12 +41,14 @@ class App extends StatelessWidget {
     final appCubit = AppCubit();
     final languageBloc = LanguageBloc();
     final homeBloc = HomeBloc(
-      categoryRepository: _categoryRepository,
-      productRepository: _productRepository,
+      subcategoryRepository: _subcategoryRepository,
+      // productRepository: _productRepository,
       bannerRepository: _bannerRepository,
     )..add(HomeRequested());
     final categoriesBloc =
         CategoriesBloc(categoryRepository: _categoryRepository);
+    final subcategoriesBloc =
+        SubcategoriesBloc(subcategoryRepository: _subcategoryRepository);
     // final addressBloc = AddressBloc(
     //   addressRepository: _addressRepository,
     // )..add(AddressesRequested());
@@ -53,6 +59,7 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider.value(value: _bannerRepository),
         RepositoryProvider.value(value: _categoryRepository),
+        RepositoryProvider.value(value: _subcategoryRepository),
         // RepositoryProvider.value(value: _cartRepository),
         RepositoryProvider.value(value: _productRepository),
         // RepositoryProvider.value(value: _authRepository),
@@ -61,6 +68,7 @@ class App extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider.value(value: categoriesBloc),
+          BlocProvider.value(value: subcategoriesBloc),
           // BlocProvider.value(value: addressBloc),
           // BlocProvider.value(value: addressBloc),
           BlocProvider.value(value: languageBloc),

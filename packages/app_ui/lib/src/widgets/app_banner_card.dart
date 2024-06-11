@@ -25,9 +25,11 @@ class AppBannerCard extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        AppCachedNetworkImage(
-          imageLink: imageLink ?? 'placeholder',
-          width: double.infinity,
+        Center(
+          child: AppCachedNetworkImage(
+            imageLink: imageLink ?? 'placeholder',
+            width: double.infinity,
+          ),
         ),
         AppBannerOverlayContent(
           onButtonPressed: onButtonPressed ?? () {},
@@ -59,10 +61,12 @@ class AppBannerOverlayContent extends StatelessWidget {
       children: [
         Positioned(
           top: 40.0,
+          left: 150,
           child: child,
         ),
         Positioned(
           bottom: 30.0,
+          left: 150,
           child: AppBannerButton(
             onPressed: onButtonPressed,
           ),
@@ -98,19 +102,20 @@ class AppBannerTextColumn extends StatelessWidget {
           label,
           style: UITextStyle.subtitle2.copyWith(
             color: UIColors.primary,
-            fontSize: 14,
+            fontSize: 20,
             fontWeight: FontWeight.w400,
           ),
         ),
-        Gap(5),
+        Gap(15),
         Text(
           title,
           style: UITextStyle.headline5.copyWith(
             color: UIColors.primary,
-            fontSize: 14,
+            fontSize: 24,
             fontWeight: FontWeight.w700,
           ),
         ),
+        Gap(15),
         AppBannerRichText(),
       ],
     );
@@ -133,7 +138,7 @@ class AppBannerRichText extends StatelessWidget {
             text: 'Discount ',
             style: UITextStyle.subtitle2.copyWith(
               color: UIColors.primary,
-              fontSize: 16,
+              fontSize: 20,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -141,7 +146,7 @@ class AppBannerRichText extends StatelessWidget {
             text: '50% OFF',
             style: UITextStyle.headline5.copyWith(
               color: UIColors.primary,
-              fontSize: 15,
+              fontSize: 25,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -149,7 +154,7 @@ class AppBannerRichText extends StatelessWidget {
             text: ' This week ',
             style: UITextStyle.subtitle2.copyWith(
               color: UIColors.primary,
-              fontSize: 15,
+              fontSize: 20,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -176,7 +181,7 @@ class AppBannerButton extends StatelessWidget {
       color: UIColors.quaterniary,
       onPressed: onPressed,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         child: Text(
           'Shop now',
           textAlign: TextAlign.center,

@@ -1,22 +1,22 @@
 import 'package:data_provider/data_provider.dart';
 
-class CategoryClient {
-  CategoryClient({
+class SubcategoryClient {
+  SubcategoryClient({
     required Http httpClient,
   }) : _httpClient = httpClient;
 
   final Http _httpClient;
-  Future<List<CategoryItem>?> getCategories([
+  Future<List<SubcategoryItem>?> getSubcategories([
     GetQueryParameters? queryParameters,
   ]) async {
     final response = await _httpClient.get<List<dynamic>>(
-      '/categories',
+      '/subcategories',
       queryParameters: queryParameters?.toJson(),
     );
 
-    List<CategoryItem>? categories;
+    List<SubcategoryItem>? categories;
     categories = response.data!
-        .map((category) => CategoryItem.fromJson(category))
+        .map((category) => SubcategoryItem.fromJson(category))
         .toList();
     return categories;
   }

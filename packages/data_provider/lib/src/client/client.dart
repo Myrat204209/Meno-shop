@@ -4,3 +4,4 @@ export 'cart_client.dart';
 export 'category_client.dart';
 export 'product_client.dart';
 export 'profile_client.dart';
+export 'subcategory_clien.dart';

@@ -6,11 +6,8 @@ import 'package:data_provider/data_provider.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/product/product.dart';
 import 'package:flutter/foundation.dart';
+import 'package:meno_shop/subcategories/subcategories.dart';
 import '../app/app.dart';
-// import 'package:hive/hive.dart';
-// import 'package:meno_shop/addresses/address.dart';
-// import 'package:meno_shop/auth/auth.dart';
-// import 'package:meno_shop/cart/cart.dart';
 
 void main() {
   bootStrap(({
@@ -18,7 +15,7 @@ void main() {
     required exceptionStream,
   }) async {
     /// Constants
-    const defaultBaseUrl = 'http://192.168.30.238:3000/api/v1';
+    const defaultBaseUrl = 'http://10.10.17.44:3000/api/v1';
 
     /// Storages
     // const secureStorage = SecureStorage();
@@ -44,6 +41,11 @@ void main() {
     final categoryRepository =
         CategoryRepository(categoryClient: categoryClient);
 
+    /// Subcategories
+    final subcategoryClient = SubcategoryClient(httpClient: httpClient);
+    final subcategoryRepository =
+        SubcategoryRepository(subcategoryClient: subcategoryClient);
+
     /// Products
     final productClient = ProductClient(httpClient: httpClient);
     final productRepository = ProductRepository(productClient: productClient);
@@ -67,6 +69,7 @@ void main() {
       // exceptionStream: exceptionStream,
       bannerRepository: bannerRepository,
       categoryRepository: categoryRepository,
+      subcategoryRepository: subcategoryRepository,
       productRepository: productRepository,
       // authRepository: authRepository,
       // addressRepository: addressRepository,
@@ -75,4 +78,4 @@ void main() {
   });
 }
 
-const kDefaultBaseUrl = 'http://192.168.30.238:3000';
+const kDefaultBaseUrl = 'http://10.10.17.44:3000';

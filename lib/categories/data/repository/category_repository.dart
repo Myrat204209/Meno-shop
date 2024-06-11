@@ -1,5 +1,5 @@
 import 'package:data_provider/data_provider.dart'
-    show CategoryClient, GetProductListQueryParameters, CategoryItem;
+    show CategoryClient, GetQueryParameters, CategoryItem;
 import 'package:equatable/equatable.dart';
 
 /// A base failure for the category repository failures
@@ -25,7 +25,7 @@ class CategoryRepository {
   final CategoryClient _categoryClient;
 
   Future<List<CategoryItem>?> getCategories(
-      [GetProductListQueryParameters? queryParameters]) async {
+      [GetQueryParameters? queryParameters]) async {
     try {
       return await _categoryClient.getCategories(queryParameters);
     } catch (error, stackTrace) {
