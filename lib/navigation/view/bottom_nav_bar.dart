@@ -13,7 +13,7 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
-      backgroundColor: UIColors.quaterniary,
+      backgroundColor: AppColors.quaterniary,
       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
       height: 65,
       indicatorColor: Colors.transparent,

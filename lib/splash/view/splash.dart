@@ -10,7 +10,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: UIColors.primary,
+      backgroundColor: AppColors.primary,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -19,7 +19,7 @@ class SplashPage extends StatelessWidget {
             Text(
               'Meno Logistics',
               style: theme.primaryTextTheme.headlineMedium?.copyWith(
-                color: UIColors.quaterniary,
+                color: AppColors.quaterniary,
               ),
             ),
             const SizedBox(height: 100),

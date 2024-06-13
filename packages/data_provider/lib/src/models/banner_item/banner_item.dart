@@ -13,7 +13,8 @@ class BannerItem {
   final String? path;
   final String? bannerType;
   final bool? isActive;
-  final List<PhotoItem>? photo;
+  final String? expiresAt;
+  final PhotoItem? photo;
   const BannerItem({
     this.uuid,
     this.label,
@@ -22,6 +23,7 @@ class BannerItem {
     this.path,
     this.bannerType,
     this.isActive,
+    this.expiresAt,
     this.photo,
   });
   factory BannerItem.fromJson(JsonType json) => _$BannerItemFromJson(json);

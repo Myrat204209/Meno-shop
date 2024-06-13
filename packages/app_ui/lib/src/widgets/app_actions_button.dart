@@ -8,7 +8,7 @@ class AppActionsButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     this.backgroundColor,
-    this.iconColor = UIColors.quaterniary,
+    this.iconColor,
     required this.icon,
   });
 
@@ -18,8 +18,8 @@ class AppActionsButton extends StatelessWidget {
   /// The background color of the button. Defaults to a neutral shade 700 if not specified.
   final Color? backgroundColor;
 
-  /// The color of the icon displayed on the button. Defaults to UIColors.quaterniary.
-  final Color iconColor;
+  /// The color of the icon displayed on the button. Defaults to AppColors.quaterniary.
+  final Color? iconColor;
 
   /// The IconData to be displayed as the button's icon.
   final IconData icon;
@@ -31,13 +31,14 @@ class AppActionsButton extends StatelessWidget {
       child: MaterialButton(
         minWidth: 45,
         height: 45,
+        elevation: 0,
         padding: EdgeInsets.zero,
-        color: backgroundColor ?? UIColors.neutral.shade700,
+        color: backgroundColor ?? AppColors.neutral.shade400,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Icon(
           icon,
-          size: 32,
-          color: iconColor,
+          size: 23,
+          color: iconColor ?? AppColors.neutral.shade600,
         ),
         onPressed: onPressed,
       ),

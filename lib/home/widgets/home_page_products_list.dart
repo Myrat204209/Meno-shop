@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:developer';
 
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
@@ -44,7 +43,6 @@ class HomePageProductsList extends StatelessWidget {
                 } else {
                   imageUrl = '';
                 }
-                log(imageUrl);
                 if (products!.isNotEmpty) {
                   return AppProductItem(
                     price: product.price!,

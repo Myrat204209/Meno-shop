@@ -10,9 +10,8 @@ class ProductDetailsAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
+      title: const Text(
         'Product Details',
-        style: UITextStyle.headline5.copyWith(color: UIColors.primary),
       ),
       centerTitle: true,
       actions: [

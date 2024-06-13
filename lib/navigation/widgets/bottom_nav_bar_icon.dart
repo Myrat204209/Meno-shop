@@ -48,11 +48,10 @@ class BottomNavBarBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Badge(
-      backgroundColor: UIColors.secondary2,
+      backgroundColor: AppColors.secondary2,
       offset: const Offset(4, -1),
       label: Text(
         badgeText,
-        style: UITextStyle.subtitle1,
       ),
       largeSize: 18,
       child: NavIcon(
@@ -92,7 +91,7 @@ class NavIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Icon(
       isSelected ? navigationIcons[icon] : icon,
-      color: isSelected ? UIColors.secondary : UIColors.neutral.shade700,
+      color: isSelected ? AppColors.secondary : AppColors.neutral.shade700,
       size: 28,
     );
   }

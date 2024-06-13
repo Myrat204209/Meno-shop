@@ -152,24 +152,16 @@ class UITextField extends StatelessWidget {
         maxLength: maxLength,
         autofillHints: autoFillHints,
         onFieldSubmitted: onSubmitted,
-        style: UITextStyle.headline6.copyWith(
-          color: UIColors.primary,
-        ),
         decoration: InputDecoration(
-          hintStyle:
-              UITextStyle.subtitle1.copyWith(color: UIColors.neutral.shade700),
-          labelStyle: UITextStyle.headline6.copyWith(color: UIColors.primary),
-          floatingLabelStyle:
-              UITextStyle.headline6.copyWith(color: UIColors.neutral.shade500),
           // labelStyle: UITextStyle.headline5,
           filled: true,
-          fillColor: UIColors.neutral.shade100,
+          fillColor: AppColors.neutral.shade100,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide.none,
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: UIColors.secondary),
+            borderSide: BorderSide(color: AppColors.secondary),
             borderRadius: BorderRadius.circular(8),
           ),
           prefixText: prefixText,

@@ -40,12 +40,12 @@ class _ProductDetailsRatingStarRowState
           ratingWidget: RatingWidget(
             full: const Icon(
               Icons.star,
-              color: UIColors.starsColor,
+              color: AppColors.starsColor,
             ),
             half: const SizedBox.shrink(),
             empty: Icon(
               Icons.star_border,
-              color: UIColors.neutral.shade500,
+              color: AppColors.neutral.shade500,
             ),
           ),
           onRatingUpdate: (rating) {
@@ -55,12 +55,8 @@ class _ProductDetailsRatingStarRowState
           },
         ),
         const Gap(15),
-        Text(
+        const Text(
           '212 revievs',
-          style: UITextStyle.headline5.copyWith(
-            color: UIColors.primary,
-            fontSize: 16,
-          ),
         )
       ],
     );

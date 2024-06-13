@@ -11,7 +11,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: UIColors.quaterniary,
+      color: AppColors.quaterniary,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
@@ -20,13 +20,11 @@ class ProfileView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Name',
-              style: UITextStyle.subtitle1.copyWith(color: UIColors.primary),
             ),
-            Text(
+            const Text(
               'Myrat',
-              style: UITextStyle.headline5.copyWith(color: UIColors.primary),
             ),
             const SizedBox(height: 50),
             ProfilePageButton(
@@ -80,7 +78,7 @@ class ProfilePageButton extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         child: InkWell(
-          splashColor: UIColors.secondary.withOpacity(0.3),
+          splashColor: AppColors.secondary.withOpacity(0.3),
           onTap: onTap,
           borderRadius: BorderRadius.circular(10),
           onLongPress: () {
@@ -104,13 +102,11 @@ class ProfilePageButton extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: UITextStyle.subtitle2
-                            .copyWith(color: UIColors.primary),
                       ),
                       const Icon(
                         Icons.chevron_right_rounded,
                         weight: 0.1,
-                        color: UIColors.primary,
+                        color: AppColors.primary,
                         size: 45,
                       ),
                     ],

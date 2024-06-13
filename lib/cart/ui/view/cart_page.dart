@@ -10,15 +10,12 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'My Cart',
-          style: UITextStyle.headline5.copyWith(
-            color: UIColors.primary,
-          ),
         ),
         centerTitle: true,
       ),
-      backgroundColor: UIColors.quaterniary,
+      backgroundColor: AppColors.quaterniary,
       body: const CartView(),
     );
   }

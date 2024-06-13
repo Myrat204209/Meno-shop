@@ -37,8 +37,8 @@ class HomePageCategoriesList extends StatelessWidget {
               log("Photo link $kDefaultBaseUrl\\$path\n");
               return CategoryModelWidget(
                 label: name ?? 'meno',
-                color: UIColors.neutral.shade100,
-                elementColor: UIColors.primary,
+                color: AppColors.neutral.shade100,
+                elementColor: AppColors.primary,
                 imageLink: '$kDefaultBaseUrl\\$path',
               );
             },

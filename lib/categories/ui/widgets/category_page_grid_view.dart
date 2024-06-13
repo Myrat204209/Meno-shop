@@ -21,8 +21,8 @@ class CategoryPageGridView extends StatelessWidget {
         return CategoryModelWidget(
           imageLink: 'assets/jeans.jpg',
           label: 'For women T-Shirt',
-          elementColor: UIColors.primary,
-          color: UIColors.neutral.shade100,
+          elementColor: AppColors.primary,
+          color: AppColors.neutral.shade100,
         );
       },
     );

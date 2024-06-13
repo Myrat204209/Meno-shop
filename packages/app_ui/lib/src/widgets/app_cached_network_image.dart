@@ -24,7 +24,7 @@ class AppCachedNetworkImage extends StatelessWidget {
       // imageBuilder: (context, imageProvider) => SizedBox(child: child),
       errorWidget: (context, url, error) => Image.asset(
         'assets/placeholder.jpg',
-        fit: BoxFit.cover,
+        fit: BoxFit.fitHeight,
       ),
       placeholder: (_, url) => Center(
         child: CircularProgressIndicator.adaptive(),

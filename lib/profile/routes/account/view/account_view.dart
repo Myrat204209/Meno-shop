@@ -7,13 +7,12 @@ class AccountView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: UIColors.quaterniary,
+      backgroundColor: AppColors.quaterniary,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: UIColors.quaterniary,
-        title: Text(
+        backgroundColor: AppColors.quaterniary,
+        title: const Text(
           'Account',
-          style: UITextStyle.headline4.copyWith(color: UIColors.primary),
         ),
       ),
       body: Padding(
@@ -45,7 +44,7 @@ class AccountView extends StatelessWidget {
                   icon: Icon(
                     Icons.remove_red_eye,
                     size: 30,
-                    color: UIColors.neutral.shade500,
+                    color: AppColors.neutral.shade500,
                   ),
                 ),
               ),

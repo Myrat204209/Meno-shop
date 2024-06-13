@@ -16,7 +16,7 @@ class FavoritesPage extends StatelessWidget {
           onPressed: () {
             showModalBottomSheet(
               context: context,
-              backgroundColor: UIColors.quaterniary,
+              backgroundColor: AppColors.quaterniary,
               isScrollControlled: true,
               builder: (context) => const FractionallySizedBox(
                 heightFactor: 0.9,

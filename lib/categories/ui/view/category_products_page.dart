@@ -9,14 +9,14 @@ class CategoryProductsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: AppBorderColorBox(
-          borderColor: UIColors.primary,
+          borderColor: AppColors.primary,
           child: SizedBox(
             height: 40,
             width: 255,
             child: UITextField(
               prefix: Icon(
                 Icons.search,
-                color: UIColors.neutral.shade700,
+                color: AppColors.neutral.shade700,
               ),
               hintText: 'Search from shop...S',
             ),
@@ -32,32 +32,21 @@ class CategoryProductsPage extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: UIColors.quaterniary,
+      backgroundColor: AppColors.quaterniary,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'For women / T-Shirt',
-                style: UITextStyle.subtitle1.copyWith(
-                  color: const Color(0xFF0762C8),
-                ),
               ),
-              Text(
+              const Text(
                 'A Watch',
-                style: UITextStyle.headline6.copyWith(
-                  color: UIColors.primary,
-                  fontWeight: AppFontWeight.bold,
-                ),
               ),
-              Text(
+              const Text(
                 '1234 products',
-                style: UITextStyle.subtitle2.copyWith(
-                  color: UIColors.neutral.shade500,
-                  fontSize: 12,
-                ),
               ),
               const SizedBox(height: 10),
               SizedBox(

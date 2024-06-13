@@ -13,16 +13,16 @@ class ProductDetailsImageSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        border: Border.all(color: UIColors.primary),
+        border: Border.all(color: AppColors.primary),
         borderRadius: BorderRadius.circular(10),
       ),
       child: flexi_image_slider(
         context: context,
         duration: const Duration(seconds: 3),
         indicatorAlignment: IndicatorAlignment.right,
-        indicatorActiveColor: UIColors.secondary,
+        indicatorActiveColor: AppColors.secondary,
         indicatorPosition: IndicatorPosition.overImage,
-        indicatorDeactiveColor: UIColors.neutral.shade300,
+        indicatorDeactiveColor: AppColors.neutral.shade300,
         aspectRatio: 15 / 11,
         arrayImages: imageLinks,
         boxFit: BoxFit.cover,

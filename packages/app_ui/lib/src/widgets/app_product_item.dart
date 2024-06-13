@@ -24,11 +24,11 @@ class AppProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      width: size.width * 0.43,
+      width: size.width * 0.44,
       child: AspectRatio(
         aspectRatio: 155 / 235,
         child: Material(
-          color: UIColors.quaterniary,
+          color: AppColors.quaterniary,
           child: InkWell(
             onTap: onTap,
             borderRadius: BorderRadius.circular(10),
@@ -40,7 +40,7 @@ class AppProductItem extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(6.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -68,10 +68,6 @@ class AppProductItem extends StatelessWidget {
                         ),
                         Text(
                           '${price.toInt()} TMT',
-                          style: UITextStyle.subtitle1.copyWith(
-                            color: UIColors.primary,
-                            fontWeight: AppFontWeight.bold,
-                          ),
                         ),
                       ],
                     ),
@@ -103,21 +99,12 @@ class AppProductContentText extends StatelessWidget {
       children: [
         Text(
           category,
-          style: UITextStyle.subtitle2.copyWith(
-            color: UIColors.neutral.shade700,
-            fontSize: 12,
-          ),
           softWrap: true,
           maxLines: 3,
         ),
         Gap(5),
         Text(
           label,
-          style: UITextStyle.headline5.copyWith(
-            color: UIColors.primary,
-            fontSize: 13,
-            fontWeight: AppFontWeight.semiBold,
-          ),
           maxLines: 3,
           softWrap: true,
         ),
@@ -141,7 +128,7 @@ class AppProductImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: AppBorderColorBox(
         expand: 2,
-        borderColor: UIColors.neutral.shade300,
+        borderColor: AppColors.neutral.shade300,
         child: AppCachedNetworkImage(
           imageLink: imageLink,
           width: double.infinity,

@@ -29,13 +29,10 @@ class _AppRadioButtonState extends State<AppRadioButton> {
     return Column(
       children: [
         AppBorderColorBox(
-          borderColor: UIColors.neutral.shade100,
+          borderColor: AppColors.neutral.shade100,
           child: Center(
             child: Text(
               widget.text,
-              style: UITextStyle.headline5.copyWith(
-                color: UIColors.primary,
-              ),
             ),
           ),
         ),
@@ -48,7 +45,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 26),
                 child: Material(
                   borderRadius: BorderRadius.circular(10),
-                  color: UIColors.neutral.shade100,
+                  color: AppColors.neutral.shade100,
                   child: InkWell(
                     radius: 100,
                     borderRadius: BorderRadius.circular(10),
@@ -64,9 +61,6 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                       ),
                       title: Text(
                         widget.values[index],
-                        style: UITextStyle.headline6.copyWith(
-                          color: UIColors.primary,
-                        ),
                       ),
                     ),
                   ),

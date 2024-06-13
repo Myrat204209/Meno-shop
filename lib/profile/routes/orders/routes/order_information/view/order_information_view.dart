@@ -7,13 +7,10 @@ class OrderInformationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: UIColors.quaterniary,
+      backgroundColor: AppColors.quaterniary,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Order Information',
-          style: UITextStyle.headline5.copyWith(
-            color: UIColors.primary,
-          ),
         ),
         centerTitle: true,
       ),
@@ -30,7 +27,7 @@ class OrderInformationView extends StatelessWidget {
             const ProductListTile(),
             const SizedBox(height: 220),
             const Divider(
-              color: UIColors.primary,
+              color: AppColors.primary,
               thickness: 0,
             ),
             Row(
@@ -40,21 +37,14 @@ class OrderInformationView extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                Column(
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Total price',
-                      style: UITextStyle.subtitle2.copyWith(
-                        color: UIColors.primary,
-                      ),
                     ),
                     Text(
                       '3678 TMT',
-                      style: UITextStyle.headline5.copyWith(
-                        color: UIColors.primary,
-                        fontSize: 13,
-                      ),
                     ),
                   ],
                 ),
@@ -80,47 +70,39 @@ class ProductListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: 100,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const AppCachedNetworkImage(
+          AppCachedNetworkImage(
             imageLink: 'assets/friends.jpg',
             width: 90,
             height: 90,
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
+            padding: EdgeInsets.symmetric(vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   'Friends Printed',
-                  style: UITextStyle.headline5
-                      .copyWith(color: UIColors.primary, fontSize: 18),
                 ),
                 Text(
                   'Size: L - Color: Pink',
-                  style: UITextStyle.subtitle2
-                      .copyWith(color: UIColors.neutral.shade700, fontSize: 14),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10),
                 Text(
                   '140 TMT',
-                  style: UITextStyle.headline5
-                      .copyWith(color: UIColors.primary, fontSize: 16),
                 ),
               ],
             ),
           ),
-          const Expanded(child: SizedBox()),
+          Expanded(child: SizedBox()),
           Text(
             '8 pcs',
-            style: UITextStyle.headline5
-                .copyWith(color: UIColors.primary, fontSize: 14),
           )
         ],
       ),

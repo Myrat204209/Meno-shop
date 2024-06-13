@@ -30,9 +30,9 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       borderRadius: BorderRadius.circular(10),
-      color: UIColors.secondary,
+      color: AppColors.secondary,
       child: InkWell(
-        splashColor: UIColors.secondary,
+        splashColor: AppColors.secondary,
         borderRadius: BorderRadius.circular(10),
         onTap: onTap,
         child: Padding(
@@ -46,7 +46,7 @@ class AppButton extends StatelessWidget {
               if (type == AppButtonType.iconed)
                 Icon(
                   icon,
-                  color: UIColors.quaterniary,
+                  color: AppColors.quaterniary,
                 ),
               Gap(
                 AppButtonType.small == type ? 0 : 10,
@@ -54,14 +54,15 @@ class AppButton extends StatelessWidget {
               if (type != AppButtonType.small)
                 Text(
                   text!,
-                  style: UITextStyle.headline6.copyWith(
-                    color: UIColors.quaterniary,
-                  ),
+                  style: AppTextStyle.text()
+                      .medium()
+                      .regular()
+                      .withColor(AppColors.quaterniary),
                 )
               else
                 Icon(
                   icon,
-                  color: UIColors.quaterniary,
+                  color: AppColors.quaterniary,
                 ),
             ],
           ),

@@ -17,7 +17,7 @@ class NetworkError extends StatelessWidget {
   static Route<void> route({VoidCallback? onRetry}) {
     return PageRouteBuilder<void>(
       pageBuilder: (_, __, ___) => Scaffold(
-        backgroundColor: UIColors.quaterniary,
+        backgroundColor: AppColors.quaterniary,
         body: Center(
           child: NetworkError(onRetry: onRetry),
         ),
@@ -34,7 +34,7 @@ class NetworkError extends StatelessWidget {
         const Icon(
           Icons.error_outline,
           size: 80,
-          color: UIColors.secondary,
+          color: AppColors.secondary,
         ),
         const Text(
           'Network error',

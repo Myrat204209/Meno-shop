@@ -7,24 +7,18 @@ class MyAddressView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: UIColors.quaterniary,
+      backgroundColor: AppColors.quaterniary,
       appBar: AppBar(
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.only(right: 10),
+            padding: EdgeInsets.only(right: 10),
             child: Text(
               '0/4',
-              style: UITextStyle.subtitle1.copyWith(
-                color: UIColors.neutral.shade500,
-              ),
             ),
           ),
         ],
-        title: Text(
+        title: const Text(
           'My address',
-          style: UITextStyle.headline5.copyWith(
-            color: UIColors.primary,
-          ),
         ),
         centerTitle: true,
       ),

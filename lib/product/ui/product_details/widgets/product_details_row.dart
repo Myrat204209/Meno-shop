@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
@@ -19,7 +18,7 @@ class ProductDetailsRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         AppBorderColorBox(
-          borderColor: UIColors.starsColor,
+          borderColor: AppColors.starsColor,
           child: ConstrainedBox(
             constraints: const BoxConstraints(
               minWidth: 35,
@@ -35,10 +34,6 @@ class ProductDetailsRow extends StatelessWidget {
                 ),
                 child: Text(
                   '-${onSalePercent.toInt()}%',
-                  style: UITextStyle.headline5.copyWith(
-                    fontSize: 15,
-                    color: UIColors.quaterniary,
-                  ),
                 ),
               ),
             ),

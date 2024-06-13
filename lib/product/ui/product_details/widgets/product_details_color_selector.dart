@@ -53,7 +53,7 @@ class _ProductDetailsColorSelectorState
                 child: checkedIndex == index
                     ? const Icon(
                         Icons.check,
-                        color: UIColors.quaterniary,
+                        color: AppColors.quaterniary,
                         size: 18,
                       )
                     : null,

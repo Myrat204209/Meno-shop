@@ -34,7 +34,7 @@ class _ProductDetailsSizeSelectorState
     final length = widget.sizes.length;
     return DecoratedBox(
       decoration: BoxDecoration(
-        border: Border.all(color: UIColors.neutral.shade300),
+        border: Border.all(color: AppColors.neutral.shade300),
         borderRadius: BorderRadius.circular(6),
       ),
       child: ConstrainedBox(
@@ -68,10 +68,6 @@ class _ProductDetailsSizeSelectorState
                           ? Center(
                               child: Text(
                                 widget.sizes[index ~/ 2],
-                                style: UITextStyle.subtitle2.copyWith(
-                                  color: UIColors.neutral.shade500,
-                                  fontSize: 16,
-                                ),
                               ),
                             )
                           : Column(
@@ -80,10 +76,6 @@ class _ProductDetailsSizeSelectorState
                               children: [
                                 Text(
                                   selectedSize,
-                                  style: UITextStyle.headline5.copyWith(
-                                    color: UIColors.secondary,
-                                    fontSize: 17,
-                                  ),
                                 ),
                                 const SelectedLineIndicator()
                               ],
@@ -110,7 +102,7 @@ class SelectedLineIndicator extends StatelessWidget {
         height: 2,
         width: 36,
         child: ColoredBox(
-          color: UIColors.secondary,
+          color: AppColors.secondary,
         ),
       ),
     );
@@ -126,7 +118,7 @@ class DotIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Icon(
       Icons.circle,
-      color: UIColors.neutral.shade500,
+      color: AppColors.neutral.shade500,
       size: 8,
     );
   }

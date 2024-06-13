@@ -10,14 +10,11 @@ class ProfilePage extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: UIColors.quaterniary,
-          title: Padding(
-            padding: const EdgeInsets.only(top: 30),
+          backgroundColor: AppColors.quaterniary,
+          title: const Padding(
+            padding: EdgeInsets.only(top: 30),
             child: Text(
               'My Profile',
-              style: UITextStyle.headline4.copyWith(
-                color: UIColors.primary,
-              ),
             ),
           ),
         ),

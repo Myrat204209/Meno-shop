@@ -11,8 +11,8 @@ class CategoryActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppActionsButton(
       onPressed: onPressed,
-      backgroundColor: UIColors.quaterniary,
-      iconColor: UIColors.neutral.shade700,
+      // backgroundColor: AppColors.quaterniary,
+      iconColor: AppColors.neutral.shade700,
       icon: Icons.ad_units,
     );
   }

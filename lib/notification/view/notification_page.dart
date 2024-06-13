@@ -8,16 +8,13 @@ class NotificationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: UIColors.quaterniary,
+        backgroundColor: AppColors.quaterniary,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Notification',
-          style: UITextStyle.headline5.copyWith(
-            color: UIColors.primary,
-          ),
         ),
       ),
-      backgroundColor: UIColors.quaterniary,
+      backgroundColor: AppColors.quaterniary,
       body: ListView.builder(
         itemCount: 3,
         // padding: EdgeInsets.only(bottom: ),
@@ -27,25 +24,15 @@ class NotificationsPage extends StatelessWidget {
             height: 112,
             width: 360,
             child: AppBorderColorBox(
-              borderColor: UIColors.neutral.shade300,
+              borderColor: AppColors.neutral.shade300,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     index < 2 ? '$notRead  WU88191111' : 'WU88191111',
-                    style: UITextStyle.headline5.copyWith(
-                      color: UIColors.primary,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                    ),
                   ),
-                  Text(
+                  const Text(
                     'WU881911 - 21.02.2023 / 13:21 was accepted on You can see the complete details in your profile',
-                    style: UITextStyle.subtitle2.copyWith(
-                      color: UIColors.primary,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
                   )
                 ],
               ),

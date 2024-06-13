@@ -10,11 +10,8 @@ class OrdersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Orders",
-          style: UITextStyle.headline5.copyWith(
-            color: UIColors.primary,
-          ),
         ),
         centerTitle: true,
       ),
@@ -29,7 +26,7 @@ class OrdersView extends StatelessWidget {
             Divider(
               indent: 15,
               endIndent: 15,
-              color: UIColors.neutral.shade500,
+              color: AppColors.neutral.shade500,
             ),
             const OrderCollectionColumn(
               orderState: OrderStates.accepted,
@@ -37,7 +34,7 @@ class OrdersView extends StatelessWidget {
             Divider(
               indent: 15,
               endIndent: 15,
-              color: UIColors.neutral.shade500,
+              color: AppColors.neutral.shade500,
             ),
             const OrderCollectionColumn(
               orderState: OrderStates.cancelled,
@@ -45,20 +42,20 @@ class OrdersView extends StatelessWidget {
             Divider(
               indent: 15,
               endIndent: 15,
-              color: UIColors.neutral.shade500,
+              color: AppColors.neutral.shade500,
             ),
           ],
         ),
       ),
-      backgroundColor: UIColors.quaterniary,
+      backgroundColor: AppColors.quaterniary,
     );
   }
 }
 
 enum OrderStates {
-  expected(UIColors.starsColor),
-  accepted(UIColors.accepted),
-  cancelled(UIColors.secondary);
+  expected(AppColors.starsColor),
+  accepted(AppColors.accepted),
+  cancelled(AppColors.secondary);
 
   final Color orderColor;
 
@@ -99,7 +96,7 @@ class OrderCollectionColumn extends StatelessWidget {
                       bottom: 0,
                       child: Icon(
                         Icons.access_time_filled_sharp,
-                        color: UIColors.secondary,
+                        color: AppColors.secondary,
                         size: 50,
                       ),
                     ),
@@ -109,7 +106,7 @@ class OrderCollectionColumn extends StatelessWidget {
                       right: 30,
                       child: Icon(
                         size: 50,
-                        color: UIColors.secondary,
+                        color: AppColors.secondary,
                         Icons.access_time_sharp,
                       ),
                     )
@@ -118,33 +115,25 @@ class OrderCollectionColumn extends StatelessWidget {
                 const SizedBox(
                   width: 35,
                 ),
-                Column(
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       '13:38',
-                      style: UITextStyle.subtitle2.copyWith(
-                        color: UIColors.primary,
-                      ),
                     ),
                     Text(
                       '23.12.2020',
-                      style: UITextStyle.subtitle2.copyWith(
-                        color: UIColors.primary,
-                      ),
                     ),
                   ],
                 ),
                 const Expanded(child: SizedBox()),
                 Row(
                   children: [
-                    Text(
+                    const Text(
                       '3678 TMT',
-                      style: UITextStyle.headline6
-                          .copyWith(color: UIColors.primary),
                     ),
                     IconButton(
-                        splashColor: UIColors.secondary,
+                        splashColor: AppColors.secondary,
                         onPressed: () {},
                         icon: const Icon(Icons.arrow_forward))
                   ],
@@ -162,8 +151,6 @@ class OrderCollectionColumn extends StatelessWidget {
                 const SizedBox(width: 10),
                 Text(
                   '${orderState.name.capitalize()} -  WU18084888',
-                  style:
-                      UITextStyle.subtitle2.copyWith(color: UIColors.primary),
                 )
               ],
             )

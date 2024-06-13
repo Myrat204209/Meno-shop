@@ -8,9 +8,9 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: UIColors.quaterniary,
-      body: HomePageContent(products: products),
+    return const Scaffold(
+      backgroundColor: AppColors.quaterniary,
+      body: HomePageContent(),
     );
   }
 }

@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
 class AppTitledWithViewAllRow extends StatelessWidget {
@@ -26,10 +25,6 @@ class AppTitledWithViewAllRow extends StatelessWidget {
         children: [
           Text(
             title,
-            style: UITextStyle.headline4.copyWith(
-              color: UIColors.primary,
-              fontSize: 16,
-            ),
           ),
           AppViewAllText(onTap: onViewAllTap),
         ],
@@ -49,11 +44,6 @@ class AppViewAllText extends StatelessWidget {
     return TextButton(
       child: Text(
         'View All',
-        style: UITextStyle.subtitle2.copyWith(
-          color: UIColors.secondary,
-          fontWeight: FontWeight.w400,
-          fontSize: 12,
-        ),
       ),
       onPressed: onTap,
     );
@@ -70,10 +60,6 @@ class AppDefaultLabelTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style: UITextStyle.headline4.copyWith(
-        color: UIColors.primary,
-        fontSize: 20,
-      ),
     );
   }
 }

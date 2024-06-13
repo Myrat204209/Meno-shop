@@ -1,4 +1,3 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:meno_shop/banner/banner.dart';
@@ -7,9 +6,7 @@ import 'package:meno_shop/home/home.dart';
 class HomePageContent extends StatelessWidget {
   const HomePageContent({
     super.key,
-    required this.products,
   });
-  final List<AppProductItem> products;
   @override
   Widget build(BuildContext context) {
     final subcategories =
@@ -17,10 +14,10 @@ class HomePageContent extends StatelessWidget {
     final banners = context.select((HomeBloc bloc) => bloc.state.banners);
 
     return CustomScrollView(
-      // shrinkWrap: true,a
       slivers: [
+        const SliverPadding(padding: EdgeInsets.only(top: 10)),
         const HomePageAppBar(),
-        const HomePageBannerCard(),
+        const SliverPadding(padding: EdgeInsets.only(top: 10)),
         // if (banners.isNotEmpty)
         //   SliverToBoxAdapter(
         //     child: AppAdsBanner(banners: banners),
@@ -29,6 +26,8 @@ class HomePageContent extends StatelessWidget {
         //   const SliverToBoxAdapter(
         //     child: SizedBox(height: AppSpacing.md),
         //   ),
+        HomePageBannerCard(banners: banners),
+        const HomePageCenterBanner(),
 
         ///Category
         for (var subcategory in subcategories)
@@ -36,19 +35,6 @@ class HomePageContent extends StatelessWidget {
             products: subcategory.products,
             title: subcategory.name,
           ),
-        // HomePageProductsList(
-        //   products: products,
-        //   title: 'Select Products',
-        // ),
-        // HomePageProductsList(
-        //   title: 'Active Subsubcategories',
-        //   products: products,
-        // ),
-        // HomePageProductsList(
-        //   title: 'Latest Products',
-        //   products: products,
-        // ),
-        // HomePageProductsGrid(products: products),
       ],
     );
   }
