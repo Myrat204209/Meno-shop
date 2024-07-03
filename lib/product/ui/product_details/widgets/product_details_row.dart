@@ -40,7 +40,6 @@ class ProductDetailsRow extends StatelessWidget {
           ),
         ),
         const Gap(15),
-        const AppTwoLayeredTextWidget(),
         const Spacer(flex: 1),
         const ProductDetailsUnderlinedText(),
         const MaxGap(5),

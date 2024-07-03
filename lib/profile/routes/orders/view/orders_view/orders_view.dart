@@ -150,7 +150,7 @@ class OrderCollectionColumn extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  '${orderState.name.capitalize()} -  WU18084888',
+                  '${orderState.name} -  WU18084888',
                 )
               ],
             )

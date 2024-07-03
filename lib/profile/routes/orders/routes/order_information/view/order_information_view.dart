@@ -70,18 +70,19 @@ class ProductListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 100,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AppCachedNetworkImage(
-            imageLink: 'assets/friends.jpg',
+          AppImage(
             width: 90,
             height: 90,
+            imageUrl: Assets.images.jeans.extendPath(),
+            imageType: ImageType.cached,
           ),
-          SizedBox(width: 10),
-          Padding(
+          const SizedBox(width: 10),
+          const Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,8 +101,8 @@ class ProductListTile extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(child: SizedBox()),
-          Text(
+          const Expanded(child: SizedBox()),
+          const Text(
             '8 pcs',
           )
         ],

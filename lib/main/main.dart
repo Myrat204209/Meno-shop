@@ -9,13 +9,14 @@ import 'package:flutter/foundation.dart';
 import 'package:meno_shop/subcategories/subcategories.dart';
 import '../app/app.dart';
 
+const kDefaultBaseUrl = 'http://192.168.30.96:3000';
 void main() {
   bootStrap(({
     required sharedPreferences,
     required exceptionStream,
   }) async {
-    /// Constants
-    const defaultBaseUrl = 'http://192.168.30.96:3000/api/v1';
+    /// Constantsz
+    const defaultBaseUrl = '$kDefaultBaseUrl/api/v1';
 
     /// Storages
     // const secureStorage = SecureStorage();
@@ -77,5 +78,3 @@ void main() {
     );
   });
 }
-
-const kDefaultBaseUrl = 'http://192.168.30.96:3000';

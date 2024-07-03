@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -24,57 +26,100 @@ class AppProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      width: size.width * 0.44,
+      width: size.width * 0.45,
       child: AspectRatio(
-        aspectRatio: 155 / 235,
-        child: Material(
-          color: AppColors.quaterniary,
-          child: InkWell(
-            onTap: onTap,
-            borderRadius: BorderRadius.circular(10),
-            child: Column(
-              children: [
-                AspectRatio(
-                  aspectRatio: 155 / 160,
-                  child: AppProductImage(imageLink: image ?? ''),
+        aspectRatio: 155 / 292,
+        child: InkWell(
+          onTap: () => log('message'),
+          borderRadius: BorderRadius.circular(10),
+          child: Column(
+            children: [
+              AspectRatio(
+                aspectRatio: 155 / 160,
+                child: Stack(
+                  children: [
+                    AppProductImage(imageLink: image ?? ''),
+                  ],
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(6.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Expanded(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: AppProductContentText(
-                                  category: category,
-                                  label: label,
-                                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Expanded(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Flexible(
+                              child: AppProductContentText(
+                                category: category,
+                                label: label,
                               ),
-                              AppButton(
-                                type: AppButtonType.small,
-                                text: null,
-                                onTap: () {
-                                  //TODO: Go to the Orders Page
-                                },
-                              ),
-                            ],
+                            ),
+                            AppButton(
+                              type: AppButtonType.small,
+                              text: null,
+                              onTap: () {
+                                //TODO: Go to the Orders Page
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              '${price.toInt()} TMT',
+                              style: AppTextStyle.text().lg().semiBold(),
+                            ),
                           ),
-                        ),
-                        Text(
-                          '${price.toInt()} TMT',
-                        ),
-                      ],
-                    ),
+                          Expanded(
+                            child: Text(
+                              '1400 TMT',
+                              style: AppTextStyle.text().md().bold().copyWith(
+                                  decoration: TextDecoration.lineThrough),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            height: 45,
+                            width: 35,
+                            child: ColoredBox(color: Colors.amber),
+                          ),
+                          SizedBox(
+                            height: 45,
+                            width: 35,
+                            child: ColoredBox(color: Colors.green),
+                          ),
+                          SizedBox(
+                            height: 45,
+                            width: 35,
+                            child: ColoredBox(color: Colors.teal),
+                          ),
+                          SizedBox(
+                            height: 45,
+                            width: 35,
+                            child: ColoredBox(color: Colors.pink),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -124,15 +169,18 @@ class AppProductImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: AppBorderColorBox(
-        expand: 2,
-        borderColor: AppColors.neutral.shade300,
-        child: AppCachedNetworkImage(
-          imageLink: imageLink,
-          width: double.infinity,
-        ),
+    return SizedBox(
+      height: double.maxFinite,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: AppBorderColorBox(
+            expand: 0.5,
+            borderColor: AppColors.neutral.shade300,
+            child: AppImage(
+              imageUrl: imageLink,
+              imageType: ImageType.cached,
+              width: double.infinity,
+            )),
       ),
     );
   }

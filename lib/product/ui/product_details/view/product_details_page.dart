@@ -2,6 +2,7 @@
 
 // import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import 'package:meno_shop/product/ui/product_details/product_details.dart';
 
@@ -29,9 +30,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             ProductDetailsImageSlider(
               imageLinks: ['asa', 'asdasd', 'asdasdasdas'],
             ),
-            SizedBox(height: 10),
+            Gap(10),
             ProductDetailsLabelText(label: 'Friends Printed'),
-
             SizedBox(height: 10),
             ProductDetailRichText(),
             SizedBox(height: 10),
@@ -55,94 +55,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             SizedBox(height: 10),
             ProductDetailsLabelText(label: 'Select size'),
             SizedBox(height: 10),
-            ProductDetailsSizeSelector(
-              sizes: ['32', '36', '38', '40', '42'],
-              selectedSize: '38',
-            ),
             SizedBox(height: 10),
-            // GridView.builder(
-            //   shrinkWrap: true,
-            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //       crossAxisCount: 2),
-            //   itemBuilder: (context, index) {
-            //     return const AppProductItem(
-            //       price: 1,
-            //       label: 'as',
-            //       category: 'as',
-            //       image: 'assets/coat.png',
-            //     );
-            //   },
-            // ),
-
-            //TODO: Comments section implemetation
-
-            // LayoutBuilder(
-            //   builder: (context, constraints) => GridView.builder(
-            //     itemCount: 2,
-            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //       mainAxisExtent: constraints.maxHeight,
-            //       crossAxisCount: 2,
-            //     ),
-            //     itemBuilder: (context, index) {
-            //       return const AppProduct(
-            //         price: 30,
-            //         label: 'asdas',
-            //         category: 'asas',
-            //       );
-            //     },
-            //   ),
-            // )
           ],
         ),
       ),
     );
   }
 }
-
-
-/**
- * Positioned(
-          bottom: 20,
-          left: 0,
-          child: Container(
-            height: 50,
-            width: 150,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: AppColors.neutral.shade300,
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(
-                  Icons.remove,
-                  size: 30,
-                  color: AppColors.primary,
-                ),
-                Text(
-                  '1',
-                  style: UITextStyle.headline5.copyWith(
-                    color: AppColors.primary,
-                  ),
-                ),
-                Icon(
-                  Icons.add,
-                  size: 30,
-                  color: AppColors.primary,
-                ),
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: 20,
-          right: 0,
-          child: AppButton(
-            type: AppButtonType.iconed,
-            text: 'Add to Cart',
-            onTap: () {},
-          ),
-        ),
- */

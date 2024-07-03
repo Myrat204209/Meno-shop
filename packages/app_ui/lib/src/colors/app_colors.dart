@@ -8,7 +8,7 @@ abstract class AppColors {
 
   static const Color secondary = Color(0xFFC01C15);
 
-  static const Color secondary2 = Color(0xFFED0303);
+  static const Color secondary2 = Color(0xFF4F46E5);
 
   static const Color transparent = Colors.transparent;
 
@@ -17,6 +17,9 @@ abstract class AppColors {
 
   /// Accepted
   static const Color accepted = Color(0xFF009329);
+
+  /// Notification color
+  static const Color newMessage = Color(0xFF00D816);
 
   /// Tertiary
   static const Color tertiary = Color(0xFFCECECE);
@@ -34,6 +37,7 @@ abstract class AppColors {
     500: Color(0xFF94A3B8),
     600: Color(0xFF757575),
     700: Color(0xFF64748B),
+    800: Color(0xFFD9D9D9),
     900: Color(0xFF334155),
   });
 }

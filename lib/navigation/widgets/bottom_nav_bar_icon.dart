@@ -48,7 +48,7 @@ class BottomNavBarBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Badge(
-      backgroundColor: AppColors.secondary2,
+      backgroundColor: AppColors.secondary,
       offset: const Offset(4, -1),
       label: Text(
         badgeText,

@@ -2,7 +2,7 @@
     <application
         android:label="OPT REAL"
         android:name="${applicationName}"
-        android:icon="@mipmap/opt_real_logo">
+        android:icon="@mipmap/splash_image">
         <activity
             android:name=".MainActivity"
             android:exported="true"

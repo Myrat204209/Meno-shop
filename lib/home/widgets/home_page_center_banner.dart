@@ -1,3 +1,4 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:meno_shop/banner/banner.dart';
 
@@ -9,31 +10,15 @@ class HomePageCenterBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: AppBannerCard(
-        imageUrl: 'assets/center-banner.jpg',
+      child: BannerCard(
+        imageUrl: Assets.images.centerBanner.extendPath(),
         onPressed: () {},
-        bannerType: BannerType.ad,
+        bannerType: BannerType.merch,
         label: 'For Traders',
         title: 'Special Offers',
         subtitle: 'All products, whole space price',
+        buttonText: 'Load more',
       ),
-      // Stack(
-      //   children: [
-
-      //     Image.asset(
-      //       'assets/center-banner.jpg',
-      //       height: 150,
-      //       fit: BoxFit.fill,
-      //     ),
-      //     const Center(
-      //       child: BannerContent(
-      //         label: 'For Traders',
-      //         title: 'Special Offers',
-      //         subtitle: 'All products, whole space price',
-      //       ),
-      //     )
-      //   ],
-      // ),
     );
   }
 }

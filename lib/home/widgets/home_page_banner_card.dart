@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:meno_shop/banner/banner.dart';
-import 'package:meno_shop/main/main.dart';
 
 class HomePageBannerCard extends StatelessWidget {
   const HomePageBannerCard({
@@ -20,26 +19,27 @@ class HomePageBannerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.only(bottom: 15),
         child: BlocBuilder<BannerCubit, int>(
           builder: (context, state) {
             final selectedBanner =
                 context.select((BannerCubit cubit) => cubit.state);
 
             return Stack(
-              alignment: Alignment.center,
+              alignment: Alignment.topLeft,
               children: [
                 CarouselSlider.builder(
                   itemCount: 5,
                   itemBuilder: (context, index, realIndex) {
                     // var banner = banners[index];
-                    return AppBannerCard(
+                    return BannerCard(
                       bannerType: BannerType.poster,
-                      imageUrl: '$kDefaultBaseUrl\\${'banner.photo'}',
-                      label: 'banner.label',
-                      title: 'banner.title',
-                      subtitle: 'banner.subtitle',
+                      imageUrl: Assets.images.jeans.extendPath(),
+                      label: 'Label',
+                      title: 'Title',
+                      subtitle: 'Subtitle',
                       onPressed: () {},
+                      buttonText: 'Shop Now',
                     );
                   },
                   options: CarouselOptions(
@@ -53,12 +53,13 @@ class HomePageBannerCard extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 5,
+                  bottom: 15,
+                  left: MediaQuery.sizeOf(context).width / 2 - 35,
                   child: DotsIndicator(
                     dotsCount: 5,
                     position: selectedBanner,
                     decorator: DotsDecorator(
-                      size: const Size(7, 7),
+                      size: const Size(8, 8),
                       color: AppColors.neutral.shade300,
                       activeColor: AppColors.secondary,
                       spacing: const EdgeInsets.only(right: 5),

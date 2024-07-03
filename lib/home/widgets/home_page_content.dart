@@ -1,3 +1,4 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:meno_shop/banner/banner.dart';
@@ -29,7 +30,45 @@ class HomePageContent extends StatelessWidget {
         HomePageBannerCard(banners: banners),
         const HomePageCenterBanner(),
 
-        ///Category
+        SliverToBoxAdapter(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              AppProductItem(
+                image: Assets.images.jeans.extendPath(),
+                price: 112,
+                label: 'asdas',
+                category: 'asdasd',
+              ),
+              const AppProductItem(
+                image: 'assets/jeans.jpg',
+                price: 112,
+                label: 'asdas',
+                category: 'asdasd',
+              ),
+            ],
+          ),
+        ),
+        const SliverPadding(padding: EdgeInsets.symmetric(vertical: 20)),
+        SliverToBoxAdapter(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              AppProductItem(
+                image: Assets.images.jeans.extendPath(),
+                price: 112,
+                label: 'asdas',
+                category: 'asdasd',
+              ),
+              AppProductItem(
+                image: Assets.images.jeans.extendPath(),
+                price: 112,
+                label: 'asdas',
+                category: 'asdasd',
+              ),
+            ],
+          ),
+        ),
         for (var subcategory in subcategories)
           HomePageProductsList(
             products: subcategory.products,

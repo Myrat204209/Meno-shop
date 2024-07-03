@@ -13,19 +13,37 @@ dependencies:
   flexi_image_slider: ^1.0.8
   flutter:
     sdk: flutter
+  flutter_gen: ^5.5.0+1
   flutter_screenutil: ^5.9.0
+  flutter_svg: ^2.0.10+1
   gap: ^3.0.1
   horizontal_picker: ^1.2.0
   vertical_barchart: ^2.0.0+2
 
 dev_dependencies:
+  build_runner: ^2.4.11
+  flutter_gen_runner: ^5.5.0+1
   lints: ^3.0.0
   test: ^1.24.0
 
-flutter:
-  uses-material-design: true  
+flutter_gen:
+  output: lib/src/generated/
+  line_length: 80
   assets:
-   - assets/
+    enabled: true
+    outputs:
+      package_parameter_enabled: true
+
+  integrations:
+    flutter_svg: true
+    lottie: true
+
+flutter:
+  uses-material-design: true 
+  assets:
+    - assets/images/
+    - assets/language/
+    - assets/advantages/
   fonts:
     - family: Poppins
       fonts:
@@ -37,4 +55,3 @@ flutter:
           weight: 500
         - asset: assets/fonts/Poppins-Regular.ttf
           weight: 400
-        

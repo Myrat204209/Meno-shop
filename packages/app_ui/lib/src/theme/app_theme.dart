@@ -41,17 +41,17 @@ class AppTheme {
     return const ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.primary,
-      onPrimary: Colors.white,
+      onPrimary: AppColors.quaterniary,
       secondary: AppColors.secondary,
-      onSecondary: Colors.white,
-      error: Colors.red,
-      onError: Colors.white,
+      onSecondary: AppColors.quaterniary,
+      error: AppColors.secondary,
+      onError: AppColors.quaterniary,
       // background: Color(0xFFFAFAFA),
       // onBackground: Colors.black,
-      surface: Colors.white,
-      onSurface: Colors.black,
+      surface: AppColors.quaterniary,
+      onSurface: AppColors.primary,
       tertiary: AppColors.tertiary,
-      onTertiary: Colors.white,
+      onTertiary: AppColors.quaterniary,
       // errorContainer: Colors.red.shade100,
       // inversePrimary: Colors.white,
       // inverseSurface: Colors.black,
@@ -92,14 +92,15 @@ class AppTheme {
 
   AppBarTheme get _appBarTheme {
     return AppBarTheme(
-      iconTheme: _iconTheme.copyWith(color: AppColors.quaterniary),
-      titleTextStyle: const AppTextStyle.display()
-          .xs()
-          .semiBold()
-          .copyWith(letterSpacing: 1, fontFamily: 'Poppins'),
+      iconTheme: _iconTheme.copyWith(color: AppColors.neutral.shade500),
+      titleTextStyle: const AppTextStyle.text().xl().bold().copyWith(
+            letterSpacing: 1,
+            fontFamily: 'Poppins',
+            color: AppColors.primary,
+          ),
       elevation: 1,
       toolbarHeight: 64,
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.quaterniary,
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light,
@@ -177,8 +178,8 @@ class AppTheme {
     bodySmall: const AppTextStyle.text().caption(),
     labelSmall: const AppTextStyle.text().overline(),
   ).apply(
-      // bodyColor: AppColors.black,
-      // displayColor: AppColors.black,
+      // bodyColor: AppColors.primary,
+      // displayColor: AppColors.primary,
       // decorationColor: AppColors.black,
       );
 
@@ -278,10 +279,10 @@ class AppTheme {
   // }
 
   TabBarTheme get _tabBarTheme {
-    return const TabBarTheme(
+    return TabBarTheme(
       // labelStyle: ,
-      labelColor: AppColors.quaterniary,
-      indicatorColor: AppColors.quaterniary,
+      labelColor: AppColors.neutral.shade500,
+      indicatorColor: AppColors.neutral.shade900,
       // unselectedLabelStyle: UITextStyle.button,
       unselectedLabelColor: Colors.white70,
       // indicator: UnderlineTabIndicator(

@@ -34,6 +34,7 @@ Future<void> bootStrap(AppBuilder builder) async {
 
       /// Hive Box
       await Hive.initFlutter();
+
       final sharedPreferences = await SharedPreferences.getInstance();
 
       runApp(

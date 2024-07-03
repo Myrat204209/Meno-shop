@@ -16,7 +16,7 @@ class AppBorderColorBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: borderColor,
+        border: Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(

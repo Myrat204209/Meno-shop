@@ -31,7 +31,10 @@ class CategoryModelWidget extends StatelessWidget {
             children: [
               AspectRatio(
                 aspectRatio: 6 / 5,
-                child: AppCachedNetworkImage(imageLink: imageLink),
+                child: AppImage(
+                  imageUrl: imageLink,
+                  imageType: ImageType.cached,
+                ),
               ),
               Expanded(child: Text(label)),
             ],
