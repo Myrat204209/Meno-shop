@@ -3,7 +3,6 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
-import 'package:meno_shop/product/ui/product_details/product_details.dart';
 
 class ProductDetailsRow extends StatelessWidget {
   const ProductDetailsRow({
@@ -41,7 +40,6 @@ class ProductDetailsRow extends StatelessWidget {
         ),
         const Gap(15),
         const Spacer(flex: 1),
-        const ProductDetailsUnderlinedText(),
         const MaxGap(5),
       ],
     );

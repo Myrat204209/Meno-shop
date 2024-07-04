@@ -8,7 +8,7 @@ import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/navigation/navigation.dart';
-import 'package:meno_shop/product/product.dart';
+import 'package:meno_shop/product_details/product_details.dart';
 import 'package:meno_shop/profile/profile.dart';
 import 'package:turkmen_localization_support/turkmen_localization_support.dart';
 

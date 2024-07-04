@@ -5,7 +5,7 @@ import 'package:data_provider/data_provider.dart' show CategoryItem;
 import 'package:flutter/material.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/main/main.dart';
-import 'package:meno_shop/product/product.dart';
+import 'package:meno_shop/product_details/product_details.dart';
 
 class HomePageCategoriesList extends StatelessWidget {
   const HomePageCategoriesList({

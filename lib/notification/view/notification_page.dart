@@ -1,17 +1,11 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/navigation/navigation.dart';
 
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final appCubit = context.select(
-      (AppCubit cubit) => cubit,
-    );
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -43,12 +37,6 @@ class NotificationsPage extends StatelessWidget {
           );
         },
       ).paddingOnly(top: 10),
-      // bottomNavigationBar: BottomNavBar(
-      //   currentIndex: appCubit.state.tabIndex,
-      //   onTap: (int value) {
-      //     appCubit.setTab(value);
-      //   },
-      // ),
     );
   }
 }

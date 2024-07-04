@@ -5,7 +5,7 @@ import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:meno_shop/main/main.dart';
 
-import 'package:meno_shop/product/ui/product_details/product_details.dart';
+import 'package:meno_shop/product_details/product_details.dart';
 
 class HomePageProductsList extends StatelessWidget {
   const HomePageProductsList({

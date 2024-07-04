@@ -4,17 +4,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import 'package:meno_shop/product/ui/product_details/product_details.dart';
+import 'package:meno_shop/product_details/product_details.dart';
 
-class ProductDetailsPage extends StatefulWidget {
+class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key});
 
-  @override
-  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
-}
-
-class _ProductDetailsPageState extends State<ProductDetailsPage> {
-  int selectedIndex = 5;
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -28,7 +22,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProductDetailsImageSlider(
-              imageLinks: ['asa', 'asdasd', 'asdasdasdas'],
+              imageLinks: [
+                'https://images.app.goo.gl/WNiYrQyTz84wPzh67',
+                'https://images.app.goo.gl/jXBCXHhbKc2fYNUH6',
+                'https://images.app.goo.gl/FkoxGqdwZwvkQiwU7'
+              ],
             ),
             Gap(10),
             ProductDetailsLabelText(label: 'Friends Printed'),
@@ -36,8 +34,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             ProductDetailRichText(),
             SizedBox(height: 10),
             ProductDetailsRow(onSalePercent: 50),
-            SizedBox(height: 10),
-            ProductDetailsRatingStarRow(initialRating: 1),
             SizedBox(height: 10),
             ProductDetailsDescriptionText(descriptionText: ''),
             SizedBox(height: 10),

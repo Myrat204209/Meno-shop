@@ -336,7 +336,7 @@ packages:
     source: hosted
     version: "1.1.0"
   flexi_image_slider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flexi_image_slider
       sha256: "86af3eef19995c4d38bd8cd6f80ac2f774e8650239c5f67c763c6cbe2d50e5e4"
