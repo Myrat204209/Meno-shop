@@ -33,18 +33,18 @@ class HomePageBannerCard extends StatelessWidget {
                   itemBuilder: (context, index, realIndex) {
                     // var banner = banners[index];
                     return BannerCard(
-                      bannerType: BannerType.poster,
+                      bannerType: BannerType.ad,
                       imageUrl: Assets.images.jeans.extendPath(),
-                      label: 'Label',
-                      title: 'Title',
-                      subtitle: 'Subtitle',
+                      label: 'FROM ONLINE STORE',
+                      title: 'Men’s Lifestyle Collection',
+                      subtitle: 'Discount 50% OFF This week',
                       onPressed: () {},
                       buttonText: 'Shop Now',
                     );
                   },
                   options: CarouselOptions(
                     autoPlay: true,
-                    enlargeCenterPage: true,
+                    enlargeCenterPage: false,
                     viewportFraction: 1,
                     initialPage: 0,
                     onPageChanged: (index, reason) {
@@ -53,7 +53,7 @@ class HomePageBannerCard extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 15,
+                  bottom: 20,
                   left: MediaQuery.sizeOf(context).width / 2 - 35,
                   child: DotsIndicator(
                     dotsCount: 5,

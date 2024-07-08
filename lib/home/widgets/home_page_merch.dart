@@ -1,16 +1,49 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-
 import 'package:meno_shop/banner/banner.dart';
 
-enum BannerType {
-  ad,
-  poster,
-  local,
-  merch,
+class HomePageMerch extends StatelessWidget {
+  const HomePageMerch({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: 145,
+        width: 360,
+        child: ColoredBox(
+          color: Colors.amber,
+          child: AspectRatio(
+            aspectRatio: 340 / 108,
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                AppImage(
+                  imageUrl: Assets.images.centerBanner.extendPath(),
+                  imageType: ImageType.asset,
+                  height: double.infinity,
+                ),
+                const Positioned(
+                  top: 10,
+                  child: BannerContent(
+                    bannerType: BannerType.merch,
+                    buttonText: 'Load More',
+                    label: 'For Traders',
+                    title: 'Special Offers',
+                    subtitle: 'All products, whole space price',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
+/**
 
 /// A widget representing a banner card that displays an image, label, title, subtitle, and a button.
 class BannerCard extends StatelessWidget {
@@ -35,7 +68,7 @@ class BannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 19 / 9,
+      aspectRatio: 328 / 165,
       child: Stack(
         children: [
           ClipRRect(
@@ -70,6 +103,9 @@ class BannerCard extends StatelessWidget {
   }
 }
 
+final defaultBannerStyle =
+    const AppTextStyle.text().regular().md().withColor(AppColors.quaterniary);
+
 class BannerContent extends StatelessWidget {
   const BannerContent({
     super.key,
@@ -86,16 +122,10 @@ class BannerContent extends StatelessWidget {
   final String subtitle;
   @override
   Widget build(BuildContext context) {
-    final defaultBannerStyle = const AppTextStyle.text()
-        .regular()
-        .md()
-        .withColor(AppColors.quaterniary);
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: bannerType != BannerType.merch
-          ? CrossAxisAlignment.start
-          : CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
@@ -114,14 +144,15 @@ class BannerContent extends StatelessWidget {
           subtitle,
           style: defaultBannerStyle,
         ),
-        const Gap(AppSpacing.md),
+        const Gap(AppSpacing.lg),
         if (bannerType != BannerType.poster)
           BannerButton(
             onPressed: () {},
             bannerType: bannerType,
-            text: buttonText ?? '',
           )
       ],
     );
   }
 }
+
+ */

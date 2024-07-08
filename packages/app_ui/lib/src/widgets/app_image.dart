@@ -41,16 +41,14 @@ class AppImage extends StatelessWidget {
       ImageType.cached => CachedNetworkImage(
           imageUrl: _imageUrl,
           fit: BoxFit.cover,
-          // imageBuilder: (context, imageProvider) => SizedBox(child: child),
           errorWidget: (context, url, error) => Image.asset(
             Assets.images.placeholder.extendPath(),
             fit: _fit ?? BoxFit.fitHeight,
           ),
-          placeholder: (_, url) => Center(
-            child: CircularProgressIndicator.adaptive(),
-          ),
           height: _height,
           width: _width,
+          placeholder: (_, url) =>
+              CircularProgressIndicator.adaptive().centralize(),
         )
     };
   }

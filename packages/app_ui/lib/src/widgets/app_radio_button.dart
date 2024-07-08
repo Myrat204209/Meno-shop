@@ -30,42 +30,37 @@ class _AppRadioButtonState extends State<AppRadioButton> {
       children: [
         AppBorderColorBox(
           borderColor: AppColors.neutral.shade100,
-          child: Center(
-            child: Text(
-              widget.text,
-            ),
-          ),
+          child: Text(
+            widget.text,
+          ).centralize(),
         ),
         SizedBox(
           height: widget.values.length * 100,
           child: ListView.builder(
             itemCount: widget.values.length,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 26),
-                child: Material(
+              return Material(
+                borderRadius: BorderRadius.circular(10),
+                color: AppColors.neutral.shade100,
+                child: InkWell(
+                  radius: 100,
                   borderRadius: BorderRadius.circular(10),
-                  color: AppColors.neutral.shade100,
-                  child: InkWell(
-                    radius: 100,
-                    borderRadius: BorderRadius.circular(10),
-                    onTap: () {
-                      //TODO: onTap function must have Logic,
-                      stateChange(index);
-                    },
-                    child: ListTile(
-                      leading: Radio.adaptive(
-                        value: index,
-                        groupValue: _tapValue,
-                        onChanged: stateChange,
-                      ),
-                      title: Text(
-                        widget.values[index],
-                      ),
+                  onTap: () {
+                    //TODO: onTap function must have Logic,
+                    stateChange(index);
+                  },
+                  child: ListTile(
+                    leading: Radio.adaptive(
+                      value: index,
+                      groupValue: _tapValue,
+                      onChanged: stateChange,
+                    ),
+                    title: Text(
+                      widget.values[index],
                     ),
                   ),
                 ),
-              );
+              ).paddingSymmetric(horizontal: 26, vertical: 5);
             },
           ),
         ),

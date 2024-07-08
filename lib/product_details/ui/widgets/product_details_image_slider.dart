@@ -19,7 +19,7 @@ class ProductDetailsImageSlider extends StatelessWidget {
       child: flexi_image_slider(
         context: context,
         duration: const Duration(seconds: 3),
-        indicatorAlignment: IndicatorAlignment.right,
+        indicatorAlignment: IndicatorAlignment.center,
         indicatorActiveColor: AppColors.secondary,
         indicatorPosition: IndicatorPosition.overImage,
         indicatorDeactiveColor: AppColors.neutral.shade300,
