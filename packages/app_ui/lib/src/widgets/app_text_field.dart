@@ -155,10 +155,14 @@ class UITextField extends StatelessWidget {
         decoration: InputDecoration(
           // labelStyle: UITextStyle.headline5,
           filled: true,
-          fillColor: AppColors.neutral.shade100,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide.none,
+          fillColor: AppColors.neutral.shade300,
+
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: AppColors.neutral.shade300, // Kenarlık rengini ayarlayın
+              width: 2.0,
+            ),
+            borderRadius: BorderRadius.circular(8.0),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.secondary),
