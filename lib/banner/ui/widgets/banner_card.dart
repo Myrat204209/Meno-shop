@@ -90,35 +90,47 @@ class BannerContent extends StatelessWidget {
     final defaultBannerStyle =
         const AppTextStyle.text().regular().withColor(AppColors.quaterniary);
     return SizedBox(
-      height: 124,
-      width: 340,
+      height: 124.h,
+      width: 340.w,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: bannerType != BannerType.merch
             ? CrossAxisAlignment.start
             : CrossAxisAlignment.center,
         children: [
-          AutoSizeText(
-            label,
-            style: defaultBannerStyle,
-          ).paddingOnly(bottom: 5),
-          AutoSizeText(
-            title,
-            style: const AppTextStyle.text()
-                .bold()
-                .md()
-                .withColor(AppColors.quaterniary),
-          ).paddingOnly(bottom: 5),
-          AutoSizeText(
-            subtitle,
-            style: defaultBannerStyle,
-          ).paddingOnly(bottom: 10),
+          Expanded(
+            flex: 1,
+            child: AutoSizeText(
+              label,
+              style: defaultBannerStyle,
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: AutoSizeText(
+              title,
+              style: const AppTextStyle.text()
+                  .bold()
+                  .md()
+                  .withColor(AppColors.quaterniary),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: AutoSizeText(
+              subtitle,
+              style: defaultBannerStyle,
+            ),
+          ),
           if (bannerType != BannerType.poster)
-            BannerButton(
-              onPressed: () {},
-              bannerType: bannerType,
-              text: buttonText ?? '',
-            )
+            Expanded(
+              flex: 2,
+              child: BannerButton(
+                onPressed: () {},
+                bannerType: bannerType,
+                text: buttonText ?? '',
+              ).paddingSymmetric(vertical: 10),
+            ),
         ],
       ),
     );

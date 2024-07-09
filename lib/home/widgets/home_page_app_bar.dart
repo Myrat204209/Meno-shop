@@ -12,6 +12,10 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       title: const AppSearchBar(),
+      collapsedHeight: 60,
+      scrolledUnderElevation: 0,
+      pinned: true,
+      backgroundColor: AppColors.quaterniary,
       actions: [
         AppActionsButton(
           icon: Icons.language,
@@ -27,10 +31,9 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
         ),
       ],
-      backgroundColor: AppColors.quaterniary,
     );
   }
 
   @override
-  Size get preferredSize => const Size(double.infinity, 70);
+  Size get preferredSize => const Size(double.infinity, 60);
 }

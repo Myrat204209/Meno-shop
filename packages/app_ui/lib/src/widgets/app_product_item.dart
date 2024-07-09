@@ -58,17 +58,17 @@ class AppProductItem extends StatelessWidget {
                           shape: CircleBorder(),
                           child: Icon(
                             Icons.favorite,
-                            size: 23.sp,
+                            size: 20.h,
                             color: AppColors.secondary,
-                          ).paddingAll(5),
+                          ).paddingAll(3.5),
                         ),
                       ),
                       Positioned(
                         left: 5,
                         top: 5,
                         child: Assets.advantages.presentPlus1.svg(
-                          height: 50.h,
-                          width: 50.w,
+                          height: 47.h,
+                          width: 47.w,
                         ),
                       )
                     ],
