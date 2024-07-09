@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meno_shop/banner/banner.dart';
 
 class HomePageMerch extends StatelessWidget {
@@ -11,32 +12,29 @@ class HomePageMerch extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: SizedBox(
-        height: 145,
-        width: 360,
-        child: ColoredBox(
-          color: Colors.amber,
-          child: AspectRatio(
-            aspectRatio: 340 / 108,
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                AppImage(
-                  imageUrl: Assets.images.centerBanner.extendPath(),
-                  imageType: ImageType.asset,
-                  height: double.infinity,
-                ),
-                const Positioned(
-                  top: 10,
-                  child: BannerContent(
-                    bannerType: BannerType.merch,
-                    buttonText: 'Load More',
-                    label: 'For Traders',
-                    title: 'Special Offers',
-                    subtitle: 'All products, whole space price',
-                  ),
-                ),
-              ],
-            ),
+        height: 115.h,
+        width: 360.w,
+        child: AspectRatio(
+          aspectRatio: 18 / 5,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            fit: StackFit.expand,
+            children: [
+              AppImage(
+                imageUrl: Assets.images.centerBanner.extendPath(),
+                imageType: ImageType.asset,
+                height: double.infinity,
+              ),
+              FittedBox(
+                child: const BannerContent(
+                  bannerType: BannerType.merch,
+                  buttonText: 'Load More',
+                  label: 'For Traders',
+                  title: 'Special Offers',
+                  subtitle: 'All products, whole space price',
+                ).paddingOnly(top: 10),
+              ),
+            ],
           ),
         ),
       ),

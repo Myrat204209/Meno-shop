@@ -15,6 +15,10 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsAdvantagesGen {
   const $AssetsAdvantagesGen();
 
+  /// File path: assets/advantages/advantage_product.svg
+  SvgGenImage get advantageProduct =>
+      const SvgGenImage('assets/advantages/advantage_product.svg');
+
   /// File path: assets/advantages/amatly_1.svg
   SvgGenImage get amatly1 =>
       const SvgGenImage('assets/advantages/amatly_1.svg');
@@ -31,17 +35,34 @@ class $AssetsAdvantagesGen {
   SvgGenImage get fastDelivery =>
       const SvgGenImage('assets/advantages/fast_delivery.svg');
 
-  /// File path: assets/advantages/online payment.svg
-  SvgGenImage get onlinePayment =>
-      const SvgGenImage('assets/advantages/online payment.svg');
+  /// File path: assets/advantages/free_delivery.svg
+  SvgGenImage get freeDelivery =>
+      const SvgGenImage('assets/advantages/free_delivery.svg');
+
+  /// File path: assets/advantages/pay_online.svg
+  SvgGenImage get payOnline =>
+      const SvgGenImage('assets/advantages/pay_online.svg');
 
   /// File path: assets/advantages/present_plus_1.svg
   SvgGenImage get presentPlus1 =>
       const SvgGenImage('assets/advantages/present_plus_1.svg');
 
+  /// File path: assets/advantages/present_plus_2.svg
+  SvgGenImage get presentPlus2 =>
+      const SvgGenImage('assets/advantages/present_plus_2.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [amatly1, amatly2, amatly3, fastDelivery, onlinePayment, presentPlus1];
+  List<SvgGenImage> get values => [
+        advantageProduct,
+        amatly1,
+        amatly2,
+        amatly3,
+        fastDelivery,
+        freeDelivery,
+        payOnline,
+        presentPlus1,
+        presentPlus2
+      ];
 }
 
 class $AssetsImagesGen {

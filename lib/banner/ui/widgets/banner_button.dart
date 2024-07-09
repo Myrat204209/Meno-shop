@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:meno_shop/banner/banner.dart';
 
@@ -21,14 +23,18 @@ class BannerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      shape: ShapeBorderX.roundedRectangle(10),
+      shape: ShapeBorderX.roundedRectangle(11.r),
+      height: 22.h,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       color: AppColors.quaterniary,
       onPressed: onPressed,
-      child: Text(
+      child: AutoSizeText(
         text,
+        minFontSize: 10,
+        maxFontSize: 14,
         textAlign: TextAlign.center,
-        style: const AppTextStyle.text().semiBold().md(),
-      ).paddingSymmetric(vertical: 4, horizontal: 12),
+        style: const AppTextStyle.text().semiBold(),
+      ).paddingSymmetric(vertical: 4.h, horizontal: 5.w),
     );
   }
 }

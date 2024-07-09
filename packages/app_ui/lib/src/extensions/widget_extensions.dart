@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Padding extensions
 extension WidgetPaddingX on Widget {
   Widget paddingAll(double padding) => Padding(
         padding: EdgeInsets.all(padding),
@@ -30,6 +31,15 @@ extension WidgetPaddingX on Widget {
       );
 }
 
+/// ALignment extensions
 extension WidgetCenterX on Widget {
   Widget centralize() => Center(child: this);
+}
+
+/// Colorize Widget
+extension WidgetColorX on Widget {
+  Widget colorize(Color color) => ColoredBox(
+        color: color,
+        child: this,
+      );
 }

@@ -19,7 +19,7 @@ class HomePageContent extends StatelessWidget {
       slivers: [
         const SliverPadding(padding: EdgeInsets.only(top: 10)),
         const HomePageAppBar(),
-        const SliverPadding(padding: EdgeInsets.only(top: 10)),
+        // const SliverPadding(padding: EdgeInsets.only(top: 10)),
         // if (banners.isNotEmpty)
         //   SliverToBoxAdapter(
         //     child: AppAdsBanner(banners: banners),
@@ -37,15 +37,15 @@ class HomePageContent extends StatelessWidget {
             children: [
               AppProductItem(
                 image: Assets.images.jeans.extendPath(),
-                price: 112,
-                label: 'asdas',
-                category: 'asdasd',
+                price: 550,
+                category: 'Accessories',
+                label: 'Gold Watch',
               ),
-              const AppProductItem(
-                image: 'assets/jeans.jpg',
-                price: 112,
-                label: 'asdas',
-                category: 'asdasd',
+              AppProductItem(
+                image: Assets.images.jeans.extendPath(),
+                price: 550,
+                label: 'Accessories',
+                category: 'Gold Watch',
               ),
             ],
           ),

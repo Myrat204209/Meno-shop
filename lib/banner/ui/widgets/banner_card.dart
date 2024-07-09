@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:meno_shop/banner/banner.dart';
 
@@ -35,27 +36,27 @@ class BannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 19 / 9,
+      aspectRatio: 2 / 1,
       child: Stack(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(8.r),
             child: ColorFiltered(
               colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.3),
                 BlendMode.multiply,
               ),
+              //TODO: Change to the network
               child: AppImage(
                 imageUrl: imageUrl,
-                //TODO: Change to the network
                 imageType: ImageType.asset,
                 height: double.infinity,
               ),
             ),
           ),
           Positioned(
-            left: 25,
-            top: 60,
+            left: 20,
+            top: 35,
             child: BannerContent(
               bannerType: bannerType,
               buttonText: buttonText,
@@ -66,7 +67,7 @@ class BannerCard extends StatelessWidget {
           ),
         ],
       ),
-    ).paddingSymmetric(horizontal: 16, vertical: 10);
+    ).paddingSymmetric(horizontal: 10, vertical: 5);
   }
 }
 
@@ -86,42 +87,40 @@ class BannerContent extends StatelessWidget {
   final String subtitle;
   @override
   Widget build(BuildContext context) {
-    final defaultBannerStyle = const AppTextStyle.text()
-        .regular()
-        .md()
-        .withColor(AppColors.quaterniary);
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: bannerType != BannerType.merch
-          ? CrossAxisAlignment.start
-          : CrossAxisAlignment.center,
-      children: [
-        Text(
-          label,
-          style: defaultBannerStyle,
-        ),
-        const Gap(AppSpacing.xxs),
-        Text(
-          title,
-          style: const AppTextStyle.text()
-              .bold()
-              .lg()
-              .withColor(AppColors.quaterniary),
-        ),
-        const Gap(AppSpacing.xxs),
-        Text(
-          subtitle,
-          style: defaultBannerStyle,
-        ),
-        const Gap(AppSpacing.md),
-        if (bannerType != BannerType.poster)
-          BannerButton(
-            onPressed: () {},
-            bannerType: bannerType,
-            text: buttonText ?? '',
-          )
-      ],
+    final defaultBannerStyle =
+        const AppTextStyle.text().regular().withColor(AppColors.quaterniary);
+    return SizedBox(
+      height: 124,
+      width: 340,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: bannerType != BannerType.merch
+            ? CrossAxisAlignment.start
+            : CrossAxisAlignment.center,
+        children: [
+          AutoSizeText(
+            label,
+            style: defaultBannerStyle,
+          ).paddingOnly(bottom: 5),
+          AutoSizeText(
+            title,
+            style: const AppTextStyle.text()
+                .bold()
+                .md()
+                .withColor(AppColors.quaterniary),
+          ).paddingOnly(bottom: 5),
+          AutoSizeText(
+            subtitle,
+            style: defaultBannerStyle,
+          ).paddingOnly(bottom: 10),
+          if (bannerType != BannerType.poster)
+            BannerButton(
+              onPressed: () {},
+              bannerType: bannerType,
+              text: buttonText ?? '',
+            )
+        ],
+      ),
     );
   }
 }

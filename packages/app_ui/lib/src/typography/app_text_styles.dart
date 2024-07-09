@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// The app consists of two main text style definitions: Display and Text.
 enum AppTextType {
@@ -176,6 +177,11 @@ extension AppTextStyleFontWeightExtension on AppTextStyle {
 
   /// Font weight to bold - FontWeight.w700
   AppTextStyle bold() => _copyWith(fontWeight: AppFontWeight.bold);
+}
+
+extension AppTextStyleFontSizeExtension on AppTextStyle {
+  /// Font size to screen_util
+  AppTextStyle sp() => _copyWith(fontSize: fontSize?.sp);
 }
 
 /// Material typography
