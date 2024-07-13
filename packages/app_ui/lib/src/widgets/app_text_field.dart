@@ -141,10 +141,12 @@ class UITextField extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: 45),
       child: TextFormField(
         obscuringCharacter: '*',
+        cursorHeight: 18,
         key: key,
         initialValue: initialValue,
         controller: controller,
         inputFormatters: inputFormatters,
+        style: AppTextStyle.text().md().regular(),
         keyboardType: keyboardType,
         obscureText: obscureText ?? false,
         autocorrect: autocorrect,
@@ -153,31 +155,17 @@ class UITextField extends StatelessWidget {
         autofillHints: autoFillHints,
         onFieldSubmitted: onSubmitted,
         decoration: InputDecoration(
-          // labelStyle: UITextStyle.headline5,
           filled: true,
-          fillColor: AppColors.neutral.shade300,
-
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.neutral.shade300, // Kenarlık rengini ayarlayın
-              width: 2.0,
-            ),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.secondary),
-            borderRadius: BorderRadius.circular(8),
-          ),
+          fillColor: AppColors.neutral.shade200,
           prefixText: prefixText,
           labelText: labelText,
           hintText: hintText,
           errorText: errorText,
           prefixIcon: prefix,
-
           suffixIcon: suffix,
           suffixIconConstraints: BoxConstraints.tightFor(
             width: 40,
-            height: 30,
+            height: 40,
           ),
           prefixIconConstraints: BoxConstraints.tightFor(
             width: 48,

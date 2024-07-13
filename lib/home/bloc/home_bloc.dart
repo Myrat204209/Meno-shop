@@ -37,8 +37,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         GetQueryParameters(
           populate: ['products'],
           isActive: true,
-          limit: 30,
-          offset: 0,
+          limit: 100,
+          offset: 30,
         ),
       );
       emit(state.copyWith(

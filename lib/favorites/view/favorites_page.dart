@@ -39,12 +39,23 @@ class FilterModalContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const FilterPageWrap(
-          label: '',
-          children: [],
+        ListTile(
+          titleAlignment: ListTileTitleAlignment.center,
+          contentPadding: const EdgeInsets.only(left: 40),
+          title: Text(
+            'Filter',
+            style: const AppTextStyle.text().headline6().semiBold(),
+          ).centralize(),
+          trailing: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(Icons.clear),
+          ),
         ),
+        const Wrap(),
         const FilterPageWrap(
           children: categoryChipList,
           label: 'Categories',
@@ -58,6 +69,6 @@ class FilterModalContent extends StatelessWidget {
           onTap: () {},
         )
       ],
-    );
+    ).paddingAll(10);
   }
 }

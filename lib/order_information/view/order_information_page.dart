@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meno_shop/profile/routes/orders/routes/routes.dart';
+import 'package:meno_shop/order_information/order_information.dart';
 
 class OrderInformationPage extends StatelessWidget {
   const OrderInformationPage({super.key});

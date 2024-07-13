@@ -38,6 +38,7 @@ class BannerCard extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 2 / 1,
       child: Stack(
+        alignment: Alignment.centerLeft,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.r),
@@ -54,9 +55,7 @@ class BannerCard extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            left: 20,
-            top: 35,
+          FittedBox(
             child: BannerContent(
               bannerType: bannerType,
               buttonText: buttonText,
@@ -64,7 +63,7 @@ class BannerCard extends StatelessWidget {
               title: title ?? 'Men\'s Lifestyle Collection',
               subtitle: subtitle ?? 'Subtitle',
             ),
-          ),
+          ).paddingOnly(left: 25),
         ],
       ),
     ).paddingSymmetric(horizontal: 10, vertical: 5);

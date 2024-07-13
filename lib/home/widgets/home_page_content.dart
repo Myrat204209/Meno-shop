@@ -1,4 +1,4 @@
-import 'package:app_ui/app_ui.dart';
+// import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,87 +31,13 @@ class HomePageContent extends StatelessWidget {
         HomePageBannerCard(banners: banners),
         const HomePageMerch(),
         const SliverPadding(padding: EdgeInsets.only(bottom: 20)),
-        SliverToBoxAdapter(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              AppProductItem(
-                image: Assets.images.jeans.extendPath(),
-                price: 550,
-                category: 'Accessories',
-                label: 'Gold Watch',
-              ),
-              AppProductItem(
-                image: Assets.images.jeans.extendPath(),
-                price: 550,
-                label: 'Accessories',
-                category: 'Gold Watch',
-              ),
-            ],
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              AppProductItem(
-                image: Assets.images.jeans.extendPath(),
-                price: 550,
-                category: 'Accessories',
-                label: 'Gold Watch',
-              ),
-              AppProductItem(
-                image: Assets.images.jeans.extendPath(),
-                price: 550,
-                label: 'Accessories',
-                category: 'Gold Watch',
-              ),
-            ],
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              AppProductItem(
-                image: Assets.images.jeans.extendPath(),
-                price: 550,
-                category: 'Accessories',
-                label: 'Gold Watch',
-              ),
-              AppProductItem(
-                image: Assets.images.jeans.extendPath(),
-                price: 550,
-                label: 'Accessories',
-                category: 'Gold Watch',
-              ),
-            ],
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              AppProductItem(
-                image: Assets.images.jeans.extendPath(),
-                price: 550,
-                category: 'Accessories',
-                label: 'Gold Watch',
-              ),
-              AppProductItem(
-                image: Assets.images.jeans.extendPath(),
-                price: 550,
-                label: 'Accessories',
-                category: 'Gold Watch',
-              ),
-            ],
-          ),
-        ),
+
         for (var subcategory in subcategories)
-          HomePageProductsList(
-            products: subcategory.products,
-            title: subcategory.name,
-          ),
+          if (subcategory.products != [] && subcategory.products!.isNotEmpty)
+            HomePageProductsList(
+              products: subcategory.products,
+              title: subcategory.name,
+            ),
       ],
     );
   }

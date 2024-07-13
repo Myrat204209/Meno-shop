@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:app_ui/app_ui.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class AppTitledWithViewAllRow extends StatelessWidget {
@@ -15,21 +17,16 @@ class AppTitledWithViewAllRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: padding ?? 0,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-          ),
-          AppViewAllText(onTap: onViewAllTap),
-        ],
-      ),
-    );
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        AutoSizeText(
+          title,
+          style: AppTextStyle.text().lg().bold(),
+        ),
+        AppViewAllText(onTap: onViewAllTap),
+      ],
+    ).paddingSymmetric(horizontal: padding ?? 12);
   }
 }
 
@@ -44,6 +41,8 @@ class AppViewAllText extends StatelessWidget {
     return TextButton(
       child: Text(
         'View All',
+        style:
+            AppTextStyle.text().regular().sm().withColor(AppColors.secondary2),
       ),
       onPressed: onTap,
     );

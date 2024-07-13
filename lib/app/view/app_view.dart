@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/app/app.dart' show AppCubit;
 import 'package:meno_shop/cart/cart.dart';
+import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/navigation/navigation.dart';
-import 'package:meno_shop/product_details/product_details.dart';
 import 'package:meno_shop/profile/profile.dart';
 import 'package:turkmen_localization_support/turkmen_localization_support.dart';
 
@@ -23,9 +23,10 @@ class _AppViewState extends State<AppView> {
   @override
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.light,
-        statusBarColor: AppColors.neutral.shade700,
+        statusBarColor: AppColors.quaterniary,
+        //  Color(0xA8E2EAFF),
       ),
     );
     super.initState();
@@ -50,7 +51,8 @@ class _AppViewState extends State<AppView> {
             index: selectedTab,
             children: const [
               HomePage(),
-              ProductDetailsPage(),
+              CategoriesPage(),
+              // ProductDetailsPage(),
               CartPage(),
               FavoritesPage(),
               ProfilePage(),

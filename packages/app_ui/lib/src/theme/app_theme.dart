@@ -98,7 +98,7 @@ class AppTheme {
             fontFamily: 'Poppins',
             color: AppColors.primary,
           ),
-      elevation: 1,
+      elevation: 0,
       toolbarHeight: 64,
       backgroundColor: AppColors.quaterniary,
       systemOverlayStyle: const SystemUiOverlayStyle(
@@ -180,24 +180,46 @@ class AppTheme {
   ).apply(
       // bodyColor: AppColors.primary,
       // displayColor: AppColors.primary,
-      // decorationColor: AppColors.black,
+      // decorationColor: AppColors.black,z
       );
 
   InputDecorationTheme get _inputDecorationTheme {
     return InputDecorationTheme(
-      iconColor: AppColors.primary,
-      suffixIconColor: AppColors.primary,
-      prefixIconColor: AppColors.primary,
-      labelStyle: const AppTextStyle.text().sm().withColor(AppColors.primary),
-      contentPadding: const EdgeInsets.all(AppSpacing.lg),
-      border: const OutlineInputBorder(),
-      outlineBorder: const BorderSide(color: AppColors.primary),
-      enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primary)),
-      focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primary, width: 2)),
+      prefixIconColor: AppColors.neutral.shade700,
+      labelStyle:
+          const AppTextStyle.text().sm().withColor(AppColors.neutral.shade500),
+      hintStyle: AppTextStyle.text()
+          .sm()
+          .regular()
+          .withColor(AppColors.neutral.shade500),
+      prefixStyle:
+          AppTextStyle.text().md().regular().withColor(AppColors.primary),
+
+      contentPadding: EdgeInsets.only(left: 15),
+
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(
+          color: AppColors.secondary2,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(
+          color: AppColors.secondary,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(
+          color: AppColors.transparent,
+        ),
+      ),
+
       filled: true,
-      isDense: true,
+      fillColor: AppColors.starsColor,
+      focusColor: AppColors.newMessage,
+      // isDense: true,
     );
   }
 

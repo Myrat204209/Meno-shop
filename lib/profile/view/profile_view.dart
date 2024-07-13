@@ -3,60 +3,61 @@ import 'dart:developer';
 
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:meno_shop/profile/profile.dart';
+import 'package:meno_shop/account/account.dart';
+import 'package:meno_shop/addresses/address.dart';
+import 'package:meno_shop/orders/orders.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: AppColors.quaterniary,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 40,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Name',
-            ),
-            const Text(
-              'Myrat',
-            ),
-            const SizedBox(height: 50),
-            ProfilePageButton(
-              title: 'Account',
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const AccountPage(),
-                ));
-              },
-            ),
-            ProfilePageButton(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const MyAddressPage(),
-                ));
-              },
-              title: 'My Address',
-            ),
-            ProfilePageButton(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const OrdersPage(),
-                ));
-              },
-              title: 'Orders',
-            ),
-            ProfilePageButton(
-              onTap: () {},
-              title: 'Logout',
-            ),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 40,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Name',
+            style: const AppTextStyle.text().medium().sm(),
+          ),
+          Text(
+            'Myrat',
+            style: const AppTextStyle.text().semiBold().xl(),
+          ),
+          const SizedBox(height: 50),
+          ProfilePageButton(
+            title: 'Account',
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const AccountPage(),
+              ));
+            },
+          ),
+          ProfilePageButton(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const AddressPage(),
+              ));
+            },
+            title: 'My Address',
+          ),
+          ProfilePageButton(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const OrdersPage(),
+              ));
+            },
+            title: 'Orders',
+          ),
+          ProfilePageButton(
+            onTap: () {},
+            title: 'Logout',
+          ),
+        ],
       ),
     );
   }
@@ -72,51 +73,32 @@ class ProfilePageButton extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Material(
-        color: Colors.white,
+    return Material(
+      color: AppColors.quaterniary,
+      borderRadius: BorderRadius.circular(10),
+      child: InkWell(
+        splashColor: AppColors.secondary.withOpacity(0.3),
+        onTap: onTap,
         borderRadius: BorderRadius.circular(10),
-        child: InkWell(
-          splashColor: AppColors.secondary.withOpacity(0.3),
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(10),
-          onLongPress: () {
-            log('Long press $title ishledi');
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: SizedBox(
-              height: 45,
-              width: double.maxFinite,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.transparent),
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: const Color.fromARGB(254, 248, 250, 252),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        title,
-                      ),
-                      const Icon(
-                        Icons.chevron_right_rounded,
-                        weight: 0.1,
-                        color: AppColors.primary,
-                        size: 45,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+        onLongPress: () {
+          log('Long press $title ishledi');
+        },
+        child: ListTile(
+          leading: Text(
+            title,
+            style: const AppTextStyle.text().medium().sm(),
+          ),
+          shape: ShapeBorderX.roundedRectangle(10),
+          tileColor: AppColors.neutral.shade200,
+          contentPadding: const EdgeInsets.only(left: 15),
+          trailing: const Icon(
+            Icons.chevron_right,
+            color: AppColors.primary,
+            fill: 0.2,
+            size: 40,
           ),
         ),
       ),
-    );
+    ).paddingSymmetric(vertical: 7);
   }
 }

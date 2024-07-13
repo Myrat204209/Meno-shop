@@ -3,7 +3,6 @@
 import 'dart:developer';
 
 import 'package:app_ui/app_ui.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -74,94 +73,93 @@ class AppProductItem extends StatelessWidget {
                     ],
                   ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                          child: AppProductContentText(
-                            category: category,
-                            label: label,
-                          ),
-                        ),
-                        AppButton(
-                          type: AppButtonType.small,
-                          text: null,
-                          onTap: () {
-                            //TODO: Go to the Orders Page
-                          },
-                        ),
-                      ],
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Text(
+                        label * 4,
+                        softWrap: true,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyle.text()
+                            .semiBold()
+                            .xs()
+                            .withColor(AppColors.primary),
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            '${price.toInt()} TMT',
-                            style: AppTextStyle.text().md().bold().sp(),
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '1400 TMT',
-                            style: AppTextStyle.text()
-                                .sm()
-                                .regular()
-                                .sp()
-                                .copyWith(
-                                    decoration: TextDecoration.lineThrough),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: SizedBox(
-                            height: 45.h,
-                            width: 35.w,
-                            child: Assets.advantages.fastDelivery
-                                .svg(fit: BoxFit.cover),
-                          ),
-                        ).paddingOnly(right: 5),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: SizedBox(
-                            height: 45.h,
-                            width: 35.w,
-                            child: Assets.advantages.freeDelivery
-                                .svg(fit: BoxFit.cover),
-                          ),
-                        ).paddingOnly(right: 5),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: SizedBox(
-                            height: 45.h,
-                            width: 35.w,
-                            child: Assets.advantages.payOnline
-                                .svg(fit: BoxFit.cover),
-                          ),
-                        ).paddingOnly(right: 5),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: SizedBox(
-                            height: 45.h,
-                            width: 35.w,
-                            child: Assets.advantages.advantageProduct
-                                .svg(fit: BoxFit.cover),
-                          ),
-                        ).paddingOnly(right: 5),
-                      ],
-                    ),
+                    AppButton(
+                      type: AppButtonType.small,
+                      text: null,
+                      onTap: () {
+                        //TODO: Go to the Orders Page
+                      },
+                    ).paddingOnly(left: 7),
                   ],
-                ).paddingOnly(left: 5, right: 5, top: 5),
+                ).paddingAll(5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        '${price.toInt()} TMT',
+                        style: AppTextStyle.text().md().bold().sp(),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        '1400 TMT',
+                        style: AppTextStyle.text()
+                            .sm()
+                            .regular()
+                            .sp()
+                            .copyWith(decoration: TextDecoration.lineThrough),
+                      ),
+                    )
+                  ],
+                ).paddingAll(5),
+                SizedBox(height: 10.h),
+                Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: SizedBox(
+                        height: 45.h,
+                        width: 35.w,
+                        child: Assets.advantages.fastDelivery
+                            .svg(fit: BoxFit.cover),
+                      ),
+                    ).paddingOnly(right: 5),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: SizedBox(
+                        height: 45.h,
+                        width: 35.w,
+                        child: Assets.advantages.freeDelivery
+                            .svg(fit: BoxFit.cover),
+                      ),
+                    ).paddingOnly(right: 5),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: SizedBox(
+                        height: 45.h,
+                        width: 35.w,
+                        child:
+                            Assets.advantages.payOnline.svg(fit: BoxFit.cover),
+                      ),
+                    ).paddingOnly(right: 5),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: SizedBox(
+                        height: 45.h,
+                        width: 35.w,
+                        child: Assets.advantages.advantageProduct
+                            .svg(fit: BoxFit.cover),
+                      ),
+                    ).paddingOnly(right: 5),
+                  ],
+                ),
               ],
             ),
           ),
@@ -185,17 +183,8 @@ class AppProductContentText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        AutoSizeText(
-          category,
-          softWrap: true,
-          maxLines: 3,
-          maxFontSize: 14,
-          style: AppTextStyle.text()
-              .regular()
-              .sm()
-              .withColor(AppColors.neutral.shade700),
-        ),
         Gap(6.h),
         Text(
           label,
@@ -228,7 +217,7 @@ class AppProductImage extends StatelessWidget {
             borderColor: AppColors.neutral.shade300,
             child: AppImage(
               imageUrl: imageLink,
-              imageType: ImageType.asset,
+              imageType: ImageType.cached,
               width: double.infinity,
             )),
       ),

@@ -7,7 +7,7 @@ enum AppButtonType {
   large(120),
   standard(30),
   iconed(40),
-  small(10);
+  small(8);
 
   final double padding;
   const AppButtonType(this.padding);
@@ -37,7 +37,7 @@ class AppButton extends StatelessWidget {
         onTap: onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: 10,
+            vertical: 5,
             horizontal: type.padding,
           ),
           child: Row(

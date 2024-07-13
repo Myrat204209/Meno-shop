@@ -15,7 +15,7 @@ class SubcategoryItem {
   final String? uuid;
   final String? name;
   final bool? isActive;
-  final List<PhotoItem>? photo;
+  final PhotoItem? photo;
   final List<ProductItem>? products;
   factory SubcategoryItem.fromJson(JsonType json) =>
       _$SubcategoryItemFromJson(json);

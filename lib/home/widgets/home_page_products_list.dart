@@ -47,7 +47,7 @@ class HomePageProductsList extends StatelessWidget {
                   return AppProductItem(
                     price: product.price!,
                     image: '$kDefaultBaseUrl\\$imageUrl',
-                    label: ' ',
+                    label: product.name ?? '',
                     category: products![index]!.name!,
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(

@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
-  AppCubit() : super(AppState.home);
+  AppCubit() : super(AppState.profile);
   void setTab(int selectedTab) {
     switch (selectedTab) {
       case 0:

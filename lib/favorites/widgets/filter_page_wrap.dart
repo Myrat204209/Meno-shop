@@ -16,10 +16,28 @@ class FilterPageWrap extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppTitledWithViewAllRow(title: label),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: const AppTextStyle.text().lg().medium(),
+            ),
+            TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Select All',
+                  style: const AppTextStyle.text()
+                      .regular()
+                      .sm()
+                      .withColor(AppColors.secondary2),
+                )),
+          ],
+        ).paddingSymmetric(horizontal: 2, vertical: 15),
         Wrap(
           spacing: 10,
-          runSpacing: 10,
+          runSpacing: 12,
           children: children == null
               ? []
               : children!
@@ -28,8 +46,10 @@ class FilterPageWrap extends StatelessWidget {
                         label: element,
                       ))
                   .toList(),
+        ).paddingOnly(right: 11),
+        Divider(
+          color: AppColors.neutral.shade300,
         ),
-        const Divider(),
         const SizedBox(height: 20),
       ],
     );

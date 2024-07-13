@@ -30,6 +30,7 @@ abstract class AppColors {
   /// Neutral
   static const MaterialColor neutral = MaterialColor(0xFFFFFFFF, <int, Color>{
     0: Color(0xFFFFFFFF),
+    50: Color(0xFFE4E4E4),
     100: Color(0xAAF8FAFC),
     200: Color(0xFFF8FAFC),
     300: Color(0xFFDFE5EC),

@@ -54,10 +54,6 @@ class UIPhoneTextField extends StatelessWidget {
       maxLength: 8,
       autoFillHints: const [AutofillHints.telephoneNumber],
       autocorrect: false,
-      prefix: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: const Icon(Icons.phone_outlined),
-      ),
       prefixText: '+993 ',
       onChanged: onChanged,
       suffix: suffix,
