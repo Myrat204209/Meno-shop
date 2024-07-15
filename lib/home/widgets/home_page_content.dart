@@ -1,4 +1,5 @@
 // import 'package:app_ui/app_ui.dart';
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,7 +32,9 @@ class HomePageContent extends StatelessWidget {
         HomePageBannerCard(banners: banners),
         const HomePageMerch(),
         const SliverPadding(padding: EdgeInsets.only(bottom: 20)),
-
+        if (subcategories.isEmpty)
+          SliverToBoxAdapter(
+              child: const CircularProgressIndicator.adaptive().centralize()),
         for (var subcategory in subcategories)
           if (subcategory.products != [] && subcategory.products!.isNotEmpty)
             HomePageProductsList(

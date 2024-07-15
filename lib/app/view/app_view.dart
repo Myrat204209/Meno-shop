@@ -25,7 +25,7 @@ class _AppViewState extends State<AppView> {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.light,
-        statusBarColor: AppColors.quaterniary,
+        statusBarColor: Color(0xFFE2EAFF),
         //  Color(0xA8E2EAFF),
       ),
     );

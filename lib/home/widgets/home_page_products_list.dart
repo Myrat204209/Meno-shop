@@ -30,6 +30,7 @@ class HomePageProductsList extends StatelessWidget {
               builder: (context) => const ProductDetailsPage(),
             )),
           ),
+          const SizedBox(height: 10),
           if (products != null)
             AppHorizontalListView(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -56,11 +57,14 @@ class HomePageProductsList extends StatelessWidget {
                     },
                   );
                 }
-                return const SizedBox();
+                return const SizedBox(
+                  child: Text('No available products'),
+                ).centralize();
               },
             )
           else
             const SliverPadding(padding: EdgeInsets.zero),
+          const SizedBox(height: 15),
         ],
       ),
     );

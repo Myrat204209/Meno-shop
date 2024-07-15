@@ -22,6 +22,7 @@ class NotificationsPage extends StatelessWidget {
               'AS475912',
               style: const AppTextStyle.text().headline6().semiBold(),
             ),
+            isThreeLine: true,
             subtitle: Text(
               'WU881911 - 21.02.2023 / 13:21 \nYou can see the complete details in your profile',
               softWrap: true,

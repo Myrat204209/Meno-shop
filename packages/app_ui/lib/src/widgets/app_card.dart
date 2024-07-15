@@ -12,6 +12,7 @@ class AppCard extends StatelessWidget {
     this.subtitle,
     this.trailing,
     this.leading,
+    this.isThreeLine,
     this.onTap,
     this.onLongPressed,
   });
@@ -21,8 +22,10 @@ class AppCard extends StatelessWidget {
   final Widget? title;
   final Widget? subtitle;
   final Widget? trailing;
+  final bool? isThreeLine;
   final VoidCallback? onTap;
   final VoidCallback? onLongPressed;
+
   @override
   Widget build(BuildContext context) {
     return AppBorderColorBox(
@@ -42,7 +45,7 @@ class AppCard extends StatelessWidget {
             onTap: onTap,
             onLongPress: onLongPressed,
             contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            isThreeLine: subtitle == null,
+            isThreeLine: isThreeLine == true,
             shape: ShapeBorderX.roundedRectangle(10),
           ),
         ),

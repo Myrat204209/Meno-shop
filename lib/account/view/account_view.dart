@@ -1,7 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 class AccountView extends StatelessWidget {
   const AccountView({super.key});
@@ -46,6 +45,10 @@ class AccountView extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const UITextField.emailTextField(
+              labelText: 'Email address',
+              hintText: 'Your email address',
+            ),
+            const UITextField(
               labelText: 'Email address',
               hintText: 'Your email address',
             ),
