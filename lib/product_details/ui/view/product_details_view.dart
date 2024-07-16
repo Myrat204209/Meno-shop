@@ -20,10 +20,28 @@ class ProductDetailsView extends StatelessWidget {
             'https',
             'https',
           ]),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                '2122',
+                style: const AppTextStyle.text()
+                    .regular()
+                    .sm()
+                    .withColor(const Color(0xFF8F8F8F)),
+              ),
+              const SizedBox(width: 5),
+              const Icon(
+                Icons.remove_red_eye_outlined,
+                color: Color(0xFF8F8F8F),
+                size: 18,
+              )
+            ],
+          ).paddingSymmetric(vertical: 10),
           Text(
             'Friends Printed',
             style: const AppTextStyle.text().headline6().semiBold(),
-          ).paddingSymmetric(vertical: 10),
+          ).paddingOnly(bottom: 10),
           ListTile(
             contentPadding: const EdgeInsets.only(left: 0),
             minTileHeight: 10,
@@ -54,24 +72,20 @@ class ProductDetailsView extends StatelessWidget {
             ),
             subtitle: Text(
               '500 TMT',
-              style: const AppTextStyle.text().lg().bold(),
+              style: const AppTextStyle.text().md().bold(),
             ),
-            trailing: Text(
-              '3 offers from (550 TMT)',
-              style: const AppTextStyle.text().md().semiBold().copyWith(
-                    decoration: TextDecoration.underline,
-                    color: AppColors.secondary2,
-                  ),
-            ),
-            isThreeLine: true,
+            // trailing: Text(
+            //   '3 offers from (550 TMT)',
+            //   style: const AppTextStyle.text().md().semiBold().copyWith(
+            //         decoration: TextDecoration.underline,
+            //         color: AppColors.secondary2,
+            //       ),
+            // ),
+            // isThreeLine: true,
           ),
           ListTile(
             contentPadding: const EdgeInsets.only(left: 0),
             isThreeLine: true,
-            title: Text(
-              '212 reviews',
-              style: const AppTextStyle.text().lg().semiBold(),
-            ),
             subtitle: Text(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non erat quam. Vestibulum aliquam nibh dui, et aliquet nibh euismod quis.',
                     style: const AppTextStyle.text()
@@ -105,7 +119,7 @@ class ProductDetailsView extends StatelessWidget {
             spacing: 10,
             children: sizes
                 .map((element) => ProductSizeChip(
-                      isSelected: element == 'S' ? true : false,
+                      isSelected: element == 'M' ? true : false,
                       label: element,
                     ))
                 .toList(),
@@ -114,6 +128,18 @@ class ProductDetailsView extends StatelessWidget {
           Text(
             'Similar Goods',
             style: const AppTextStyle.text().bold().xl(),
+          ),
+          const SizedBox(height: 15),
+          AppHorizontalListView(
+            itemCount: 4,
+            itemBuilder: (context, index) {
+              return const AppProductItem(
+                image: 'image',
+                price: 222,
+                label: 'label',
+                category: '',
+              );
+            },
           ),
         ],
       ),

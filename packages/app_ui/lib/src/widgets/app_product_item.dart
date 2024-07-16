@@ -165,7 +165,7 @@ class AppProductItem extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ).paddingOnly(right: 10);
   }
 }
 

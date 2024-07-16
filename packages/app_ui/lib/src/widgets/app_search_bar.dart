@@ -22,7 +22,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
       controller: _controller,
       prefix: Icon(
         Icons.search,
-        // color: AppColors.neutral.shade700,
+        color: AppColors.neutral.shade700,
       ),
       hintText: 'Search from shop...',
     );

@@ -3,7 +3,6 @@ import 'package:bloc/bloc.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meno_shop/banner/banner.dart';
-import 'package:meno_shop/banner/data/data.dart';
 import 'package:meno_shop/subcategories/subcategories.dart';
 
 part 'home_event.dart';
@@ -12,10 +11,8 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({
     required SubcategoryRepository subcategoryRepository,
-    // required ProductRepository productRepository,
     required BannerRepository bannerRepository,
   })  : _subcategoryRepository = subcategoryRepository,
-        // _productRepository = productRepository,
         _bannerRepository = bannerRepository,
         super(const HomeState.initial()) {
     on<HomeRequested>(_onHomeRequested);
@@ -23,7 +20,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeBannersRequested>(_onHomeBannersRequested);
   }
   final SubcategoryRepository _subcategoryRepository;
-  // final ProductRepository _productRepository;
   final BannerRepository _bannerRepository;
   FutureOr<void> _onHomeRequested(
     HomeRequested event,
@@ -37,8 +33,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         GetQueryParameters(
           populate: ['products'],
           isActive: true,
-          limit: 100,
-          offset: 30,
+          limit: 40,
+          offset: 1,
         ),
       );
       emit(state.copyWith(

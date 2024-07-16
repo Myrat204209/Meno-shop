@@ -18,7 +18,7 @@ class ProductDetailsPercentBox extends StatelessWidget {
         constraints: const BoxConstraints(
           // minWidth: 45,
           // minHeight: 45,
-          maxHeight: 60,
+          maxHeight: 50,
           maxWidth: 50,
         ),
         child: Center(
@@ -26,7 +26,7 @@ class ProductDetailsPercentBox extends StatelessWidget {
             '-${onSalePercent.toInt()}%',
             style: const AppTextStyle.text()
                 .semiBold()
-                .md()
+                .sm()
                 .withColor(AppColors.quaterniary),
           ),
         ),

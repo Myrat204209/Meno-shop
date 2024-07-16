@@ -13,6 +13,7 @@ class ProductDetailsAppBar extends StatelessWidget
       title: const Text(
         'Product Details',
       ),
+      scrolledUnderElevation: 0,
       centerTitle: true,
       actions: [
         AppActionsButton(

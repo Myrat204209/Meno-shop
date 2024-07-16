@@ -25,7 +25,7 @@ class ProductSizeChip extends StatelessWidget {
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       labelPadding: const EdgeInsets.symmetric(horizontal: -5),
       label: SizedBox(
-        height: 35,
+        height: 30,
         width: 40,
         child: Text(
           label ?? '',

@@ -27,9 +27,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
       emit(state.copyWith(status: CategoriesStatus.loading));
       final response = await _categoryRepository.getCategories(
         GetQueryParameters(
-          populate: [
-            'photos',
-          ],
+          populate: ['subcategories'],
         ),
       );
       emit(state.copyWith(

@@ -42,13 +42,13 @@ class App extends StatelessWidget {
     final languageBloc = LanguageBloc();
     final homeBloc = HomeBloc(
       subcategoryRepository: _subcategoryRepository,
-      // productRepository: _productRepository,
       bannerRepository: _bannerRepository,
     )..add(HomeRequested());
     final categoriesBloc =
-        CategoriesBloc(categoryRepository: _categoryRepository);
-    final subcategoriesBloc =
-        SubcategoriesBloc(subcategoryRepository: _subcategoryRepository);
+        CategoriesBloc(categoryRepository: _categoryRepository)
+          ..add(const CategoriesRequested());
+    // final subcategoriesBloc =
+    //     SubcategoriesBloc(subcategoryRepository: _subcategoryRepository);
     // final addressBloc = AddressBloc(
     //   addressRepository: _addressRepository,
     // )..add(AddressesRequested());
@@ -68,7 +68,7 @@ class App extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider.value(value: categoriesBloc),
-          BlocProvider.value(value: subcategoriesBloc),
+          // BlocProvider.value(value: subcategoriesBloc),
           // BlocProvider.value(value: addressBloc),
           // BlocProvider.value(value: addressBloc),
           BlocProvider.value(value: languageBloc),
