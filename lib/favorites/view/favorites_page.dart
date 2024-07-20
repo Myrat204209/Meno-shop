@@ -2,6 +2,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:meno_shop/favorites/favorites.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 //TODO: Change Favorites page into Filter page
 class FavoritesPage extends StatelessWidget {
@@ -45,7 +46,7 @@ class FilterModalContent extends StatelessWidget {
           titleAlignment: ListTileTitleAlignment.center,
           contentPadding: const EdgeInsets.only(left: 40),
           title: Text(
-            'Filter',
+            context.l10n.filter,
             style: const AppTextStyle.text().headline6().semiBold(),
           ).centralize(),
           trailing: IconButton(
@@ -64,8 +65,8 @@ class FilterModalContent extends StatelessWidget {
         const FilterPageWrap(children: brandChipList, label: 'Brands'),
         const Expanded(child: SizedBox()),
         AppButton(
-          type: AppButtonType.large,
-          text: 'Close',
+          type: AppButtonType.expanded,
+          buttonText: 'Close',
           onTap: () {},
         )
       ],

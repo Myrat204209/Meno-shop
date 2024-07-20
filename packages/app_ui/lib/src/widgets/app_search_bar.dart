@@ -1,9 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
 class AppSearchBar extends StatefulWidget {
-  const AppSearchBar({super.key});
-
+  const AppSearchBar({
+    super.key,
+    required this.hintText,
+  });
+  final String hintText;
   @override
   State<AppSearchBar> createState() => _AppSearchBarState();
 }
@@ -24,7 +28,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
         Icons.search,
         color: AppColors.neutral.shade700,
       ),
-      hintText: 'Search from shop...',
+      hintText: widget.hintText,
     );
   }
 

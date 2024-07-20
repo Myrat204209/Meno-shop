@@ -20,25 +20,33 @@ class LanguageListTile extends StatelessWidget {
   final String groupValue;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 5,
+    return RadioListTile.adaptive(
+      title: title,
+      value: value,
+      groupValue: groupValue,
+      onChanged: onChanged,
+      toggleable: true,
+      shape: ShapeBorderX.roundedRectangle(
+        10,
+        value == groupValue ? AppColors.secondary : AppColors.neutral.shade800,
       ),
-      child: RadioListTile.adaptive(
-        title: title,
-        value: value,
-        groupValue: groupValue,
-        onChanged: onChanged,
-        toggleable: true,
-        shape: ShapeBorderX.roundedRectangle(10, AppColors.neutral.shade800),
-        activeColor: AppColors.secondary2,
-        controlAffinity: ListTileControlAffinity.trailing,
-        secondary: svgPictureFromAsset(languageName),
-
-        contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 1),
-        // trailing: const Icon(Icons.circle_outlined),
+      tileColor: value == groupValue
+          ? AppColors.secondary.withOpacity(0.05)
+          : AppColors.quaterniary,
+      activeColor: AppColors.secondary2,
+      controlAffinity: ListTileControlAffinity.trailing,
+      secondary: svgPictureFromAsset(languageName),
+      visualDensity: const VisualDensity(
+        horizontal: VisualDensity.minimumDensity,
+        vertical: VisualDensity.minimumDensity,
       ),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 4,
+      ),
+      // trailing: const Icon(Icons.circle_outlined),
+    ).paddingSymmetric(
+      vertical: 5,
     );
   }
 }

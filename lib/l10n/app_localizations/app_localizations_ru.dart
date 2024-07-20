@@ -2,14 +2,13 @@ import 'app_localizations.dart';
 
 /// The translations for Russian (`ru`).
 class AppLocalizationsRu extends AppLocalizations {
-  AppLocalizationsRu([super.locale = 'ru']);
+  AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get networkError => 'Нет подключения к Интернету.';
+  String get networkError => 'Нет подключения к интернету.';
 
   @override
-  String get networkErrorDescription =>
-      'Пожалуйста, попробуйте еще раз через некоторое время.';
+  String get networkErrorDescription => 'Пожалуйста, попробуйте позже.';
 
   @override
   String get networkErrorButton => 'Попробовать снова';
@@ -18,10 +17,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get services => 'Разделы';
 
   @override
-  String get entryPage => 'Домашняя страница';
+  String get entryPage => 'Главная страница';
 
   @override
-  String get main => 'Главный';
+  String get main => 'Главная';
+
+  @override
+  String get notification => 'Уведомление';
+
+  @override
+  String get unreadMessage => 'Новое';
 
   @override
   String get profile => 'Профиль';
@@ -30,10 +35,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profileEdit => 'Редактировать профиль';
 
   @override
-  String get firstname => 'Имя';
+  String get name => 'Имя';
 
   @override
-  String get lastname => 'Фамилия';
+  String get phoneNumber => 'Номер телефона';
 
   @override
   String get email => 'Электронная почта';
@@ -42,14 +47,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get technicalSupportTitle => 'Техническая поддержка';
 
   @override
-  String get technicalSupportDescription =>
-      'Свяжитесь с нами для решения вопросов';
+  String get technicalSupportDescription => 'Свяжитесь с нами для получения помощи';
 
   @override
   String get manageAddressesTitle => 'Управление адресами';
 
   @override
-  String get manageAddressesDescription => 'Управление вашими адресами';
+  String get manageAddressesDescription => 'Управляйте своими адресами';
 
   @override
   String get settings => 'Настройки';
@@ -58,35 +62,40 @@ class AppLocalizationsRu extends AppLocalizations {
   String get language => 'Язык';
 
   @override
-  String get languageChangeTitle => 'Выбор языка';
+  String get languageChangeTitle => 'Изменить язык';
 
   @override
   String get languageSelectDescription => 'Выберите язык приложения';
 
   @override
+  String get searching => 'Поиск по магазину...';
+
+  @override
   String get startShopping => 'Начать покупки';
+
+  @override
+  String get loadMore => 'Загрузить больше';
+
+  @override
+  String get viewAll => 'Посмотреть все';
 
   @override
   String get order => 'Заказ';
 
   @override
-  String get orderTotal => 'Итог заказа';
+  String get orderTotal => 'Итоговая сумма заказа';
 
   @override
   String get orders => 'Мои заказы';
 
   @override
-  String get ordersEmptyTitle => 'Заказов нет';
+  String get ordersEmptyTitle => 'Нет заказов';
 
   @override
-  String get ordersEmptyDescription => 'Здесь отображаются ваши заказы';
+  String get ordersEmptyDescription => 'Ваши заказы будут отображаться здесь';
 
   @override
-  String get favoritesEmptyTitle => 'Halanlarym ýok';
-
-  @override
-  String get favoritesEmptyDescription =>
-      'Halanlaryňyzyň sanawy şu ýerde görkeziler';
+  String get discount => 'Скидка';
 
   @override
   String get productSize => 'Размер';
@@ -95,41 +104,58 @@ class AppLocalizationsRu extends AppLocalizations {
   String get productColor => 'Цвет';
 
   @override
-  String get productPrice => 'Цена за шт';
+  String get productPrice => 'Цена за единицу';
+
+  @override
+  String get productsAll => 'Продукты';
 
   @override
   String get addresses => 'Мои адреса';
 
   @override
-  String get addressesCreate => 'Добавить адрес';
+  String get addressesCreate => 'Добавить новый адрес';
 
   @override
-  String get checkOutCompleteTitle => 'Заказ размещен';
+  String get checkOutCompleteTitle => 'Ваш заказ зарегистрирован.';
 
   @override
-  String get checkOutCompleteContent =>
-      'Оператор свяжется с вами для подтверждения заказа!';
+  String get checkOutCompleteContent => 'Завершенная сделка будет добавлена вам в указанное время. Спасибо за покупку!';
 
   @override
-  String get deliveryTariffTitle => 'Тип доставки';
+  String get confirm => 'Продолжить покупки';
 
   @override
-  String get trackOrder => 'Отслеживать заказ';
+  String get deliveryTime => 'Выберите время доставки';
 
   @override
-  String get complete => 'Завершить';
+  String get deliverySerice => 'Служба доставки';
 
   @override
-  String get confirm => 'Подтвердить';
+  String get trackOrder => 'Отследить заказ';
+
+  @override
+  String get accepted => 'Принято';
+
+  @override
+  String get expected => 'Ожидается';
+
+  @override
+  String get neglection => 'Нет';
+
+  @override
+  String get affirmation => 'Да';
 
   @override
   String get goToTheCart => 'Перейти в корзину';
 
   @override
-  String get totalCost => 'Общая стоимость';
+  String get total => 'Общая стоимость';
 
   @override
-  String get paymentMethod => 'Метод оплаты';
+  String get totalCost => 'Общая стоимость товаров';
+
+  @override
+  String get paymentMethod => 'Способы оплаты';
 
   @override
   String get paymentMethodCash => 'Наличные';
@@ -141,47 +167,49 @@ class AppLocalizationsRu extends AppLocalizations {
   String get orderType => 'Тип заказа';
 
   @override
-  String get orderConfirmation => 'Подтверждение заказа';
+  String get orderConfirmation => 'Подтвердить корзину';
 
   @override
   String get orderNotes => 'Примечания к заказу';
 
   @override
-  String get orderNotesDescription =>
-      'Дополнительные инструкции или примечания к заказу';
+  String get orderNotesDescription => 'Дополнительные инструкции или примечания к заказу';
 
   @override
-  String get orderNotesDescription2 =>
-      'Дополнительные инструкции, аллергии, предпочтения';
+  String get orderNotesDescription2 => 'Дополнительные инструкции, аллергии, предпочтения';
 
   @override
-  String get selectAddress => 'Выберите адрес';
+  String get selectAddress => 'Выбрать адрес';
 
   @override
-  String get selectAddressEmpty => 'Не выбран';
+  String get selectAddressEmpty => 'Не выбрано';
 
   @override
-  String get cart => 'Корзина';
+  String get cart => 'Моя корзина';
 
   @override
-  String get cartAddSuccess => 'Товар успешно добавлен в корзину';
+  String get cartAdd => 'добавлено в корзину';
 
   @override
-  String get cartClearTitle => 'Очистить корзину';
+  String get cartClearTitle => 'Удалить продукты';
 
   @override
-  String get cartClearContent =>
-      'После нажатия кнопки подтверждения вы не сможете восстановить товары в корзине.';
+  String get cartClearContent => 'Вы хотите удалить все продукты?';
 
   @override
   String get cartEmptyTitle => 'Корзина пуста';
 
   @override
-  String get cartEmptyDescription =>
-      'Здесь отображаются товары в вашей корзине';
+  String get cartEmptyDescription => 'Товары в вашей корзине будут отображаться здесь';
 
   @override
   String get placeAnOrder => 'Оформить заказ';
+
+  @override
+  String get filter => 'Фильтр';
+
+  @override
+  String get selectAll => 'Выбрать все';
 
   @override
   String get success => 'Успех';
@@ -196,9 +224,17 @@ class AppLocalizationsRu extends AppLocalizations {
   String get clear => 'Очистить';
 
   @override
-  String get productsEmptyTitle => 'Товары не найдены';
+  String get productsEmptyTitle => 'Продукты не найдены';
 
   @override
-  String get productsEmptyDescription =>
-      'В настоящее время товары отсутствуют.';
+  String get productsEmptyDescription => 'В данный момент нет доступных продуктов.';
+
+  @override
+  String get merchLabel => 'Для торговцев';
+
+  @override
+  String get merchTitle => 'Специальные предложения';
+
+  @override
+  String get merchSubtitle => 'Все продукты, оптовая цена';
 }

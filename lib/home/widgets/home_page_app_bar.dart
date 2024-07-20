@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/language/language.dart';
 import 'package:meno_shop/notification/notification.dart';
 
@@ -11,7 +12,9 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: const AppSearchBar(),
+      title: AppSearchBar(
+        hintText: context.l10n.searching,
+      ),
       collapsedHeight: 60,
       scrolledUnderElevation: 0,
       pinned: true,

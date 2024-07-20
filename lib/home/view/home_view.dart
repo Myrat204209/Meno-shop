@@ -2,6 +2,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:meno_shop/home/home.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/language/language.dart';
 import 'package:meno_shop/notification/notification.dart';
 
@@ -12,7 +13,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const AppSearchBar(),
+        title: AppSearchBar(
+          hintText: context.l10n.searching,
+        ),
         scrolledUnderElevation: 0,
         backgroundColor: AppColors.quaterniary,
         actions: [

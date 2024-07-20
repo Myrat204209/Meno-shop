@@ -5,6 +5,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:meno_shop/account/account.dart';
 import 'package:meno_shop/addresses/address.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/orders/orders.dart';
 
 class ProfileView extends StatelessWidget {
@@ -12,6 +13,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
@@ -21,7 +23,7 @@ class ProfileView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Name',
+            l10n.name,
             style: const AppTextStyle.text().medium().sm(),
           ),
           Text(
@@ -43,7 +45,7 @@ class ProfileView extends StatelessWidget {
                 builder: (_) => const AddressPage(),
               ));
             },
-            title: 'My Address',
+            title: l10n.addresses,
           ),
           ProfilePageButton(
             onTap: () {
@@ -51,7 +53,7 @@ class ProfileView extends StatelessWidget {
                 builder: (context) => const OrdersPage(),
               ));
             },
-            title: 'Orders',
+            title: l10n.orders,
           ),
           ProfilePageButton(
             onTap: () {},

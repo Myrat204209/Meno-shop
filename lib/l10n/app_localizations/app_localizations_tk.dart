@@ -2,17 +2,16 @@ import 'app_localizations.dart';
 
 /// The translations for Turkmen (`tk`).
 class AppLocalizationsTk extends AppLocalizations {
-  AppLocalizationsTk([super.locale = 'tk']);
+  AppLocalizationsTk([String locale = 'tk']) : super(locale);
 
   @override
-  String get networkError => 'Internet birikmesi ýok.';
+  String get networkError => 'Internet baglanyşygy ýok.';
 
   @override
-  String get networkErrorDescription =>
-      'Birnäçe wagtdan soň synanyşmagyňyzy Sizden haýyş edýäris.';
+  String get networkErrorDescription => 'Haçan-da bolsa täzeden synanyşyň.';
 
   @override
-  String get networkErrorButton => 'Gaýtadan synanyşyň';
+  String get networkErrorButton => 'Täzeden synanyş';
 
   @override
   String get services => 'Bölümler';
@@ -21,31 +20,37 @@ class AppLocalizationsTk extends AppLocalizations {
   String get entryPage => 'Baş sahypa';
 
   @override
-  String get main => 'Esasy';
+  String get main => 'Baş';
+
+  @override
+  String get notification => 'Bildiriş';
+
+  @override
+  String get unreadMessage => 'Täze';
 
   @override
   String get profile => 'Profil';
 
   @override
-  String get profileEdit => 'Profili sazlamak';
+  String get profileEdit => 'Profili redaktirle';
 
   @override
-  String get firstname => 'Ady';
+  String get name => 'At';
 
   @override
-  String get lastname => 'Familiýasy';
+  String get phoneNumber => 'Telefon belgisi';
 
   @override
-  String get email => 'Elektron poçtasy';
+  String get email => 'Email';
 
   @override
-  String get technicalSupportTitle => 'Tehniki kömek';
+  String get technicalSupportTitle => 'Tehniki goldaw';
 
   @override
-  String get technicalSupportDescription => 'Soraglaryňyz boýunça habarlaşmak';
+  String get technicalSupportDescription => 'Kömek üçin biziň bilen habarlaşyň';
 
   @override
-  String get manageAddressesTitle => 'Salgylarym';
+  String get manageAddressesTitle => 'Salgylary dolandyrmak';
 
   @override
   String get manageAddressesDescription => 'Salgylaryňyzy dolandyryň';
@@ -57,79 +62,100 @@ class AppLocalizationsTk extends AppLocalizations {
   String get language => 'Dil';
 
   @override
-  String get languageChangeTitle => 'Dil';
+  String get languageChangeTitle => 'Dili üýtget';
 
   @override
-  String get languageSelectDescription => 'Programmanyň dilini saýlaň';
+  String get languageSelectDescription => 'Programma dilini saýlaň';
+
+  @override
+  String get searching => 'Dükandan gözle...';
 
   @override
   String get startShopping => 'Söwda başla';
 
   @override
+  String get loadMore => 'Has köp ýükle';
+
+  @override
+  String get viewAll => 'Hemmesini gör';
+
+  @override
   String get order => 'Sargyt';
 
   @override
-  String get orderTotal => 'Sargyt hasabyňyz';
+  String get orderTotal => 'Jemi sargyt';
 
   @override
-  String get orders => 'Sargytlarym';
+  String get orders => 'Meniň sargytlarym';
 
   @override
   String get ordersEmptyTitle => 'Sargyt ýok';
 
   @override
-  String get ordersEmptyDescription =>
-      'Sargytlaryňyzyň sanawy şu ýerde görkeziler';
+  String get ordersEmptyDescription => 'Sargytlaryňyz şu ýerde görkeziler';
 
   @override
-  String get favoritesEmptyTitle => 'Halanlarym ýok';
+  String get discount => 'Arzanladyş';
 
   @override
-  String get favoritesEmptyDescription =>
-      'Halanlaryňyzyň sanawy şu ýerde görkeziler';
+  String get productSize => 'Ölçeg';
 
   @override
-  String get productSize => 'Ölçegi';
+  String get productColor => 'Reňk';
 
   @override
-  String get productColor => 'Reňki';
+  String get productPrice => 'Bir önümiň bahasy';
 
   @override
-  String get productPrice => 'Bahasy';
+  String get productsAll => 'Önümler';
 
   @override
-  String get addresses => 'Salgylarym';
+  String get addresses => 'Meniň salgylarym';
 
   @override
-  String get addressesCreate => 'Salgy goş';
+  String get addressesCreate => 'Täze salgy goş';
 
   @override
-  String get checkOutCompleteTitle => 'Sargydyňyz ýerleşdirildi';
+  String get checkOutCompleteTitle => 'Sargydyňyz hasaba alyndy.';
 
   @override
-  String get checkOutCompleteContent =>
-      'Operator Size jaň eder sargydyňyzy tassyklamak üçin jaň eder!';
+  String get checkOutCompleteContent => 'Tamamlanan söwda bellenen wagtda size goşular. Söwda üçin sag boluň!';
 
   @override
-  String get deliveryTariffTitle => 'Eltip berme görnüşi';
+  String get confirm => 'Söwda dowam et';
 
   @override
-  String get trackOrder => 'Sargydy yzarla';
+  String get deliveryTime => 'Eltip bermek wagtyny saýlaň';
 
   @override
-  String get complete => 'Tamamla';
+  String get deliverySerice => 'Eltip bermek hyzmaty';
 
   @override
-  String get confirm => 'Tassykla';
+  String get trackOrder => 'Sargydy yzarlamak';
+
+  @override
+  String get accepted => 'Kabul edildi';
+
+  @override
+  String get expected => 'Garaşylýar';
+
+  @override
+  String get neglection => 'Ýok';
+
+  @override
+  String get affirmation => 'Hawa';
 
   @override
   String get goToTheCart => 'Sebede git';
 
   @override
-  String get totalCost => 'Umumy baha';
+  String get total => 'Jemi baha';
 
   @override
-  String get paymentMethod => 'Töleg usuly';
+  String get totalCost => 'Harytlaryň jemi bahasy';
+
+  @override
+  String get paymentMethod => 'Töleg usullary';
 
   @override
   String get paymentMethodCash => 'Nagt';
@@ -141,46 +167,49 @@ class AppLocalizationsTk extends AppLocalizations {
   String get orderType => 'Sargyt görnüşi';
 
   @override
-  String get orderConfirmation => 'Sargydy tassyklamak';
+  String get orderConfirmation => 'Sebedi tassykla';
 
   @override
-  String get orderNotes => 'Sargyt üçin bellik';
+  String get orderNotes => 'Sargyt bellikleri';
 
   @override
-  String get orderNotesDescription =>
-      'Ýörite haýyşlar, ýa-da eltip berme üçin bellikler';
+  String get orderNotesDescription => 'Sargyt üçin goşmaça görkezmeler ýa-da bellikler';
 
   @override
-  String get orderNotesDescription2 =>
-      'Ýörite haýyşlar, allergiýa, iýmitleniş çäklendirmeleri';
+  String get orderNotesDescription2 => 'Goşmaça görkezmeler, allergiýalar, islegler';
 
   @override
-  String get selectAddress => 'Salgyňyzy saýlan';
+  String get selectAddress => 'Salgyny saýlaň';
 
   @override
-  String get selectAddressEmpty => 'Saýlanmadyk';
+  String get selectAddressEmpty => 'Saýlanmady';
 
   @override
-  String get cart => 'Sebet';
+  String get cart => 'Meniň sebedim';
 
   @override
-  String get cartAddSuccess => 'Haryt üstünlikli sebede goşyldy';
+  String get cartAdd => 'sebede goşuldy';
 
   @override
-  String get cartClearTitle => 'Pozmagy tassyklaň';
+  String get cartClearTitle => 'Önümleri aýyrmak';
 
   @override
-  String get cartClearContent =>
-      'Tassyklamak düwmesine basylanyndan soňra sebediňizdäki harytlary gaýtadan dikeltmek mümkin däldir.';
+  String get cartClearContent => 'Ähli önümleri aýyrmak isleýärsiňizmi?';
 
   @override
   String get cartEmptyTitle => 'Sebet boş';
 
   @override
-  String get cartEmptyDescription => 'Sebetiň sanawy şu ýerde görkeziler';
+  String get cartEmptyDescription => 'Sebediňizdäki harytlar şu ýerde görkeziler';
 
   @override
-  String get placeAnOrder => 'Sargyt et';
+  String get placeAnOrder => 'Sargyt ber';
+
+  @override
+  String get filter => 'Süzgüç';
+
+  @override
+  String get selectAll => 'Hemmesini saýla';
 
   @override
   String get success => 'Üstünlik';
@@ -192,11 +221,20 @@ class AppLocalizationsTk extends AppLocalizations {
   String get close => 'Ýap';
 
   @override
-  String get clear => 'Pozmak';
+  String get clear => 'Arassala';
 
   @override
-  String get productsEmptyTitle => 'Harytlar Tapylmady';
+  String get productsEmptyTitle => 'Önümler tapylmady';
 
   @override
-  String get productsEmptyDescription => 'Häzirki wagtda harytlar ýok.';
+  String get productsEmptyDescription => 'Häzirki wagtda elýeterli önümler ýok.';
+
+  @override
+  String get merchLabel => 'Söwdagärler üçin';
+
+  @override
+  String get merchTitle => 'Ýörite teklipler';
+
+  @override
+  String get merchSubtitle => 'Ähli önümler, lomaý baha';
 }

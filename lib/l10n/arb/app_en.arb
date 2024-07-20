@@ -9,12 +9,14 @@
 
     "entryPage": "Homepage",
     "main": "Main",
+    "notification" : "Notification",
+    "unreadMessage" : "New",
 
     "profile": "Profile",
     "profileEdit": "Edit Profile",
     
-    "firstname": "First Name",
-    "lastname": "Last Name",
+    "name": "Name",
+    "phoneNumber": "Phone number",
     "email": "Email",
 
     "technicalSupportTitle": "Technical Support",
@@ -26,10 +28,14 @@
     "settings": "Settings",
 
     "language": "Language",
-    "languageChangeTitle": "Language Selection",
+    "languageChangeTitle": "Change Language",
     "languageSelectDescription": "Choose the application language",
-
-    "startShopping": "Start Shopping",
+    
+    "searching": "Search from shop...",
+    "startShopping": "Shop now",
+    "loadMore" : "Load more",
+    "viewAll" : "View all",
+    
 
     "order": "Order",
     "orderTotal": "Order Total",
@@ -37,34 +43,41 @@
     "orders": "My Orders",
     "ordersEmptyTitle": "No Orders",
     "ordersEmptyDescription": "Your orders are displayed here",
-
+    
+    "discount" : "Discount",
     "productSize": "Size",
     "productColor": "Color",
     "productPrice": "Price per item",
+    "productsAll" : "Products",
 
     "addresses": "My Addresses",
-    "addressesCreate": "Add Address",
+    "addressesCreate": "Add a new address",
 
-    "checkOutCompleteTitle": "Order Placed",
-    "checkOutCompleteContent": "An operator will contact you to confirm the order!",
-
-    "deliveryTariffTitle": "Delivery Type",
+    "checkOutCompleteTitle": "Your order has been registered.",
+    "checkOutCompleteContent": "The completed trade will be added to you at the specified time. Thank you for your shopping!",
+    "confirm": "Continue shopping",
+    
+    "deliveryTime": "Select when to deliver",
+    "deliverySerice": "Delivery service",
 
     "trackOrder": "Track Order",
-    "complete": "Complete",
-    "confirm": "Confirm",
+    "accepted": "Accepted",
+    "expected": "Expected",
+
+    "neglection" : "No",
+    "affirmation" : "Yes",
 
     "goToTheCart": "Go to Cart",
+    "total" : "Total price",
+    "totalCost": "Total Cost of goods",
 
-    "totalCost": "Total Cost",
-
-    "paymentMethod": "Payment Method",
+    "paymentMethod": "Types of payment",
     "paymentMethodCash": "Cash",
     "paymentMethodTerminal": "Terminal",
 
     "orderType": "Order Type",
 
-    "orderConfirmation": "Order Confirmation",
+    "orderConfirmation": "Confirm cart",
 
     "orderNotes": "Order Notes",
     "orderNotesDescription": "Additional instructions or notes for the order",
@@ -73,22 +86,28 @@
     "selectAddress": "Select Address",
     "selectAddressEmpty": "Not Selected",
 
-    "cart": "Cart",
-    "cartAddSuccess": "Product successfully added to cart",
+    "cart": "My Cart",
+    "cartAdd": "added to cart",
     
-    "cartClearTitle": "Clear Cart",
-    "cartClearContent": "After pressing the confirm button, you will not be able to recover the items in the cart.",
+    "cartClearTitle": "Remove products",
+    "cartClearContent": "Do you want all products removed?",
 
     "cartEmptyTitle": "Cart is Empty",
     "cartEmptyDescription": "Items in your cart are displayed here",
 
     "placeAnOrder": "Place an Order",
-
+    
+    "filter" : "Filter",
+    "selectAll" : "Select all",
+    
     "success": "Success",
     "cancel": "Cancel",
     "close": "Close",
     "clear": "Clear",
 
     "productsEmptyTitle": "No Products Found",
-    "productsEmptyDescription": "No products available at this time."
+    "productsEmptyDescription": "No products available at this time.",
+    "merchLabel" : "For Traders",
+    "merchTitle" : "Special Offers",
+    "merchSubtitle" : "All products, wholesale price"
 }

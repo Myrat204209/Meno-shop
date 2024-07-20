@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/order_information/order_information.dart';
 
 class OrdersView extends StatelessWidget {
@@ -10,8 +11,8 @@ class OrdersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Orders",
+        title: Text(
+          context.l10n.orders,
         ),
         centerTitle: true,
       ),

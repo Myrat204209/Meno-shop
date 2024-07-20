@@ -9,6 +9,7 @@ Future<void> showLanguageSelectBottomSheet({
 }) async =>
     showModalBottomSheet(
       context: context,
+      useSafeArea: true,
       isScrollControlled: true,
       builder: (_) => const LanguageSelectBottomSheet(),
     );
@@ -28,6 +29,7 @@ class LanguageSelectBottomSheet extends StatelessWidget {
       ),
       child: ListView(
         shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           Text(
             l10n.languageChangeTitle,
@@ -41,7 +43,8 @@ class LanguageSelectBottomSheet extends StatelessWidget {
                 languageName: locale.languageCode,
                 onChanged: (value) {
                   context.read<LanguageBloc>().add(LanguageChanged(locale));
-                  Navigator.of(context).pop();
+                  Future.delayed(const Duration(milliseconds: 100))
+                      .then((value) => Navigator.of(context).pop());
                 },
                 title: Text(
                   switch (locale.languageCode) {
@@ -52,6 +55,7 @@ class LanguageSelectBottomSheet extends StatelessWidget {
                   },
                   style: const AppTextStyle.text()
                       .regular()
+                      .sm()
                       .withColor(Colors.black),
                 ),
                 value: locale.languageCode,

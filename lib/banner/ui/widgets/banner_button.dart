@@ -11,7 +11,7 @@ class BannerButton extends StatelessWidget {
   /// Creates a new instance of BannerButton.
   const BannerButton({
     super.key,
-    this.text = 'Shop Now',
+    required this.text,
     required this.bannerType,
     required this.onPressed,
   });

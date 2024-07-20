@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
@@ -10,8 +11,8 @@ class NotificationsPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: const Text(
-          'Notification',
+        title: Text(
+          context.l10n.notification,
         ),
       ),
       body: ListView.builder(
@@ -29,7 +30,7 @@ class NotificationsPage extends StatelessWidget {
               style: const AppTextStyle.text().subtitle1().regular(),
             ),
             trailing: Text(
-              'NEW!',
+              '${context.l10n.unreadMessage}!',
               style: const AppTextStyle.text()
                   .bodyText1()
                   .medium()

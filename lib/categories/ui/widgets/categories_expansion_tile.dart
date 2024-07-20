@@ -15,10 +15,10 @@ class CategoriesExpansionTile extends StatelessWidget {
     return ExpansionTile(
       collapsedShape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.circular(15),
-          side: BorderSide(color: AppColors.neutral.shade500)),
+          side: BorderSide(color: AppColors.neutral.shade50)),
       shape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.circular(15),
-          side: BorderSide(color: AppColors.neutral.shade500)),
+          side: BorderSide(color: AppColors.neutral.shade50)),
       expandedCrossAxisAlignment: CrossAxisAlignment.start,
       leading: const Icon(
         Icons.plumbing,
@@ -35,6 +35,10 @@ class CategoriesExpansionTile extends StatelessWidget {
         return ClipRRect(
           borderRadius: BorderRadius.circular(8),
           child: ListTile(
+            leading: const Icon(
+              Icons.abc,
+              color: AppColors.transparent,
+            ),
             title: Text(subcategory.name ?? ''),
             shape: ContinuousRectangleBorder(
               borderRadius: const BorderRadius.all(Radius.circular(10)),

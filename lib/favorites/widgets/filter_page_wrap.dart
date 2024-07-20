@@ -1,6 +1,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:meno_shop/favorites/favorites.dart' show FilterPageChip;
+import 'package:meno_shop/l10n/l10n.dart';
 
 class FilterPageWrap extends StatelessWidget {
   const FilterPageWrap({
@@ -27,7 +28,7 @@ class FilterPageWrap extends StatelessWidget {
             TextButton(
                 onPressed: () {},
                 child: Text(
-                  'Select All',
+                  context.l10n.selectAll,
                   style: const AppTextStyle.text()
                       .regular()
                       .sm()

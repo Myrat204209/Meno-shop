@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/profile/view/view.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -10,7 +11,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'My Profile',
+          context.l10n.profile,
           style: const AppTextStyle.text()
               .lg()
               .semiBold()

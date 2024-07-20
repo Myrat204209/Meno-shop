@@ -46,7 +46,7 @@ class NetworkError extends StatelessWidget {
           child: AppButton(
             onTap: onRetry,
             type: AppButtonType.standard,
-            text: 'Network Error',
+            buttonText: 'Network Error',
           ),
         ),
         const Gap(AppSpacing.xlg),

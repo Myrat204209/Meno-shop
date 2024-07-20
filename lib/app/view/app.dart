@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/language/language.dart';
 import 'package:meno_shop/product/product.dart';
-import 'package:meno_shop/app/app.dart' show AppView, AppCubit;
 import 'package:meno_shop/subcategories/subcategories.dart';
 
 class App extends StatelessWidget {
@@ -79,10 +79,7 @@ class App extends StatelessWidget {
         child: LayoutBuilder(
           builder: (context, constraints) {
             return ScreenUtilInit(
-              designSize: Size(
-                constraints.maxWidth,
-                constraints.maxHeight,
-              ),
+              designSize: Size(constraints.maxWidth, constraints.maxHeight),
               builder: (context, child) => const AppView(),
             );
           },

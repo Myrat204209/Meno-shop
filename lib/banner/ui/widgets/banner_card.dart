@@ -58,7 +58,7 @@ class BannerCard extends StatelessWidget {
           FittedBox(
             child: BannerContent(
               bannerType: bannerType,
-              buttonText: buttonText,
+              buttonText: buttonText ?? '',
               label: label ?? 'From Online Stores',
               title: title ?? 'Men\'s Lifestyle Collection',
               subtitle: subtitle ?? 'Subtitle',
@@ -77,11 +77,11 @@ class BannerContent extends StatelessWidget {
     required this.label,
     required this.title,
     required this.subtitle,
-    this.buttonText,
+    required this.buttonText,
   });
   final BannerType bannerType;
   final String label;
-  final String? buttonText;
+  final String buttonText;
   final String title;
   final String subtitle;
   @override
@@ -127,7 +127,7 @@ class BannerContent extends StatelessWidget {
               child: BannerButton(
                 onPressed: () {},
                 bannerType: bannerType,
-                text: buttonText ?? '',
+                text: buttonText,
               ).paddingSymmetric(vertical: 10),
             ),
         ],

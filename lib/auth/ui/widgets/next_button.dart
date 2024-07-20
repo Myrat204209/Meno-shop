@@ -10,7 +10,7 @@ class NextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton(
       onTap: onPressed,
-      text: 'Dowam et',
+      buttonText: 'Dowam et',
       type: AppButtonType.standard,
     );
   }

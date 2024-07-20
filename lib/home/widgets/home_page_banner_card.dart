@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:meno_shop/banner/banner.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class HomePageBannerCard extends StatelessWidget {
   const HomePageBannerCard({
@@ -37,7 +38,7 @@ class HomePageBannerCard extends StatelessWidget {
                     title: 'Men’s Lifestyle Collection',
                     subtitle: 'Discount 50% OFF This week',
                     onPressed: () {},
-                    buttonText: 'Shop Now',
+                    buttonText: context.l10n.startShopping,
                   );
                 },
                 options: CarouselOptions(

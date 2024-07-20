@@ -1,97 +1,112 @@
 {
-    "@@locale": "tk", 
+    "@@locale": "tk",
 
-    "networkError": "Internet birikmesi ýok.",
-    "networkErrorDescription": "Birnäçe wagtdan soň synanyşmagyňyzy Sizden haýyş edýäris.",
-    "networkErrorButton": "Gaýtadan synanyşyň",
-
+    "networkError": "Internet baglanyşygy ýok.",
+    "networkErrorDescription": "Haçan-da bolsa täzeden synanyşyň.",
+    "networkErrorButton": "Täzeden synanyş",
+    
     "services": "Bölümler",
 
     "entryPage": "Baş sahypa",
-    "main": "Esasy",
+    "main": "Baş",
+    "notification": "Bildiriş",
+    "unreadMessage": "Täze",
 
     "profile": "Profil",
-    "profileEdit": "Profili sazlamak",
+    "profileEdit": "Profili redaktirle",
     
-    "firstname": "Ady",
-    "lastname": "Familiýasy",
-    "email": "Elektron poçtasy",
+    "name": "At",
+    "phoneNumber": "Telefon belgisi",
+    "email": "Email",
 
-    "technicalSupportTitle": "Tehniki kömek",
-    "technicalSupportDescription": "Soraglaryňyz boýunça habarlaşmak",
-    
-    "manageAddressesTitle": "Salgylarym",
+    "technicalSupportTitle": "Tehniki goldaw",
+    "technicalSupportDescription": "Kömek üçin biziň bilen habarlaşyň",
+
+    "manageAddressesTitle": "Salgylary dolandyrmak",
     "manageAddressesDescription": "Salgylaryňyzy dolandyryň",
 
     "settings": "Sazlamalar",
 
     "language": "Dil",
-    "languageChangeTitle": "Dil",
-    "languageSelectDescription": "Programmanyň dilini saýlaň",
-
+    "languageChangeTitle": "Dili üýtget",
+    "languageSelectDescription": "Programma dilini saýlaň",
+    
+    "searching": "Dükandan gözle...",
     "startShopping": "Söwda başla",
+    "loadMore": "Has köp ýükle",
+    "viewAll": "Hemmesini gör",
     
     "order": "Sargyt",
-    "orderTotal": "Sargyt hasabyňyz",
+    "orderTotal": "Jemi sargyt",
 
-    "orders": "Sargytlarym",
+    "orders": "Meniň sargytlarym",
     "ordersEmptyTitle": "Sargyt ýok",
-    "ordersEmptyDescription": "Sargytlaryňyzyň sanawy şu ýerde görkeziler",
+    "ordersEmptyDescription": "Sargytlaryňyz şu ýerde görkeziler",
+    
+    "discount": "Arzanladyş",
+    "productSize": "Ölçeg",
+    "productColor": "Reňk",
+    "productPrice": "Bir önümiň bahasy",
+    "productsAll": "Önümler",
 
-    "favoritesEmptyTitle": "Halanlarym ýok",
-    "favoritesEmptyDescription": "Halanlaryňyzyň sanawy şu ýerde görkeziler",
+    "addresses": "Meniň salgylarym",
+    "addressesCreate": "Täze salgy goş",
 
-    "productSize": "Ölçegi",
-    "productColor": "Reňki",
-    "productPrice": "Bahasy",
+    "checkOutCompleteTitle": "Sargydyňyz hasaba alyndy.",
+    "checkOutCompleteContent": "Tamamlanan söwda bellenen wagtda size goşular. Söwda üçin sag boluň!",
+    "confirm": "Söwda dowam et",
+    
+    "deliveryTime": "Eltip bermek wagtyny saýlaň",
+    "deliverySerice": "Eltip bermek hyzmaty",
 
-    "addresses": "Salgylarym",
-    "addressesCreate": "Salgy goş",
+    "trackOrder": "Sargydy yzarlamak",
+    "accepted": "Kabul edildi",
+    "expected": "Garaşylýar",
 
-    "checkOutCompleteTitle": "Sargydyňyz ýerleşdirildi",
-    "checkOutCompleteContent": "Operator Size jaň eder sargydyňyzy tassyklamak üçin jaň eder!",
-
-    "deliveryTariffTitle": "Eltip berme görnüşi",
-
-    "trackOrder": "Sargydy yzarla",
-    "complete": "Tamamla",
-    "confirm": "Tassykla",
+    "neglection": "Ýok",
+    "affirmation": "Hawa",
 
     "goToTheCart": "Sebede git",
+    "total": "Jemi baha",
+    "totalCost": "Harytlaryň jemi bahasy",
 
-    "totalCost": "Umumy baha",
-
-    "paymentMethod": "Töleg usuly",
+    "paymentMethod": "Töleg usullary",
     "paymentMethodCash": "Nagt",
     "paymentMethodTerminal": "Terminal",
 
     "orderType": "Sargyt görnüşi",
 
-    "orderConfirmation": "Sargydy tassyklamak",
+    "orderConfirmation": "Sebedi tassykla",
 
-    "orderNotes": "Sargyt üçin bellik",
-    "orderNotesDescription": "Ýörite haýyşlar, ýa-da eltip berme üçin bellikler",
-    "orderNotesDescription2": "Ýörite haýyşlar, allergiýa, iýmitleniş çäklendirmeleri",
+    "orderNotes": "Sargyt bellikleri",
+    "orderNotesDescription": "Sargyt üçin goşmaça görkezmeler ýa-da bellikler",
+    "orderNotesDescription2": "Goşmaça görkezmeler, allergiýalar, islegler",
 
-    "selectAddress": "Salgyňyzy saýlan",
-    "selectAddressEmpty": "Saýlanmadyk",
+    "selectAddress": "Salgyny saýlaň",
+    "selectAddressEmpty": "Saýlanmady",
 
-    "cart": "Sebet",
-    "cartAddSuccess": "Haryt üstünlikli sebede goşyldy",
+    "cart": "Meniň sebedim",
+    "cartAdd": "sebede goşuldy",
     
-    "cartClearTitle": "Pozmagy tassyklaň",
-    "cartClearContent": "Tassyklamak düwmesine basylanyndan soňra sebediňizdäki harytlary gaýtadan dikeltmek mümkin däldir.",
-    
+    "cartClearTitle": "Önümleri aýyrmak",
+    "cartClearContent": "Ähli önümleri aýyrmak isleýärsiňizmi?",
+
     "cartEmptyTitle": "Sebet boş",
-    "cartEmptyDescription": "Sebetiň sanawy şu ýerde görkeziler",
+    "cartEmptyDescription": "Sebediňizdäki harytlar şu ýerde görkeziler",
 
-    "placeAnOrder": "Sargyt et",
+    "placeAnOrder": "Sargyt ber",
 
+    "filter": "Süzgüç",
+    "selectAll": "Hemmesini saýla",
+    
     "success": "Üstünlik",
     "cancel": "Ýatyr",
     "close": "Ýap",
-    "clear": "Pozmak",
+    "clear": "Arassala",
 
-    "productsEmptyTitle": "Harytlar Tapylmady",
-    "productsEmptyDescription": "Häzirki wagtda harytlar ýok."
+    "productsEmptyTitle": "Önümler tapylmady",
+    "productsEmptyDescription": "Häzirki wagtda elýeterli önümler ýok.",
+    "merchLabel": "Söwdagärler üçin",
+    "merchTitle": "Ýörite teklipler",
+    "merchSubtitle": "Ähli önümler, lomaý baha"
 }

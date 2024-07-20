@@ -2,6 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meno_shop/banner/banner.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class HomePageMerch extends StatelessWidget {
   const HomePageMerch({
@@ -10,6 +11,7 @@ class HomePageMerch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return SliverToBoxAdapter(
       child: SizedBox(
         height: 115.h,
@@ -26,12 +28,12 @@ class HomePageMerch extends StatelessWidget {
                 height: double.infinity,
               ),
               FittedBox(
-                child: const BannerContent(
+                child: BannerContent(
                   bannerType: BannerType.merch,
-                  buttonText: 'Load More',
-                  label: 'For Traders',
-                  title: 'Special Offers',
-                  subtitle: 'All products, whole space price',
+                  buttonText: l10n.loadMore,
+                  label: l10n.merchLabel,
+                  title: l10n.merchTitle,
+                  subtitle: l10n.merchSubtitle,
                 ).paddingOnly(top: 10),
               ),
             ],

@@ -2,7 +2,7 @@ import 'app_localizations.dart';
 
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
-  AppLocalizationsEn([super.locale = 'en']);
+  AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
   String get networkError => 'No internet connection.';
@@ -23,16 +23,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get main => 'Main';
 
   @override
+  String get notification => 'Notification';
+
+  @override
+  String get unreadMessage => 'New';
+
+  @override
   String get profile => 'Profile';
 
   @override
   String get profileEdit => 'Edit Profile';
 
   @override
-  String get firstname => 'First Name';
+  String get name => 'Name';
 
   @override
-  String get lastname => 'Last Name';
+  String get phoneNumber => 'Phone number';
 
   @override
   String get email => 'Email';
@@ -62,7 +68,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get languageSelectDescription => 'Choose the application language';
 
   @override
-  String get startShopping => 'Start Shopping';
+  String get searching => 'Search from shop...';
+
+  @override
+  String get startShopping => 'Shop now';
+
+  @override
+  String get loadMore => 'Load more';
+
+  @override
+  String get viewAll => 'View all';
 
   @override
   String get order => 'Order';
@@ -80,11 +95,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ordersEmptyDescription => 'Your orders are displayed here';
 
   @override
-  String get favoritesEmptyTitle => 'Halanlarym ýok';
-
-  @override
-  String get favoritesEmptyDescription =>
-      'Halanlaryňyzyň sanawy şu ýerde görkeziler';
+  String get discount => 'Discount';
 
   @override
   String get productSize => 'Size';
@@ -96,38 +107,55 @@ class AppLocalizationsEn extends AppLocalizations {
   String get productPrice => 'Price per item';
 
   @override
+  String get productsAll => 'Products';
+
+  @override
   String get addresses => 'My Addresses';
 
   @override
-  String get addressesCreate => 'Add Address';
+  String get addressesCreate => 'Add a new address';
 
   @override
-  String get checkOutCompleteTitle => 'Order Placed';
+  String get checkOutCompleteTitle => 'Your order has been registered.';
 
   @override
-  String get checkOutCompleteContent =>
-      'An operator will contact you to confirm the order!';
+  String get checkOutCompleteContent => 'The completed trade will be added to you at the specified time. Thank you for your shopping!';
 
   @override
-  String get deliveryTariffTitle => 'Delivery Type';
+  String get confirm => 'Continue shopping';
+
+  @override
+  String get deliveryTime => 'Select when to deliver';
+
+  @override
+  String get deliverySerice => 'Delivery service';
 
   @override
   String get trackOrder => 'Track Order';
 
   @override
-  String get complete => 'Complete';
+  String get accepted => 'Accepted';
 
   @override
-  String get confirm => 'Confirm';
+  String get expected => 'Expected';
+
+  @override
+  String get neglection => 'No';
+
+  @override
+  String get affirmation => 'Yes';
 
   @override
   String get goToTheCart => 'Go to Cart';
 
   @override
-  String get totalCost => 'Total Cost';
+  String get total => 'Total price';
 
   @override
-  String get paymentMethod => 'Payment Method';
+  String get totalCost => 'Total Cost of goods';
+
+  @override
+  String get paymentMethod => 'Types of payment';
 
   @override
   String get paymentMethodCash => 'Cash';
@@ -139,18 +167,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get orderType => 'Order Type';
 
   @override
-  String get orderConfirmation => 'Order Confirmation';
+  String get orderConfirmation => 'Confirm cart';
 
   @override
   String get orderNotes => 'Order Notes';
 
   @override
-  String get orderNotesDescription =>
-      'Additional instructions or notes for the order';
+  String get orderNotesDescription => 'Additional instructions or notes for the order';
 
   @override
-  String get orderNotesDescription2 =>
-      'Additional instructions, allergies, preferences';
+  String get orderNotesDescription2 => 'Additional instructions, allergies, preferences';
 
   @override
   String get selectAddress => 'Select Address';
@@ -159,17 +185,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectAddressEmpty => 'Not Selected';
 
   @override
-  String get cart => 'Cart';
+  String get cart => 'My Cart';
 
   @override
-  String get cartAddSuccess => 'Product successfully added to cart';
+  String get cartAdd => 'added to cart';
 
   @override
-  String get cartClearTitle => 'Clear Cart';
+  String get cartClearTitle => 'Remove products';
 
   @override
-  String get cartClearContent =>
-      'After pressing the confirm button, you will not be able to recover the items in the cart.';
+  String get cartClearContent => 'Do you want all products removed?';
 
   @override
   String get cartEmptyTitle => 'Cart is Empty';
@@ -179,6 +204,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get placeAnOrder => 'Place an Order';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get selectAll => 'Select all';
 
   @override
   String get success => 'Success';
@@ -197,4 +228,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get productsEmptyDescription => 'No products available at this time.';
+
+  @override
+  String get merchLabel => 'For Traders';
+
+  @override
+  String get merchTitle => 'Special Offers';
+
+  @override
+  String get merchSubtitle => 'All products, wholesale price';
 }

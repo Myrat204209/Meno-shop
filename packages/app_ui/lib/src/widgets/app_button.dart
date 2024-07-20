@@ -1,73 +1,49 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 enum AppButtonType {
-  large(120),
-  standard(30),
-  iconed(40),
-  small(8);
-
-  final double padding;
-  const AppButtonType(this.padding);
+  expanded,
+  standard,
+  action,
+  icon;
 }
 
 class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
     required this.type,
-    required this.text,
+    required this.buttonText,
     required this.onTap,
-    this.icon = Icons.shopping_bag_outlined,
+    this.icon,
   });
   final AppButtonType type;
-  final String? text;
+  final String? buttonText;
   final VoidCallback? onTap;
-  final IconData? icon;
+  final Icon? icon;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      borderRadius: BorderRadius.circular(10),
+    return MaterialButton(
       color: AppColors.secondary,
-      child: InkWell(
-        splashColor: AppColors.secondary,
-        borderRadius: BorderRadius.circular(10),
-        onTap: onTap,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 5,
-            horizontal: type.padding,
+      minWidth: type == AppButtonType.expanded ? double.infinity : 160,
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+      shape: ShapeBorderX.roundedRectangle(10),
+      onPressed: onTap,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          icon ?? SizedBox(),
+          Text(
+            buttonText!,
+            style: AppTextStyle.text()
+                .medium()
+                .regular()
+                .withColor(AppColors.quaterniary),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (type == AppButtonType.iconed)
-                Icon(
-                  icon,
-                  color: AppColors.quaterniary,
-                ),
-              Gap(
-                AppButtonType.small == type ? 0 : 10,
-              ),
-              if (type != AppButtonType.small)
-                Text(
-                  text!,
-                  style: AppTextStyle.text()
-                      .medium()
-                      .regular()
-                      .withColor(AppColors.quaterniary),
-                )
-              else
-                Icon(
-                  icon,
-                  color: AppColors.quaterniary,
-                ),
-            ],
-          ),
-        ),
-      ),
+        ],
+      ).centralize(),
     );
   }
 }

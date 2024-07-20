@@ -1,94 +1,112 @@
 {
     "@@locale": "ru",
 
-    "networkError": "Нет подключения к Интернету.",
-    "networkErrorDescription": "Пожалуйста, попробуйте еще раз через некоторое время.",
+    "networkError": "Нет подключения к интернету.",
+    "networkErrorDescription": "Пожалуйста, попробуйте позже.",
     "networkErrorButton": "Попробовать снова",
     
     "services": "Разделы",
 
-    "entryPage": "Домашняя страница",
-    "main": "Главный",
+    "entryPage": "Главная страница",
+    "main": "Главная",
+    "notification": "Уведомление",
+    "unreadMessage": "Новое",
 
     "profile": "Профиль",
     "profileEdit": "Редактировать профиль",
     
-    "firstname": "Имя",
-    "lastname": "Фамилия",
+    "name": "Имя",
+    "phoneNumber": "Номер телефона",
     "email": "Электронная почта",
 
     "technicalSupportTitle": "Техническая поддержка",
-    "technicalSupportDescription": "Свяжитесь с нами для решения вопросов",
+    "technicalSupportDescription": "Свяжитесь с нами для получения помощи",
 
     "manageAddressesTitle": "Управление адресами",
-    "manageAddressesDescription": "Управление вашими адресами",
+    "manageAddressesDescription": "Управляйте своими адресами",
 
     "settings": "Настройки",
 
     "language": "Язык",
-    "languageChangeTitle": "Выбор языка",
+    "languageChangeTitle": "Изменить язык",
     "languageSelectDescription": "Выберите язык приложения",
-
+    
+    "searching": "Поиск по магазину...",
     "startShopping": "Начать покупки",
-
+    "loadMore": "Загрузить больше",
+    "viewAll": "Посмотреть все",
+    
     "order": "Заказ",
-    "orderTotal": "Итог заказа",
+    "orderTotal": "Итоговая сумма заказа",
 
     "orders": "Мои заказы",
-    "ordersEmptyTitle": "Заказов нет",
-    "ordersEmptyDescription": "Здесь отображаются ваши заказы",
-
+    "ordersEmptyTitle": "Нет заказов",
+    "ordersEmptyDescription": "Ваши заказы будут отображаться здесь",
+    
+    "discount": "Скидка",
     "productSize": "Размер",
     "productColor": "Цвет",
-    "productPrice": "Цена за шт",
+    "productPrice": "Цена за единицу",
+    "productsAll": "Продукты",
 
     "addresses": "Мои адреса",
-    "addressesCreate": "Добавить адрес",
+    "addressesCreate": "Добавить новый адрес",
 
-    "checkOutCompleteTitle": "Заказ размещен",
-    "checkOutCompleteContent": "Оператор свяжется с вами для подтверждения заказа!",
+    "checkOutCompleteTitle": "Ваш заказ зарегистрирован.",
+    "checkOutCompleteContent": "Завершенная сделка будет добавлена вам в указанное время. Спасибо за покупку!",
+    "confirm": "Продолжить покупки",
+    
+    "deliveryTime": "Выберите время доставки",
+    "deliverySerice": "Служба доставки",
 
-    "deliveryTariffTitle": "Тип доставки",
+    "trackOrder": "Отследить заказ",
+    "accepted": "Принято",
+    "expected": "Ожидается",
 
-    "trackOrder": "Отслеживать заказ",
-    "complete": "Завершить",
-    "confirm": "Подтвердить",
+    "neglection": "Нет",
+    "affirmation": "Да",
 
     "goToTheCart": "Перейти в корзину",
+    "total": "Общая стоимость",
+    "totalCost": "Общая стоимость товаров",
 
-    "totalCost": "Общая стоимость",
-
-    "paymentMethod": "Метод оплаты",
+    "paymentMethod": "Способы оплаты",
     "paymentMethodCash": "Наличные",
     "paymentMethodTerminal": "Терминал",
 
     "orderType": "Тип заказа",
 
-    "orderConfirmation": "Подтверждение заказа",
+    "orderConfirmation": "Подтвердить корзину",
 
     "orderNotes": "Примечания к заказу",
     "orderNotesDescription": "Дополнительные инструкции или примечания к заказу",
     "orderNotesDescription2": "Дополнительные инструкции, аллергии, предпочтения",
 
-    "selectAddress": "Выберите адрес",
-    "selectAddressEmpty": "Не выбран",
+    "selectAddress": "Выбрать адрес",
+    "selectAddressEmpty": "Не выбрано",
 
-    "cart": "Корзина",
-    "cartAddSuccess": "Товар успешно добавлен в корзину",
+    "cart": "Моя корзина",
+    "cartAdd": "добавлено в корзину",
     
-    "cartClearTitle": "Очистить корзину",
-    "cartClearContent": "После нажатия кнопки подтверждения вы не сможете восстановить товары в корзине.",
+    "cartClearTitle": "Удалить продукты",
+    "cartClearContent": "Вы хотите удалить все продукты?",
 
     "cartEmptyTitle": "Корзина пуста",
-    "cartEmptyDescription": "Здесь отображаются товары в вашей корзине",
+    "cartEmptyDescription": "Товары в вашей корзине будут отображаться здесь",
 
     "placeAnOrder": "Оформить заказ",
-
+    
+    "filter": "Фильтр",
+    "selectAll": "Выбрать все",
+    
     "success": "Успех",
     "cancel": "Отмена",
     "close": "Закрыть",
     "clear": "Очистить",
 
-    "productsEmptyTitle": "Товары не найдены",
-    "productsEmptyDescription": "В настоящее время товары отсутствуют."
+    "productsEmptyTitle": "Продукты не найдены",
+    "productsEmptyDescription": "В данный момент нет доступных продуктов.",
+    "merchLabel": "Для торговцев",
+    "merchTitle": "Специальные предложения",
+    "merchSubtitle": "Все продукты, оптовая цена"
 }

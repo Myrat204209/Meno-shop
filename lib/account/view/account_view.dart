@@ -1,6 +1,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class AccountView extends StatelessWidget {
   const AccountView({super.key});
@@ -24,14 +25,14 @@ class AccountView extends StatelessWidget {
             const SizedBox(height: 50),
             UITextField(
               hintText: 'Enter your name here',
-              labelText: 'Name',
+              labelText: context.l10n.name,
               keyboardType: TextInputType.name,
               onChanged: (value) {},
               onSubmitted: (value) {},
             ),
             const SizedBox(height: 10),
             UITextField(
-              labelText: 'Phone Number',
+              labelText: context.l10n.phoneNumber,
               // controller: controller,
               keyboardType: TextInputType.phone,
               // maxLength: 8,
@@ -44,18 +45,14 @@ class AccountView extends StatelessWidget {
               // onSubmitted: onSubmitted,
             ),
             const SizedBox(height: 10),
-            const UITextField.emailTextField(
-              labelText: 'Email address',
-              hintText: 'Your email address',
-            ),
-            const UITextField(
-              labelText: 'Email address',
-              hintText: 'Your email address',
-            ),
+            // const UITextField.emailTextField(
+            //   labelText: 'Email address',
+            //   hintText: 'Your email address',
+            // ),
             const SizedBox(height: 10),
             AppButton(
-              type: AppButtonType.large,
-              text: 'Save',
+              type: AppButtonType.expanded,
+              buttonText: 'Save',
               onTap: () {},
             ),
           ],

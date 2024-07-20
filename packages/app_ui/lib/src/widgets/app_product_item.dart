@@ -90,8 +90,9 @@ class AppProductItem extends StatelessWidget {
                       ),
                     ),
                     AppButton(
-                      type: AppButtonType.small,
-                      text: null,
+                      type: AppButtonType.icon,
+                      buttonText: null,
+                      icon: Icon(Icons.shopping_bag_outlined),
                       onTap: () {
                         //TODO: Go to the Orders Page
                       },

@@ -50,7 +50,7 @@ class OrderInformationView extends StatelessWidget {
                 ),
                 const Expanded(child: SizedBox()),
                 AppButton(
-                  text: 'Buy Again',
+                  buttonText: 'Buy Again',
                   onTap: () {},
                   type: AppButtonType.standard,
                 )
