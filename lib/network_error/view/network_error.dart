@@ -44,8 +44,7 @@ class NetworkError extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxxlg),
           child: AppButton(
-            onTap: onRetry,
-            type: AppButtonType.standard,
+            onTap: onRetry ?? () {},
             buttonText: 'Network Error',
           ),
         ),

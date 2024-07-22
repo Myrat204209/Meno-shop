@@ -64,8 +64,7 @@ class FilterModalContent extends StatelessWidget {
         const FilterPageWrap(children: sizeChipList, label: 'Size'),
         const FilterPageWrap(children: brandChipList, label: 'Brands'),
         const Expanded(child: SizedBox()),
-        AppButton(
-          type: AppButtonType.expanded,
+        AppButton.expanded(
           buttonText: 'Close',
           onTap: () {},
         )

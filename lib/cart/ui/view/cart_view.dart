@@ -53,7 +53,6 @@ class CartView extends StatelessWidget {
             AppButton(
               buttonText: 'Cancel',
               onTap: () {},
-              type: AppButtonType.standard,
             )
           ],
         ).paddingSymmetric(horizontal: 10),

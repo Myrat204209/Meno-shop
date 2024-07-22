@@ -27,7 +27,9 @@ class HomePageProductsList extends StatelessWidget {
             title: title ?? '',
             padding: 10,
             onViewAllTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const ProductDetailsPage(),
+              builder: (context) => const ProductDetailsPage(
+                product: ProductItem(),
+              ),
             )),
           ),
           const SizedBox(height: 10),
@@ -49,10 +51,11 @@ class HomePageProductsList extends StatelessWidget {
                     price: product.price!,
                     image: '$kDefaultBaseUrl\\$imageUrl',
                     label: product.name ?? '',
-                    category: products![index]!.name!,
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const ProductDetailsPage(),
+                        builder: (context) => ProductDetailsPage(
+                          product: product,
+                        ),
                       ));
                     },
                   );

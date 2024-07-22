@@ -10,8 +10,9 @@ class ProductDetailsAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text(
+      title: Text(
         'Product Details',
+        style: const AppTextStyle.text().semiBold().xl(),
       ),
       scrolledUnderElevation: 0,
       centerTitle: true,
@@ -19,6 +20,8 @@ class ProductDetailsAppBar extends StatelessWidget
         AppActionsButton(
           onPressed: () {},
           icon: Icons.favorite_border_outlined,
+          backgroundColor: AppColors.quaterniary,
+          iconColor: AppColors.neutral.shade500,
         )
       ],
     );

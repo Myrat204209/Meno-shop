@@ -1,5 +1,35 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/product_details/product_details.dart';
+
+class ProductDetailsSizeSelector extends StatelessWidget {
+  const ProductDetailsSizeSelector({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Select size',
+          style: kAppTitleTextStyle,
+        ),
+        const SizedBox(height: 10),
+        Wrap(
+          spacing: 10,
+          children: sizes
+              .map((element) => ProductSizeChip(
+                    isSelected: element == 'M' ? true : false,
+                    label: element,
+                  ))
+              .toList(),
+        ),
+      ],
+    );
+  }
+}
 
 const Color selectedColor = AppColors.secondary;
 final Color disabledColor = AppColors.neutral.shade500;

@@ -10,18 +10,16 @@ import 'package:gap/gap.dart';
 class AppProductItem extends StatelessWidget {
   const AppProductItem({
     super.key,
-    this.onTap,
+    required this.onTap,
     required this.image,
     required this.price,
     required this.label,
-    required this.category,
   });
 
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
   final String? image;
   final double price;
   final String label;
-  final String category;
 
   @override
   Widget build(BuildContext context) {
@@ -30,38 +28,21 @@ class AppProductItem extends StatelessWidget {
       expand: 2.0,
       borderColor: AppColors.neutral.shade300,
       child: SizedBox(
-        width: size.width * 0.46,
+        width: size.width * 0.49,
         child: AspectRatio(
-          aspectRatio: 155.w / 281.h,
+          aspectRatio: 155.w / 286.h,
           child: InkWell(
             onTap: () => log('message'),
             borderRadius: BorderRadius.circular(10),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AspectRatio(
                   aspectRatio: 149.w / 157.h,
                   child: Stack(
                     children: [
                       AppProductImage(imageLink: image ?? ''),
-                      Positioned(
-                        right: 5,
-                        top: 5,
-                        child: RawMaterialButton(
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
-                          constraints: BoxConstraints(maxWidth: 40),
-                          onPressed: () {},
-                          elevation: 3,
-                          fillColor: AppColors.quaterniary,
-                          padding: EdgeInsets.only(top: 2),
-                          shape: CircleBorder(),
-                          child: Icon(
-                            Icons.favorite,
-                            size: 20.h,
-                            color: AppColors.secondary,
-                          ).paddingAll(3.5),
-                        ),
-                      ),
+                      ProductFavoritesButton(),
                       Positioned(
                         left: 5,
                         top: 5,
@@ -79,94 +60,120 @@ class AppProductItem extends StatelessWidget {
                     Flexible(
                       fit: FlexFit.tight,
                       child: Text(
-                        label * 4,
+                        label,
                         softWrap: true,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyle.text()
                             .semiBold()
-                            .xs()
+                            .sm()
                             .withColor(AppColors.primary),
                       ),
                     ),
-                    AppButton(
-                      type: AppButtonType.icon,
-                      buttonText: null,
-                      icon: Icon(Icons.shopping_bag_outlined),
-                      onTap: () {
-                        //TODO: Go to the Orders Page
-                      },
+                    AppButton.icon(
+                      onTap: onTap,
                     ).paddingOnly(left: 7),
                   ],
                 ).paddingAll(5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        '${price.toInt()} TMT',
-                        style: AppTextStyle.text().md().bold().sp(),
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        '1400 TMT',
-                        style: AppTextStyle.text()
-                            .sm()
-                            .regular()
-                            .sp()
-                            .copyWith(decoration: TextDecoration.lineThrough),
-                      ),
-                    )
-                  ],
-                ).paddingAll(5),
-                SizedBox(height: 10.h),
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: SizedBox(
-                        height: 45.h,
-                        width: 35.w,
-                        child: Assets.advantages.fastDelivery
-                            .svg(fit: BoxFit.cover),
-                      ),
-                    ).paddingOnly(right: 5),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: SizedBox(
-                        height: 45.h,
-                        width: 35.w,
-                        child: Assets.advantages.freeDelivery
-                            .svg(fit: BoxFit.cover),
-                      ),
-                    ).paddingOnly(right: 5),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: SizedBox(
-                        height: 45.h,
-                        width: 35.w,
-                        child:
-                            Assets.advantages.payOnline.svg(fit: BoxFit.cover),
-                      ),
-                    ).paddingOnly(right: 5),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: SizedBox(
-                        height: 45.h,
-                        width: 35.w,
-                        child: Assets.advantages.advantageProduct
-                            .svg(fit: BoxFit.cover),
-                      ),
-                    ).paddingOnly(right: 5),
-                  ],
-                ),
+                ProductDetailsPrices(price: price).paddingOnly(left: 5),
+                SizedBox(height: 5),
+                ProductAdvantagesList(),
               ],
             ),
           ),
         ),
       ),
-    ).paddingOnly(right: 10);
+    ).paddingOnly(right: 20);
+  }
+}
+
+class ProductDetailsPrices extends StatelessWidget {
+  const ProductDetailsPrices({
+    super.key,
+    required this.price,
+  });
+
+  final double price;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Text(
+            '${price.toInt()} TMT',
+            style: AppTextStyle.text().lg().bold().sp(),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            '1400 TMT',
+            style: AppTextStyle.text()
+                .regular()
+                .sm()
+                .sp()
+                .copyWith(decoration: TextDecoration.lineThrough),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class ProductAdvantagesList extends StatelessWidget {
+  const ProductAdvantagesList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemCount: 4,
+        padding: EdgeInsets.zero,
+        itemBuilder: (context, index) => ClipRRect(
+          borderRadius: BorderRadius.circular(5),
+          child: SizedBox(
+            height: 53.h,
+            width: 43.w,
+            child: Assets.advantages.fastDelivery.svg(fit: BoxFit.fitWidth),
+          ),
+        ).paddingOnly(
+          left: 5,
+        ),
+      ),
+    );
+  }
+}
+
+class ProductFavoritesButton extends StatelessWidget {
+  const ProductFavoritesButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      right: 5,
+      top: 5,
+      child: RawMaterialButton(
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        constraints: BoxConstraints(maxWidth: 40),
+        onPressed: () {},
+        elevation: 3,
+        fillColor: AppColors.quaterniary,
+        padding: EdgeInsets.only(top: 2),
+        shape: CircleBorder(),
+        child: Icon(
+          Icons.favorite,
+          size: 20.h,
+          color: AppColors.secondary,
+        ).paddingAll(3.5),
+      ),
+    );
   }
 }
 

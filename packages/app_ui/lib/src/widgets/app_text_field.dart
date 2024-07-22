@@ -33,7 +33,7 @@ class UITextField extends StatelessWidget {
     this.initialValue,
     this.controller,
     this.inputFormatters,
-    thiseadOnly = false,
+    this.readOnly = false,
     this.hintText,
     this.errorText,
     this.prefixText,
@@ -45,7 +45,6 @@ class UITextField extends StatelessWidget {
     this.onSubmitted,
     this.onTap,
     this.obscureText,
-    this.readOnly,
   })  : keyboardType = TextInputType.emailAddress,
         autoFillHints = const [AutofillHints.email],
         autocorrect = false;
@@ -58,7 +57,7 @@ class UITextField extends StatelessWidget {
     this.initialValue,
     this.controller,
     this.inputFormatters,
-    thiseadOnly = false,
+    this.readOnly = false,
     this.errorText,
     this.prefixText,
     this.maxLength,
@@ -70,7 +69,6 @@ class UITextField extends StatelessWidget {
     this.keyboardType,
     this.autoFillHints,
     this.prefix,
-    this.readOnly,
   })  : hintText = 'Password',
         obscureText = true,
         autocorrect = false;

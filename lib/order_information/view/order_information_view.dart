@@ -52,7 +52,6 @@ class OrderInformationView extends StatelessWidget {
                 AppButton(
                   buttonText: 'Buy Again',
                   onTap: () {},
-                  type: AppButtonType.standard,
                 )
               ],
             )

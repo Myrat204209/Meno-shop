@@ -11,7 +11,6 @@ class NextButton extends StatelessWidget {
     return AppButton(
       onTap: onPressed,
       buttonText: 'Dowam et',
-      type: AppButtonType.standard,
     );
   }
 }

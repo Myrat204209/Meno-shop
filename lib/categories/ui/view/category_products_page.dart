@@ -61,11 +61,11 @@ class CategoryProductsPage extends StatelessWidget {
                     crossAxisSpacing: 15,
                   ),
                   itemBuilder: (context, index) {
-                    return const AppProductItem(
+                    return AppProductItem(
                       image: 'assets/friends.jpg',
                       price: 550,
                       label: 'T-Shirt',
-                      category: 'T-Shirt for women',
+                      onTap: () {},
                     );
                   },
                 ),
