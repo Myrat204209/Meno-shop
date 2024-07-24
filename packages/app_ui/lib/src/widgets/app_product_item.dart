@@ -83,7 +83,7 @@ class AppProductItem extends StatelessWidget {
           ),
         ),
       ),
-    ).paddingOnly(right: 20);
+    ).paddingOnly(right: 10);
   }
 }
 
@@ -137,8 +137,8 @@ class ProductAdvantagesList extends StatelessWidget {
         itemBuilder: (context, index) => ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: SizedBox(
-            height: 53.h,
-            width: 43.w,
+            height: 46.h,
+            width: 35.w,
             child: Assets.advantages.fastDelivery.svg(fit: BoxFit.fitWidth),
           ),
         ).paddingOnly(

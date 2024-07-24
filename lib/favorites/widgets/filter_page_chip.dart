@@ -12,14 +12,23 @@ class FilterPageChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilterChip(
-      color: WidgetStatePropertyAll(AppColors.neutral.shade300),
+      color: WidgetStatePropertyAll(
+        isSelected ? AppColors.secondary : AppColors.neutral.shade300,
+      ),
       label: Text(label ?? '', style: const AppTextStyle.text().regular()),
       selected: isSelected,
+      deleteIcon: const Icon(
+        Icons.cancel_rounded,
+        size: 22,
+        color: AppColors.quaterniary,
+      ),
+      showCheckmark: false,
       shape: RoundedRectangleBorder(
         side: const BorderSide(color: Colors.transparent),
         borderRadius: BorderRadius.circular(10),
       ),
       onSelected: (bool value) {},
+      onDeleted: isSelected ? () {} : null,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     );
   }

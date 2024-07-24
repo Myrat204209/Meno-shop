@@ -1,5 +1,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/categories/categories.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class CategoryProductsPage extends StatelessWidget {
   const CategoryProductsPage({super.key});
@@ -8,99 +10,59 @@ class CategoryProductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AppBorderColorBox(
-          borderColor: AppColors.primary,
-          child: SizedBox(
-            height: 40,
-            width: 255,
-            child: UITextField(
-              prefix: Icon(
-                Icons.search,
-                color: AppColors.neutral.shade700,
-              ),
-              hintText: 'Search from shop...S',
+        scrolledUnderElevation: 0,
+        title: AppSearchBar(hintText: context.l10n.searching),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.filter_list,
+              size: 30,
+              color: AppColors.primary,
             ),
-          ),
-        ),
-        actions: const [
-          Icon(
-            Icons.menu_open_sharp,
-            size: 24,
-          ),
-          SizedBox(
-            width: 16,
-          )
+            onPressed: () => showCategorieslterBottomSheet(context: context),
+          ).paddingOnly(right: 16),
         ],
       ),
-      backgroundColor: AppColors.quaterniary,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'For women / T-Shirt',
-              ),
-              const Text(
-                'A Watch',
-              ),
-              const Text(
-                '1234 products',
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.74,
-                width: MediaQuery.of(context).size.width,
-                child: GridView.builder(
-                  itemCount: 10,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisExtent: 300,
-                    mainAxisSpacing: 15,
-                    crossAxisSpacing: 15,
-                  ),
-                  itemBuilder: (context, index) {
-                    return AppProductItem(
-                      image: 'assets/friends.jpg',
-                      price: 550,
-                      label: 'T-Shirt',
-                      onTap: () {},
-                    );
-                  },
-                ),
-              ),
-            ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //TODO: Replace with actual functionality for product items
+          const Text('For women / T-Shirt'),
+          Text(
+            'A Watch',
+            style: const AppTextStyle.text()
+                .lg()
+                .bold()
+                .withColor(AppColors.primary),
           ),
-        ),
-      ),
+          const SizedBox(height: AppSpacing.xlg),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              scrollDirection: Axis.vertical,
+              childAspectRatio: 160 / 285,
+              mainAxisSpacing: 15,
+              crossAxisSpacing: 5,
+              padding: EdgeInsets.zero,
+              children: [
+                //TODO: Replace with actual product items
+                AppProductItem(
+                  image: Assets.images.jeans.path,
+                  price: 550,
+                  label: 'T-Shirt',
+                  onTap: () {},
+                ),
+                AppProductItem(
+                  image: Assets.images.jeans.path,
+                  price: 550,
+                  label: 'T-Shirt',
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+        ],
+      ).paddingOnly(left: 10),
     );
   }
 }
-/**
- * AppBar(
-        centerTitle = true,
-        title = ColoredWrapperWidget(
-          color: AppColors.primary,
-          widget: SizedBox(
-            height: 40.h,
-            width: 255.w,
-            child: UITextField(
-              prefix: Icon(
-                Icons.search,
-                color: AppColors.neutral.shade700,
-              ),
-              hintText: 'Search from shop...',
-            ),
-          ),
-        )actions: [
-          Icon(
-            Icons.menu_open_sharp,
-            size: 24.sp,
-          ),
-          SizedBox(
-            width: 16.w,
-          )
-        ],
-      )
- */
