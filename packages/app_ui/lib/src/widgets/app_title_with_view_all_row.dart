@@ -6,14 +6,16 @@ import 'package:flutter/material.dart';
 class AppTitledWithViewAllRow extends StatelessWidget {
   const AppTitledWithViewAllRow({
     super.key,
+    this.onViewAllTap,
     required this.title,
     this.padding,
-    this.onViewAllTap,
+    this.viewAllText,
   });
 
   final VoidCallback? onViewAllTap;
   final String title;
   final double? padding;
+  final String? viewAllText;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,10 @@ class AppTitledWithViewAllRow extends StatelessWidget {
           title,
           style: AppTextStyle.text().lg().bold(),
         ),
-        AppViewAllText(onTap: onViewAllTap),
+        AppViewAllText(
+          onTap: onViewAllTap,
+          text: viewAllText,
+        ),
       ],
     ).paddingSymmetric(horizontal: padding ?? 12);
   }
@@ -34,31 +39,19 @@ class AppViewAllText extends StatelessWidget {
   const AppViewAllText({
     super.key,
     this.onTap,
+    this.text,
   });
   final VoidCallback? onTap;
+  final String? text;
   @override
   Widget build(BuildContext context) {
     return TextButton(
       child: Text(
-        'View All',
+        text ?? 'View All',
         style:
             AppTextStyle.text().regular().sm().withColor(AppColors.secondary2),
       ),
       onPressed: onTap,
-    );
-  }
-}
-
-class AppDefaultLabelTextWidget extends StatelessWidget {
-  const AppDefaultLabelTextWidget({
-    super.key,
-    required this.label,
-  });
-  final String label;
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      label,
     );
   }
 }

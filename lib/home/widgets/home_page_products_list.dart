@@ -3,6 +3,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/main/main.dart';
 
 import 'package:meno_shop/product_details/product_details.dart';
@@ -26,11 +27,13 @@ class HomePageProductsList extends StatelessWidget {
           AppTitledWithViewAllRow(
             title: title ?? '',
             padding: 10,
-            onViewAllTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const ProductDetailsPage(
-                product: ProductItem(),
-              ),
-            )),
+            onViewAllTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                  builder: (context) => const ProductDetailsPage(
+                        product: ProductItem(),
+                      )),
+            ),
+            viewAllText: context.l10n.viewAll,
           ),
           const SizedBox(height: 10),
           if (products != null)

@@ -61,7 +61,7 @@ class _AppViewState extends State<AppView> {
                 children: const [
                   HomePage(),
                   CategoriesPage(),
-                  CategoryProductsPage(),
+                  CartPage(),
                   FavoritesPage(),
                   ProfilePage(),
                 ],

@@ -37,7 +37,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       color: AppColors.secondary,
-      padding: EdgeInsets.symmetric(horizontal: 21, vertical: 18),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
       shape: ShapeBorderX.roundedRectangle(10),
       minWidth: width,
       onPressed: onTap,
