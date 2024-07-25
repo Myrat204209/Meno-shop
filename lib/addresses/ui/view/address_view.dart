@@ -72,8 +72,8 @@ class AddressView extends StatelessWidget {
                                       decoration: const BoxDecoration(
                                           color: Colors.white,
                                           borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(50),
-                                              topRight: Radius.circular(50))),
+                                              topLeft: Radius.circular(30),
+                                              topRight: Radius.circular(30))),
                                     )),
 
                                 ///CircleAvatar
@@ -103,7 +103,7 @@ class AddressView extends StatelessWidget {
 
                                 ///Text
                                 Positioned(
-                                  top: size.height / 7.3,
+                                  top: size.height / 6.5,
                                   child: Text("Add a new address",
                                       style: const AppTextStyle.text(
                                               color: AppColors.primary,
@@ -111,77 +111,145 @@ class AddressView extends StatelessWidget {
                                           .semiBold()),
                                 ),
                                 Positioned(
-                                  top: size.height / 5.6,
+                                    top: size.height / 5,
+                                    child: SizedBox(
+                                      height: 50,
+                                      width: 350,
+                                      child: UITextField(
+                                        hintText: 'Enter your name here',
+                                        labelText: context.l10n.name,
+                                        keyboardType: TextInputType.name,
+                                        onChanged: (value) {},
+                                        onSubmitted: (value) {},
+                                      ),
+                                    )),
+                                Positioned(
+                                    top: size.height / 4,
+                                    child: SizedBox(
+                                      width: 350,
+                                      height: 70,
+                                      child: UITextField(
+                                        labelText: context.l10n.phoneNumber,
+                                        // controller: controller,
+                                        keyboardType: TextInputType.phone,
+                                        // maxLength: 8,
+                                        inputFormatters: [
+                                          FilteringTextInputFormatter.digitsOnly
+                                        ],
+                                        autocorrect: false,
+                                        prefixText: '+993 ',
+                                        // onChanged: onChanged,
+                                        // suffix: suffix,
+                                        // errorText: errorText,
+                                        // onSubmitted: onSubmitted,
+                                      ).paddingSymmetric(vertical: 10),
+                                    )),
+                                Positioned(
+                                    top: size.height / 3.1,
+                                    child: SizedBox(
+                                      width: 350,
+                                      height: 50,
+                                      child: UITextField(
+                                        hintText: 'Enter your name here',
+                                        labelText: context.l10n.name,
+                                        keyboardType: TextInputType.name,
+                                        onChanged: (value) {},
+                                        onSubmitted: (value) {},
+                                      ),
+                                    )),
+                                Positioned(
+                                    top: size.height / 2.6,
+                                    child: SizedBox(
+                                      width: 350,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          fillColor: AppColors.neutral.shade200,
+                                          hintText: 'Enter your address here',
+                                          labelText: 'Address',
+                                          alignLabelWithHint: true,
+                                          border: const OutlineInputBorder(),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  vertical: 20.0,
+                                                  horizontal: 10.0),
+                                        ),
+                                        keyboardType:
+                                            TextInputType.streetAddress,
+                                        maxLines: 4,
+                                        onChanged: (value) {},
+                                        onSubmitted: (value) {},
+                                      ).paddingSymmetric(vertical: 10),
+                                    ))
+
+                                // Positioned(
+                                //   top: size.height / 5.6,
+                                //   child: SizedBox(
+                                //     height: size.height,
+                                //     width: size.width,
+                                //     child: Column(
+                                //       children: [
+                                //         UITextField(
+                                //           labelText: context.l10n.phoneNumber,
+                                //           // controller: controller,
+                                //           keyboardType: TextInputType.phone,
+                                //           // maxLength: 8,
+                                //           inputFormatters: [
+                                //             FilteringTextInputFormatter
+                                //                 .digitsOnly
+                                //           ],
+                                //           autocorrect: false,
+                                //           prefixText: '+993 ',
+                                //           // onChanged: onChanged,
+                                //           // suffix: suffix,
+                                //           // errorText: errorText,
+                                //           // onSubmitted: onSubmitted,
+                                //         ).paddingSymmetric(vertical: 10),
+
+                                //         // const UITextField.emailTextField(
+                                //         //   labelText: 'Email address',
+                                //         //   hintText: 'Your email address',
+                                //         // ),
+                                //         UITextField(
+                                //           hintText: 'Enter your name here',
+                                //           labelText: context.l10n.name,
+                                //           keyboardType: TextInputType.name,
+                                //           onChanged: (value) {},
+                                //           onSubmitted: (value) {},
+                                //         ),
+                                //         TextField(
+                                //           decoration: InputDecoration(
+                                //             fillColor:
+                                //                 AppColors.neutral.shade200,
+                                //             hintText: 'Enter your address here',
+                                //             labelText: 'Address',
+                                //             alignLabelWithHint: true,
+                                //             border: const OutlineInputBorder(),
+                                //             contentPadding:
+                                //                 const EdgeInsets.symmetric(
+                                //                     vertical: 20.0,
+                                //                     horizontal: 10.0),
+                                //           ),
+                                //           keyboardType:
+                                //               TextInputType.streetAddress,
+                                //           maxLines: 4,
+                                //           onChanged: (value) {},
+                                //           onSubmitted: (value) {},
+                                //         ).paddingSymmetric(vertical: 10),
+                                //       ],
+                                //     ).paddingSymmetric(horizontal: 15),
+                                //   ),
+                                // ),
+                                ,
+                                Positioned(
+                                  top: size.height / 1.75,
                                   child: SizedBox(
-                                    height: size.height,
-                                    width: size.width,
-                                    child: Column(
-                                      children: [
-                                        UITextField(
-                                          hintText: 'Enter your name here',
-                                          labelText: context.l10n.name,
-                                          keyboardType: TextInputType.name,
-                                          onChanged: (value) {},
-                                          onSubmitted: (value) {},
-                                        ),
-
-                                        UITextField(
-                                          labelText: context.l10n.phoneNumber,
-                                          // controller: controller,
-                                          keyboardType: TextInputType.phone,
-                                          // maxLength: 8,
-                                          inputFormatters: [
-                                            FilteringTextInputFormatter
-                                                .digitsOnly
-                                          ],
-                                          autocorrect: false,
-                                          prefixText: '+993 ',
-                                          // onChanged: onChanged,
-                                          // suffix: suffix,
-                                          // errorText: errorText,
-                                          // onSubmitted: onSubmitted,
-                                        ).paddingSymmetric(vertical: 10),
-
-                                        // const UITextField.emailTextField(
-                                        //   labelText: 'Email address',
-                                        //   hintText: 'Your email address',
-                                        // ),
-                                        UITextField(
-                                          hintText: 'Enter your name here',
-                                          labelText: context.l10n.name,
-                                          keyboardType: TextInputType.name,
-                                          onChanged: (value) {},
-                                          onSubmitted: (value) {},
-                                        ),
-                                        TextField(
-                                          decoration: InputDecoration(
-                                            fillColor:
-                                                AppColors.neutral.shade200,
-                                            hintText: 'Enter your address here',
-                                            labelText: 'Address',
-                                            alignLabelWithHint: true,
-                                            border: const OutlineInputBorder(),
-                                            contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                    vertical: 20.0,
-                                                    horizontal: 10.0),
-                                          ),
-                                          keyboardType:
-                                              TextInputType.streetAddress,
-                                          maxLines: 4,
-                                          onChanged: (value) {},
-                                          onSubmitted: (value) {},
-                                        ).paddingSymmetric(vertical: 10),
-                                        AppButton.expanded(
-                                          buttonText: 'Save',
-                                          onTap: () {},
-                                        ).paddingSymmetric(
-                                            horizontal: size.width / 3.2,
-                                            vertical: 15),
-                                      ],
-                                    ).paddingSymmetric(horizontal: 15),
-                                  ),
-                                ),
+                                      height: 40,
+                                      width: 120,
+                                      child: AppButton.expanded(
+                                        buttonText: 'Save',
+                                        onTap: () {},
+                                      )),
+                                )
                               ],
                             ),
                           ),
