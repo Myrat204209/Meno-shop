@@ -11,8 +11,9 @@ class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({
     super.key,
     required this.product,
+    required this.uuid,
   });
-
+  final String? uuid;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

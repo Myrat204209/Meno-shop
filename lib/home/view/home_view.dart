@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/language/language.dart';
-import 'package:meno_shop/notification/notification.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -27,9 +27,11 @@ class HomeView extends StatelessWidget {
           AppActionsButton(
             icon: Icons.notifications_none,
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const NotificationsPage(),
-              ));
+              //TODO: Change to RouteNames enum
+              context.goNamed('notifications');
+              // Navigator.of(context).push(MaterialPageRoute(
+              //   builder: (context) => const NotificationsPage(),
+              // ));
             },
           ),
         ],

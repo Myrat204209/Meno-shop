@@ -3,10 +3,9 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/main/main.dart';
-
-import 'package:meno_shop/product_details/product_details.dart';
 
 class HomePageProductsList extends StatelessWidget {
   const HomePageProductsList({
@@ -27,11 +26,8 @@ class HomePageProductsList extends StatelessWidget {
           AppTitledWithViewAllRow(
             title: title ?? '',
             padding: 10,
-            onViewAllTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                  builder: (context) => const ProductDetailsPage(
-                        product: ProductItem(),
-                      )),
+            onViewAllTap: () => context.pushNamed(
+              'Category_Products',
             ),
             viewAllText: context.l10n.viewAll,
           ),
@@ -55,11 +51,8 @@ class HomePageProductsList extends StatelessWidget {
                     image: '$kDefaultBaseUrl\\$imageUrl',
                     label: product.name ?? '',
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ProductDetailsPage(
-                          product: product,
-                        ),
-                      ));
+                      context.goNamed('Product_Details',
+                          pathParameters: {'uuid': "asasas"});
                     },
                   );
                 }

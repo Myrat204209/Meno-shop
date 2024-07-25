@@ -10,8 +10,9 @@ class ProductDetailsView extends StatelessWidget {
   const ProductDetailsView({
     super.key,
     required this.product,
+    this.uuid,
   });
-
+  final String? uuid;
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -19,7 +19,7 @@ class CategoryProductsPage extends StatelessWidget {
               size: 30,
               color: AppColors.primary,
             ),
-            onPressed: () => showCategorieslterBottomSheet(context: context),
+            onPressed: () => showCategoriesFilterBottomSheet(context: context),
           ).paddingOnly(right: 16),
         ],
       ),

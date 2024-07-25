@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
-Future<void> showCategorieslterBottomSheet({
+Future<void> showCategoriesFilterBottomSheet({
   required BuildContext context,
 }) async =>
     showModalBottomSheet(

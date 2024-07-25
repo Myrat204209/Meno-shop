@@ -16,7 +16,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         _bannerRepository = bannerRepository,
         super(const HomeState.initial()) {
     on<HomeRequested>(_onHomeRequested);
-
     on<HomeBannersRequested>(_onHomeBannersRequested);
   }
   final SubcategoryRepository _subcategoryRepository;
@@ -25,6 +24,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeRequested event,
     Emitter<HomeState> emit,
   ) async {
+    //TODO: Implement fetching home banners here
     // add(HomeBannersRequested());
 
     try {
@@ -34,7 +34,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           populate: ['products'],
           isActive: true,
           limit: 40,
-          offset: 1,
+          offset: 0,
         ),
       );
       emit(state.copyWith(
