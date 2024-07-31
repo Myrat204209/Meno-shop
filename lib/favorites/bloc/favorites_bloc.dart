@@ -1,133 +1,137 @@
-// import 'package:bloc/bloc.dart';
-// import 'package:data_provider/data_provider.dart';
-// import 'package:equatable/equatable.dart';
-// import 'package:meno_shop/product/product.dart';
+import 'dart:async';
 
-// part 'favorites_event.dart';
-// part 'favorites_state.dart';
+import 'package:bloc/bloc.dart';
+import 'package:data_provider/data_provider.dart';
+import 'package:equatable/equatable.dart';
+import 'package:meno_shop/product/product.dart';
 
-// class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
-//   FavoritesBloc({
-//     required ProductRepository productRepository,
-//   })  : _productRepository = productRepository,
-//         super(const FavoritesState.initial()){
-//           on<FavoritesInitRequested>()
-//         }
-//  FutureOr<void> _onRequested(
-//     FavoritesRequested event,
-//     Emitter<FavoritesState> emit,
-//   ) async {
-//     if (_isFetching || !state.hasMoreContent) return;
+part 'favorites_event.dart';
+part 'favorites_state.dart';
 
-//     _isFetching = true;
+class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
+  FavoritesBloc({
+    required ProductRepository productRepository,
+  })  : _productRepository = productRepository,
+        super(const FavoritesState.initial()) {
+    on<FavoritesInitRequested>(_onInitRequested);
+    on<FavoritesRequested>(_onRequested);
+    on<FavoritesRefreshRequested>(_onRefreshRequested);
+    on<AddFavoriteRequested>(_onAdd);
+    on<RemoveFavoriteRequested>(_onRemove);
+    on<FavoriteButtonPressed>(_onFavoriteButtonPressed);
+  }
 
-//     try {
-//       emit(state.copyWith(status: FavoritesStatus.loading));
+  final ProductRepository _productRepository;
 
-//       final response = await _productRepository.getFavorites(
-//         page: state.page + 1,
-//       );
+  bool _isFetching = false;
 
-//       final content = response.data ?? const [];
+  FutureOr<void> _onRequested(
+    FavoritesRequested event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    if (_isFetching || !state.hasMoreContent) return;
 
-//       emit(state.copyWith(
-//         status: FavoritesStatus.success,
-//         products: {...state.products, ...content}.toList(),
-//         page: state.page + 1,
-//         hasMoreContent: content.isNotEmpty,
-//       ));
-//     } catch (error, stackTrace) {
-//       emit(state.copyWith(status: FavoritesStatus.failure));
-//       addError(error, stackTrace);
-//     } finally {
-//       _isFetching = false;
-//     }
-//     return null;
-//   }
+    _isFetching = true;
 
-//   FutureOr<void> _onRefreshRequested(
-//     FavoritesRefreshRequested event,
-//     Emitter<FavoritesState> emit,
-//   ) {
-//     emit(const FavoritesState.initial());
-//     add(FavoritesRequested());
-//   }
+    try {
+      emit(state.copyWith(status: FavoritesStatus.loading));
 
-//   FutureOr<void> _onInitRequested(
-//     FavoritesInitRequested event,
-//     Emitter<FavoritesState> emit,
-//   ) async {
-//     if (state.status != FavoritesStatus.initial) return;
-//     add(FavoritesRequested());
-//   }
+      final response = await _productRepository.getFavorites();
 
-//   FutureOr<void> _onAdd(
-//     AddFavoriteRequested event,
-//     Emitter<FavoritesState> emit,
-//   ) async {
-//     try {
-//       emit(state.copyWith(status: FavoritesStatus.updating));
+      emit(state.copyWith(
+        status: FavoritesStatus.success,
+        products: {...state.products, ...response}.toList(),
+        hasMoreContent: response.isNotEmpty,
+      ));
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: FavoritesStatus.failure));
+      addError(error, stackTrace);
+    } finally {
+      _isFetching = false;
+    }
+    return null;
+  }
 
-//       await _productRepository.addFavorite(event.product.id!);
+  FutureOr<void> _onRefreshRequested(
+    FavoritesRefreshRequested event,
+    Emitter<FavoritesState> emit,
+  ) {
+    emit(const FavoritesState.initial());
+    add(FavoritesRequested());
+  }
 
-//       emit(state.copyWith(
-//         status: FavoritesStatus.updatingSuccess,
-//         // products: {...state.products, ...content}.toList(),
-//       ));
+  FutureOr<void> _onInitRequested(
+    FavoritesInitRequested event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    if (state.status != FavoritesStatus.initial) return;
+    add(FavoritesRequested());
+  }
 
-//       add(FavoritesRefreshRequested());
-//     } catch (error, stackTrace) {
-//       emit(state.copyWith(status: FavoritesStatus.updatingFailure));
-//       addError(error, stackTrace);
-//     }
-//   }
+  FutureOr<void> _onAdd(
+    AddFavoriteRequested event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: FavoritesStatus.updating));
 
-//   FutureOr<void> _onRemove(
-//     RemoveFavoriteRequested event,
-//     Emitter<FavoritesState> emit,
-//   ) async {
-//     try {
-//       emit(state.copyWith(status: FavoritesStatus.updating));
+      await _productRepository.addFavorite(event.product);
 
-//       await _productRepository.addFavorite(event.product.id!);
+      emit(state.copyWith(
+        status: FavoritesStatus.updatingSuccess,
+        // products: {...state.products, ...content}.toList(),
+      ));
 
-//       emit(state.copyWith(
-//         status: FavoritesStatus.updatingSuccess,
-//         // products: {...state.products, ...content}.toList(),
-//       ));
+      add(FavoritesRefreshRequested());
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: FavoritesStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
+  }
 
-//       add(FavoritesRefreshRequested());
-//     } catch (error, stackTrace) {
-//       emit(state.copyWith(status: FavoritesStatus.updatingFailure));
-//       addError(error, stackTrace);
-//     }
-//   }
+  FutureOr<void> _onRemove(
+    RemoveFavoriteRequested event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: FavoritesStatus.updating));
 
-//   FutureOr<void> _onFavoriteButtonPressed(
-//     FavoriteButtonPressed event,
-//     Emitter<FavoritesState> emit,
-//   ) async {
-//     try {
-//       emit(state.copyWith(status: FavoritesStatus.updating));
+      await _productRepository.addFavorite(event.product);
 
-//       if (event.product.isFavorite ?? false) {
-//         await _productRepository.removeFavorite(event.product.id!);
-//       } else {
-//         await _productRepository.addFavorite(event.product.id!);
-//       }
+      emit(state.copyWith(
+        status: FavoritesStatus.updatingSuccess,
+        // products: {...state.products, ...content}.toList(),
+      ));
 
-//       emit(state.copyWith(
-//         status: FavoritesStatus.updatingSuccess,
-//         // products: {...state.products, ...content}.toList(),
-//       ));
+      add(FavoritesRefreshRequested());
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: FavoritesStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
+  }
 
-//       add(FavoritesRefreshRequested());
-//     } catch (error, stackTrace) {
-//       emit(state.copyWith(status: FavoritesStatus.updatingFailure));
-//       addError(error, stackTrace);
-//     }
-//   }
-//   final ProductRepository _productRepository;
+  FutureOr<void> _onFavoriteButtonPressed(
+    FavoriteButtonPressed event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: FavoritesStatus.updating));
 
-//   bool _isFetching = false;
-// }
+      if (event.product.isFavorite ?? false) {
+        await _productRepository.removeFavorite(event.product);
+      } else {
+        await _productRepository.addFavorite(event.product);
+      }
+
+      emit(state.copyWith(
+        status: FavoritesStatus.updatingSuccess,
+        // products: {...state.products, ...content}.toList(),
+      ));
+
+      add(FavoritesRefreshRequested());
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: FavoritesStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
+  }
+}

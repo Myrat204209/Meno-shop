@@ -31,10 +31,17 @@ class RemoveFavoriteFailure extends ProductFailure {
 class ProductRepository {
   const ProductRepository({
     required ProductClient productClient,
-  }) : _productClient = productClient;
+    required UserFavoritesBox userFavoritesBox,
+  })  : _userFavoritesBox = userFavoritesBox,
+        _productClient = productClient;
 
+  /// Remote method to get products.
   final ProductClient _productClient;
 
+  /// Local method to get favorite products.
+  final UserFavoritesBox _userFavoritesBox;
+
+  /// Remote method to get  products.
   Future<List<ProductItem>?> getProducts([
     GetQueryParameters? queryParameters,
   ]) async {
@@ -42,6 +49,31 @@ class ProductRepository {
       return await _productClient.getProducts(queryParameters);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetProductsFailure(error), stackTrace);
+    }
+  }
+
+  ///Local method to fetch favorites.
+  Future<List<ProductItem>> getFavorites() async {
+    try {
+      return _userFavoritesBox.values.toList();
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(GetFavoritesFailure(error), stackTrace);
+    }
+  }
+
+  Future<void> addFavorite(ProductItem product) async {
+    try {
+      await _userFavoritesBox.put(product.uuid, product);
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(AddFavoriteFailure(error), stackTrace);
+    }
+  }
+
+  Future<void> removeFavorite(ProductItem product) async {
+    try {
+      await _userFavoritesBox.delete(product.uuid);
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(RemoveFavoriteFailure(error), stackTrace);
     }
   }
 }

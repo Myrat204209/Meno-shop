@@ -49,20 +49,27 @@ void main() {
     final subcategoryRepository =
         SubcategoryRepository(subcategoryClient: subcategoryClient);
 
-    /// Products
-    final productClient = ProductClient(httpClient: httpClient);
-    final productRepository = ProductRepository(productClient: productClient);
-
-    /// Auth
-    // final authClient =
-    //     AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
-    // final authRepository = AuthRepository(authClient: authClient);
-
     /// Addresses
     Hive.registerAdapter(AddressModelAdapter());
     final userAddressBox =
         await Hive.openBox<AddressModel>(HiveBoxKeys.userAddresses);
     final addressRepository = AddressRepository(userAddressBox: userAddressBox);
+
+    Hive.registerAdapter(ProductItemAdapter());
+    final userFavoritesBox =
+        await Hive.openBox<ProductItem>(HiveBoxKeys.userFavorites);
+
+    /// Products
+    final productClient = ProductClient(httpClient: httpClient);
+    final productRepository = ProductRepository(
+      productClient: productClient,
+      userFavoritesBox: userFavoritesBox,
+    );
+
+    /// Auth
+    // final authClient =
+    //     AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
+    // final authRepository = AuthRepository(authClient: authClient);
 
     // /// Cart
     // final cartClient = CartClient(httpClient: httpClient);

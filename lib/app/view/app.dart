@@ -8,6 +8,7 @@ import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/categories/categories.dart';
+import 'package:meno_shop/favorites/bloc/favorites_bloc.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/language/language.dart';
 import 'package:meno_shop/product/product.dart';
@@ -60,7 +61,8 @@ class App extends StatelessWidget {
     )..add(AddressesRequested());
     // final cartBloc = CartBloc(cartRepository: _cartRepository)
     //   ..add(CartInitRequested());
-
+    final favoritesBloc = FavoritesBloc(productRepository: _productRepository)
+      ..add(FavoritesInitRequested());
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider.value(value: _bannerRepository),
@@ -79,6 +81,7 @@ class App extends StatelessWidget {
           BlocProvider.value(value: categoriesBloc),
           // BlocProvider.value(value: subcategoriesBloc),
           BlocProvider.value(value: addressBloc),
+          BlocProvider.value(value: favoritesBloc),
           // BlocProvider.value(value: cartBloc),
         ],
         child: LayoutBuilder(

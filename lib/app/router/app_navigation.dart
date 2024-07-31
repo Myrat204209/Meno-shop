@@ -6,6 +6,7 @@ import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/favorites.dart';
+import 'package:meno_shop/favorites/view/favorites_page.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/notification/notification.dart';
 import 'package:meno_shop/orders/orders.dart';

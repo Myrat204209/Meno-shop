@@ -56,7 +56,7 @@ class AddressRepository {
   /// Remove address
   Future<void> removeAddress(AddressModel address) async {
     try {
-      await address.delete();
+      await _userAddressBox.delete(address.uuid);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(DeleteAddressFailure(error), stackTrace);
     }
