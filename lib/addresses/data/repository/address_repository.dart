@@ -28,10 +28,6 @@ class DeleteAddressFailure extends AddressFailure {
   const DeleteAddressFailure(super.error);
 }
 
-class FlushAddressesFailure extends AddressFailure {
-  const FlushAddressesFailure(super.error);
-}
-
 class AddressRepository {
   const AddressRepository({
     required UserAddressBox userAddressBox,
@@ -72,15 +68,6 @@ class AddressRepository {
       await _userAddressBox.put(address.uuid, address);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(UpdateAddressFailure(error), stackTrace);
-    }
-  }
-
-  /// Flush addresses
-  Future<void> flushAddresses() async {
-    try {
-      await _userAddressBox.clear();
-    } catch (error, stackTrace) {
-      Error.throwWithStackTrace(FlushAddressesFailure(error), stackTrace);
     }
   }
 }

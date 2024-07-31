@@ -17,7 +17,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     on<AddressCreateRequested>(_onCreateRequested);
     on<AddressUpdateRequested>(_onUpdateRequested);
     on<AddressDeleteRequested>(_onDeleteRequested);
-    on<AddressFlushRequested>(_onFlushRequested);
+    on<AddressSelected>(_onSelected);
   }
   final AddressRepository _addressRepository;
   FutureOr<void> _onRequested(
@@ -26,6 +26,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
   ) async {
     try {
       emit(state.copyWith(status: AddressStatus.loading));
+
       final adresses = await _addressRepository.getAddresses();
       emit(state.copyWith(
         status: AddressStatus.success,
@@ -43,8 +44,11 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
   ) async {
     try {
       emit(state.copyWith(status: AddressStatus.updating));
+
       await _addressRepository.createAddress(event.address);
+
       final addresses = await _addressRepository.getAddresses();
+
       emit(state.copyWith(
         status: AddressStatus.updatingSuccess,
         addresses: addresses,
@@ -95,23 +99,10 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     }
   }
 
-  FutureOr<void> _onFlushRequested(
-    AddressFlushRequested event,
+  FutureOr<void> _onSelected(
+    AddressSelected event,
     Emitter<AddressState> emit,
-  ) async {
-    try {
-      emit(state.copyWith(status: AddressStatus.updating));
-
-      await _addressRepository.flushAddresses();
-      final addresses = await _addressRepository.getAddresses();
-
-      emit(state.copyWith(
-        status: AddressStatus.updatingSuccess,
-        addresses: addresses,
-      ));
-    } catch (error, stackTrace) {
-      emit(state.copyWith(status: AddressStatus.updatingFailure));
-      addError(error, stackTrace);
-    }
+  ) {
+    emit(state.copyWith(selectedAddress: event.address));
   }
 }

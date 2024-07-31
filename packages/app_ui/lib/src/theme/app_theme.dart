@@ -212,12 +212,11 @@ class AppTheme {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(
-          color: AppColors.transparent,
+          color: AppColors.neutral.shade300,
         ),
       ),
 
       filled: true,
-      fillColor: AppColors.starsColor,
       focusColor: AppColors.newMessage,
       // isDense: true,
     );

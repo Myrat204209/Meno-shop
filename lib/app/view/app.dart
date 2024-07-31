@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/categories/categories.dart';
@@ -21,15 +22,15 @@ class App extends StatelessWidget {
     required SubcategoryRepository subcategoryRepository,
     required ProductRepository productRepository,
     // required AuthRepository authRepository,
-    // required AddressRepository addressRepository,
+    required AddressRepository addressRepository,
     // required CartRepository cartRepository,
   })  : _categoryRepository = categoryRepository,
         _exceptionStream = exceptionStream,
         _productRepository = productRepository,
         _bannerRepository = bannerRepository,
+        _addressRepository = addressRepository,
         _subcategoryRepository = subcategoryRepository;
   // _authRepository = authRepository,
-  // _addressRepository = addressRepository,
   // _cartRepository = cartRepository;
 
   // ignore: unused_field
@@ -39,8 +40,8 @@ class App extends StatelessWidget {
   final SubcategoryRepository _subcategoryRepository;
   final ProductRepository _productRepository;
   final BannerRepository _bannerRepository;
+  final AddressRepository _addressRepository;
   // final AuthRepository _authRepository;
-  // final AddressRepository _addressRepository;
   // final CartRepository _cartRepository;
 
   @override
@@ -54,9 +55,9 @@ class App extends StatelessWidget {
     final categoriesBloc =
         CategoriesBloc(categoryRepository: _categoryRepository)
           ..add(const CategoriesRequested());
-    // final addressBloc = AddressBloc(
-    //   addressRepository: _addressRepository,
-    // )..add(AddressesRequested());
+    final addressBloc = AddressBloc(
+      addressRepository: _addressRepository,
+    )..add(AddressesRequested());
     // final cartBloc = CartBloc(cartRepository: _cartRepository)
     //   ..add(CartInitRequested());
 
@@ -68,7 +69,7 @@ class App extends StatelessWidget {
         RepositoryProvider.value(value: _productRepository),
         // RepositoryProvider.value(value: _cartRepository),
         // RepositoryProvider.value(value: _authRepository),
-        // RepositoryProvider.value(value: _addressRepository),
+        RepositoryProvider.value(value: _addressRepository),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -77,8 +78,7 @@ class App extends StatelessWidget {
           BlocProvider.value(value: languageBloc),
           BlocProvider.value(value: categoriesBloc),
           // BlocProvider.value(value: subcategoriesBloc),
-          // BlocProvider.value(value: addressBloc),
-          // BlocProvider.value(value: addressBloc),
+          BlocProvider.value(value: addressBloc),
           // BlocProvider.value(value: cartBloc),
         ],
         child: LayoutBuilder(

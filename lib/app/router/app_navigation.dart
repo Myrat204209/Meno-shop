@@ -1,11 +1,14 @@
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meno_shop/account/account.dart';
+import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/notification/notification.dart';
+import 'package:meno_shop/orders/orders.dart';
 import 'package:meno_shop/product_details/product_details.dart';
 import 'package:meno_shop/profile/profile.dart';
 
@@ -44,29 +47,30 @@ class AppNavigation {
             navigatorKey: _rootNavigatorHome,
             routes: <RouteBase>[
               GoRoute(
-                  path: '/home',
-                  name: 'Home',
-                  builder: (context, state) => HomePage(
-                        key: state.pageKey,
-                      ),
-                  routes: <RouteBase>[
-                    GoRoute(
-                      path: 'notifications',
-                      name: 'Notifications',
-                      builder: (context, state) =>
-                          NotificationsPage(key: state.pageKey),
+                path: '/home',
+                name: 'Home',
+                builder: (context, state) => HomePage(
+                  key: state.pageKey,
+                ),
+                routes: <RouteBase>[
+                  GoRoute(
+                    path: 'notifications',
+                    name: 'Notifications',
+                    builder: (context, state) =>
+                        NotificationsPage(key: state.pageKey),
+                  ),
+                  GoRoute(
+                    path: 'products/:uuid',
+                    name: 'Product_Details',
+                    builder: (context, state) => ProductDetailsPage(
+                      key: state.pageKey,
+                      uuid: state.pathParameters['uuid'],
+                      //TODO: Change to actual product
+                      product: const ProductItem(),
                     ),
-                    GoRoute(
-                      path: 'products/:uuid',
-                      name: 'Product_Details',
-                      builder: (context, state) => ProductDetailsPage(
-                        key: state.pageKey,
-                        uuid: state.pathParameters['uuid'],
-                        //TODO: Change to actual product
-                        product: const ProductItem(),
-                      ),
-                    ),
-                  ]),
+                  ),
+                ],
+              ),
             ],
           ),
 
@@ -114,6 +118,24 @@ class AppNavigation {
                 path: '/profile',
                 name: 'Profile',
                 builder: (context, state) => ProfilePage(key: state.pageKey),
+                routes: <RouteBase>[
+                  GoRoute(
+                    path: 'account',
+                    name: 'Account',
+                    builder: (context, state) =>
+                        AccountPage(key: state.pageKey),
+                  ),
+                  GoRoute(
+                    path: 'address',
+                    name: 'My_Addresses',
+                    builder: (context, state) => const AddressPage(),
+                  ),
+                  GoRoute(
+                    path: 'orders',
+                    name: 'Orders',
+                    builder: (context, state) => const OrdersPage(),
+                  ),
+                ],
               ),
             ],
           ),

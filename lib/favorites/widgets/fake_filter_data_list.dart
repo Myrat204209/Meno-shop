@@ -3,8 +3,13 @@ const List<String> categoryChipList = [
   'Shoes',
   'PC',
   'Kids',
-  'Jewelry',
-  'Camera',
+  'Skid',
+  'Diks',
+  'Picks',
+  'Shist',
+  'Shist',
+  'Shist',
+  'Han',
 ];
 const List<String> sizeChipList = [
   'S',

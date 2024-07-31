@@ -13,3 +13,4 @@ export 'app_radio_button.dart';
 export 'app_search_bar.dart';
 export 'app_text_field.dart';
 export 'app_title_with_view_all_row.dart';
+export 'app_loading_indicator.dart';

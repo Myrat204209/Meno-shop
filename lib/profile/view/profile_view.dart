@@ -3,10 +3,8 @@ import 'dart:developer';
 
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:meno_shop/account/account.dart';
-import 'package:meno_shop/addresses/address.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meno_shop/l10n/l10n.dart';
-import 'package:meno_shop/orders/orders.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -14,54 +12,36 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 40,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.name,
-            style: const AppTextStyle.text().medium().sm(),
-          ),
-          Text(
-            'Myrat',
-            style: const AppTextStyle.text().semiBold().xl(),
-          ),
-          const SizedBox(height: 50),
-          ProfilePageButton(
-            title: 'Account',
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => const AccountPage(),
-              ));
-            },
-          ),
-          ProfilePageButton(
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => const AddressPage(),
-              ));
-            },
-            title: l10n.addresses,
-          ),
-          ProfilePageButton(
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const OrdersPage(),
-              ));
-            },
-            title: l10n.orders,
-          ),
-          ProfilePageButton(
-            onTap: () {},
-            title: 'Logout',
-          ),
-        ],
-      ),
-    );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.name,
+          style: const AppTextStyle.text().medium().sm(),
+        ),
+        Text(
+          'Myrat',
+          style: const AppTextStyle.text().semiBold().xl(),
+        ),
+        const SizedBox(height: 50),
+        ProfilePageButton(
+          title: 'Account',
+          onTap: () => context.pushNamed('Account'),
+        ),
+        ProfilePageButton(
+          title: l10n.addresses,
+          onTap: () => context.pushNamed('My_Addresses'),
+        ),
+        ProfilePageButton(
+          onTap: () => context.pushNamed('Orders'),
+          title: l10n.orders,
+        ),
+        ProfilePageButton(
+          onTap: () {},
+          title: 'Logout',
+        ),
+      ],
+    ).paddingSymmetric(horizontal: 16, vertical: 40);
   }
 }
 

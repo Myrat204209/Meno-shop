@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:data_provider/data_provider.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'product_item.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -16,11 +17,13 @@ class ProductItem {
     this.advantages,
     this.categories,
     this.subcategories,
+    this.isFavorite,
   });
   final String? uuid;
   final String? name;
   final double? price;
   final int? stock;
+  final bool? isFavorite;
   final String? description;
   final DiscountItem? discounts;
   final AdvantagesItem? advantages;
@@ -30,4 +33,32 @@ class ProductItem {
 
   factory ProductItem.fromJson(JsonType json) => _$ProductItemFromJson(json);
   JsonType toJson() => _$ProductItemToJson(this);
+
+  ProductItem copyWith({
+    String? uuid,
+    String? name,
+    double? price,
+    int? stock,
+    bool? isFavorite,
+    String? description,
+    DiscountItem? discounts,
+    AdvantagesItem? advantages,
+    List<PhotoItem>? photo,
+    List<CategoryItem>? categories,
+    List<SubcategoryItem>? subcategories,
+  }) {
+    return ProductItem(
+      uuid: uuid ?? this.uuid,
+      name: name ?? this.name,
+      price: price ?? this.price,
+      stock: stock ?? this.stock,
+      isFavorite: isFavorite ?? this.isFavorite,
+      description: description ?? this.description,
+      discounts: discounts ?? this.discounts,
+      advantages: advantages ?? this.advantages,
+      photo: photo ?? this.photo,
+      categories: categories ?? this.categories,
+      subcategories: subcategories ?? this.subcategories,
+    );
+  }
 }

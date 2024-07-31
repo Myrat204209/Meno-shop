@@ -36,18 +36,30 @@ class FilterPageWrap extends StatelessWidget {
                 )),
           ],
         ).paddingSymmetric(horizontal: 2, vertical: 15),
-        Wrap(
-          spacing: 10,
-          runSpacing: 12,
-          children: children == null
-              ? []
-              : children!
-                  .map((element) => FilterPageChip(
-                        isSelected: false,
-                        label: element,
-                      ))
-                  .toList(),
-        ).paddingOnly(right: 11),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 0.35,
+              maxWidth: MediaQuery.of(context).size.width * 1.4,
+            ),
+            child: Wrap(
+              direction: Axis.horizontal,
+              crossAxisAlignment: WrapCrossAlignment.end,
+              alignment: WrapAlignment.start,
+              spacing: 10,
+              runSpacing: 12,
+              children: children == null
+                  ? []
+                  : children!
+                      .map((element) => FilterPageChip(
+                            isSelected: false,
+                            label: element,
+                          ))
+                      .toList(),
+            ).paddingOnly(right: 11),
+          ),
+        ),
         Divider(
           color: AppColors.neutral.shade300,
         ),
