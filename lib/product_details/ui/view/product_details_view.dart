@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +7,13 @@ import 'package:flutter/material.dart';
 import '../ui.dart';
 
 class ProductDetailsView extends StatelessWidget {
-  final ProductItem product;
   const ProductDetailsView({
     super.key,
     required this.product,
-    this.uuid,
+    required this.uuid,
   });
-  final String? uuid;
+  final ProductItem product;
+  final String uuid;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,11 +27,8 @@ class ProductDetailsView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const ProductDetailsImageSlider(
-                  imageLinks: [
-                    'https',
-                    'https',
-                  ],
+                ProductDetailsImageSlider(
+                  imageLinks: product.photo!.map((e) => e.path!).toList(),
                 ),
                 const ProductDetailsVisitCounter(),
                 ProductDetailsName(product: product),
@@ -44,7 +42,9 @@ class ProductDetailsView extends StatelessWidget {
                 const SizedBox(height: 20),
                 const ProductDetailsSizeSelector(),
                 const SizedBox(height: 20),
-                const ProductDetailsSimilarProducts(),
+                const ProductDetailsSimilarProducts(
+                  products: [],
+                ),
                 const SizedBox(height: 20),
               ],
             ),

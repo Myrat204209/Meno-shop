@@ -3,7 +3,10 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/main/main.dart';
 
@@ -26,9 +29,8 @@ class HomePageProductsList extends StatelessWidget {
           AppTitledWithViewAllRow(
             title: title ?? '',
             padding: 10,
-            onViewAllTap: () => context.pushNamed(
-              'Category_Products',
-            ),
+            onViewAllTap: () =>
+                context.pushNamed(RouteNames.categoryProducts.name),
             viewAllText: context.l10n.viewAll,
           ),
           const SizedBox(height: 10),
@@ -47,12 +49,19 @@ class HomePageProductsList extends StatelessWidget {
                 }
                 if (products!.isNotEmpty) {
                   return AppProductItem(
+                    onFavoriteAdded: () {
+                      context
+                          .read<FavoritesBloc>()
+                          .add(AddFavoriteRequested(product));
+                    },
                     price: product.price!,
                     image: '$kDefaultBaseUrl\\$imageUrl',
                     label: product.name ?? '',
                     onTap: () {
-                      context.goNamed('Product_Details',
-                          pathParameters: {'uuid': "asasas"});
+                      context.goNamed(
+                        RouteNames.productDetails.name,
+                        pathParameters: {'uuid': "asasas"},
+                      );
                     },
                   );
                 }

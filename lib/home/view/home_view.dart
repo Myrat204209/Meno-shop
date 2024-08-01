@@ -2,6 +2,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/language/language.dart';
@@ -28,7 +29,7 @@ class HomeView extends StatelessWidget {
             icon: Icons.notifications_none,
             onPressed: () {
               //TODO: Change to RouteNames enum
-              context.goNamed('notifications');
+              context.goNamed(RouteNames.notifications.name);
               // Navigator.of(context).push(MaterialPageRoute(
               //   builder: (context) => const NotificationsPage(),
               // ));

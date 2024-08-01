@@ -8,12 +8,14 @@ class AppProductItem extends StatelessWidget {
   const AppProductItem({
     super.key,
     required this.onTap,
+    required this.onFavoriteAdded,
     required this.image,
     required this.price,
     required this.label,
   });
 
   final VoidCallback onTap;
+  final VoidCallback onFavoriteAdded;
   final String? image;
   final double price;
   final String label;
@@ -39,7 +41,9 @@ class AppProductItem extends StatelessWidget {
                   child: Stack(
                     children: [
                       AppProductImage(imageLink: image ?? ''),
-                      ProductFavoritesButton(),
+                      ProductFavoritesButton(
+                        onFavoriteAdded: onFavoriteAdded,
+                      ),
                       Positioned(
                         left: 5,
                         top: 5,
@@ -147,10 +151,12 @@ class ProductAdvantagesList extends StatelessWidget {
 }
 
 class ProductFavoritesButton extends StatelessWidget {
-  const ProductFavoritesButton({
+  ProductFavoritesButton({
     super.key,
+    required this.onFavoriteAdded,
   });
 
+  final VoidCallback onFavoriteAdded;
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -159,7 +165,7 @@ class ProductFavoritesButton extends StatelessWidget {
       child: RawMaterialButton(
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         constraints: BoxConstraints(maxWidth: 40),
-        onPressed: () {},
+        onPressed: onFavoriteAdded,
         elevation: 3,
         fillColor: AppColors.quaterniary,
         padding: EdgeInsets.only(top: 2),

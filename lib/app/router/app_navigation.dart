@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/account/account.dart';
 import 'package:meno_shop/addresses/address.dart';
+import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/favorites.dart';
-import 'package:meno_shop/favorites/view/favorites_page.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/notification/notification.dart';
 import 'package:meno_shop/orders/orders.dart';
@@ -48,25 +48,25 @@ class AppNavigation {
             navigatorKey: _rootNavigatorHome,
             routes: <RouteBase>[
               GoRoute(
-                path: '/home',
-                name: 'Home',
+                path: RouteNames.home.path,
+                name: RouteNames.home.name,
                 builder: (context, state) => HomePage(
                   key: state.pageKey,
                 ),
                 routes: <RouteBase>[
                   GoRoute(
-                    path: 'notifications',
-                    name: 'Notifications',
+                    path: RouteNames.notifications.path,
+                    name: RouteNames.notifications.name,
                     builder: (context, state) =>
                         NotificationsPage(key: state.pageKey),
                   ),
+                  //TODO: Change to actual product uuid
                   GoRoute(
-                    path: 'products/:uuid',
-                    name: 'Product_Details',
+                    path: RouteNames.productDetails.path,
+                    name: RouteNames.productDetails.name,
                     builder: (context, state) => ProductDetailsPage(
                       key: state.pageKey,
-                      uuid: state.pathParameters['uuid'],
-                      //TODO: Change to actual product
+                      uuid: state.pathParameters['uuid']!,
                       product: const ProductItem(),
                     ),
                   ),
@@ -80,8 +80,8 @@ class AppNavigation {
             navigatorKey: _rootNavigatorCategory,
             routes: <RouteBase>[
               GoRoute(
-                path: '/category',
-                name: 'Category',
+                path: RouteNames.category.path,
+                name: RouteNames.category.name,
                 builder: (context, state) => CategoriesPage(key: state.pageKey),
               ),
             ],
@@ -92,8 +92,8 @@ class AppNavigation {
             navigatorKey: _rootNavigatorCart,
             routes: <RouteBase>[
               GoRoute(
-                path: '/cart',
-                name: 'Cart',
+                path: RouteNames.cart.path,
+                name: RouteNames.cart.name,
                 builder: (context, state) => CartPage(key: state.pageKey),
               ),
             ],
@@ -104,8 +104,8 @@ class AppNavigation {
             navigatorKey: _rootNavigatorFavorites,
             routes: <RouteBase>[
               GoRoute(
-                path: '/favorites',
-                name: 'Favorites',
+                path: RouteNames.favorites.path,
+                name: RouteNames.favorites.name,
                 builder: (context, state) => FavoritesPage(key: state.pageKey),
               ),
             ],
@@ -116,24 +116,24 @@ class AppNavigation {
             navigatorKey: _rootNavigatorProfile,
             routes: <RouteBase>[
               GoRoute(
-                path: '/profile',
-                name: 'Profile',
+                path: RouteNames.profile.path,
+                name: RouteNames.profile.name,
                 builder: (context, state) => ProfilePage(key: state.pageKey),
                 routes: <RouteBase>[
                   GoRoute(
-                    path: 'account',
-                    name: 'Account',
+                    path: RouteNames.account.path,
+                    name: RouteNames.account.name,
                     builder: (context, state) =>
                         AccountPage(key: state.pageKey),
                   ),
                   GoRoute(
-                    path: 'address',
-                    name: 'My_Addresses',
+                    path: RouteNames.addresses.path,
+                    name: RouteNames.addresses.name,
                     builder: (context, state) => const AddressPage(),
                   ),
                   GoRoute(
-                    path: 'orders',
-                    name: 'Orders',
+                    path: RouteNames.orders.path,
+                    name: RouteNames.orders.name,
                     builder: (context, state) => const OrdersPage(),
                   ),
                 ],
@@ -143,8 +143,8 @@ class AppNavigation {
         ],
       ),
       GoRoute(
-        path: '/category_products',
-        name: 'Category_Products',
+        path: RouteNames.categoryProducts.path,
+        name: RouteNames.categoryProducts.name,
         builder: (context, state) => CategoryProductsPage(
           key: state.pageKey,
         ),

@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
 class ProfileView extends StatelessWidget {
@@ -26,14 +27,14 @@ class ProfileView extends StatelessWidget {
         const SizedBox(height: 50),
         ProfilePageButton(
           title: 'Account',
-          onTap: () => context.pushNamed('Account'),
+          onTap: () => context.pushNamed(RouteNames.account.name),
         ),
         ProfilePageButton(
           title: l10n.addresses,
-          onTap: () => context.pushNamed('My_Addresses'),
+          onTap: () => context.pushNamed(RouteNames.addresses.name),
         ),
         ProfilePageButton(
-          onTap: () => context.pushNamed('Orders'),
+          onTap: () => context.pushNamed(RouteNames.orders.name),
           title: l10n.orders,
         ),
         ProfilePageButton(

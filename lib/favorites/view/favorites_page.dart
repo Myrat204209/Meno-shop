@@ -7,12 +7,19 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return const FavoritesView();
+  }
+}
+
+class FavoritesView extends StatelessWidget {
+  const FavoritesView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        scrolledUnderElevation: 0,
-        centerTitle: true,
         title: const Text('Favorites'),
-        // title: AppSearchBar(hintText: context.l10n.searching),
+        centerTitle: true,
       ),
       body: const FavoritesContent(),
     );

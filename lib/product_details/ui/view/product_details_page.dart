@@ -7,18 +7,21 @@ import 'package:flutter/material.dart';
 import 'package:meno_shop/product_details/product_details.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  final ProductItem product;
   const ProductDetailsPage({
     super.key,
     required this.product,
     required this.uuid,
   });
-  final String? uuid;
+  final ProductItem product;
+  final String uuid;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const ProductDetailsAppBar(),
-      body: ProductDetailsView(product: product),
+      body: ProductDetailsView(
+        product: product,
+        uuid: uuid,
+      ),
     );
   }
 }
