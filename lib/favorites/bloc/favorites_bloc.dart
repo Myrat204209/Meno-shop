@@ -117,7 +117,9 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     try {
       emit(state.copyWith(status: FavoritesStatus.updating));
 
-      if (event.product.isFavorite ?? false) {
+      final bool isFavorite =
+          await _productRepository.isFavorite(event.product);
+      if (isFavorite) {
         await _productRepository.removeFavorite(event.product);
       } else {
         await _productRepository.addFavorite(event.product);

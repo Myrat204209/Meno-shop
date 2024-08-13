@@ -34,7 +34,7 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
               onFavoriteAdded: () {
                 context
                     .read<FavoritesBloc>()
-                    .add(AddFavoriteRequested(product));
+                    .add(FavoriteButtonPressed(product));
               },
               image: product?.photo?.first.path,
               price: product!.price!,

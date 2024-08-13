@@ -52,7 +52,7 @@ class HomePageProductsList extends StatelessWidget {
                     onFavoriteAdded: () {
                       context
                           .read<FavoritesBloc>()
-                          .add(AddFavoriteRequested(product));
+                          .add(FavoriteButtonPressed(product));
                     },
                     price: product.price!,
                     image: '$kDefaultBaseUrl\\$imageUrl',

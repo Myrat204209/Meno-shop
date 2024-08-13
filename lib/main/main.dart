@@ -11,7 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:meno_shop/subcategories/subcategories.dart';
 import '../app/app.dart';
 
-const kDefaultBaseUrl = 'http://192.168.30.238:3000';
+const kDefaultBaseUrl = 'http://192.168.30.95:3000';
 void main() {
   bootStrap(({
     required sharedPreferences,

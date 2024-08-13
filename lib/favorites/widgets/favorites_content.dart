@@ -25,12 +25,16 @@ class FavoritesContent extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: favorites
                 .map(
-                  (e) => AppProductItem(
+                  (favorite) => AppProductItem(
                     onTap: () {},
-                    image: e.photo?.first.path,
-                    price: e.price!,
-                    label: e.name!,
-                    onFavoriteAdded: () {},
+                    image: favorite.photo?.first.path,
+                    price: favorite.price!,
+                    label: favorite.name!,
+                    onFavoriteAdded: () {
+                      context
+                          .read<FavoritesBloc>()
+                          .add(FavoriteButtonPressed(favorite));
+                    },
                   ),
                 )
                 .toList(),

@@ -63,6 +63,7 @@ class AddressEditBottomSheet extends HookWidget {
             // maxLength: 8,
             inputFormatters: [
               FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(8),
             ],
             autocorrect: false,
             prefixText: '+993 ',
@@ -111,7 +112,6 @@ class AddressEditBottomSheet extends HookWidget {
             controller: addressController,
             hintText: 'Enter your address here',
             labelText: context.l10n.name,
-            maxLength: 4,
             keyboardType: TextInputType.multiline,
             onChanged: (value) {},
             onSubmitted: (value) {},

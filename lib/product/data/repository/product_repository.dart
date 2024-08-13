@@ -52,6 +52,14 @@ class ProductRepository {
     }
   }
 
+  Future<bool> isFavorite(ProductItem product) async {
+    try {
+      return _userFavoritesBox.containsKey(product.uuid);
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(error, stackTrace);
+    }
+  }
+
   ///Local method to fetch favorites.
   Future<List<ProductItem>> getFavorites() async {
     try {

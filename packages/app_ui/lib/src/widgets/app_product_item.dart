@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -16,6 +17,7 @@ class AppProductItem extends StatelessWidget {
 
   final VoidCallback onTap;
   final VoidCallback onFavoriteAdded;
+
   final String? image;
   final double price;
   final String label;
@@ -40,17 +42,23 @@ class AppProductItem extends StatelessWidget {
                   aspectRatio: 149.w / 157.h,
                   child: Stack(
                     children: [
+                      /// Product image
                       AppProductImage(imageLink: image ?? ''),
+
+                      /// Product favorite button and advantages icon
                       ProductFavoritesButton(
+                        isFavorite: true,
                         onFavoriteAdded: onFavoriteAdded,
                       ),
                       Positioned(
                         left: 5,
                         top: 5,
-                        child: Assets.advantages.presentPlus1.svg(
-                          height: 47.h,
-                          width: 47.w,
-                        ),
+                        child: SizedBox(),
+
+                        // child: Assets.advantages.presentPlus1.svg(
+                        //   height: 47.h,
+                        //   width: 47.w,
+                        // ),
                       )
                     ],
                   ),
@@ -76,9 +84,9 @@ class AppProductItem extends StatelessWidget {
                     ).paddingOnly(left: 7),
                   ],
                 ).paddingAll(5),
-                ProductDetailsPrices(price: price).paddingOnly(left: 5),
+                // ProductDetailsPrices(price: price).paddingOnly(left: 5),
                 SizedBox(height: 5),
-                ProductAdvantagesList(),
+                // ProductAdvantagesList(),
               ],
             ),
           ),
@@ -92,10 +100,11 @@ class ProductDetailsPrices extends StatelessWidget {
   const ProductDetailsPrices({
     super.key,
     required this.price,
+    required this.discountedPrice,
   });
 
   final double price;
-
+  final double discountedPrice;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -103,13 +112,13 @@ class ProductDetailsPrices extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            '${price.toInt()} TMT',
+            '${discountedPrice.toInt()} TMT',
             style: AppTextStyle.text().lg().bold().sp(),
           ),
         ),
         Expanded(
           child: Text(
-            '1400 TMT',
+            '${price.toInt()} TMT',
             style: AppTextStyle.text()
                 .regular()
                 .sm()
@@ -125,22 +134,26 @@ class ProductDetailsPrices extends StatelessWidget {
 class ProductAdvantagesList extends StatelessWidget {
   const ProductAdvantagesList({
     super.key,
+    required this.advantages,
   });
-
+  final AdvantagesItem? advantages;
   @override
   Widget build(BuildContext context) {
+    final advantagesJson = (advantages as JsonType).cast<String, bool>();
+    final advantagesList = advantagesJson.keys
+        .where((key) => advantagesJson[key] == true)
+        .toList();
     return Expanded(
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        itemCount: 4,
+        itemCount: advantagesList.length,
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) => ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: SizedBox(
             height: 46.h,
             width: 35.w,
-            child: Assets.advantages.fastDelivery.svg(fit: BoxFit.fitWidth),
           ),
         ).paddingOnly(
           left: 5,
@@ -154,9 +167,11 @@ class ProductFavoritesButton extends StatelessWidget {
   ProductFavoritesButton({
     super.key,
     required this.onFavoriteAdded,
+    required this.isFavorite,
   });
 
   final VoidCallback onFavoriteAdded;
+  final bool isFavorite;
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -171,7 +186,7 @@ class ProductFavoritesButton extends StatelessWidget {
         padding: EdgeInsets.only(top: 2),
         shape: CircleBorder(),
         child: Icon(
-          Icons.favorite,
+          isFavorite ? Icons.favorite : Icons.favorite_border_outlined,
           size: 20.h,
           color: AppColors.secondary,
         ).paddingAll(3.5),

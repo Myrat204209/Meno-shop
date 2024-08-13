@@ -1,6 +1,9 @@
 import 'package:app_ui/app_ui.dart';
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/categories/categories.dart';
+import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
 class CategoryProductsPage extends StatelessWidget {
@@ -51,14 +54,22 @@ class CategoryProductsPage extends StatelessWidget {
                   price: 550,
                   label: 'T-Shirt',
                   onTap: () {},
-                  onFavoriteAdded: () {},
+                  onFavoriteAdded: () {
+                    context
+                        .read<FavoritesBloc>()
+                        .add(const FavoriteButtonPressed(ProductItem()));
+                  },
                 ),
                 AppProductItem(
                   image: Assets.images.jeans.path,
                   price: 550,
                   label: 'T-Shirt',
                   onTap: () {},
-                  onFavoriteAdded: () {},
+                  onFavoriteAdded: () {
+                    context
+                        .read<FavoritesBloc>()
+                        .add(const FavoriteButtonPressed(ProductItem()));
+                  },
                 ),
               ],
             ),
