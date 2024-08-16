@@ -12,9 +12,9 @@ final class CartRequested extends CartEvent {}
 final class CartInitRequested extends CartEvent {}
 
 final class CartUpdateRequested extends CartEvent {
-  final CartUpdateRequestBody body;
+  final CartItem cartItem;
 
-  const CartUpdateRequested(this.body);
+  const CartUpdateRequested(this.cartItem);
   @override
-  List<Object> get props => [body];
+  List<Object> get props => [cartItem];
 }

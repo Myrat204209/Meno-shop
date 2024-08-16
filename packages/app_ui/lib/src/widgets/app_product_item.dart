@@ -3,33 +3,34 @@ import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 
 class AppProductItem extends StatelessWidget {
   const AppProductItem({
     super.key,
-    required this.onTap,
+    required this.product,
     required this.onFavoriteAdded,
-    required this.image,
-    required this.price,
-    required this.label,
+    required this.onCartAdded,
+    required this.onTap,
+    required this.locale,
   });
-
-  final VoidCallback onTap;
+  final ProductItem product;
   final VoidCallback onFavoriteAdded;
-
-  final String? image;
-  final double price;
-  final String label;
-
+  final VoidCallback onCartAdded;
+  final VoidCallback onTap;
+  final String locale;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final productName = product.name;
+    final productPrice = product.price;
+    final productImageLink = product.photo?.first.path;
+    final productFavorite = product.isFavorite;
+
     return AppBorderColorBox(
       expand: 2.0,
       borderColor: AppColors.neutral.shade300,
       child: SizedBox(
-        width: size.width * 0.49,
+        width: size.width * 0.48,
         child: AspectRatio(
           aspectRatio: 155.w / 286.h,
           child: InkWell(
@@ -43,11 +44,13 @@ class AppProductItem extends StatelessWidget {
                   child: Stack(
                     children: [
                       /// Product image
-                      AppProductImage(imageLink: image ?? ''),
+                      AppProductImage(
+                        imageLink: productImageLink ?? '',
+                      ),
 
                       /// Product favorite button and advantages icon
                       ProductFavoritesButton(
-                        isFavorite: true,
+                        isFavorite: productFavorite ?? false,
                         onFavoriteAdded: onFavoriteAdded,
                       ),
                       Positioned(
@@ -69,7 +72,7 @@ class AppProductItem extends StatelessWidget {
                     Flexible(
                       fit: FlexFit.tight,
                       child: Text(
-                        label,
+                        productName!,
                         softWrap: true,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -83,9 +86,9 @@ class AppProductItem extends StatelessWidget {
                       onTap: onTap,
                     ).paddingOnly(left: 7),
                   ],
-                ).paddingAll(5),
+                ).paddingAll(5).paddingOnly(bottom: 5),
                 // ProductDetailsPrices(price: price).paddingOnly(left: 5),
-                SizedBox(height: 5),
+
                 // ProductAdvantagesList(),
               ],
             ),
@@ -99,12 +102,9 @@ class AppProductItem extends StatelessWidget {
 class ProductDetailsPrices extends StatelessWidget {
   const ProductDetailsPrices({
     super.key,
-    required this.price,
-    required this.discountedPrice,
+    required this.discount,
   });
-
-  final double price;
-  final double discountedPrice;
+  final DiscountItem discount;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -112,13 +112,13 @@ class ProductDetailsPrices extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            '${discountedPrice.toInt()} TMT',
+            '${discount.discountedPrice} TMT',
             style: AppTextStyle.text().lg().bold().sp(),
           ),
         ),
         Expanded(
           child: Text(
-            '${price.toInt()} TMT',
+            '${discount.originalPrice} TMT',
             style: AppTextStyle.text()
                 .regular()
                 .sm()
@@ -195,35 +195,6 @@ class ProductFavoritesButton extends StatelessWidget {
   }
 }
 
-class AppProductContentText extends StatelessWidget {
-  const AppProductContentText({
-    super.key,
-    required this.category,
-    required this.label,
-  });
-
-  final String category;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Gap(6.h),
-        Text(
-          label,
-          maxLines: 5,
-          softWrap: true,
-          style: AppTextStyle.text().semiBold().sm().sp(),
-        ),
-        Gap(5),
-      ],
-    );
-  }
-}
-
 class AppProductImage extends StatelessWidget {
   const AppProductImage({
     super.key,
@@ -239,13 +210,12 @@ class AppProductImage extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: AppBorderColorBox(
-            expand: 0.5,
-            borderColor: AppColors.neutral.shade300,
-            child: AppImage(
-              imageUrl: imageLink,
-              imageType: ImageType.cached,
-              width: double.infinity,
-            )),
+          expand: 0.5,
+          borderColor: AppColors.neutral.shade300,
+          child: AppImage(
+            imageUrl: imageLink,
+          ),
+        ),
       ),
     );
   }

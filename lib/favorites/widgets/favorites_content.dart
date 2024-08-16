@@ -2,6 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/favorites/favorites.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class FavoritesContent extends StatelessWidget {
   const FavoritesContent({super.key});
@@ -27,14 +28,14 @@ class FavoritesContent extends StatelessWidget {
                 .map(
                   (favorite) => AppProductItem(
                     onTap: () {},
-                    image: favorite.photo?.first.path,
-                    price: favorite.price!,
-                    label: favorite.name!,
                     onFavoriteAdded: () {
                       context
                           .read<FavoritesBloc>()
                           .add(FavoriteButtonPressed(favorite));
                     },
+                    product: favorite,
+                    onCartAdded: () {},
+                    locale: context.l10n.localeName,
                   ),
                 )
                 .toList(),

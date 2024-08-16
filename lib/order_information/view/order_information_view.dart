@@ -78,7 +78,6 @@ class ProductListTile extends StatelessWidget {
             width: 90,
             height: 90,
             imageUrl: Assets.images.jeans.extendPath(),
-            imageType: ImageType.cached,
           ),
           const SizedBox(width: 10),
           const Padding(

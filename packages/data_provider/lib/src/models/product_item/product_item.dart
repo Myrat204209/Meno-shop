@@ -29,7 +29,7 @@ class ProductItem {
   final double? price;
   @HiveField(3)
   final int? stock;
-  @HiveField(4)
+  @HiveField(4, defaultValue: false)
   final bool? isFavorite;
   @HiveField(5)
   final String? description;
@@ -39,9 +39,9 @@ class ProductItem {
   final AdvantagesItem? advantages;
   @HiveField(8)
   final List<PhotoItem>? photo;
-  // @HiveField(9)
+  @HiveField(9, defaultValue: null)
   final List<CategoryItem>? categories;
-  // @HiveField(10)
+  @HiveField(10, defaultValue: null)
   final List<SubcategoryItem>? subcategories;
 
   factory ProductItem.fromJson(JsonType json) => _$ProductItemFromJson(json);

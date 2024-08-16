@@ -21,14 +21,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }
   final CartRepository _cartRepository;
 
-  int getProductQuantity(String? productId) {
-    return state.cart?.items
-            ?.where((e) => e.productId == productId)
-            .firstOrNull
-            ?.quantity ??
-        0;
-  }
-
   FutureOr<void> _onInitRequested(
     CartInitRequested event,
     Emitter<CartState> emit,
@@ -46,7 +38,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       final cartResponse = await _cartRepository.getCart();
       emit(state.copyWith(
         status: CartStatus.loadingSuccess,
-        cart: cartResponse.data,
+        cart: cartResponse,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.loadingFailure));
@@ -60,10 +52,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   ) async {
     try {
       emit(state.copyWith(status: CartStatus.updating));
-      final cartResponse = await _cartRepository.updateCart(event.body);
+      await _cartRepository.updateCart(event.cartItem);
+      final cartResponse = await _cartRepository.getCart();
       emit(state.copyWith(
         status: CartStatus.updatingSuccess,
-        cart: cartResponse.data,
+        cart: cartResponse,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.updatingFailure));

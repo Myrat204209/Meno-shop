@@ -24,7 +24,6 @@ class HomePageMerch extends StatelessWidget {
             children: [
               AppImage(
                 imageUrl: Assets.images.centerBanner.extendPath(),
-                imageType: ImageType.asset,
                 height: double.infinity,
               ),
               FittedBox(

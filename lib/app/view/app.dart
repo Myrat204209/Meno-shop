@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/banner/banner.dart';
+import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/bloc/favorites_bloc.dart';
 import 'package:meno_shop/home/home.dart';
@@ -14,28 +15,29 @@ import 'package:meno_shop/language/language.dart';
 import 'package:meno_shop/product/product.dart';
 import 'package:meno_shop/subcategories/subcategories.dart';
 
+/// The main application widget that initializes and provides necessary repositories and blocs to the app.
+///
+/// This widget is responsible for setting up the initial state of the application, including
+/// repositories for fetching data and blocs for managing application state.
 class App extends StatelessWidget {
   const App({
     super.key,
-    required StreamController<Exception> exceptionStream,
+required StreamController<Exception> exceptionStream,
     required BannerRepository bannerRepository,
     required CategoryRepository categoryRepository,
     required SubcategoryRepository subcategoryRepository,
     required ProductRepository productRepository,
-    // required AuthRepository authRepository,
     required AddressRepository addressRepository,
-    // required CartRepository cartRepository,
+    // required AuthRepository authRepository,
+    required CartRepository cartRepository,
   })  : _categoryRepository = categoryRepository,
-        _exceptionStream = exceptionStream,
         _productRepository = productRepository,
         _bannerRepository = bannerRepository,
         _addressRepository = addressRepository,
+        _cartRepository = cartRepository,
         _subcategoryRepository = subcategoryRepository;
   // _authRepository = authRepository,
-  // _cartRepository = cartRepository;
 
-  // ignore: unused_field
-  final StreamController<Exception> _exceptionStream;
 
   final CategoryRepository _categoryRepository;
   final SubcategoryRepository _subcategoryRepository;
@@ -43,7 +45,7 @@ class App extends StatelessWidget {
   final BannerRepository _bannerRepository;
   final AddressRepository _addressRepository;
   // final AuthRepository _authRepository;
-  // final CartRepository _cartRepository;
+  final CartRepository _cartRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +61,8 @@ class App extends StatelessWidget {
     final addressBloc = AddressBloc(
       addressRepository: _addressRepository,
     )..add(AddressesRequested());
-    // final cartBloc = CartBloc(cartRepository: _cartRepository)
-    //   ..add(CartInitRequested());
+    final cartBloc = CartBloc(cartRepository: _cartRepository)
+      ..add(CartInitRequested());
     final favoritesBloc = FavoritesBloc(productRepository: _productRepository)
       ..add(FavoritesInitRequested());
     return MultiRepositoryProvider(
@@ -69,7 +71,7 @@ class App extends StatelessWidget {
         RepositoryProvider.value(value: _categoryRepository),
         RepositoryProvider.value(value: _subcategoryRepository),
         RepositoryProvider.value(value: _productRepository),
-        // RepositoryProvider.value(value: _cartRepository),
+        RepositoryProvider.value(value: _cartRepository),
         // RepositoryProvider.value(value: _authRepository),
         RepositoryProvider.value(value: _addressRepository),
       ],
@@ -82,7 +84,7 @@ class App extends StatelessWidget {
           // BlocProvider.value(value: subcategoriesBloc),
           BlocProvider.value(value: addressBloc),
           BlocProvider.value(value: favoritesBloc),
-          // BlocProvider.value(value: cartBloc),
+          BlocProvider.value(value: cartBloc),
         ],
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -96,3 +98,4 @@ class App extends StatelessWidget {
     );
   }
 }
+

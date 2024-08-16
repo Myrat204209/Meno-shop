@@ -14,6 +14,7 @@ class AddressModel extends Equatable with HiveObjectMixin {
 
   @HiveField(1)
   final String addressName;
+
   @HiveField(2)
   final String name;
 
@@ -32,7 +33,13 @@ class AddressModel extends Equatable with HiveObjectMixin {
   }) : uuid = uuid ?? const Uuid().v4();
 
   @override
-  List<Object?> get props => [uuid, name, address];
+  List<Object?> get props => [
+        uuid,
+        name,
+        address,
+        addressName,
+        phoneNumber,
+      ];
 
   AddressModel copyWith({
     String? uuid,

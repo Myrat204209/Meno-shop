@@ -50,7 +50,6 @@ class BannerCard extends StatelessWidget {
               //TODO: Change to the network
               child: AppImage(
                 imageUrl: imageUrl,
-                imageType: ImageType.asset,
                 height: double.infinity,
               ),
             ),

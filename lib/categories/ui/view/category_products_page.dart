@@ -50,26 +50,15 @@ class CategoryProductsPage extends StatelessWidget {
               children: [
                 //TODO: Replace with actual product items
                 AppProductItem(
-                  image: Assets.images.jeans.path,
-                  price: 550,
-                  label: 'T-Shirt',
                   onTap: () {},
                   onFavoriteAdded: () {
                     context
                         .read<FavoritesBloc>()
                         .add(const FavoriteButtonPressed(ProductItem()));
                   },
-                ),
-                AppProductItem(
-                  image: Assets.images.jeans.path,
-                  price: 550,
-                  label: 'T-Shirt',
-                  onTap: () {},
-                  onFavoriteAdded: () {
-                    context
-                        .read<FavoritesBloc>()
-                        .add(const FavoriteButtonPressed(ProductItem()));
-                  },
+                  product: const ProductItem(),
+                  onCartAdded: () {},
+                  locale: context.l10n.localeName,
                 ),
               ],
             ),

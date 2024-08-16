@@ -19,19 +19,18 @@ enum CartStatus {
 class CartState extends Equatable {
   const CartState({
     required this.status,
-    this.cart,
+    this.cart = const [],
   });
   const CartState.initial() : this(status: CartStatus.initial);
   final CartStatus status;
-  final Cart? cart;
-  bool get isCartEmpty => cart?.items?.isEmpty ?? true;
 
+  final List<CartItem?>? cart;
   @override
   List<Object?> get props => [status, cart];
 
   CartState copyWith({
     CartStatus? status,
-    Cart? cart,
+    List<CartItem?>? cart,
   }) {
     return CartState(
       status: status ?? this.status,

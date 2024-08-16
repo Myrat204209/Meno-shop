@@ -7,25 +7,22 @@ environment:
 
 dependencies:
   auto_size_text: ^3.0.0
-  cached_network_image: ^3.3.1
-  carousel_slider: ^4.2.1
+  cached_network_image: ^3.4.0
+
   data_provider:
     path: ../data_provider
   flexi_image_slider: ^1.0.8
   flutter:
     sdk: flutter
-  flutter_gen: ^5.5.0+1
+  flutter_gen: ^5.6.0
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.10+1
   gap: ^3.0.1
-  horizontal_picker: ^1.2.0
-  vertical_barchart: ^2.0.0+2
 
 dev_dependencies:
-  build_runner: ^2.4.11
-  flutter_gen_runner: ^5.5.0+1
+  build_runner: ^2.4.10
+  flutter_gen_runner: ^5.6.0
   lints: ^4.0.0
-  test: ^1.24.0
 
 flutter_gen:
   output: lib/src/generated/
@@ -40,7 +37,7 @@ flutter_gen:
     lottie: true
 
 flutter:
-  uses-material-design: true 
+  uses-material-design: true
   assets:
     - assets/images/
     - assets/language/

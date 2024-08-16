@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/cart/cart.dart';
 
 import 'package:meno_shop/favorites/favorites.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class ProductDetailsSimilarProducts extends StatelessWidget {
   const ProductDetailsSimilarProducts({
@@ -34,19 +36,20 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
               onFavoriteAdded: () {
                 context
                     .read<FavoritesBloc>()
-                    .add(FavoriteButtonPressed(product));
+                    .add(AddFavoriteRequested(product));
               },
-              image: product?.photo?.first.path,
-              price: product!.price!,
-              label: 'label',
               onTap: () {
                 context.pushNamed(
                   RouteNames.productDetails.name,
-                  pathParameters: {
-                    'uuid': product.uuid!,
-                  },
+                  pathParameters: {'uuid': product.uuid!},
                 );
               },
+              product: product!,
+              onCartAdded: () {
+                context.read<CartBloc>().add(CartUpdateRequested(
+                    CartItem(productId: product.uuid!, quantity: 1)));
+              },
+              locale: context.l10n.localeName,
             );
           },
         ),

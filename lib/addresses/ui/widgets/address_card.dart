@@ -39,26 +39,3 @@ class AddressCard extends StatelessWidget {
     );
   }
 }
-/**
- *     return AddressAppCard(
-      padding: EdgeInsets.zero,
-      onPressed: onPressed,
-      child: ListTile(
-        title: Text(
-          address.name,
-          style: const AppTextStyle.text().md().regular().withColor(Colors.grey.shade600),
-        ),
-        subtitle: Text(
-          address.address,
-          style: const AppTextStyle.text().sm().medium(),
-        ),
-        trailing: IconButton(
-          onPressed: onEditPressed,
-          icon: const Icon(
-            Icons.edit_outlined,
-            color: AppColors.primary,
-          ),
-        ),
-      ),
-    );
- */

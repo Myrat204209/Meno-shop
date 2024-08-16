@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/banner/banner.dart';
+import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/main/bootstrap/bootstrap.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:meno_shop/categories/categories.dart';
@@ -55,6 +56,12 @@ void main() {
         await Hive.openBox<AddressModel>(HiveBoxKeys.userAddresses);
     final addressRepository = AddressRepository(userAddressBox: userAddressBox);
 
+    /// Cart
+    Hive.registerAdapter(CartItemAdapter());
+    final userCartBox = await Hive.openBox<CartItem>(HiveBoxKeys.userCart);
+    final cartRepository = CartRepository(userCartBox: userCartBox);
+
+    /// Favorites
     Hive.registerAdapter(ProductItemAdapter());
     final userFavoritesBox =
         await Hive.openBox<ProductItem>(HiveBoxKeys.userFavorites);
@@ -71,19 +78,15 @@ void main() {
     //     AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
     // final authRepository = AuthRepository(authClient: authClient);
 
-    // /// Cart
-    // final cartClient = CartClient(httpClient: httpClient);
-    // final cartRepository = CartRepository(cartClient: cartClient);
-
     return App(
       exceptionStream: exceptionStream,
       bannerRepository: bannerRepository,
       categoryRepository: categoryRepository,
       subcategoryRepository: subcategoryRepository,
       productRepository: productRepository,
-      // authRepository: authRepository,
       addressRepository: addressRepository,
-      // cartRepository: cartRepository,
+      // authRepository: authRepository,
+      cartRepository: cartRepository,
     );
   });
 }
