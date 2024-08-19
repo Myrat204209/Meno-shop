@@ -26,7 +26,7 @@ class BannerCard extends StatelessWidget {
     this.subtitle,
     this.buttonText,
   });
-  final String imageUrl;
+  final Image imageUrl;
   final BannerType bannerType;
   final String? label;
   final String? title;
@@ -38,7 +38,7 @@ class BannerCard extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 2 / 1,
       child: Stack(
-        alignment: Alignment.centerLeft,
+        alignment: Alignment.center,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.r),
@@ -48,9 +48,8 @@ class BannerCard extends StatelessWidget {
                 BlendMode.multiply,
               ),
               //TODO: Change to the network
-              child: AppImage(
-                imageUrl: imageUrl,
-                height: double.infinity,
+              child: SizedBox(
+                child: imageUrl,
               ),
             ),
           ),

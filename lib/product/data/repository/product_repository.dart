@@ -52,6 +52,17 @@ class ProductRepository {
     }
   }
 
+  /// Remote method to get  products by uuid.
+  Future<ProductItem?> getProductsByUuid({
+    required String uuid,
+  }) async {
+    try {
+      return await _productClient.getProductsByUuid(uuid: uuid);
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(GetProductsFailure(error), stackTrace);
+    }
+  }
+
   Future<bool> isFavorite(ProductItem product) async {
     try {
       return _userFavoritesBox.containsKey(product.uuid);

@@ -9,8 +9,11 @@ part 'auth_request_body.g.dart';
 @JsonSerializable(explicitToJson: true)
 class AuthRequestBody {
   final String? phoneNumber;
+  final String? otpCode;
+
   AuthRequestBody(
     this.phoneNumber,
+    this.otpCode,
   );
   factory AuthRequestBody.fromJson(JsonType json) =>
       _$AuthRequestBodyFromJson(json);

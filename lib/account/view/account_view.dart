@@ -39,6 +39,7 @@ class AccountView extends StatelessWidget {
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               autocorrect: false,
               prefixText: '+993 ',
+              hintText: '12345678',
               // onChanged: onChanged,
               // suffix: suffix,
               // errorText: errorText,

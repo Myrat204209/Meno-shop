@@ -22,10 +22,7 @@ class HomePageMerch extends StatelessWidget {
             alignment: Alignment.topCenter,
             fit: StackFit.expand,
             children: [
-              AppImage(
-                imageUrl: Assets.images.centerBanner.extendPath(),
-                height: double.infinity,
-              ),
+              Assets.images.centerBanner.image(),
               FittedBox(
                 child: BannerContent(
                   bannerType: BannerType.merch,

@@ -1,9 +1,9 @@
-import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/account/account.dart';
 import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/auth/auth.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/favorites.dart';
@@ -67,7 +67,6 @@ class AppNavigation {
                     builder: (context, state) => ProductDetailsPage(
                       key: state.pageKey,
                       uuid: state.pathParameters['uuid']!,
-                      product: const ProductItem(),
                     ),
                   ),
                 ],
@@ -106,7 +105,7 @@ class AppNavigation {
               GoRoute(
                 path: RouteNames.favorites.path,
                 name: RouteNames.favorites.name,
-                builder: (context, state) => FavoritesPage(key: state.pageKey),
+                builder: (context, state) => AuthPage(key: state.pageKey),
               ),
             ],
           ),

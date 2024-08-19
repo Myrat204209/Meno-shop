@@ -21,21 +21,19 @@ class AppImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: _imageUrl,
+      imageUrl: 'http://192.168.30.238:3000/$_imageUrl',
       fit: BoxFit.cover,
       errorWidget: (context, url, error) => Image.asset(
         Assets.images.placeholder.extendPath(),
-        fit: _fit ?? BoxFit.fitHeight,
+        fit: _fit ?? BoxFit.contain,
       ),
       progressIndicatorBuilder: (_, url, downloadProgress) =>
           CircularProgressIndicator.adaptive(
         value: downloadProgress.progress,
         valueColor: AlwaysStoppedAnimation<Color>(AppColors.accepted),
-      ),
+      ).centralize(),
       height: _height,
       width: _width,
-      placeholder: (_, url) =>
-          CircularProgressIndicator.adaptive().centralize(),
     );
   }
 }

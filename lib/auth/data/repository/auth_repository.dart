@@ -13,12 +13,8 @@ abstract class AuthFailure with EquatableMixin implements Exception {
   List<Object> get props => [error];
 }
 
-class LoginFailure extends AuthFailure {
-  const LoginFailure(super.error);
-}
-
-class RegisterFailure extends AuthFailure {
-  const RegisterFailure(super.error);
+class AuthenticationFailure extends AuthFailure {
+  const AuthenticationFailure(super.error);
 }
 
 class AuthVerifyFailure extends AuthFailure {
@@ -31,28 +27,34 @@ class AuthRepository {
   }) : _authClient = authClient;
   final AuthClient _authClient;
 
-  Future<dynamic> login(LoginRequestBody body) async {
+  Future<String?> auth(AuthRequestBody body) async {
     try {
-      return await _authClient.login(body);
+      final response = await _authClient.auth(body);
+      final token = response.token;
+      if (token != null) {
+        return token;
+      }
     } catch (error, stackTrace) {
-      Error.throwWithStackTrace(error, stackTrace);
+      Error.throwWithStackTrace(AuthenticationFailure(error), stackTrace);
+    }
+    return null;
+  }
+
+  Future<void> sendOtp({required AuthRequestBody body}) async {
+    try {
+      await _authClient.sendOtp(body: body);
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(AuthenticationFailure(error), stackTrace);
     }
   }
 
-  Future<dynamic> register(RegisterRequestBody body) async {
+  Future<void> checkOtp({
+    required AuthRequestBody body,
+  }) async {
     try {
-      return await _authClient.register(body);
+      await _authClient.sendOtp(body: body);
     } catch (error, stackTrace) {
-      Error.throwWithStackTrace(error, stackTrace);
-    }
-  }
-
-  //TODO: Need testing before deploy
-  Future<dynamic> verify(AuthOtpBody body) async {
-    try {
-      return await _authClient.sendOtp(body);
-    } catch (error, stackTrace) {
-      Error.throwWithStackTrace(error, stackTrace);
+      Error.throwWithStackTrace(AuthenticationFailure(error), stackTrace);
     }
   }
 }

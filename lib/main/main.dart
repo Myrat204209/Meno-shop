@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:meno_shop/addresses/address.dart';
+import 'package:meno_shop/auth/auth.dart';
 import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/main/bootstrap/bootstrap.dart';
@@ -12,7 +13,7 @@ import 'package:flutter/foundation.dart';
 import 'package:meno_shop/subcategories/subcategories.dart';
 import '../app/app.dart';
 
-const kDefaultBaseUrl = 'http://192.168.30.95:3000';
+const kDefaultBaseUrl = 'http://192.168.30.238:3000';
 void main() {
   bootStrap(({
     required sharedPreferences,
@@ -74,9 +75,11 @@ void main() {
     );
 
     /// Auth
-    // final authClient =
-    //     AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
-    // final authRepository = AuthRepository(authClient: authClient);
+    final authClient = AuthClient(
+      httpClient: httpClient,
+      tokenStorage: tokenStorage,
+    );
+    final authRepository = AuthRepository(authClient: authClient);
 
     return App(
       exceptionStream: exceptionStream,
@@ -85,7 +88,7 @@ void main() {
       subcategoryRepository: subcategoryRepository,
       productRepository: productRepository,
       addressRepository: addressRepository,
-      // authRepository: authRepository,
+      authRepository: authRepository,
       cartRepository: cartRepository,
     );
   });

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:data_provider/data_provider.dart';
@@ -15,7 +16,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   })  : _authRepository = authRepository,
         super(const LoginState()) {
     on<LoginPhoneChanged>(_onLoginPhoneChanged);
-    on<LoginPhoneSubmitted>(_onLoginStarted);
+    on<LoginPhoneSubmitted>(_onLoginSubmitted);
   }
 
   final AuthRepository _authRepository;
@@ -23,28 +24,46 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginPhoneChanged event,
     Emitter<LoginState> emit,
   ) {
-    final phone = Phone.dirty(event.phone);
+    log('----------------Event phone number${event.phone}');
+    final phone = Phone.dirty("993${event.phone}");
 
+    log('----------------Event phone ${phone.value}');
     emit(state.copyWith(
       phone: phone,
       valid: Formz.validate([phone]),
     ));
   }
 
-  FutureOr<void> _onLoginStarted(
+  Future<FutureOr<void>> _onLoginSubmitted(
     LoginPhoneSubmitted event,
     Emitter<LoginState> emit,
   ) async {
-    if (!state.valid) return;
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
     try {
-      await _authRepository.login(LoginRequestBody(
-        phone: state.phone.value,
-      ));
+      await _authRepository.auth(
+        AuthRequestBody.fromJson({'phoneNumber': state.phone.value}),
+      );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: FormzSubmissionStatus.failure));
       addError(error, stackTrace);
     }
   }
+
+  // FutureOr<void> _onLoginStarted(
+  //   LoginPhoneSubmitted event,
+  //   Emitter<LoginState> emit,
+  // ) async {
+  //   if (!state.valid) return;
+  //   emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+  //   try {
+  //     await _authRepository.login(LoginRequestBody(
+  //       phone: state.phone.value,
+  //     ));
+  //     emit(state.copyWith(status: FormzSubmissionStatus.success));
+  //   } catch (error, stackTrace) {
+  //     emit(state.copyWith(status: FormzSubmissionStatus.failure));
+  //     addError(error, stackTrace);
+  //   }
+  // }
 }

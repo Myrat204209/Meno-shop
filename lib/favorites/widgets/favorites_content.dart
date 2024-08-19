@@ -39,21 +39,6 @@ class FavoritesContent extends StatelessWidget {
                   ),
                 )
                 .toList(),
-            // [
-            //   //TODO: Replace with actual product items
-            //   AppProductItem(
-            //     image: Assets.images.jeans.path,
-            //     price: 550,
-            //     label: 'T-Shirt',
-            //     onTap: () {},
-            //   ),
-            //   AppProductItem(
-            //     image: Assets.images.jeans.path,
-            //     price: 550,
-            //     label: 'T-Shirt',
-            //     onTap: () {},
-            //   ),
-            // ],
           ),
         ),
       ],

@@ -11,59 +11,45 @@ class AuthClient {
   })  : _http = httpClient,
         _tokenStorage = tokenStorage;
 
-  /// Register endpoints using phone and name and username
-  Future<AuthResponse> register(RegisterRequestBody body) async {
-    final response = await _http.post<JsonType>(
-      '/auth/register',
-      data: body.toJson(),
-    );
-    final authResponse = AuthResponse.fromJson(response.data!);
-
-    final token = authResponse.token;
-    if (token != null) {
-      await _tokenStorage.saveToken(token);
-    }
-    return authResponse;
-  }
-
   /// Log In endpoints using phone
-  Future<AuthResponse> login(LoginRequestBody body) async {
+  Future<AuthResponse> auth(AuthRequestBody body) async {
     final response = await _http.post<JsonType>(
-      'auth/login',
+      '/auth',
       data: body.toJson(),
     );
-    final authResponse = AuthResponse.fromJson(response.data!);
-    final token = authResponse.token;
-    if (token != null) {
-      await _tokenStorage.saveToken(token);
+    late final authResponse;
+    if (response.statusCode == 200) {
+      authResponse = AuthResponse.fromJson(response.data!);
+    } else
+      throw (Exception(response.data?['message']));
+    if (authResponse != null) {
+      final token = authResponse.token;
+      if (token != null) {
+        await _tokenStorage.saveToken(token);
+      }
     }
     return authResponse;
   }
 
-  Future<AuthResponse> sendOtp(AuthOtpBody body) async {
-    final response = await _http.post<JsonType>(
-      'auth/sendOtp',
+  Future<void> sendOtp({
+    required AuthRequestBody body,
+  }) async {
+    await _http.get<JsonType>(
+      '/auth/sendOtp',
       data: body.toJson(),
     );
-    final authResponse = AuthResponse.fromJson(response.data!);
-    final token = authResponse.token;
-    if (token != null) {
-      await _tokenStorage.saveToken(token);
-    }
-    return authResponse;
   }
 
-  Future<dynamic> checkOtp(AuthOtpBody body) async {
+  Future<dynamic> checkOtp({
+    required AuthRequestBody body,
+  }) async {
     final response = await _http.post<JsonType>(
       'auth/checkOtp',
       data: body.toJson(),
     );
-    final authResponse = AuthResponse.fromJson(response.data!);
-    final token = authResponse.token;
-    if (token != null) {
-      await _tokenStorage.saveToken(token);
+    if (response.statusCode == 200) {
+      return;
     }
-    return authResponse;
   }
 
   ///Log out

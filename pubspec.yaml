@@ -1,12 +1,12 @@
 name: meno_shop
 description: "A new Flutter project."
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: ">=3.3.3 <4.0.0"
 
 dependencies:
   app_ui:
@@ -28,10 +28,9 @@ dependencies:
   bloc: ^8.1.3
   dio: ^5.4.1
   equatable: ^2.0.5
-  flow_builder: ^0.1.0
+
   flutter_bloc: ^8.1.4
   flutter_screenutil: ^5.9.3
-  font_awesome_flutter: ^10.7.0
   hydrated_bloc: ^9.1.4
   path_provider: ^2.1.2
   shared_preferences: ^2.2.2
@@ -40,22 +39,18 @@ dependencies:
   envied: ^0.5.4+1
   gap: ^3.0.1
   cupertino_icons: ^1.0.6
-  json_annotation: ^4.9.0
-  cached_network_image: ^3.3.1
-  shimmer: ^3.0.0
   flutter_hooks: ^0.20.5
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   turkmen_localization_support: ^0.0.8
   carousel_slider: ^4.2.1
   dots_indicator: ^3.0.0
-  lottie: ^3.1.2
-  flutter_launcher_icons: ^0.13.1
   flutter_svg: ^2.0.10+1
   flexi_image_slider: ^1.0.8
   auto_size_text: ^3.0.0
   intl: ^0.18.1
   go_router: ^14.2.1
+  rxdart: ^0.28.0
 
 dev_dependencies:
   flutter_test:
@@ -67,7 +62,6 @@ dev_dependencies:
 dependency_overrides:
   intl: ^0.18.1
 
-
-flutter:  
+flutter:
   uses-material-design: true
   generate: true

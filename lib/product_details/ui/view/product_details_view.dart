@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:app_ui/app_ui.dart';
-import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 
 import '../ui.dart';
@@ -9,43 +8,41 @@ import '../ui.dart';
 class ProductDetailsView extends StatelessWidget {
   const ProductDetailsView({
     super.key,
-    required this.product,
     required this.uuid,
   });
-  final ProductItem product;
   final String uuid;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
+        const Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.only(
+            padding: EdgeInsets.only(
               left: 16,
               right: 16,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ProductDetailsImageSlider(
-                  imageLinks: product.photo!.map((e) => e.path!).toList(),
-                ),
-                const ProductDetailsVisitCounter(),
-                ProductDetailsName(product: product),
-                const ProductDetailsProductOffers(),
-                const ProductDetailsDiscount(),
-                const ProductDetailsDescriptionText(),
-                const ProductDetailsColorSelector(
+                // ProductDetailsImageSlider(
+                //   imageLinks: ,
+                // ),
+                ProductDetailsVisitCounter(),
+                // ProductDetailsName(product: product),
+                ProductDetailsProductOffers(),
+                ProductDetailsDiscount(),
+                ProductDetailsDescriptionText(),
+                ProductDetailsColorSelector(
                   colors: productDetailsColors,
                   checkedColorIndex: 0,
                 ),
-                const SizedBox(height: 20),
-                const ProductDetailsSizeSelector(),
-                const SizedBox(height: 20),
-                const ProductDetailsSimilarProducts(
+                SizedBox(height: 20),
+                ProductDetailsSizeSelector(),
+                SizedBox(height: 20),
+                ProductDetailsSimilarProducts(
                   products: [],
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20),
               ],
             ),
           ),
@@ -72,6 +69,6 @@ class ProductDetailsView extends StatelessWidget {
           ],
         )
       ],
-    ).colorize(AppColors.quaterniary);
+    );
   }
 }

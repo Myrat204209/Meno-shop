@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,7 @@ class HomePageProductsList extends StatelessWidget {
   final String? title;
   @override
   Widget build(BuildContext context) {
+    log('${products?.length}products found');
     return SliverToBoxAdapter(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -52,7 +55,9 @@ class HomePageProductsList extends StatelessWidget {
                     onTap: () {
                       context.goNamed(
                         RouteNames.productDetails.name,
-                        pathParameters: {'uuid': "asasas"},
+                        pathParameters: {
+                          'uuid': product.uuid!,
+                        },
                       );
                     },
                     product: product,

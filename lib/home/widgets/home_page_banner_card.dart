@@ -33,7 +33,7 @@ class HomePageBannerCard extends StatelessWidget {
                   // var banner = banners[index];
                   return BannerCard(
                     bannerType: BannerType.ad,
-                    imageUrl: Assets.images.jeans.extendPath(),
+                    imageUrl: Assets.images.jeans.image(),
                     label: 'FROM ONLINE STORE',
                     title: 'Men’s Lifestyle Collection',
                     subtitle: 'Discount 50% OFF This week',
@@ -43,9 +43,8 @@ class HomePageBannerCard extends StatelessWidget {
                 },
                 options: CarouselOptions(
                   autoPlay: true,
-                  aspectRatio: 2 / 1,
                   enlargeCenterPage: false,
-                  viewportFraction: 1,
+                  viewportFraction: 0.95,
                   initialPage: 0,
                   onPageChanged: (index, reason) {
                     context.read<BannerCubit>().setTab(index);
@@ -56,6 +55,7 @@ class HomePageBannerCard extends StatelessWidget {
                 bottom: 15,
                 left: MediaQuery.sizeOf(context).width / 2 - 35,
                 child: DotsIndicator(
+                  /// TODO: Replace with actual banner count
                   dotsCount: 5,
                   position: selectedBanner,
                   decorator: DotsDecorator(

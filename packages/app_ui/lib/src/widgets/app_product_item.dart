@@ -22,8 +22,7 @@ class AppProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final productName = product.name;
-    final productPrice = product.price;
-    final productImageLink = product.photo?.first.path;
+    final productImageLink = product.photo;
     final productFavorite = product.isFavorite;
 
     return AppBorderColorBox(
@@ -45,7 +44,9 @@ class AppProductItem extends StatelessWidget {
                     children: [
                       /// Product image
                       AppProductImage(
-                        imageLink: productImageLink ?? '',
+                        imageLink: productImageLink!.isNotEmpty
+                            ? productImageLink.first.path
+                            : 'null',
                       ),
 
                       /// Product favorite button and advantages icon
@@ -201,7 +202,7 @@ class AppProductImage extends StatelessWidget {
     required this.imageLink,
   });
 
-  final String imageLink;
+  final String? imageLink;
 
   @override
   Widget build(BuildContext context) {
@@ -213,7 +214,7 @@ class AppProductImage extends StatelessWidget {
           expand: 0.5,
           borderColor: AppColors.neutral.shade300,
           child: AppImage(
-            imageUrl: imageLink,
+            imageUrl: imageLink ?? '',
           ),
         ),
       ),

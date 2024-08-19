@@ -1,3 +1,4 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:meno_shop/auth/auth.dart';
 
@@ -9,27 +10,30 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Authentication page"),
-          bottom: const TabBar(
-            tabs: [
-              Tab(text: 'Login'),
-              Tab(text: 'Register'),
-            ],
+    return Scaffold(
+      body: Column(
+        children: [
+          const Icon(
+            Icons.phone,
+            size: 100,
           ),
-        ),
-        body: const TabBarView(
-          children: [
-            LoginView(),
-            RegisterView(),
-            // RegisterContent(),
-          ],
-        ),
-      ),
+          Text(
+            'Telefon belginizi girizin!',
+            style: const AppTextStyle.text().xxl().bold(),
+          ),
+          Text(
+            'Biz sizin telefon belginize OTP kodyny \nugradarys!',
+            softWrap: true,
+            textAlign: TextAlign.center,
+            style: const AppTextStyle.text()
+                .xs()
+                .regular()
+                .withColor(const Color(0xFF8F8F8F)),
+          ),
+          const SizedBox(height: AppSpacing.xxxlg),
+          const LoginView(),
+        ],
+      ).paddingSymmetric(vertical: 50, horizontal: 5),
     );
   }
 }

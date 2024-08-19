@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/auth/auth.dart';
 import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
@@ -22,29 +23,28 @@ import 'package:meno_shop/subcategories/subcategories.dart';
 class App extends StatelessWidget {
   const App({
     super.key,
-required StreamController<Exception> exceptionStream,
+    required StreamController<Exception> exceptionStream,
     required BannerRepository bannerRepository,
     required CategoryRepository categoryRepository,
     required SubcategoryRepository subcategoryRepository,
     required ProductRepository productRepository,
     required AddressRepository addressRepository,
-    // required AuthRepository authRepository,
+    required AuthRepository authRepository,
     required CartRepository cartRepository,
   })  : _categoryRepository = categoryRepository,
         _productRepository = productRepository,
         _bannerRepository = bannerRepository,
         _addressRepository = addressRepository,
         _cartRepository = cartRepository,
+        _authRepository = authRepository,
         _subcategoryRepository = subcategoryRepository;
-  // _authRepository = authRepository,
-
 
   final CategoryRepository _categoryRepository;
   final SubcategoryRepository _subcategoryRepository;
   final ProductRepository _productRepository;
   final BannerRepository _bannerRepository;
   final AddressRepository _addressRepository;
-  // final AuthRepository _authRepository;
+  final AuthRepository _authRepository;
   final CartRepository _cartRepository;
 
   @override
@@ -72,7 +72,7 @@ required StreamController<Exception> exceptionStream,
         RepositoryProvider.value(value: _subcategoryRepository),
         RepositoryProvider.value(value: _productRepository),
         RepositoryProvider.value(value: _cartRepository),
-        // RepositoryProvider.value(value: _authRepository),
+        RepositoryProvider.value(value: _authRepository),
         RepositoryProvider.value(value: _addressRepository),
       ],
       child: MultiBlocProvider(
@@ -98,4 +98,3 @@ required StreamController<Exception> exceptionStream,
     );
   }
 }
-

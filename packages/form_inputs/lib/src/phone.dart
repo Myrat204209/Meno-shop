@@ -19,7 +19,7 @@ class Phone extends FormzInput<String, PhoneValidationError> {
   /// {@macro phone}
   const Phone.dirty([super.value = '']) : super.dirty();
 
-  static final RegExp _phoneRegExp = RegExp(r'^\+993 [67]\d{7}$');
+  static final RegExp _phoneRegExp = RegExp(r'^\993[67]\d{7}$');
 
   @override
   PhoneValidationError? validator(String value) {

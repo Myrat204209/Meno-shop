@@ -8,7 +8,7 @@ class ProductDetailsImageSlider extends StatelessWidget {
     super.key,
     required this.imageLinks,
   });
-  final List<String> imageLinks;
+  final List<String>? imageLinks;
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -24,7 +24,7 @@ class ProductDetailsImageSlider extends StatelessWidget {
         indicatorPosition: IndicatorPosition.overImage,
         indicatorDeactiveColor: AppColors.neutral.shade300,
         aspectRatio: 15 / 11,
-        arrayImages: imageLinks,
+        arrayImages: imageLinks == null ? [] : imageLinks!,
         boxFit: BoxFit.cover,
         borderRadius: 8,
       ),
