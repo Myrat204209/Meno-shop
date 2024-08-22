@@ -15,7 +15,7 @@ class Http extends DioForNative {
     String defaultBaseUrl = '',
     TokenProvider? tokenProvider,
     LanguageProvider? languageProvider,
-    bool enableLogger = false,
+    bool enableLogger = true,
   })  : _defaultBaseUrl = defaultBaseUrl,
         super(
           BaseOptions(

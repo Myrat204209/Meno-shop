@@ -14,3 +14,4 @@ export 'profile/profile.dart';
 export 'query_parameters/query_parameters.dart';
 export 'register_request_body/register_request_body.dart';
 export 'subcategory_item/subcategory_item.dart';
+export 'user/user.dart';

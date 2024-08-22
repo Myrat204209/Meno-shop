@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meno_shop/account/account.dart';
-import 'package:meno_shop/addresses/address.dart';
+import 'package:meno_shop/features/account/account.dart';
+import 'package:meno_shop/features/addresses/address.dart';
 import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/auth/auth.dart';
-import 'package:meno_shop/cart/cart.dart';
-import 'package:meno_shop/categories/categories.dart';
-import 'package:meno_shop/favorites/favorites.dart';
-import 'package:meno_shop/home/home.dart';
-import 'package:meno_shop/notification/notification.dart';
-import 'package:meno_shop/orders/orders.dart';
-import 'package:meno_shop/product_details/product_details.dart';
-import 'package:meno_shop/profile/profile.dart';
+import 'package:meno_shop/features/auth/auth.dart';
+import 'package:meno_shop/features/cart/cart.dart';
+import 'package:meno_shop/features/categories/categories.dart';
+import 'package:meno_shop/features/favorites/favorites.dart';
+import 'package:meno_shop/features/home/home.dart';
+import 'package:meno_shop/features/notification/notification.dart';
+import 'package:meno_shop/features/orders/orders.dart';
+import 'package:meno_shop/features/product_details/product_details.dart';
+import 'package:meno_shop/features/profile/profile.dart';
 
 class AppNavigation {
   AppNavigation._();
@@ -94,6 +95,23 @@ class AppNavigation {
                 path: RouteNames.cart.path,
                 name: RouteNames.cart.name,
                 builder: (context, state) => CartPage(key: state.pageKey),
+                routes: <RouteBase>[
+                  GoRoute(
+                    path: RouteNames.addresses.path,
+                    name: RouteNames.addresses.name,
+                    builder: (context, state) => const AddressPage(),
+                    redirect: (context, state) {
+                      final authBloc =
+                          BlocProvider.of<AuthBloc>(context, listen: false);
+                      final isAuthenticated = authBloc.state.isAuthenticated;
+                      if (!isAuthenticated) {
+                        return context.namedLocation(RouteNames.auth.name);
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -105,7 +123,7 @@ class AppNavigation {
               GoRoute(
                 path: RouteNames.favorites.path,
                 name: RouteNames.favorites.name,
-                builder: (context, state) => AuthPage(key: state.pageKey),
+                builder: (context, state) => FavoritesPage(key: state.pageKey),
               ),
             ],
           ),
@@ -125,11 +143,11 @@ class AppNavigation {
                     builder: (context, state) =>
                         AccountPage(key: state.pageKey),
                   ),
-                  GoRoute(
-                    path: RouteNames.addresses.path,
-                    name: RouteNames.addresses.name,
-                    builder: (context, state) => const AddressPage(),
-                  ),
+                  // GoRoute(
+                  //   path: RouteNames.addresses.path,
+                  //   name: RouteNames.addresses.name,
+                  //   builder: (context, state) => const AddressPage(),
+                  // ),
                   GoRoute(
                     path: RouteNames.orders.path,
                     name: RouteNames.orders.name,
@@ -145,6 +163,13 @@ class AppNavigation {
         path: RouteNames.categoryProducts.path,
         name: RouteNames.categoryProducts.name,
         builder: (context, state) => CategoryProductsPage(
+          key: state.pageKey,
+        ),
+      ),
+      GoRoute(
+        path: RouteNames.auth.path,
+        name: RouteNames.auth.name,
+        builder: (context, state) => AuthPage(
           key: state.pageKey,
         ),
       ),

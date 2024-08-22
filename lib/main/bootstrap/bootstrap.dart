@@ -26,6 +26,7 @@ Future<void> bootStrap(AppBuilder builder) async {
       final blocObserver = AppBlocObserver(
         exceptionStream: exceptionStream,
       );
+      // final talker = TalkerFlutter.init();
       Bloc.observer = blocObserver;
 
       HydratedBloc.storage = await HydratedStorage.build(

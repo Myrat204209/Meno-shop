@@ -8,6 +8,8 @@ enum RouteNames {
   profile('/profile'),
   account('account'),
   addresses('addresses'),
+  auth('/auth'),
+  authVerify('/authVerify'),
   orders('orders'),
   categoryProducts('/category_products');
 

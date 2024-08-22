@@ -20,11 +20,12 @@ class AppImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ///TODO : Change this URL according to your backend API
     return CachedNetworkImage(
-      imageUrl: 'http://192.168.30.238:3000/$_imageUrl',
+      imageUrl: 'http://192.168.30.235:3000/$_imageUrl',
       fit: BoxFit.cover,
       errorWidget: (context, url, error) => Image.asset(
-        Assets.images.placeholder.extendPath(),
+        Assets.images.otpLogo.extendPath(),
         fit: _fit ?? BoxFit.contain,
       ),
       progressIndicatorBuilder: (_, url, downloadProgress) =>

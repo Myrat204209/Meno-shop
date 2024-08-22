@@ -13,6 +13,7 @@ class UITextField extends StatelessWidget {
     this.autocorrect = false,
     this.readOnly,
     this.hintText,
+    this.validator,
     this.labelText,
     this.errorText,
     this.prefix,
@@ -25,53 +26,6 @@ class UITextField extends StatelessWidget {
     this.onTap,
     this.obscureText,
   });
-
-  /// A text field component based on material [TextFormField] widget which
-  /// extends TextField with email icon and validates input type.
-  const UITextField.emailTextField({
-    super.key,
-    this.initialValue,
-    this.controller,
-    this.inputFormatters,
-    this.readOnly = false,
-    this.hintText,
-    this.errorText,
-    this.prefixText,
-    this.suffix,
-    this.maxLength,
-    this.labelText,
-    this.prefix,
-    this.onChanged,
-    this.onSubmitted,
-    this.onTap,
-    this.obscureText,
-  })  : keyboardType = TextInputType.emailAddress,
-        autoFillHints = const [AutofillHints.email],
-        autocorrect = false;
-
-  /// A password text field component based on material [TextFormField] widget which
-  /// extends TextField which obscures the text
-
-  const UITextField.passwordTextField({
-    super.key,
-    this.initialValue,
-    this.controller,
-    this.inputFormatters,
-    this.readOnly = false,
-    this.errorText,
-    this.prefixText,
-    this.maxLength,
-    this.labelText,
-    this.onChanged,
-    this.onSubmitted,
-    this.onTap,
-    this.suffix,
-    this.keyboardType,
-    this.autoFillHints,
-    this.prefix,
-  })  : hintText = 'Password',
-        obscureText = true,
-        autocorrect = false;
 
   /// A value to initialize the field to.
   final String? initialValue;
@@ -133,13 +87,15 @@ class UITextField extends StatelessWidget {
   /// Whether the text field should obscure the text being edited.
   final bool? obscureText;
 
+  /// The validator logic
+  final String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: 45),
       child: TextFormField(
         obscuringCharacter: '*',
-        cursorHeight: 18,
         key: key,
         initialValue: initialValue,
         controller: controller,
@@ -150,6 +106,7 @@ class UITextField extends StatelessWidget {
         autocorrect: autocorrect,
         readOnly: readOnly ?? false,
         maxLength: maxLength,
+        validator: validator,
         autofillHints: autoFillHints,
         onFieldSubmitted: onSubmitted,
         decoration: InputDecoration(

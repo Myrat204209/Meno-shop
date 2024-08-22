@@ -187,7 +187,7 @@ class AppTheme {
     return InputDecorationTheme(
       prefixIconColor: AppColors.neutral.shade700,
       labelStyle:
-          const AppTextStyle.text().sm().withColor(AppColors.neutral.shade500),
+          const AppTextStyle.text().md().withColor(AppColors.neutral.shade500),
       hintStyle: AppTextStyle.text()
           .sm()
           .regular()

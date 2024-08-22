@@ -7,4 +7,11 @@ extension ShapeBorderX on ShapeBorder {
       side: color != null ? BorderSide(color: color) : BorderSide.none,
     );
   }
+
+  static ShapeBorder verticalRectangle(double radius, [Color? color]) {
+    return RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(radius)),
+      side: color != null ? BorderSide(color: color) : BorderSide.none,
+    );
+  }
 }

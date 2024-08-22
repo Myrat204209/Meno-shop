@@ -40,16 +40,26 @@ class AuthClient {
     );
   }
 
-  Future<dynamic> checkOtp({
+  Future<void> checkOtp({
     required AuthRequestBody body,
   }) async {
-    final response = await _http.post<JsonType>(
+    await _http.post<JsonType>(
       'auth/checkOtp',
       data: body.toJson(),
     );
-    if (response.statusCode == 200) {
-      return;
-    }
+  }
+
+  Future<User> getMe() async {
+    final response = await _http.get<JsonType>('/user/me');
+    return User.fromJson(response.data!);
+  }
+
+  Future<User> putMe({required User user}) async {
+    final response = await _http.put<JsonType>(
+      '/user/me',
+      data: user.toJson(),
+    );
+    return User.fromJson(response.data!);
   }
 
   ///Log out

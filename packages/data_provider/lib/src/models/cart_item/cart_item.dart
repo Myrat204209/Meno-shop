@@ -5,30 +5,31 @@ import 'package:hive/hive.dart';
 part 'cart_item.g.dart';
 
 @HiveType(typeId: 2)
+// ignore: must_be_immutable
 class CartItem extends Equatable with HiveObjectMixin {
+  // ignore: non_constant_identifier_names{
   @HiveField(0)
-  final String productId;
+  final String id;
   @HiveField(1)
   final int quantity;
 
   CartItem({
-    required this.productId,
+    required this.id,
     required this.quantity,
   });
-
   CartItem copyWith({
-    String? productId,
+    String? id,
     int? quantity,
   }) {
     return CartItem(
-      productId: productId ?? this.productId,
+      id: id ?? this.id,
       quantity: quantity ?? this.quantity,
     );
   }
 
   @override
   List<Object?> get props => [
-        productId,
+        id,
         quantity,
       ];
 }

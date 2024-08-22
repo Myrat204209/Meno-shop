@@ -12,22 +12,36 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
+class $AssetsAuthGen {
+  const $AssetsAuthGen();
+
+  /// File path: assets/auth/otp_page.svg
+  SvgGenImage get otpPage => const SvgGenImage('assets/auth/otp_page.svg');
+
+  /// File path: assets/auth/otp_success.svg
+  SvgGenImage get otpSuccess =>
+      const SvgGenImage('assets/auth/otp_success.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [otpPage, otpSuccess];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
-
-  /// File path: assets/images/center-banner.jpg
-  AssetGenImage get centerBanner =>
-      const AssetGenImage('assets/images/center-banner.jpg');
 
   /// File path: assets/images/jeans.jpg
   AssetGenImage get jeans => const AssetGenImage('assets/images/jeans.jpg');
 
-  /// File path: assets/images/placeholder.jpg
-  AssetGenImage get placeholder =>
-      const AssetGenImage('assets/images/placeholder.jpg');
+  /// File path: assets/images/merch_banner.jpg
+  AssetGenImage get merchBanner =>
+      const AssetGenImage('assets/images/merch_banner.jpg');
+
+  /// File path: assets/images/otp_logo.png
+  AssetGenImage get otpLogo =>
+      const AssetGenImage('assets/images/otp_logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [centerBanner, jeans, placeholder];
+  List<AssetGenImage> get values => [jeans, merchBanner, otpLogo];
 }
 
 class $AssetsLanguageGen {
@@ -51,6 +65,7 @@ class Assets {
 
   static const String package = 'app_ui';
 
+  static const $AssetsAuthGen auth = $AssetsAuthGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLanguageGen language = $AssetsLanguageGen();
 }
