@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/features/l10n/l10n.dart';
-import 'package:meno_shop/features/language/bloc/language_bloc.dart';
+import 'package:meno_shop/l10n/l10n.dart';
+import 'package:meno_shop/language/bloc/language_bloc.dart';
 import 'package:turkmen_localization_support/turkmen_localization_support.dart';
 
 class AppView extends StatefulWidget {

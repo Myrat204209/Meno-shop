@@ -4,17 +4,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meno_shop/features/addresses/address.dart';
+import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/features/auth/auth.dart';
-import 'package:meno_shop/features/banner/banner.dart';
-import 'package:meno_shop/features/cart/cart.dart';
-import 'package:meno_shop/features/categories/categories.dart';
-import 'package:meno_shop/features/favorites/bloc/favorites_bloc.dart';
-import 'package:meno_shop/features/home/home.dart';
-import 'package:meno_shop/features/language/language.dart';
-import 'package:meno_shop/features/product/product.dart';
-import 'package:meno_shop/features/subcategories/subcategories.dart';
+import 'package:meno_shop/auth/auth.dart';
+import 'package:meno_shop/banner/banner.dart';
+import 'package:meno_shop/cart/cart.dart';
+import 'package:meno_shop/categories/categories.dart';
+import 'package:meno_shop/favorites/bloc/favorites_bloc.dart';
+import 'package:meno_shop/home/home.dart';
+import 'package:meno_shop/language/language.dart';
+import 'package:meno_shop/product/product.dart';
+import 'package:meno_shop/subcategories/subcategories.dart';
 
 /// The main application widget that initializes and provides necessary repositories and blocs to the app.
 ///

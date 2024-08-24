@@ -12,6 +12,93 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
+class $AssetsAdvantagesRuGen {
+  const $AssetsAdvantagesRuGen();
+
+  /// File path: assets/advantages_ru/fast_delivery.svg
+  SvgGenImage get fastDelivery =>
+      const SvgGenImage('assets/advantages_ru/fast_delivery.svg');
+
+  /// File path: assets/advantages_ru/free_delivery.svg
+  SvgGenImage get freeDelivery =>
+      const SvgGenImage('assets/advantages_ru/free_delivery.svg');
+
+  /// File path: assets/advantages_ru/one_t_one_g.svg
+  SvgGenImage get oneTOneG =>
+      const SvgGenImage('assets/advantages_ru/one_t_one_g.svg');
+
+  /// File path: assets/advantages_ru/online_pay.svg
+  SvgGenImage get onlinePay =>
+      const SvgGenImage('assets/advantages_ru/online_pay.svg');
+
+  /// File path: assets/advantages_ru/star_1.svg
+  SvgGenImage get star1 => const SvgGenImage('assets/advantages_ru/star_1.svg');
+
+  /// File path: assets/advantages_ru/star_2.svg
+  SvgGenImage get star2 => const SvgGenImage('assets/advantages_ru/star_2.svg');
+
+  /// File path: assets/advantages_ru/star_3.svg
+  SvgGenImage get star3 => const SvgGenImage('assets/advantages_ru/star_3.svg');
+
+  /// File path: assets/advantages_ru/t2g1.svg
+  SvgGenImage get t2g1 => const SvgGenImage('assets/advantages_ru/t2g1.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        fastDelivery,
+        freeDelivery,
+        oneTOneG,
+        onlinePay,
+        star1,
+        star2,
+        star3,
+        t2g1
+      ];
+}
+
+class $AssetsAdvantagesTkGen {
+  const $AssetsAdvantagesTkGen();
+
+  /// File path: assets/advantages_tk/fast_delivery.svg
+  SvgGenImage get fastDelivery =>
+      const SvgGenImage('assets/advantages_tk/fast_delivery.svg');
+
+  /// File path: assets/advantages_tk/free_delivery.svg
+  SvgGenImage get freeDelivery =>
+      const SvgGenImage('assets/advantages_tk/free_delivery.svg');
+
+  /// File path: assets/advantages_tk/online_payment.svg
+  SvgGenImage get onlinePayment =>
+      const SvgGenImage('assets/advantages_tk/online_payment.svg');
+
+  /// File path: assets/advantages_tk/star_1.svg
+  SvgGenImage get star1 => const SvgGenImage('assets/advantages_tk/star_1.svg');
+
+  /// File path: assets/advantages_tk/star_2.svg
+  SvgGenImage get star2 => const SvgGenImage('assets/advantages_tk/star_2.svg');
+
+  /// File path: assets/advantages_tk/star_3.svg
+  SvgGenImage get star3 => const SvgGenImage('assets/advantages_tk/star_3.svg');
+
+  /// File path: assets/advantages_tk/t1g1.svg
+  SvgGenImage get t1g1 => const SvgGenImage('assets/advantages_tk/t1g1.svg');
+
+  /// File path: assets/advantages_tk/t2g1.svg
+  SvgGenImage get t2g1 => const SvgGenImage('assets/advantages_tk/t2g1.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        fastDelivery,
+        freeDelivery,
+        onlinePayment,
+        star1,
+        star2,
+        star3,
+        t1g1,
+        t2g1
+      ];
+}
+
 class $AssetsAuthGen {
   const $AssetsAuthGen();
 
@@ -65,19 +152,26 @@ class Assets {
 
   static const String package = 'app_ui';
 
+  static const $AssetsAdvantagesRuGen advantagesRu = $AssetsAdvantagesRuGen();
+  static const $AssetsAdvantagesTkGen advantagesTk = $AssetsAdvantagesTkGen();
   static const $AssetsAuthGen auth = $AssetsAuthGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLanguageGen language = $AssetsLanguageGen();
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName, {this.size = null});
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
 
   static const String package = 'app_ui';
 
   final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -153,20 +247,22 @@ class AssetGenImage {
 class SvgGenImage {
   const SvgGenImage(
     this._assetName, {
-    this.size = null,
+    this.size,
+    this.flavors = const {},
   }) : _isVecFormat = false;
 
   const SvgGenImage.vec(
     this._assetName, {
-    this.size = null,
+    this.size,
+    this.flavors = const {},
   }) : _isVecFormat = true;
 
   final String _assetName;
+  final Size? size;
+  final Set<String> flavors;
+  final bool _isVecFormat;
 
   static const String package = 'app_ui';
-
-  final Size? size;
-  final bool _isVecFormat;
 
   SvgPicture svg({
     Key? key,
@@ -189,12 +285,23 @@ class SvgGenImage {
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
+    final BytesLoader loader;
+    if (_isVecFormat) {
+      loader = AssetBytesLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+      );
+    } else {
+      loader = SvgAssetLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+        theme: theme,
+      );
+    }
     return SvgPicture(
-      _isVecFormat
-          ? AssetBytesLoader(_assetName,
-              assetBundle: bundle, packageName: package)
-          : SvgAssetLoader(_assetName,
-              assetBundle: bundle, packageName: package),
+      loader,
       key: key,
       matchTextDirection: matchTextDirection,
       width: width,
@@ -205,7 +312,6 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      theme: theme,
       colorFilter: colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,

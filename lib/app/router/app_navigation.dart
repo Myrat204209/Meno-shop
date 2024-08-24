@@ -1,18 +1,19 @@
+import 'package:data_provider/data_provider.dart' show ProductItem;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meno_shop/features/account/account.dart';
-import 'package:meno_shop/features/addresses/address.dart';
+import 'package:meno_shop/account/account.dart';
+import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/features/auth/auth.dart';
-import 'package:meno_shop/features/cart/cart.dart';
-import 'package:meno_shop/features/categories/categories.dart';
-import 'package:meno_shop/features/favorites/favorites.dart';
-import 'package:meno_shop/features/home/home.dart';
-import 'package:meno_shop/features/notification/notification.dart';
-import 'package:meno_shop/features/orders/orders.dart';
-import 'package:meno_shop/features/product_details/product_details.dart';
-import 'package:meno_shop/features/profile/profile.dart';
+import 'package:meno_shop/auth/auth.dart';
+import 'package:meno_shop/cart/cart.dart';
+import 'package:meno_shop/categories/categories.dart';
+import 'package:meno_shop/favorites/favorites.dart';
+import 'package:meno_shop/home/home.dart';
+import 'package:meno_shop/notification/notification.dart';
+import 'package:meno_shop/orders/orders.dart';
+import 'package:meno_shop/product_details/product_details.dart';
+import 'package:meno_shop/profile/profile.dart';
 
 class AppNavigation {
   AppNavigation._();
@@ -61,13 +62,13 @@ class AppNavigation {
                     builder: (context, state) =>
                         NotificationsPage(key: state.pageKey),
                   ),
-                  //TODO: Change to actual product uuid
                   GoRoute(
                     path: RouteNames.productDetails.path,
                     name: RouteNames.productDetails.name,
                     builder: (context, state) => ProductDetailsPage(
                       key: state.pageKey,
                       uuid: state.pathParameters['uuid']!,
+                      product: state.extra as ProductItem,
                     ),
                   ),
                 ],

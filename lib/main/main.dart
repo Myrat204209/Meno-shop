@@ -1,19 +1,19 @@
 import 'dart:io';
 
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:meno_shop/features/addresses/address.dart';
-import 'package:meno_shop/features/auth/auth.dart';
-import 'package:meno_shop/features/banner/banner.dart';
-import 'package:meno_shop/features/cart/cart.dart';
+import 'package:meno_shop/constants/constants.dart';
+import 'package:meno_shop/addresses/address.dart';
+import 'package:meno_shop/auth/auth.dart';
+import 'package:meno_shop/banner/banner.dart';
+import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/main/bootstrap/bootstrap.dart';
 import 'package:data_provider/data_provider.dart';
-import 'package:meno_shop/features/categories/categories.dart';
-import 'package:meno_shop/features/product/product.dart';
+import 'package:meno_shop/categories/categories.dart';
+import 'package:meno_shop/product/product.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meno_shop/features/subcategories/subcategories.dart';
+import 'package:meno_shop/subcategories/subcategories.dart';
 import '../app/app.dart';
 
-const kDefaultBaseUrl = 'http://192.168.30.235:3000';
 void main() {
   bootStrap(({
     required sharedPreferences,
@@ -21,7 +21,7 @@ void main() {
   }) async {
     /// Constants
     const defaultBaseUrl = '$kDefaultBaseUrl/api/v1';
-    
+
     /// Storages
     // const secureStorage = SecureStorage();
     final tokenStorage = InMemoryTokenStorage();

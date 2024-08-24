@@ -2,7 +2,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppProductItem extends StatelessWidget {
   const AppProductItem({
@@ -31,7 +30,7 @@ class AppProductItem extends StatelessWidget {
       child: SizedBox(
         width: size.width * 0.48,
         child: AspectRatio(
-          aspectRatio: 155.w / 286.h,
+          aspectRatio: 155 / 286,
           child: InkWell(
             onTap: onTap,
             borderRadius: BorderRadius.circular(10),
@@ -39,7 +38,7 @@ class AppProductItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AspectRatio(
-                  aspectRatio: 149.w / 157.h,
+                  aspectRatio: 149 / 157,
                   child: Stack(
                     children: [
                       /// Product image
@@ -54,16 +53,18 @@ class AppProductItem extends StatelessWidget {
                         isFavorite: productFavorite ?? false,
                         onFavoriteAdded: onFavoriteAdded,
                       ),
-                      Positioned(
-                        left: 5,
-                        top: 5,
-                        child: SizedBox(),
 
-                        // child: Assets.advantages.presentPlus1.svg(
-                        //   height: 47.h,
-                        //   width: 47.w,
-                        // ),
-                      )
+                      // Positioned(
+                      //   left: 5,
+                      //   top: 5,
+                      //   child:  product.advantages != null ?
+                      //           product.advantages?.oneToOne == true ?
+
+                      //   // child: Assets.advantages.presentPlus1.svg(
+                      //   //   height: 47.h,
+                      //   //   width: 47.w,
+                      //   // ),
+                      // ),
                     ],
                   ),
                 ),
@@ -114,7 +115,7 @@ class ProductDetailsPrices extends StatelessWidget {
         Expanded(
           child: Text(
             '${discount.discountedPrice} TMT',
-            style: AppTextStyle.text().lg().bold().sp(),
+            style: AppTextStyle.text().lg().bold(),
           ),
         ),
         Expanded(
@@ -123,7 +124,6 @@ class ProductDetailsPrices extends StatelessWidget {
             style: AppTextStyle.text()
                 .regular()
                 .sm()
-                .sp()
                 .copyWith(decoration: TextDecoration.lineThrough),
           ),
         )
@@ -153,8 +153,8 @@ class ProductAdvantagesList extends StatelessWidget {
         itemBuilder: (context, index) => ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: SizedBox(
-            height: 46.h,
-            width: 35.w,
+            height: 46,
+            width: 35,
           ),
         ).paddingOnly(
           left: 5,
@@ -188,7 +188,7 @@ class ProductFavoritesButton extends StatelessWidget {
         shape: CircleBorder(),
         child: Icon(
           isFavorite ? Icons.favorite : Icons.favorite_border_outlined,
-          size: 20.h,
+          size: 20,
           color: AppColors.secondary,
         ).paddingAll(3.5),
       ),
