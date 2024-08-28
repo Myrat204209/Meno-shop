@@ -1,17 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
-import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailsDiscount extends StatelessWidget {
   const ProductDetailsDiscount({
     super.key,
-    this.originalPrice,
-    this.discountedPrice,
-    this.onSalePercent,
+    required this.originalPrice,
+    required this.discountedPrice,
+    required this.onSalePercent,
   });
-  final double? originalPrice;
-  final double? discountedPrice;
-  final int? onSalePercent;
+  final double originalPrice;
+  final double discountedPrice;
+  final int onSalePercent;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -87,12 +87,14 @@ class ProductDetailsProductOffers extends StatelessWidget {
 class ProductDetailsDescriptionText extends StatelessWidget {
   const ProductDetailsDescriptionText({
     super.key,
+    required this.description,
   });
-
+  final String description;
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non erat quam. Vestibulum aliquam nibh dui, et aliquet nibh euismod quis.',
+      description,
+      // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non erat quam. Vestibulum aliquam nibh dui, et aliquet nibh euismod quis.',
       softWrap: true,
       style: const AppTextStyle.text()
           .sm()
@@ -105,15 +107,15 @@ class ProductDetailsDescriptionText extends StatelessWidget {
 class ProductDetailsName extends StatelessWidget {
   const ProductDetailsName({
     super.key,
-    required this.product,
+    required this.productName,
   });
 
-  final ProductItem product;
+  final String productName;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      product.name ?? 'Just random Product Name',
+      productName,
       style: const AppTextStyle.text().headline6().semiBold(),
     )..paddingOnly(bottom: 10);
   }

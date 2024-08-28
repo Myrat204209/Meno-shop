@@ -1,13 +1,13 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:app_ui/app_ui.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:app_ui/app_ui.dart'; // Assuming this is where Assets and AppColors are defined.
 
 class AppImage extends StatelessWidget {
   final String _imageUrl;
   final double? _width;
   final double? _height;
   final BoxFit? _fit;
+
   const AppImage({
     required String imageUrl,
     double? width,
@@ -20,21 +20,38 @@ class AppImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ///TODO : Change this URL according to your backend API
+    // Check if the imageUrl is empty or invalid
+    if (_imageUrl.isEmpty) {
+      return Assets.images.otpLogo.image(
+        height: _height,
+        width: _width,
+        fit: _fit ?? BoxFit.cover,
+      );
+    }
+
     return CachedNetworkImage(
-      imageUrl: 'http://192.168.30.235:3000/$_imageUrl',
-      fit: BoxFit.cover,
-      errorWidget: (context, url, error) => Image.asset(
-        Assets.images.otpLogo.extendPath(),
-        fit: _fit ?? BoxFit.contain,
-      ),
-      progressIndicatorBuilder: (_, url, downloadProgress) =>
-          CircularProgressIndicator.adaptive(
-        value: downloadProgress.progress,
-        valueColor: AlwaysStoppedAnimation<Color>(AppColors.accepted),
-      ).centralize(),
+      imageUrl: _imageUrl,
       height: _height,
       width: _width,
+      fit: _fit ?? BoxFit.cover,
+
+      // Error widget in case of a network error
+      errorWidget: (context, url, error) {
+        // Optional: Log the error or handle it in other ways
+        debugPrint('_________________________________-Image loading error: $error');
+        return Assets.images.otpLogo.image(
+          height: _height,
+          width: _width,
+          fit: _fit ?? BoxFit.cover,
+        );
+      },
+      // Display a loading indicator while the image is loading
+      progressIndicatorBuilder: (context, url, downloadProgress) {
+        return CircularProgressIndicator.adaptive(
+          value: downloadProgress.progress,
+          valueColor: AlwaysStoppedAnimation<Color>(AppColors.accepted),
+        ).centralize();
+      },
     );
   }
 }

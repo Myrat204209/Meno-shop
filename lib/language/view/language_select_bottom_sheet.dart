@@ -1,6 +1,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/language/language.dart';
 
@@ -43,8 +44,8 @@ class LanguageSelectBottomSheet extends StatelessWidget {
                 languageName: locale.languageCode,
                 onChanged: (value) {
                   context.read<LanguageBloc>().add(LanguageChanged(locale));
-                  Future.delayed(const Duration(milliseconds: 100))
-                      .then((value) => Navigator.of(context).pop());
+                  Future.delayed(const Duration(milliseconds: 100));
+                  context.pop();
                 },
                 title: Text(
                   switch (locale.languageCode) {

@@ -14,7 +14,7 @@ class AddressView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Text('${addressCount.length}/4').paddingOnly(right: 10),
+          Text('${addressCount.length}/5').paddingOnly(right: 10),
         ],
         title: Text(context.l10n.addresses),
         centerTitle: true,

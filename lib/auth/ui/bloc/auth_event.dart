@@ -9,6 +9,17 @@ sealed class AuthEvent extends Equatable {
 
 final class AuthUserRequested extends AuthEvent {}
 
+final class AuthSendOtpRequested extends AuthEvent {
+  final String phone;
+
+  const AuthSendOtpRequested({
+    required this.phone,
+  });
+
+  @override
+  List<Object> get props => [phone];
+}
+
 final class AuthVerifyRequested extends AuthEvent {
   final String phone;
   final String otp;

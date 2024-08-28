@@ -1,4 +1,6 @@
 // import 'package:app_ui/app_ui.dart';
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +16,9 @@ class HomePageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final subcategories =
         context.select((HomeBloc bloc) => bloc.state.subcategories);
-      
+
     final banners = context.select((HomeBloc bloc) => bloc.state.banners);
+    log('--------------------------------$banners');
 
     return CustomScrollView(
       slivers: [

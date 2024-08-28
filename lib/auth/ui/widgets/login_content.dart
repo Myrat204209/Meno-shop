@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_shakemywidget/flutter_shakemywidget.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:meno_shop/auth/auth.dart';
 
@@ -11,6 +14,8 @@ class LoginContent extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
+
+    final shakeKey = useMemoized(() => GlobalKey<ShakeWidgetState>());
 
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.57,
@@ -26,13 +31,14 @@ class LoginContent extends HookWidget {
                 key: formKey,
                 child: ListView(
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(AppSpacing.md),
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                   children: [
                     Text(
                       'Telefon belginizi girizin!',
                       style: const AppTextStyle.text().xxl().bold(),
-                    ).centralize(),
+                    ).centralize().paddingOnly(bottom: 5),
                     Text(
                       'Biz sizin telefon belginize OTP kodyny \nugradarys!',
                       softWrap: true,
@@ -55,21 +61,28 @@ class LoginContent extends HookWidget {
               ),
               Row(
                 children: [
-                  Checkbox(
-                    value: isPrivate,
-                    onChanged: (value) {
-                      context.read<LoginBloc>().add(
-                            LoginPrivacyChanged(!isPrivate),
-                          );
-                    },
-                    activeColor: AppColors.secondary,
+                  ShakeMe(
+                    key: shakeKey,
+                    // configure the animation parameters
+                    shakeCount: 3,
+                    shakeOffset: 10,
+                    shakeDuration: const Duration(milliseconds: 500),
+                    child: Checkbox(
+                      value: isPrivate,
+                      onChanged: (value) {
+                        context.read<LoginBloc>().add(
+                              LoginPrivacyChanged(!isPrivate),
+                            );
+                      },
+                      activeColor: AppColors.secondary,
+                    ),
                   ),
                   SizedBox(
                     width: 310,
                     child: InkWell(
                       onTap: () {
                         showModalBottomSheet(
-                          shape: ShapeBorderX.verticalRectangle(10),
+                          shape: ShapeBorderX.roundedVertical(10),
                           backgroundColor: Colors.white,
                           context: context,
                           isScrollControlled: true,
@@ -91,13 +104,15 @@ class LoginContent extends HookWidget {
                 onPressed: () {
                   if (formKey.currentState?.validate() ?? false) {
                     if (isPrivate) {
+                      log('----------------Validating to OTP');
                       context.read<LoginBloc>().add(LoginPhoneSubmitted());
                     } else {
-                      // _shakeScreen();
+                      shakeKey.currentState?.shake();
                     }
                   }
                 },
               ),
+              const Text('asdas')
             ],
           );
         },

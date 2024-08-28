@@ -11,20 +11,24 @@ class AppProductItem extends StatelessWidget {
     required this.onCartAdded,
     required this.onTap,
     required this.locale,
+    required this.imageLink,
   });
+
   final ProductItem product;
   final VoidCallback onFavoriteAdded;
   final VoidCallback onCartAdded;
   final VoidCallback onTap;
   final String locale;
+  final String imageLink;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final productName = product.name;
-    final productImageLink = product.photo;
-    final productFavorite = product.isFavorite;
+    final productName = product.name ?? 'Unnamed Product';
+    final productImageLink = imageLink;
+    final productFavorite = product.isFavorite ?? false;
 
-    return AppBorderColorBox(
+    return AppWrapper(
       expand: 2.0,
       borderColor: AppColors.neutral.shade300,
       child: SizedBox(
@@ -43,28 +47,17 @@ class AppProductItem extends StatelessWidget {
                     children: [
                       /// Product image
                       AppProductImage(
-                        imageLink: productImageLink!.isNotEmpty
-                            ? productImageLink.first.path
+                        imageLink: productImageLink.isNotEmpty
+                            ? productImageLink
                             : 'null',
                       ),
 
                       /// Product favorite button and advantages icon
                       ProductFavoritesButton(
-                        isFavorite: productFavorite ?? false,
+                        isFavorite: productFavorite,
                         onFavoriteAdded: onFavoriteAdded,
                       ),
-
-                      // Positioned(
-                      //   left: 5,
-                      //   top: 5,
-                      //   child:  product.advantages != null ?
-                      //           product.advantages?.oneToOne == true ?
-
-                      //   // child: Assets.advantages.presentPlus1.svg(
-                      //   //   height: 47.h,
-                      //   //   width: 47.w,
-                      //   // ),
-                      // ),
+                      // ProductAdvantageSticker(product: product),
                     ],
                   ),
                 ),
@@ -74,7 +67,7 @@ class AppProductItem extends StatelessWidget {
                     Flexible(
                       fit: FlexFit.tight,
                       child: Text(
-                        productName!,
+                        productName,
                         softWrap: true,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -91,7 +84,10 @@ class AppProductItem extends StatelessWidget {
                 ).paddingAll(5).paddingOnly(bottom: 5),
                 // ProductDetailsPrices(price: price).paddingOnly(left: 5),
 
-                // ProductAdvantagesList(),
+                ProductAdvantagesList(
+                  locale: locale,
+                  advantages: product.advantages,
+                ),
               ],
             ),
           ),
@@ -101,12 +97,34 @@ class AppProductItem extends StatelessWidget {
   }
 }
 
+// class ProductAdvantageSticker extends StatelessWidget {
+//   const ProductAdvantageSticker({
+//     super.key,
+//     required this.advantages,
+//     required this.locale,
+//   });
+
+//   final AdvantagesItem advantages;
+//   final String locale;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Positioned(
+//       left: 5,
+//       top: 5,
+//       child: ,
+//     );
+//   }
+// }
+
 class ProductDetailsPrices extends StatelessWidget {
   const ProductDetailsPrices({
     super.key,
     required this.discount,
   });
+
   final DiscountItem discount;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -135,37 +153,50 @@ class ProductDetailsPrices extends StatelessWidget {
 class ProductAdvantagesList extends StatelessWidget {
   const ProductAdvantagesList({
     super.key,
+    required this.locale,
     required this.advantages,
   });
+
+  final String locale;
   final AdvantagesItem? advantages;
+
   @override
   Widget build(BuildContext context) {
-    final advantagesJson = (advantages as JsonType).cast<String, bool>();
-    final advantagesList = advantagesJson.keys
+    final advantagesJson = advantages?.toJson();
+    final advantagesList = advantagesJson?.keys
         .where((key) => advantagesJson[key] == true)
         .toList();
-    return Expanded(
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemCount: advantagesList.length,
-        padding: EdgeInsets.zero,
-        itemBuilder: (context, index) => ClipRRect(
-          borderRadius: BorderRadius.circular(5),
-          child: SizedBox(
-            height: 46,
-            width: 35,
+
+    if (advantagesList != null && advantagesList.isNotEmpty) {
+      return Expanded(
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: advantagesList.length,
+          padding: EdgeInsets.zero,
+          itemBuilder: (context, index) => ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: SizedBox(
+              height: 46,
+              width: 35,
+              // Placeholder for advantage icons based on locale and advantage type
+              // child: ((kAdvantagesJsonBody[locale][advantagesList[index]] != null)
+              //         as SvgGenImage)
+              //     .svg(fit: BoxFit.cover),
+            ),
+          ).paddingOnly(
+            left: 5,
           ),
-        ).paddingOnly(
-          left: 5,
         ),
-      ),
-    );
+      );
+    }
+
+    return const SizedBox();
   }
 }
 
 class ProductFavoritesButton extends StatelessWidget {
-  ProductFavoritesButton({
+  const ProductFavoritesButton({
     super.key,
     required this.onFavoriteAdded,
     required this.isFavorite,
@@ -173,6 +204,7 @@ class ProductFavoritesButton extends StatelessWidget {
 
   final VoidCallback onFavoriteAdded;
   final bool isFavorite;
+
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -180,12 +212,12 @@ class ProductFavoritesButton extends StatelessWidget {
       top: 5,
       child: RawMaterialButton(
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        constraints: BoxConstraints(maxWidth: 40),
+        constraints: const BoxConstraints(maxWidth: 40),
         onPressed: onFavoriteAdded,
         elevation: 3,
         fillColor: AppColors.quaterniary,
-        padding: EdgeInsets.only(top: 2),
-        shape: CircleBorder(),
+        padding: const EdgeInsets.only(top: 2),
+        shape: const CircleBorder(),
         child: Icon(
           isFavorite ? Icons.favorite : Icons.favorite_border_outlined,
           size: 20,
@@ -210,11 +242,11 @@ class AppProductImage extends StatelessWidget {
       height: double.maxFinite,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: AppBorderColorBox(
+        child: AppWrapper(
           expand: 0.5,
           borderColor: AppColors.neutral.shade300,
           child: AppImage(
-            imageUrl: imageLink ?? '',
+            imageUrl: imageLink ?? 'App_Product_Image',
           ),
         ),
       ),

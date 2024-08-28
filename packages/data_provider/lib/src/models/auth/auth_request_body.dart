@@ -9,6 +9,7 @@ part 'auth_request_body.g.dart';
 @JsonSerializable(explicitToJson: true)
 class AuthRequestBody {
   final String? phoneNumber;
+  @JsonKey(includeIfNull: false)
   final String? otpCode;
 
   AuthRequestBody(

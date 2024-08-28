@@ -17,8 +17,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         super(const CartState.initial()) {
     on<CartInitRequested>(_onInitRequested);
     on<CartRequested>(_onRequested);
-    on<CartUpdateRequested>(_onUpdateRequested);
+    on<CartItemAdded>(_onCartItemAdded);
+    on<CartItemRemoved>(_onCartItemRemoved);
+    on<CartClearRequested>(_onClearRequested);
   }
+
   final CartRepository _cartRepository;
 
   FutureOr<void> _onInitRequested(
@@ -35,10 +38,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   ) async {
     try {
       emit(state.copyWith(status: CartStatus.loading));
-      final cartResponse = await _cartRepository.getCart();
+      final cartResponse = await _cartRepository.getCartItems();
+      final totalCost = totalCostSum(cartResponse);
       emit(state.copyWith(
         status: CartStatus.loadingSuccess,
         cart: cartResponse,
+        totalCost: totalCost,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.loadingFailure));
@@ -46,21 +51,72 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
   }
 
-  FutureOr<void> _onUpdateRequested(
-    CartUpdateRequested event,
+  /// Add a new cart item to the cart repository
+  FutureOr<void> _onCartItemAdded(
+    CartItemAdded event,
     Emitter<CartState> emit,
   ) async {
     try {
-      emit(state.copyWith(status: CartStatus.updating));
-      await _cartRepository.updateCart(event.cartItem);
-      final cartResponse = await _cartRepository.getCart();
+      emit(state.copyWith(status: CartStatus.loading));
+
+      await _cartRepository.addCartItem(event.cartItem);
+      final cartResponse = await _cartRepository.getCartItems();
+      final totalCost = totalCostSum(cartResponse);
+      emit(
+        state.copyWith(
+            status: CartStatus.loadingSuccess,
+            cart: cartResponse,
+            totalCost: totalCost),
+      );
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: CartStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
+  }
+
+  /// Removes a cart item from the cart repository
+  FutureOr<void> _onCartItemRemoved(
+    CartItemRemoved event,
+    Emitter<CartState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: CartStatus.loading));
+
+      await _cartRepository.removeCartItem(event.cartItem);
+      final cartResponse = await _cartRepository.getCartItems();
+      final totalCost = totalCostSum(cartResponse);
       emit(state.copyWith(
-        status: CartStatus.updatingSuccess,
+        status: CartStatus.loadingSuccess,
         cart: cartResponse,
+        totalCost: totalCost,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.updatingFailure));
       addError(error, stackTrace);
     }
+  }
+
+  ///Clear the cart
+  FutureOr<void> _onClearRequested(
+    CartClearRequested event,
+    Emitter<CartState> emit,
+  ) {
+    try {
+      emit(state.copyWith(status: CartStatus.loading));
+
+      _cartRepository.clearCart();
+      emit(state.copyWith(
+        status: CartStatus.loadingSuccess,
+        cart: [],
+        totalCost: 0,
+      ));
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: CartStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
+  }
+
+  double totalCostSum(List<CartItem> carts) {
+    return carts.fold(0.0, (sum, item) => sum + item.totalPrice);
   }
 }

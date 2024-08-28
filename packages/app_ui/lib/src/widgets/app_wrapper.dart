@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-class AppBorderColorBox extends StatelessWidget {
-  const AppBorderColorBox({
+class AppWrapper extends StatelessWidget {
+  const AppWrapper({
     super.key,
     required this.borderColor,
     required this.child,

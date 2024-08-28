@@ -74,10 +74,9 @@ class ProductListTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AppImage(
-            width: 90,
+          Assets.images.jeans.image(
             height: 90,
-            imageUrl: Assets.images.jeans.extendPath(),
+            width: 90,
           ),
           const SizedBox(width: 10),
           const Padding(

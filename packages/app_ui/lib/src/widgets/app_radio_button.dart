@@ -28,7 +28,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppBorderColorBox(
+        AppWrapper(
           borderColor: AppColors.neutral.shade100,
           child: Text(
             widget.text,

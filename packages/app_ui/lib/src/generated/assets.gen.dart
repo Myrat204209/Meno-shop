@@ -12,91 +12,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
-class $AssetsAdvantagesRuGen {
-  const $AssetsAdvantagesRuGen();
+class $AssetsAdvantagesGen {
+  const $AssetsAdvantagesGen();
 
-  /// File path: assets/advantages_ru/fast_delivery.svg
-  SvgGenImage get fastDelivery =>
-      const SvgGenImage('assets/advantages_ru/fast_delivery.svg');
+  /// Directory path: assets/advantages/ru
+  $AssetsAdvantagesRuGen get ru => const $AssetsAdvantagesRuGen();
 
-  /// File path: assets/advantages_ru/free_delivery.svg
-  SvgGenImage get freeDelivery =>
-      const SvgGenImage('assets/advantages_ru/free_delivery.svg');
-
-  /// File path: assets/advantages_ru/one_t_one_g.svg
-  SvgGenImage get oneTOneG =>
-      const SvgGenImage('assets/advantages_ru/one_t_one_g.svg');
-
-  /// File path: assets/advantages_ru/online_pay.svg
-  SvgGenImage get onlinePay =>
-      const SvgGenImage('assets/advantages_ru/online_pay.svg');
-
-  /// File path: assets/advantages_ru/star_1.svg
-  SvgGenImage get star1 => const SvgGenImage('assets/advantages_ru/star_1.svg');
-
-  /// File path: assets/advantages_ru/star_2.svg
-  SvgGenImage get star2 => const SvgGenImage('assets/advantages_ru/star_2.svg');
-
-  /// File path: assets/advantages_ru/star_3.svg
-  SvgGenImage get star3 => const SvgGenImage('assets/advantages_ru/star_3.svg');
-
-  /// File path: assets/advantages_ru/t2g1.svg
-  SvgGenImage get t2g1 => const SvgGenImage('assets/advantages_ru/t2g1.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values => [
-        fastDelivery,
-        freeDelivery,
-        oneTOneG,
-        onlinePay,
-        star1,
-        star2,
-        star3,
-        t2g1
-      ];
-}
-
-class $AssetsAdvantagesTkGen {
-  const $AssetsAdvantagesTkGen();
-
-  /// File path: assets/advantages_tk/fast_delivery.svg
-  SvgGenImage get fastDelivery =>
-      const SvgGenImage('assets/advantages_tk/fast_delivery.svg');
-
-  /// File path: assets/advantages_tk/free_delivery.svg
-  SvgGenImage get freeDelivery =>
-      const SvgGenImage('assets/advantages_tk/free_delivery.svg');
-
-  /// File path: assets/advantages_tk/online_payment.svg
-  SvgGenImage get onlinePayment =>
-      const SvgGenImage('assets/advantages_tk/online_payment.svg');
-
-  /// File path: assets/advantages_tk/star_1.svg
-  SvgGenImage get star1 => const SvgGenImage('assets/advantages_tk/star_1.svg');
-
-  /// File path: assets/advantages_tk/star_2.svg
-  SvgGenImage get star2 => const SvgGenImage('assets/advantages_tk/star_2.svg');
-
-  /// File path: assets/advantages_tk/star_3.svg
-  SvgGenImage get star3 => const SvgGenImage('assets/advantages_tk/star_3.svg');
-
-  /// File path: assets/advantages_tk/t1g1.svg
-  SvgGenImage get t1g1 => const SvgGenImage('assets/advantages_tk/t1g1.svg');
-
-  /// File path: assets/advantages_tk/t2g1.svg
-  SvgGenImage get t2g1 => const SvgGenImage('assets/advantages_tk/t2g1.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values => [
-        fastDelivery,
-        freeDelivery,
-        onlinePayment,
-        star1,
-        star2,
-        star3,
-        t1g1,
-        t2g1
-      ];
+  /// Directory path: assets/advantages/tk
+  $AssetsAdvantagesTkGen get tk => const $AssetsAdvantagesTkGen();
 }
 
 class $AssetsAuthGen {
@@ -147,13 +70,108 @@ class $AssetsLanguageGen {
   List<SvgGenImage> get values => [english, russia, turkmen];
 }
 
+class $AssetsAdvantagesRuGen {
+  const $AssetsAdvantagesRuGen();
+
+  /// File path: assets/advantages/ru/advantage1.svg
+  SvgGenImage get advantage1 =>
+      const SvgGenImage('assets/advantages/ru/advantage1.svg');
+
+  /// File path: assets/advantages/ru/advantage2.svg
+  SvgGenImage get advantage2 =>
+      const SvgGenImage('assets/advantages/ru/advantage2.svg');
+
+  /// File path: assets/advantages/ru/advantage3.svg
+  SvgGenImage get advantage3 =>
+      const SvgGenImage('assets/advantages/ru/advantage3.svg');
+
+  /// File path: assets/advantages/ru/fastDelivery.svg
+  SvgGenImage get fastDelivery =>
+      const SvgGenImage('assets/advantages/ru/fastDelivery.svg');
+
+  /// File path: assets/advantages/ru/freeDelivery.svg
+  SvgGenImage get freeDelivery =>
+      const SvgGenImage('assets/advantages/ru/freeDelivery.svg');
+
+  /// File path: assets/advantages/ru/oneToOne.svg
+  SvgGenImage get oneToOne =>
+      const SvgGenImage('assets/advantages/ru/oneToOne.svg');
+
+  /// File path: assets/advantages/ru/payOnline.svg
+  SvgGenImage get payOnline =>
+      const SvgGenImage('assets/advantages/ru/payOnline.svg');
+
+  /// File path: assets/advantages/ru/twoToOne.svg
+  SvgGenImage get twoToOne =>
+      const SvgGenImage('assets/advantages/ru/twoToOne.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        advantage1,
+        advantage2,
+        advantage3,
+        fastDelivery,
+        freeDelivery,
+        oneToOne,
+        payOnline,
+        twoToOne
+      ];
+}
+
+class $AssetsAdvantagesTkGen {
+  const $AssetsAdvantagesTkGen();
+
+  /// File path: assets/advantages/tk/advantage1.svg
+  SvgGenImage get advantage1 =>
+      const SvgGenImage('assets/advantages/tk/advantage1.svg');
+
+  /// File path: assets/advantages/tk/advantage2.svg
+  SvgGenImage get advantage2 =>
+      const SvgGenImage('assets/advantages/tk/advantage2.svg');
+
+  /// File path: assets/advantages/tk/advantage3.svg
+  SvgGenImage get advantage3 =>
+      const SvgGenImage('assets/advantages/tk/advantage3.svg');
+
+  /// File path: assets/advantages/tk/fastDelivery.svg
+  SvgGenImage get fastDelivery =>
+      const SvgGenImage('assets/advantages/tk/fastDelivery.svg');
+
+  /// File path: assets/advantages/tk/freeDelivery.svg
+  SvgGenImage get freeDelivery =>
+      const SvgGenImage('assets/advantages/tk/freeDelivery.svg');
+
+  /// File path: assets/advantages/tk/oneToOne.svg
+  SvgGenImage get oneToOne =>
+      const SvgGenImage('assets/advantages/tk/oneToOne.svg');
+
+  /// File path: assets/advantages/tk/payOnline.svg
+  SvgGenImage get payOnline =>
+      const SvgGenImage('assets/advantages/tk/payOnline.svg');
+
+  /// File path: assets/advantages/tk/twoToOne.svg
+  SvgGenImage get twoToOne =>
+      const SvgGenImage('assets/advantages/tk/twoToOne.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        advantage1,
+        advantage2,
+        advantage3,
+        fastDelivery,
+        freeDelivery,
+        oneToOne,
+        payOnline,
+        twoToOne
+      ];
+}
+
 class Assets {
   Assets._();
 
   static const String package = 'app_ui';
 
-  static const $AssetsAdvantagesRuGen advantagesRu = $AssetsAdvantagesRuGen();
-  static const $AssetsAdvantagesTkGen advantagesTk = $AssetsAdvantagesTkGen();
+  static const $AssetsAdvantagesGen advantages = $AssetsAdvantagesGen();
   static const $AssetsAuthGen auth = $AssetsAuthGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLanguageGen language = $AssetsLanguageGen();

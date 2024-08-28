@@ -20,6 +20,7 @@ class ProductDetailsPage extends StatelessWidget {
       appBar: const ProductDetailsAppBar(),
       body: ProductDetailsView(
         uuid: uuid,
+        product: product,
       ),
     );
   }

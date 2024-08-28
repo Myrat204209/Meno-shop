@@ -59,6 +59,7 @@ class App extends StatelessWidget {
     final categoriesBloc =
         CategoriesBloc(categoryRepository: _categoryRepository)
           ..add(const CategoriesRequested());
+
     final addressBloc = AddressBloc(
       addressRepository: _addressRepository,
     )..add(AddressesRequested());

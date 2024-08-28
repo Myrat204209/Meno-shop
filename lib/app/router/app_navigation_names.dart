@@ -9,9 +9,9 @@ enum RouteNames {
   account('account'),
   addresses('addresses'),
   auth('/auth'),
-  authVerify('/authVerify'),
+  authVerify('authVerify'),
   orders('orders'),
-  categoryProducts('/category_products');
+  categoryProducts('category_products');
 
   const RouteNames(this.path);
   final String path;

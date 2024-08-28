@@ -24,7 +24,9 @@ class ProductDetailsImageSlider extends StatelessWidget {
         indicatorPosition: IndicatorPosition.overImage,
         indicatorDeactiveColor: AppColors.neutral.shade300,
         aspectRatio: 15 / 11,
-        arrayImages: imageLinks == null ? [] : imageLinks!,
+        arrayImages: imageLinks == null
+            ? [Assets.images.otpLogo.extendPath()]
+            : imageLinks!,
         boxFit: BoxFit.cover,
         borderRadius: 8,
       ),

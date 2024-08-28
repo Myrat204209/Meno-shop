@@ -17,18 +17,15 @@ class AuthClient {
       '/auth',
       data: body.toJson(),
     );
-    late final authResponse;
     if (response.statusCode == 200) {
-      authResponse = AuthResponse.fromJson(response.data!);
-    } else
-      throw (Exception(response.data?['message']));
-    if (authResponse != null) {
+      final authResponse = AuthResponse.fromJson(response.data!);
       final token = authResponse.token;
       if (token != null) {
         await _tokenStorage.saveToken(token);
       }
-    }
-    return authResponse;
+      return authResponse;
+    } else
+      throw (Exception(response.data?['message']));
   }
 
   Future<void> sendOtp({
@@ -36,7 +33,7 @@ class AuthClient {
   }) async {
     await _http.get<JsonType>(
       '/auth/sendOtp',
-      data: body.toJson(),
+      queryParameters: body.toJson(),
     );
   }
 
@@ -45,7 +42,7 @@ class AuthClient {
   }) async {
     await _http.post<JsonType>(
       'auth/checkOtp',
-      data: body.toJson(),
+      queryParameters: body.toJson(),
     );
   }
 

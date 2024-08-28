@@ -2,6 +2,8 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meno_shop/app/app.dart';
 
 class CategoriesExpansionTile extends StatelessWidget {
   const CategoriesExpansionTile({
@@ -13,12 +15,9 @@ class CategoriesExpansionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final subcategories = category.subcategories;
     return ExpansionTile(
-      collapsedShape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-          side: BorderSide(color: AppColors.neutral.shade50)),
-      shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-          side: BorderSide(color: AppColors.neutral.shade50)),
+      collapsedShape:
+          ShapeBorderX.continousRectangle(15, AppColors.neutral.shade50),
+      shape: ShapeBorderX.continousRectangle(15, AppColors.neutral.shade50),
       expandedCrossAxisAlignment: CrossAxisAlignment.start,
       leading: const Icon(
         Icons.plumbing,
@@ -27,22 +26,29 @@ class CategoriesExpansionTile extends StatelessWidget {
       title: Text(
         category.name ?? '',
         style: const AppTextStyle.text()
-            .regular()
-            .md()
+            .semiBold()
             .withColor(const Color(0xFF221122)),
       ),
       children: subcategories!.map((subcategory) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: ListTile(
-            leading: const Icon(
-              Icons.abc,
-              color: AppColors.transparent,
-            ),
-            title: Text(subcategory.name ?? ''),
-            shape: ContinuousRectangleBorder(
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
-              side: BorderSide(width: 0.5, color: AppColors.neutral.shade50),
+        return InkWell(
+          onTap: () {
+            context.pushNamed(RouteNames.categoryProducts.name);
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: ListTile(
+              leading: const Icon(
+                Icons.abc,
+                color: AppColors.transparent,
+              ),
+              visualDensity: VisualDensity.compact,
+              dense: true,
+              contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+              title: Text(subcategory.name ?? '',
+                  style: const AppTextStyle.text()
+                      .withColor(const Color(0xFF221122))),
+              shape:
+                  ShapeBorderX.continousRectangle(15, AppColors.neutral.shade50),
             ),
           ),
         );

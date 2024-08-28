@@ -1,9 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:meno_shop/banner/banner.dart';
 
 enum BannerType {
@@ -15,7 +13,6 @@ enum BannerType {
 
 /// A widget representing a banner card that displays an image, label, title, subtitle, and a button.
 class BannerCard extends StatelessWidget {
-  /// Creates a new instance of AppBannerCard.
   const BannerCard({
     super.key,
     required this.imageUrl,
@@ -26,15 +23,21 @@ class BannerCard extends StatelessWidget {
     this.subtitle,
     this.buttonText,
   });
-  final Image imageUrl;
-  final BannerType bannerType;
+
+  final String imageUrl;
+  final String bannerType;
   final String? label;
   final String? title;
   final String? subtitle;
   final String? buttonText;
   final VoidCallback onPressed;
+
   @override
   Widget build(BuildContext context) {
+    // Ensure the bannerType is valid
+    assert(BannerType.values.map((e) => e.name).contains(bannerType),
+        'Invalid bannerType: $bannerType');
+
     return AspectRatio(
       aspectRatio: 2 / 1,
       child: Stack(
@@ -42,24 +45,21 @@ class BannerCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.r),
-            child: ColorFiltered(
-              colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.3),
-                BlendMode.multiply,
-              ),
-              //TODO: Change to the network
-              child: SizedBox(
-                child: imageUrl,
-              ),
-            ),
+            child: AppImage(
+              imageUrl: imageUrl,
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.maxFinite,
+            ).paddingAll(5),
           ),
           FittedBox(
             child: BannerContent(
               bannerType: bannerType,
               buttonText: buttonText ?? '',
-              label: label ?? 'From Online Stores',
-              title: title ?? 'Men\'s Lifestyle Collection',
-              subtitle: subtitle ?? 'Subtitle',
+              label: label ?? '',
+              title: title ?? '',
+              subtitle: subtitle ?? '',
+              onPressed: onPressed, // Pass the callback to BannerContent
             ),
           ).paddingOnly(left: 25),
         ],
@@ -76,22 +76,27 @@ class BannerContent extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.buttonText,
+    required this.onPressed, // Added onPressed to handle button action
   });
-  final BannerType bannerType;
+
+  final String bannerType;
   final String label;
   final String buttonText;
   final String title;
   final String subtitle;
+  final VoidCallback onPressed; // Button callback
+
   @override
   Widget build(BuildContext context) {
     final defaultBannerStyle =
         const AppTextStyle.text().regular().withColor(AppColors.quaterniary);
+
     return SizedBox(
       height: 124.h,
       width: 340.w,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: bannerType != BannerType.merch
+        crossAxisAlignment: bannerType != BannerType.merch.name
             ? CrossAxisAlignment.start
             : CrossAxisAlignment.center,
         children: [
@@ -100,6 +105,8 @@ class BannerContent extends StatelessWidget {
             child: AutoSizeText(
               label,
               style: defaultBannerStyle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           Expanded(
@@ -110,6 +117,8 @@ class BannerContent extends StatelessWidget {
                   .bold()
                   .md()
                   .withColor(AppColors.quaterniary),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           Expanded(
@@ -117,13 +126,15 @@ class BannerContent extends StatelessWidget {
             child: AutoSizeText(
               subtitle,
               style: defaultBannerStyle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          if (bannerType != BannerType.poster)
+          if (bannerType != BannerType.poster.name)
             Expanded(
               flex: 2,
               child: BannerButton(
-                onPressed: () {},
+                onPressed: onPressed, // Ensure the callback is used here
                 bannerType: bannerType,
                 text: buttonText,
               ).paddingSymmetric(vertical: 10),

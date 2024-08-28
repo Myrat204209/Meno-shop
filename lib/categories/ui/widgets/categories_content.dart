@@ -11,24 +11,24 @@ class CategoriesContent extends StatelessWidget {
   final List<CategoryItem> categories;
   @override
   Widget build(BuildContext context) {
-    if (categories.isEmpty) {
-      SizedBox(
+    if (categories.isEmpty){
+      return SizedBox(
           height: 20,
           width: 20,
           child: const CircularProgressIndicator.adaptive().centralize());
     }
+      
+
     return ListView.builder(
       itemCount: categories.length,
       itemBuilder: (context, index) {
-        var category = categories[index];
-        var subcategory = category.subcategories;
+        final category = categories[index];
+        final subcategory = category.subcategories;
         if (subcategory!.isEmpty) {
           return const SizedBox();
         }
         if (subcategory != [] && subcategory.isNotEmpty) {
-          return CategoriesExpansionTile(
-            category: category,
-          );
+          return CategoriesExpansionTile(category: category);
         }
         return null;
       },

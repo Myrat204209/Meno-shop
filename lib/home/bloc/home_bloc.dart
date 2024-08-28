@@ -25,7 +25,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     Emitter<HomeState> emit,
   ) async {
     //TODO: Implement fetching home banners here
-    // add(HomeBannersRequested());
+    add(HomeBannersRequested());
 
     try {
       emit(state.copyWith(status: HomeStatus.loading));

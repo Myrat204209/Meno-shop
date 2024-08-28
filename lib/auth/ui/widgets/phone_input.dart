@@ -23,7 +23,17 @@ class PhoneInput extends StatelessWidget {
       onChanged: onChanged,
       keyboardType: TextInputType.phone,
       maxLength: 8,
-      validator: (_) => error,
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return 'Hokmany doldurmaly';
+        }
+
+        if (value!.length != 8) {
+          return '8 belgili nomer bolmaly';
+        }
+
+        return null;
+      },
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         labelText: "Telefon belgiňizi giriziň",

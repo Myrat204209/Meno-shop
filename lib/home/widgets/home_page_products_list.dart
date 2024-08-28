@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
@@ -18,6 +19,7 @@ class HomePageProductsList extends StatelessWidget {
 
   final List<ProductItem?>? products;
   final String? title;
+
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -28,8 +30,6 @@ class HomePageProductsList extends StatelessWidget {
           AppTitledWithViewAllRow(
             title: title ?? '',
             padding: 10,
-
-            ///TODO: Add the details of the data when pressed
             onViewAllTap: () => context.pushNamed(
               RouteNames.categoryProducts.name,
             ),
@@ -51,7 +51,6 @@ class HomePageProductsList extends StatelessWidget {
                           .read<FavoritesBloc>()
                           .add(FavoriteButtonPressed(product));
                     },
-                    // image: '$kDefaultBaseUrl\\$imageUrl',
                     onTap: () {
                       context.goNamed(
                         RouteNames.productDetails.name,
@@ -63,11 +62,13 @@ class HomePageProductsList extends StatelessWidget {
                     },
                     product: product,
                     onCartAdded: () {
-                      // context
-                      //     .read<CartBloc>()
-                      //     .add(CartUpdateRequested(CartItem(id: product.id, quantity: quantity)));
+                      // Handle cart addition logic here
                     },
                     locale: context.l10n.localeName,
+                    imageLink:
+                        product.photo != null && product.photo!.isNotEmpty
+                            ? '$kDefaultBaseUrl/${product.photo!.first.path}'
+                            : '$kDefaultBaseUrl/path_to_placeholder_image',
                   );
                 }
                 return const SizedBox(

@@ -1,35 +1,54 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
 part 'cart_item.g.dart';
 
+/// CartItem model to store items in the cart
 @HiveType(typeId: 2)
-// ignore: must_be_immutable
 class CartItem extends Equatable with HiveObjectMixin {
-  // ignore: non_constant_identifier_names{
   @HiveField(0)
-  final String id;
+  final String uuid;
+
   @HiveField(1)
+  final String productName;
+
+  @HiveField(2)
   final int quantity;
 
+  @HiveField(3)
+  final double price;
+
+  @HiveField(4)
+  final double totalPrice;
+
   CartItem({
-    required this.id,
+    required this.uuid,
+    required this.productName,
     required this.quantity,
-  });
-  CartItem copyWith({
-    String? id,
-    int? quantity,
-  }) {
-    return CartItem(
-      id: id ?? this.id,
-      quantity: quantity ?? this.quantity,
-    );
-  }
+    required this.price,
+  }) : totalPrice = quantity * price;
 
   @override
   List<Object?> get props => [
-        id,
+        uuid,
+        productName,
         quantity,
+        price,
+        totalPrice,
       ];
+
+  CartItem copyWith({
+    String? uuid,
+    String? productName,
+    int? quantity,
+    double? price,
+    double? totalPrice,
+  }) {
+    return CartItem(
+      uuid: uuid ?? this.uuid,
+      productName: productName ?? this.productName,
+      quantity: quantity ?? this.quantity,
+      price: price ?? this.price,
+    );
+  }
 }

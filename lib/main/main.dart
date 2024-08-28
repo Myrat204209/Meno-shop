@@ -16,6 +16,7 @@ import '../app/app.dart';
 
 void main() {
   bootStrap(({
+    required firebaseMessaging,
     required sharedPreferences,
     required exceptionStream,
   }) async {
@@ -60,7 +61,7 @@ void main() {
     /// Cart
     Hive.registerAdapter(CartItemAdapter());
     final userCartBox = await Hive.openBox<CartItem>(HiveBoxKeys.userCart);
-    final cartRepository = CartRepository(userCartBox: userCartBox);
+    final cartRepository = CartRepository(cartItemBox: userCartBox);
 
     /// Favorites
     Hive.registerAdapter(ProductItemAdapter());

@@ -4,8 +4,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:meno_shop/banner/banner.dart';
-
 /// A widget representing the button displayed on the AppBannerCard.
 class BannerButton extends StatelessWidget {
   /// Creates a new instance of BannerButton.
@@ -17,7 +15,7 @@ class BannerButton extends StatelessWidget {
   });
 
   final String text;
-  final BannerType bannerType;
+  final String bannerType;
   final VoidCallback onPressed;
 
   @override

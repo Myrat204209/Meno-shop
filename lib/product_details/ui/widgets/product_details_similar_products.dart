@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/cart/cart.dart';
+import 'package:meno_shop/constants/constants.dart';
 
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
@@ -46,10 +47,24 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
               },
               product: product!,
               onCartAdded: () {
-                context.read<CartBloc>().add(CartUpdateRequested(
-                    CartItem(id: product.uuid!, quantity: 1)));
+                context.read<CartBloc>().add(
+                      CartItemAdded(
+                        CartItem(
+                            uuid: product.uuid!,
+                            quantity: 1,
+                            productName: product.name!,
+                            price: product.price ?? 500
+                            // product.discounts == null
+                            //     ? 400
+                            //     : product.discounts?.discountedPrice ?? 500,
+                            ),
+                      ),
+                    );
               },
               locale: context.l10n.localeName,
+              imageLink: product.photo != null && product.photo!.isNotEmpty
+                  ? '$kDefaultBaseUrl/${product.photo!.first.path}'
+                  : '$kDefaultBaseUrl/path_to_placeholder_image',
             );
           },
         ),

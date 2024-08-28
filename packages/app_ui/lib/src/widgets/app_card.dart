@@ -28,7 +28,7 @@ class AppCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBorderColorBox(
+    return AppWrapper(
       borderColor: AppColors.neutral.shade800,
       child: Material(
         shadowColor: Color(0xFFB5DCFF).withOpacity(0.15),

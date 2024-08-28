@@ -1,4 +1,6 @@
-import 'package:data_provider/data_provider.dart' show ProductItem;
+import 'dart:developer';
+
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -84,6 +86,16 @@ class AppNavigation {
                 path: RouteNames.category.path,
                 name: RouteNames.category.name,
                 builder: (context, state) => CategoriesPage(key: state.pageKey),
+                routes: <RouteBase>[
+                  GoRoute(
+                    path: RouteNames.categoryProducts.path,
+                    name: RouteNames.categoryProducts.name,
+                    builder: (context, state) => CategoryProductsPage(
+                      key: state.pageKey,
+                      category: state.extra as CategoryItem,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -102,9 +114,11 @@ class AppNavigation {
                     name: RouteNames.addresses.name,
                     builder: (context, state) => const AddressPage(),
                     redirect: (context, state) {
-                      final authBloc =
-                          BlocProvider.of<AuthBloc>(context, listen: false);
-                      final isAuthenticated = authBloc.state.isAuthenticated;
+                      final isAuthenticated =
+                          BlocProvider.of<AuthBloc>(context, listen: false)
+                              .state
+                              .isAuthenticated;
+                      log('-------------------AuthenticationStatus: $isAuthenticated');
                       if (!isAuthenticated) {
                         return context.namedLocation(RouteNames.auth.name);
                       } else {
@@ -160,19 +174,29 @@ class AppNavigation {
           ),
         ],
       ),
-      GoRoute(
-        path: RouteNames.categoryProducts.path,
-        name: RouteNames.categoryProducts.name,
-        builder: (context, state) => CategoryProductsPage(
-          key: state.pageKey,
-        ),
-      ),
+      // GoRoute(
+      //   path: RouteNames.categoryProducts.path,
+      //   name: RouteNames.categoryProducts.name,
+      //   builder: (context, state) => CategoryProductsPage(
+      //     key: state.pageKey,
+      //   ),
+      // ),
       GoRoute(
         path: RouteNames.auth.path,
         name: RouteNames.auth.name,
-        builder: (context, state) => AuthPage(
+        builder: (context, state) => LoginPage(
           key: state.pageKey,
         ),
+        routes: <RouteBase>[
+          GoRoute(
+            path: RouteNames.authVerify.path,
+            name: RouteNames.authVerify.name,
+            builder: (context, state) => OtpVerifyPage(
+              key: state.pageKey,
+              phone: state.extra as String,
+            ),
+          ),
+        ],
       ),
     ],
   );

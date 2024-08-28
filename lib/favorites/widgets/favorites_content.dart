@@ -1,6 +1,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
@@ -36,6 +37,9 @@ class FavoritesContent extends StatelessWidget {
                     product: favorite,
                     onCartAdded: () {},
                     locale: context.l10n.localeName,
+                    imageLink: favorite.photo != null && favorite.photo!.isNotEmpty
+                            ? '$kDefaultBaseUrl/${favorite.photo!.first.path}'
+                            : '$kDefaultBaseUrl/path_to_placeholder_image',
                   ),
                 )
                 .toList(),

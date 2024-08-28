@@ -28,7 +28,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
       final response = await _categoryRepository.getCategories(
         GetQueryParameters(
           offset: 1,
-          limit: 30,
+          limit: 100,
           populate: ['subcategories'],
         ),
       );
