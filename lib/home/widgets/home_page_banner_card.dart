@@ -19,6 +19,7 @@ class HomePageBannerCard extends StatelessWidget {
   final List<BannerItem> banners;
   @override
   Widget build(BuildContext context) {
+    final locale = context.l10n.localeName;
     return SliverToBoxAdapter(
       child: BlocBuilder<BannerCubit, int>(
         builder: (context, state) {
@@ -38,15 +39,15 @@ class HomePageBannerCard extends StatelessWidget {
 
                     return BannerCard(
                       bannerType: banner.bannerType ?? BannerType.local.name,
-                      imageUrl: banner.photo != null 
-                            ? '$kDefaultBaseUrl/${banner.photo!.path}'
-                            : '$kDefaultBaseUrl/path_to_placeholder_image',
-
-                      label: banner.label,
-                      title: banner.title,
-                      subtitle: banner.subtitle,
-                      //TODO: Implement correct functionality
-                      onPressed: () {},
+                      imageUrl: banner.photo != null
+                          ? '$kDefaultBaseUrl/${banner.photo!.path}'
+                          : '$kDefaultBaseUrl/path_to_placeholder_image',
+                      label: banner.label!.changeLocale(locale),
+                      title: banner.title!.changeLocale(locale),
+                      subtitle: banner.subtitle!.changeLocale(locale),
+                      onPressed: () {
+                        
+                      },
                       buttonText: context.l10n.startShopping,
                     );
                   },
@@ -66,10 +67,7 @@ class HomePageBannerCard extends StatelessWidget {
                   selectedBanner: selectedBanner,
                 )
               else
-                const BannerDotsCounter(
-                  dotsCount: 1,
-                  selectedBanner: 0,
-                ),
+                const SizedBox(),
             ],
           );
         },

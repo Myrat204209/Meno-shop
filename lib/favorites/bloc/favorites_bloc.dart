@@ -136,4 +136,8 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
       addError(error, stackTrace);
     }
   }
+
+  bool isProductFavorited(String productId) {
+    return state.products.any((item) => item.uuid == productId);
+  }
 }

@@ -17,12 +17,12 @@ class AuthenticationFailure extends AuthFailure {
   const AuthenticationFailure(super.error);
 }
 
-class AuthVerifyFailure extends AuthFailure {
-  const AuthVerifyFailure(super.error);
+class AuthSendOtpFailure extends AuthFailure {
+  const AuthSendOtpFailure(super.error);
 }
 
-class AuthCheckFailure extends AuthFailure {
-  const AuthCheckFailure(super.error);
+class AuthCheckOtpFailure extends AuthFailure {
+  const AuthCheckOtpFailure(super.error);
 }
 
 class GetMeFailure extends AuthFailure {
@@ -48,21 +48,19 @@ class AuthRepository {
     return null;
   }
 
-  Future<void> sendOtp({required AuthRequestBody body}) async {
+  Future<void> sendOtp({required AuthRequestBody sendOtp}) async {
     try {
-      await _authClient.sendOtp(body: body);
+      await _authClient.sendOtp(sendOtpbody: sendOtp);
     } catch (error, stackTrace) {
-      Error.throwWithStackTrace(AuthVerifyFailure(error), stackTrace);
+      Error.throwWithStackTrace(AuthSendOtpFailure(error), stackTrace);
     }
   }
 
-  Future<void> checkOtp({
-    required AuthRequestBody body,
-  }) async {
+  Future<void> checkOtp({required AuthRequestBody checkOtp}) async {
     try {
-      await _authClient.checkOtp(body: body);
+      await _authClient.checkOtp(checkOtpbody: checkOtp);
     } catch (error, stackTrace) {
-      Error.throwWithStackTrace(AuthCheckFailure(error), stackTrace);
+      Error.throwWithStackTrace(AuthCheckOtpFailure(error), stackTrace);
     }
   }
 
@@ -74,9 +72,9 @@ class AuthRepository {
     }
   }
 
-  Future<User> putMe({required User user}) async {
+  Future<User> putMe({required UserRequestBody userBody}) async {
     try {
-      return await _authClient.putMe(user: user);
+      return await _authClient.putMe(userBody: userBody);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetMeFailure(error), stackTrace);
     }

@@ -13,7 +13,7 @@ class SubcategoryItem {
     this.products,
   });
   final String? uuid;
-  final String? name;
+  final LanguageModel? name;
   final bool? isActive;
   final PhotoItem? photo;
   final List<ProductItem>? products;

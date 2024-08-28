@@ -119,4 +119,18 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   double totalCostSum(List<CartItem> carts) {
     return carts.fold(0.0, (sum, item) => sum + item.totalPrice);
   }
+
+  bool isCartAdded(String productId) {
+    if (state.cart == null) return false;
+    return state.cart!.any((item) => item!.uuid == productId);
+  }
+
+  int showQuantity(String productId) {
+    if (state.cart == null) return 0;
+    return state.cart!
+        .firstWhere(
+          (element) => element!.uuid == productId,
+        )!
+        .quantity;
+  }
 }

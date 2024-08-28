@@ -53,7 +53,7 @@ class OtpVerifyContent extends StatelessWidget {
                     hapticFeedbackType: HapticFeedbackType.vibrate,
                     onSubmitted: (value) {
                       context.read<AuthBloc>().add(
-                            AuthVerifyRequested(
+                            AuthCheckOtpRequested(
                               phone: phone,
                               otp: value,
                             ),

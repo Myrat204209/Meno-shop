@@ -1,6 +1,8 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
@@ -10,16 +12,18 @@ class FavoritesContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoritesBloc = context.read<FavoritesBloc>();
     final favorites =
         context.select((FavoritesBloc bloc) => bloc.state.products);
+
+    final locale = context.l10n.localeName;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        //TODO: Replace with actual functionality for product items
         const SizedBox(height: AppSpacing.xlg),
         Expanded(
           child: GridView.count(
-            crossAxisCount: 2,
+            crossAxisCount: favorites.length,
             scrollDirection: Axis.vertical,
             childAspectRatio: 160 / 285,
             mainAxisSpacing: 15,
@@ -28,18 +32,26 @@ class FavoritesContent extends StatelessWidget {
             children: favorites
                 .map(
                   (favorite) => AppProductItem(
-                    onTap: () {},
-                    onFavoriteAdded: () {
-                      context
-                          .read<FavoritesBloc>()
-                          .add(FavoriteButtonPressed(favorite));
+                    onProductPressed: () {
+                      context.pushNamed(
+                        RouteNames.productDetails.name,
+                        extra: favorite,
+                      );
                     },
-                    product: favorite,
-                    onCartAdded: () {},
-                    locale: context.l10n.localeName,
-                    imageLink: favorite.photo != null && favorite.photo!.isNotEmpty
+                    onFavoriteAdded: () {
+                      favoritesBloc.add(FavoriteButtonPressed(favorite));
+                    },
+                    onCartAdded: null,
+                    photoPath:
+                        favorite.photo != null && favorite.photo!.isNotEmpty
                             ? '$kDefaultBaseUrl/${favorite.photo!.first.path}'
-                            : '$kDefaultBaseUrl/path_to_placeholder_image',
+                            : null,
+                    name: favorite.name!.changeLocale(locale),
+                    price: favorite.price!,
+                    originalPrice: favorite.discounts?.originalPrice,
+                    advantages: favorite.advantages,
+                    isFavorite:
+                        favoritesBloc.isProductFavorited(favorite.uuid!),
                   ),
                 )
                 .toList(),

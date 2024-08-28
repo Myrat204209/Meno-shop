@@ -14,8 +14,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   })  : _authRepository = authRepository,
         super(const AuthState.initial()) {
     on<AuthSendOtpRequested>(_onSendOtpRequested);
-    on<AuthVerifyRequested>(_onVerifyRequested);
-    on<AuthUserRequested>(_onUserRequested);
+    on<AuthCheckOtpRequested>(_onCheckOtpRequested);
+    on<AuthUserGetRequested>(_onUserGetRequested);
+    on<AuthUserPutRequested>(_onUserPutRequested);
   }
   final AuthRepository _authRepository;
   FutureOr<void> _onSendOtpRequested(
@@ -26,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(status: AuthStatus.loading));
 
       await _authRepository.sendOtp(
-        body: AuthRequestBody(event.phone, null),
+        sendOtp: AuthRequestBody(event.phone, null),
       );
 
       emit(state.copyWith(status: AuthStatus.success));
@@ -36,15 +37,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  FutureOr<void> _onVerifyRequested(
-    AuthVerifyRequested event,
+  FutureOr<void> _onCheckOtpRequested(
+    AuthCheckOtpRequested event,
     Emitter<AuthState> emit,
   ) async {
     try {
       emit(state.copyWith(status: AuthStatus.loading));
 
       await _authRepository.checkOtp(
-        body: AuthRequestBody(event.phone, event.otp),
+        checkOtp: AuthRequestBody(event.phone, event.otp),
       );
 
       emit(state.copyWith(
@@ -57,14 +58,33 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  FutureOr<void> _onUserRequested(
-    AuthUserRequested event,
+  FutureOr<void> _onUserGetRequested(
+    AuthUserGetRequested event,
     Emitter<AuthState> emit,
   ) async {
     try {
       emit(state.copyWith(status: AuthStatus.loading));
 
       final user = await _authRepository.getMe();
+
+      emit(state.copyWith(
+        status: AuthStatus.success,
+        user: user,
+      ));
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: AuthStatus.failure));
+      addError(error, stackTrace);
+    }
+  }
+
+  FutureOr<void> _onUserPutRequested(
+    AuthUserPutRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: AuthStatus.loading));
+
+      final user = await _authRepository.putMe(userBody: event.userBody);
 
       emit(state.copyWith(
         status: AuthStatus.success,

@@ -14,8 +14,8 @@ class CategoryItem {
     this.subcategories,
   });
   final String? uuid;
-  final String? name;
-  final String? description;
+  final LanguageModel? name;
+  final LanguageModel? description;
   final PhotoItem? photo;
   final List<ProductItem>? products;
   final List<SubcategoryItem>? subcategories;

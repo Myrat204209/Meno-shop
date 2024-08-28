@@ -2,7 +2,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// A widget representing the button displayed on the AppBannerCard.
 class BannerButton extends StatelessWidget {
@@ -21,8 +20,8 @@ class BannerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      shape: ShapeBorderX.roundedRectangle(11.r),
-      height: 22.h,
+      shape: ShapeBorderX.roundedRectangle(12),
+      height: 22,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       color: AppColors.quaterniary,
       onPressed: onPressed,
@@ -32,7 +31,7 @@ class BannerButton extends StatelessWidget {
         maxFontSize: 14,
         textAlign: TextAlign.center,
         style: const AppTextStyle.text().semiBold(),
-      ).paddingSymmetric(vertical: 4.h, horizontal: 5.w),
+      ).paddingSymmetric(vertical: 4, horizontal: 5),
     );
   }
 }

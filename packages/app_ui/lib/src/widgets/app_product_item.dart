@@ -6,27 +6,29 @@ import 'package:flutter/material.dart';
 class AppProductItem extends StatelessWidget {
   const AppProductItem({
     super.key,
-    required this.product,
-    required this.onFavoriteAdded,
+    required this.photoPath,
+    required this.name,
+    required this.price,
+    required this.originalPrice,
+    required this.isFavorite,
+    required this.advantages,
     required this.onCartAdded,
-    required this.onTap,
-    required this.locale,
-    required this.imageLink,
+    required this.onFavoriteAdded,
+    required this.onProductPressed,
   });
-
-  final ProductItem product;
+  final String? photoPath;
+  final String name;
+  final double price;
+  final double? originalPrice;
+  final bool isFavorite;
+  final AdvantagesItem? advantages;
+  final VoidCallback? onCartAdded;
   final VoidCallback onFavoriteAdded;
-  final VoidCallback onCartAdded;
-  final VoidCallback onTap;
-  final String locale;
-  final String imageLink;
+  final VoidCallback onProductPressed;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final productName = product.name ?? 'Unnamed Product';
-    final productImageLink = imageLink;
-    final productFavorite = product.isFavorite ?? false;
 
     return AppWrapper(
       expand: 2.0,
@@ -36,7 +38,7 @@ class AppProductItem extends StatelessWidget {
         child: AspectRatio(
           aspectRatio: 155 / 286,
           child: InkWell(
-            onTap: onTap,
+            onTap: onProductPressed,
             borderRadius: BorderRadius.circular(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,15 +48,12 @@ class AppProductItem extends StatelessWidget {
                   child: Stack(
                     children: [
                       /// Product image
-                      AppProductImage(
-                        imageLink: productImageLink.isNotEmpty
-                            ? productImageLink
-                            : 'null',
-                      ),
+
+                      AppProductImage(imageLink: photoPath),
 
                       /// Product favorite button and advantages icon
                       ProductFavoritesButton(
-                        isFavorite: productFavorite,
+                        isFavorite: isFavorite,
                         onFavoriteAdded: onFavoriteAdded,
                       ),
                       // ProductAdvantageSticker(product: product),
@@ -67,7 +66,7 @@ class AppProductItem extends StatelessWidget {
                     Flexible(
                       fit: FlexFit.tight,
                       child: Text(
-                        productName,
+                        name,
                         softWrap: true,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -78,16 +77,15 @@ class AppProductItem extends StatelessWidget {
                       ),
                     ),
                     AppButton.icon(
-                      onTap: onTap,
+                      onTap: onCartAdded,
                     ).paddingOnly(left: 7),
                   ],
                 ).paddingAll(5).paddingOnly(bottom: 5),
-                // ProductDetailsPrices(price: price).paddingOnly(left: 5),
+                ProductDetailsPrices(price: price).paddingOnly(left: 5),
 
-                ProductAdvantagesList(
-                  locale: locale,
-                  advantages: product.advantages,
-                ),
+                // ProductAdvantagesList(
+                //   advantages: product.advantages,
+                // ),
               ],
             ),
           ),
@@ -97,54 +95,35 @@ class AppProductItem extends StatelessWidget {
   }
 }
 
-// class ProductAdvantageSticker extends StatelessWidget {
-//   const ProductAdvantageSticker({
-//     super.key,
-//     required this.advantages,
-//     required this.locale,
-//   });
-
-//   final AdvantagesItem advantages;
-//   final String locale;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Positioned(
-//       left: 5,
-//       top: 5,
-//       child: ,
-//     );
-//   }
-// }
-
 class ProductDetailsPrices extends StatelessWidget {
   const ProductDetailsPrices({
     super.key,
-    required this.discount,
+    required this.price,
+    this.originalPrice,
   });
-
-  final DiscountItem discount;
+  final double price;
+  final double? originalPrice;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
           child: Text(
-            '${discount.discountedPrice} TMT',
+            '$price TMT',
             style: AppTextStyle.text().lg().bold(),
           ),
         ),
-        Expanded(
-          child: Text(
-            '${discount.originalPrice} TMT',
-            style: AppTextStyle.text()
-                .regular()
-                .sm()
-                .copyWith(decoration: TextDecoration.lineThrough),
-          ),
-        )
+        if (originalPrice != null)
+          Expanded(
+            child: Text(
+              '$originalPrice TMT',
+              style: AppTextStyle.text()
+                  .regular()
+                  .sm()
+                  .copyWith(decoration: TextDecoration.lineThrough),
+            ),
+          )
       ],
     );
   }
@@ -245,9 +224,7 @@ class AppProductImage extends StatelessWidget {
         child: AppWrapper(
           expand: 0.5,
           borderColor: AppColors.neutral.shade300,
-          child: AppImage(
-            imageUrl: imageLink ?? 'App_Product_Image',
-          ),
+          child: AppImage(imageUrl: imageLink),
         ),
       ),
     );

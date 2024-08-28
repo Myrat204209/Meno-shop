@@ -4,26 +4,27 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';
 
-@JsonSerializable(
-  explicitToJson: true,
-)
+@JsonSerializable(explicitToJson: true)
 class User {
   User(
     this.userId,
     this.name,
+    this.surname,
     this.phoneNumber,
     this.address,
   );
-  const User.anonymous({
+  const User.anonymous( {
     this.userId = '',
     this.name = '',
+    this.surname = '',
     this.phoneNumber = '',
     this.address = const [],
   });
   final String? userId;
   final String? name;
+  final String? surname;
   final String? phoneNumber;
-  final List<String>? address;
+  final List<String?>? address;
 
   factory User.fromJson(JsonType json) => _$UserFromJson(json);
   JsonType toJson() => _$UserToJson(this);

@@ -24,7 +24,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeRequested event,
     Emitter<HomeState> emit,
   ) async {
-    //TODO: Implement fetching home banners here
     add(HomeBannersRequested());
 
     try {

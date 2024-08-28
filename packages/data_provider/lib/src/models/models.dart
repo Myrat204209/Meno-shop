@@ -15,3 +15,6 @@ export 'query_parameters/query_parameters.dart';
 export 'register_request_body/register_request_body.dart';
 export 'subcategory_item/subcategory_item.dart';
 export 'user/user.dart';
+
+export 'language_model/language_model.dart';
+export 'user_request_body/user_request_body.dart';

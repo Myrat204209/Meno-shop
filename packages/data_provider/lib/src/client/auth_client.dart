@@ -29,32 +29,37 @@ class AuthClient {
   }
 
   Future<void> sendOtp({
-    required AuthRequestBody body,
+    required AuthRequestBody sendOtpbody,
   }) async {
     await _http.get<JsonType>(
       '/auth/sendOtp',
-      queryParameters: body.toJson(),
+      queryParameters: sendOtpbody.toJson(),
     );
   }
 
   Future<void> checkOtp({
-    required AuthRequestBody body,
+    required AuthRequestBody checkOtpbody,
   }) async {
     await _http.post<JsonType>(
       'auth/checkOtp',
-      queryParameters: body.toJson(),
+      queryParameters: checkOtpbody.toJson(),
     );
   }
 
   Future<User> getMe() async {
     final response = await _http.get<JsonType>('/user/me');
-    return User.fromJson(response.data!);
+    final userToken = await _tokenStorage.readToken();
+    if (response.statusCode == 200) {
+      return User.fromJson(response.data!);
+    } else {
+      return User.anonymous(userId: userToken);
+    }
   }
 
-  Future<User> putMe({required User user}) async {
+  Future<User> putMe({required UserRequestBody userBody}) async {
     final response = await _http.put<JsonType>(
       '/user/me',
-      data: user.toJson(),
+      data: userBody.toJson(),
     );
     return User.fromJson(response.data!);
   }

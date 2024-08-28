@@ -29,7 +29,7 @@ class AppButton extends StatelessWidget {
     required this.icon,
   }) : width = 200;
   final String? buttonText;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Icon? icon;
   final double? width;
 
@@ -37,6 +37,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       color: AppColors.secondary,
+      disabledColor: AppColors.neutral.shade500,
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
       shape: ShapeBorderX.roundedRectangle(10),
       minWidth: width,

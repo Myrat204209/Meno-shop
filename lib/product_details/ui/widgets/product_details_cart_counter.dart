@@ -7,11 +7,11 @@ class ProductDetailsCartCounter extends StatelessWidget {
     super.key,
     required this.addOneButton,
     required this.removeOneButton,
-    required this.quantity,
+    required this.counterQuantity,
   });
   final VoidCallback addOneButton;
   final VoidCallback removeOneButton;
-  final int quantity;
+  final int counterQuantity;
   @override
   Widget build(BuildContext context) {
     return AppWrapper(
@@ -30,7 +30,7 @@ class ProductDetailsCartCounter extends StatelessWidget {
               ),
             ),
             Text(
-              '$quantity',
+              '$counterQuantity',
               style: const AppTextStyle.text().lg().semiBold(),
             ),
             IconButton(

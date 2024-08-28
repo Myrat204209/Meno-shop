@@ -7,28 +7,35 @@ sealed class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
-final class AuthUserRequested extends AuthEvent {}
-
 final class AuthSendOtpRequested extends AuthEvent {
   final String phone;
 
-  const AuthSendOtpRequested({
-    required this.phone,
-  });
+  const AuthSendOtpRequested({required this.phone});
 
   @override
   List<Object> get props => [phone];
 }
 
-final class AuthVerifyRequested extends AuthEvent {
+final class AuthCheckOtpRequested extends AuthEvent {
   final String phone;
   final String otp;
 
-  const AuthVerifyRequested({
+  const AuthCheckOtpRequested({
     required this.phone,
     required this.otp,
   });
 
   @override
   List<Object> get props => [phone, otp];
+}
+
+final class AuthUserGetRequested extends AuthEvent {}
+
+final class AuthUserPutRequested extends AuthEvent {
+  final UserRequestBody userBody;
+
+  const AuthUserPutRequested({required this.userBody});
+
+  @override
+  List<Object> get props => [userBody];
 }

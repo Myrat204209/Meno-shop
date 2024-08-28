@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:app_ui/app_ui.dart'; // Assuming this is where Assets and AppColors are defined.
 
 class AppImage extends StatelessWidget {
-  final String _imageUrl;
+  final String? _imageUrl;
   final double? _width;
   final double? _height;
   final BoxFit? _fit;
 
   const AppImage({
-    required String imageUrl,
+    required String? imageUrl,
     double? width,
     double? height,
     BoxFit? fit,
@@ -21,7 +21,7 @@ class AppImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Check if the imageUrl is empty or invalid
-    if (_imageUrl.isEmpty) {
+    if (_imageUrl == null) {
       return Assets.images.otpLogo.image(
         height: _height,
         width: _width,
@@ -30,7 +30,7 @@ class AppImage extends StatelessWidget {
     }
 
     return CachedNetworkImage(
-      imageUrl: _imageUrl,
+      imageUrl: _imageUrl!,
       height: _height,
       width: _width,
       fit: _fit ?? BoxFit.cover,
@@ -38,7 +38,8 @@ class AppImage extends StatelessWidget {
       // Error widget in case of a network error
       errorWidget: (context, url, error) {
         // Optional: Log the error or handle it in other ways
-        debugPrint('_________________________________-Image loading error: $error');
+        debugPrint(
+            '_________________________________-Image loading error: $error');
         return Assets.images.otpLogo.image(
           height: _height,
           width: _width,

@@ -2,11 +2,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meno_shop/constants/constants.dart';
-
-import 'package:meno_shop/favorites/favorites.dart';
-import 'package:meno_shop/l10n/l10n.dart';
 
 class CategoryProductsView extends StatelessWidget {
   const CategoryProductsView({
@@ -41,18 +36,15 @@ class CategoryProductsView extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               AppProductItem(
-                onTap: () {},
-                onFavoriteAdded: () {
-                  context
-                      .read<FavoritesBloc>()
-                      .add(const FavoriteButtonPressed(ProductItem()));
-                },
-                product: const ProductItem(),
-                //TODO: Functional emission
-                imageLink: 
-                '$kDefaultBaseUrl/null',
+                onFavoriteAdded: () {},
                 onCartAdded: () {},
-                locale: context.l10n.localeName,
+                photoPath: null,
+                name: '',
+                price: 1000,
+                originalPrice: 1234,
+                isFavorite: true,
+                advantages: null,
+                onProductPressed: () {},
               ),
             ],
           ),

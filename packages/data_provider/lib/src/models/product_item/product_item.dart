@@ -24,7 +24,7 @@ class ProductItem {
   @HiveField(0)
   final String? uuid;
   @HiveField(1)
-  final String? name;
+  final LanguageModel? name;
   @HiveField(2)
   final double? price;
   @HiveField(3)
@@ -32,7 +32,7 @@ class ProductItem {
   @HiveField(4, defaultValue: false)
   final bool? isFavorite;
   @HiveField(5)
-  final String? description;
+  final LanguageModel? description;
   @HiveField(6)
   final DiscountItem? discounts;
   @HiveField(7)
@@ -49,11 +49,11 @@ class ProductItem {
 
   ProductItem copyWith({
     String? uuid,
-    String? name,
+    LanguageModel? name,
     double? price,
     int? stock,
     bool? isFavorite,
-    String? description,
+    LanguageModel? description,
     DiscountItem? discounts,
     AdvantagesItem? advantages,
     List<PhotoItem>? photo,

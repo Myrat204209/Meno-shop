@@ -7,9 +7,9 @@ part 'banner_item.g.dart';
 @JsonSerializable(explicitToJson: true)
 class BannerItem {
   final String? uuid;
-  final String? label;
-  final String? title;
-  final String? subtitle;
+  final LanguageModel? label;
+  final LanguageModel? title;
+  final LanguageModel? subtitle;
   final String? path;
   final String? bannerType;
   final bool? isActive;

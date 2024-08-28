@@ -26,12 +26,6 @@ class FavoritesState extends Equatable {
   final List<ProductItem> products;
   final bool hasMoreContent;
 
-  // bool isProductFavorited(String productId) =>
-  //     products
-  //         .where((product) => product.uuid == productId)
-  //         .firstOrNull
-  //         ?.isFavorite ??
-  //     false;
   @override
   List<Object> get props => [status, products, hasMoreContent];
 

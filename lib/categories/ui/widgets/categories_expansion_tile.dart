@@ -4,6 +4,8 @@ import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/constants/constants.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class CategoriesExpansionTile extends StatelessWidget {
   const CategoriesExpansionTile({
@@ -14,6 +16,7 @@ class CategoriesExpansionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final subcategories = category.subcategories;
+    final locale = context.l10n.localeName;
     return ExpansionTile(
       collapsedShape:
           ShapeBorderX.continousRectangle(15, AppColors.neutral.shade50),
@@ -24,7 +27,7 @@ class CategoriesExpansionTile extends StatelessWidget {
         color: AppColors.secondary,
       ),
       title: Text(
-        category.name ?? '',
+        category.name!.changeLocale(locale),
         style: const AppTextStyle.text()
             .semiBold()
             .withColor(const Color(0xFF221122)),
@@ -44,11 +47,11 @@ class CategoriesExpansionTile extends StatelessWidget {
               visualDensity: VisualDensity.compact,
               dense: true,
               contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-              title: Text(subcategory.name ?? '',
+              title: Text(subcategory.name!.changeLocale(locale),
                   style: const AppTextStyle.text()
                       .withColor(const Color(0xFF221122))),
-              shape:
-                  ShapeBorderX.continousRectangle(15, AppColors.neutral.shade50),
+              shape: ShapeBorderX.continousRectangle(
+                  15, AppColors.neutral.shade50),
             ),
           ),
         );

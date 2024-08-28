@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
@@ -22,6 +23,9 @@ class HomePageProductsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = context.l10n.localeName;
+    final cartBloc = context.read<CartBloc>();
+    final favoriteBloc = context.read<FavoritesBloc>();
     return SliverToBoxAdapter(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -35,7 +39,7 @@ class HomePageProductsList extends StatelessWidget {
             ),
             viewAllText: context.l10n.viewAll,
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: AppSpacing.md),
           if (products != null)
             AppHorizontalListView(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -47,11 +51,28 @@ class HomePageProductsList extends StatelessWidget {
                 if (products!.isNotEmpty && product != null) {
                   return AppProductItem(
                     onFavoriteAdded: () {
-                      context
-                          .read<FavoritesBloc>()
-                          .add(FavoriteButtonPressed(product));
+                      favoriteBloc.add(FavoriteButtonPressed(product));
                     },
-                    onTap: () {
+                    onCartAdded: cartBloc.isCartAdded(product.uuid!)
+                        ? null
+                        : () {
+                            cartBloc.add(CartItemAdded(CartItem(
+                              uuid: product.uuid!,
+                              productName: product.name!.changeLocale(locale),
+                              quantity: 1,
+                              price: product.price!,
+                            )));
+                          },
+                    photoPath:
+                        product.photo != null && product.photo!.isNotEmpty
+                            ? '$kDefaultBaseUrl/${product.photo!.first}'
+                            : null,
+                    name: product.name!.changeLocale(locale),
+                    price: product.price!,
+                    originalPrice: product.discounts?.originalPrice,
+                    isFavorite: favoriteBloc.isProductFavorited(product.uuid!),
+                    advantages: null,
+                    onProductPressed: () {
                       context.goNamed(
                         RouteNames.productDetails.name,
                         pathParameters: {
@@ -60,15 +81,6 @@ class HomePageProductsList extends StatelessWidget {
                         extra: product,
                       );
                     },
-                    product: product,
-                    onCartAdded: () {
-                      // Handle cart addition logic here
-                    },
-                    locale: context.l10n.localeName,
-                    imageLink:
-                        product.photo != null && product.photo!.isNotEmpty
-                            ? '$kDefaultBaseUrl/${product.photo!.first.path}'
-                            : '$kDefaultBaseUrl/path_to_placeholder_image',
                   );
                 }
                 return const SizedBox(
