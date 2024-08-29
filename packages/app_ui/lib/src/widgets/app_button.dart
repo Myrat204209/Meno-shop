@@ -8,16 +8,16 @@ class AppButton extends StatelessWidget {
     required this.buttonText,
     required this.onTap,
     this.icon,
-    this.color,
-    this.textColor,
+    this.color = AppColors.secondary,
+    this.textColor = AppColors.quaterniary,
   }) : width = 130;
   const AppButton.expanded({
     super.key,
     required this.buttonText,
     required this.onTap,
     this.icon,
-    this.color,
-    this.textColor,
+    this.color = AppColors.secondary,
+    this.textColor = AppColors.quaterniary,
   }) : width = double.infinity;
   const AppButton.icon({
     this.buttonText,
@@ -26,15 +26,15 @@ class AppButton extends StatelessWidget {
       Icons.shopping_bag_outlined,
       color: AppColors.quaterniary,
     ),
-    this.color,
-    this.textColor,
+    this.color = AppColors.secondary,
+    this.textColor = AppColors.quaterniary,
   }) : width = 45;
   const AppButton.standard({
     required this.buttonText,
     required this.onTap,
     required this.icon,
-    this.color,
-    this.textColor,
+    this.color = AppColors.secondary,
+    this.textColor = AppColors.quaterniary,
   }) : width = 200;
   final String? buttonText;
   final VoidCallback? onTap;

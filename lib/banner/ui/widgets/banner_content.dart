@@ -66,7 +66,7 @@ class BannerContent extends StatelessWidget {
               ).paddingSymmetric(vertical: 10),
           ],
         ).paddingOnly(left: 25),
-      ).colorize(Colors.black.withOpacity(0.25)),
+      ).colorize(Colors.black.withOpacity(0.25)).clipper(10),
     );
   }
 }

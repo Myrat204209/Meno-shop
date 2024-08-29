@@ -28,7 +28,7 @@ class OrdersView extends StatelessWidget {
                   InkWell(
                     onTap: () =>
                         context.pushNamed(RouteNames.orderInformation.name),
-                    child: Assets.images.rightIcon.svg().paddingOnly(left: 8),
+                    child: Assets.images.rightIcon.svg(),
                   )
                 ],
               ),

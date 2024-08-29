@@ -17,12 +17,12 @@ class ProfileView extends StatelessWidget {
       children: [
         Text(l10n.name),
         Text(
-          'Myrat',
+          '',
           style: const AppTextStyle.text().semiBold().xl(),
         ),
         const SizedBox(height: 50),
         ProfilePageButton(
-          title: 'Account',
+          title: l10n.account,
           onTap: () => context.pushNamed(RouteNames.account.name),
         ),
         ProfilePageButton(
@@ -34,10 +34,8 @@ class ProfileView extends StatelessWidget {
           title: l10n.orders,
         ),
         ProfilePageButton(
-          onTap: () {
-            context.pushNamed(RouteNames.auth.name);
-          },
-          title: 'Logout',
+          onTap: () => context.pushNamed(RouteNames.auth.name),
+          title: l10n.logout,
         ),
       ],
     ).paddingSymmetric(horizontal: 16, vertical: 40);
@@ -68,12 +66,7 @@ class ProfilePageButton extends StatelessWidget {
           shape: ShapeBorderX.roundedRectangle(10),
           tileColor: AppColors.neutral.shade200,
           contentPadding: const EdgeInsets.only(left: 15),
-          trailing: const Icon(
-            Icons.chevron_right,
-            color: AppColors.primary,
-            fill: 0.2,
-            size: 40,
-          ),
+          trailing: Assets.images.rightIcon.svg(),
         ),
       ),
     ).paddingSymmetric(vertical: 7);

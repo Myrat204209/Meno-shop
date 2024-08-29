@@ -1,23 +1,24 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
-import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meno_shop/app/app.dart';
 
 class CategoryProductsView extends StatelessWidget {
   const CategoryProductsView({
     super.key,
-    required this.category,
+    // required this.category,
     // required this.subcategory,
   });
 
-  final CategoryItem category;
+  // final CategoryItem category;
   // final SubcategoryItem subcategory;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('${category.name}/subcategory.name'),
+        const Text('category.name/subcategory.name'),
         Text(
           'Filter search value',
           style: const AppTextStyle.text()
@@ -44,7 +45,9 @@ class CategoryProductsView extends StatelessWidget {
                 originalPrice: 1234,
                 isFavorite: true,
                 advantages: null,
-                onProductPressed: () {},
+                onProductPressed: () {
+                  context.pushNamed(RouteNames.productDetails.name);
+                },
               ),
             ],
           ),

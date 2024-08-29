@@ -43,3 +43,10 @@ extension WidgetColorX on Widget {
         child: this,
       );
 }
+
+extension WidgetClipperX on Widget {
+  Widget clipper(double radius) => ClipRRect(
+        borderRadius: BorderRadius.circular(radius),
+        child: this,
+      );
+}

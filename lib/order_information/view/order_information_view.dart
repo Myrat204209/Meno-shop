@@ -73,36 +73,43 @@ class ProductListTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Assets.images.jeans.image(
-            height: 90,
-            width: 90,
-          ),
-          const SizedBox(width: 10),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
+          Assets.images.jeans
+              .image(
+                height: 80,
+                width: 80,
+                fit: BoxFit.cover,
+              )
+              .colorize(Colors.yellow)
+              .clipper(10)
+              .paddingOnly(bottom: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   'Friends Printed',
+                  style: const AppTextStyle.text().lg().semiBold(),
                 ),
                 Text(
                   'Size: L - Color: Pink',
+                  style: const AppTextStyle.text()
+                      .xs()
+                      .regular()
+                      .withColor(AppColors.neutral.shade700),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   '140 TMT',
+                  style: const AppTextStyle.text().semiBold(),
                 ),
               ],
             ),
           ),
           const Expanded(child: SizedBox()),
-          const Text(
-            '8 pcs',
-          )
+          const Text('8 pcs')
         ],
       ),
-    );
+    ).paddingSymmetric(horizontal: 10);
   }
 }

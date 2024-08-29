@@ -6,7 +6,6 @@ class AppImage extends StatelessWidget {
   final String? _imageUrl;
   final double? _width;
   final double? _height;
-  final BoxFit? _fit;
 
   const AppImage({
     required String? imageUrl,
@@ -15,8 +14,7 @@ class AppImage extends StatelessWidget {
     BoxFit? fit,
   })  : _imageUrl = imageUrl,
         _height = height,
-        _width = width,
-        _fit = fit;
+        _width = width;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,7 @@ class AppImage extends StatelessWidget {
       return Assets.images.otpLogo.image(
         height: _height,
         width: _width,
-        fit: BoxFit.contain,
+        fit: BoxFit.cover,
       );
     }
 
@@ -33,7 +31,7 @@ class AppImage extends StatelessWidget {
       imageUrl: _imageUrl!,
       height: _height,
       width: _width,
-      fit: _fit ?? BoxFit.contain,
+      fit: BoxFit.cover,
 
       // Error widget in case of a network error
       errorWidget: (context, url, error) {
@@ -43,7 +41,7 @@ class AppImage extends StatelessWidget {
         return Assets.images.otpLogo.image(
           height: _height,
           width: _width,
-          fit: _fit ?? BoxFit.contain,
+          fit: BoxFit.cover,
         );
       },
       // Display a loading indicator while the image is loading

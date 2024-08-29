@@ -78,6 +78,7 @@ class AppProductItem extends StatelessWidget {
                     ),
                     AppButton.icon(
                       onTap: onCartAdded,
+                      color: AppColors.secondary,
                     ).paddingOnly(left: 7),
                   ],
                 ).paddingAll(5).paddingOnly(bottom: 5),
@@ -219,14 +220,12 @@ class AppProductImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: double.maxFinite,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: AppWrapper(
-          expand: 0.5,
-          borderColor: AppColors.neutral.shade300,
-          child: AppImage(imageUrl: imageLink),
-        ),
-      ),
+      width: double.maxFinite,
+      child: AppWrapper(
+        expand: 0.5,
+        borderColor: AppColors.neutral.shade300,
+        child: AppImage(imageUrl: imageLink),
+      ).clipper(10),
     );
   }
 }

@@ -19,9 +19,7 @@ class AppRadioButton extends StatefulWidget {
 class _AppRadioButtonState extends State<AppRadioButton> {
   int _tapValue = 0;
   void stateChange(value) {
-    setState(() {
-      _tapValue = value;
-    });
+    setState(() => _tapValue = value);
   }
 
   @override

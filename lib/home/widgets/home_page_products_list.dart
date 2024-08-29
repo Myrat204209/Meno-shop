@@ -65,7 +65,7 @@ class HomePageProductsList extends StatelessWidget {
                           },
                     photoPath:
                         product.photo != null && product.photo!.isNotEmpty
-                            ? '$kDefaultBaseUrl/${product.photo!.first}'
+                            ? '$kDefaultBaseUrl/${product.photo!.first.path}'
                             : null,
                     name: product.name!.changeLocale(locale),
                     price: product.price!,

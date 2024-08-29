@@ -9,6 +9,7 @@ enum RouteNames {
   account('account'),
   addresses('addresses'),
   auth('/auth'),
+  checkout('checkout'),
   authVerify('authVerify'),
   orders('orders'),
   orderInformation('orders_information'),

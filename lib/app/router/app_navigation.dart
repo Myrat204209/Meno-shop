@@ -91,10 +91,8 @@ class AppNavigation {
                   GoRoute(
                     path: RouteNames.categoryProducts.path,
                     name: RouteNames.categoryProducts.name,
-                    builder: (context, state) => CategoryProductsPage(
-                      key: state.pageKey,
-                      category: state.extra as CategoryItem,
-                    ),
+                    builder: (context, state) =>
+                        CategoryProductsPage(key: state.pageKey),
                   ),
                 ],
               ),
@@ -111,8 +109,8 @@ class AppNavigation {
                 builder: (context, state) => CartPage(key: state.pageKey),
                 routes: <RouteBase>[
                   GoRoute(
-                    path: RouteNames.addresses.path,
-                    name: RouteNames.addresses.name,
+                    path: RouteNames.checkout.path,
+                    name: RouteNames.checkout.name,
                     builder: (context, state) => const AddressPage(),
                     redirect: (context, state) {
                       final isAuthenticated =
@@ -159,11 +157,11 @@ class AppNavigation {
                     builder: (context, state) =>
                         AccountPage(key: state.pageKey),
                   ),
-                  // GoRoute(
-                  //   path: RouteNames.addresses.path,
-                  //   name: RouteNames.addresses.name,
-                  //   builder: (context, state) => const AddressPage(),
-                  // ),
+                  GoRoute(
+                    path: RouteNames.addresses.path,
+                    name: RouteNames.addresses.name,
+                    builder: (context, state) => const AddressPage(),
+                  ),
                   GoRoute(
                       path: RouteNames.orders.path,
                       name: RouteNames.orders.name,

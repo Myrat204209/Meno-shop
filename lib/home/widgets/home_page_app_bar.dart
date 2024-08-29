@@ -1,7 +1,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/language/language.dart';
+import 'package:meno_shop/search/search.dart';
 
 class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomePageAppBar({
@@ -11,9 +11,7 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: AppSearchBar(
-        hintText: context.l10n.searching,
-      ),
+      title: const AppSearchBar(),
       scrolledUnderElevation: 0,
       backgroundColor: AppColors.quaterniary,
       actions: [

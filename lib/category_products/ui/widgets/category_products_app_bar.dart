@@ -1,6 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:meno_shop/l10n/l10n.dart';
+import 'package:meno_shop/search/search.dart';
 
 import 'widgets.dart';
 
@@ -12,7 +12,7 @@ class CategoryProductsAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       scrolledUnderElevation: 0,
-      title: AppSearchBar(hintText: context.l10n.searching),
+      title: const AppSearchBar(),
       actions: [
         IconButton(
           icon: const Icon(

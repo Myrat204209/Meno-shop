@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class BannerImage extends StatelessWidget {
   const BannerImage({

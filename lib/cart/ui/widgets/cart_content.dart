@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
 
 import 'package:meno_shop/cart/cart.dart';
+import 'package:meno_shop/order_information/order_information.dart';
 
 class CartContent extends StatelessWidget {
   const CartContent({
@@ -29,12 +30,7 @@ class CartContent extends StatelessWidget {
                     return const SizedBox();
                   } else {
                     final cart = carts?[index];
-                    return AppCard(
-                      leading: const AppImage(imageUrl: 'http://flutter'),
-                      title: Text(cart!.productName),
-                      subtitle: Text('${cart.price}'),
-                      onPressed: () {},
-                    );
+                    return const ProductListTile();
                   }
                 },
               ),
