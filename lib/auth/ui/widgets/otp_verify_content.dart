@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:pinput/pinput.dart';
 
 import 'package:meno_shop/auth/auth.dart';
@@ -31,11 +32,11 @@ class OtpVerifyContent extends StatelessWidget {
                       .svg(width: 120, height: 120)
                       .paddingOnly(bottom: 40),
                   Text(
-                    'OTP kodynyzy girizin!',
+                    context.l10n.otpEnter,
                     style: const AppTextStyle.text().xxl().bold(),
                   ).centralize(),
                   Text(
-                    'Biz +$phone belga OTP kodyny \ngoyberdik!',
+                    context.l10n.otpSentInformation(phone),
                     softWrap: true,
                     textAlign: TextAlign.center,
                     style: const AppTextStyle.text()
@@ -65,8 +66,16 @@ class OtpVerifyContent extends StatelessWidget {
                 ],
               ),
             ),
-            const Text('Kod gelmedi. Tazeden ugrat')
-                .paddingSymmetric(vertical: 10),
+            TextButton(
+              onPressed: () {
+                context.read<AuthBloc>().add(
+                      AuthSendOtpRequested(phone: phone),
+                    );
+              },
+              child: Text(
+                context.l10n.otpEnter + context.l10n.sendAgain,
+              ),
+            ).paddingSymmetric(vertical: 10),
 
             /// Next button
             NextButton(
@@ -83,7 +92,6 @@ class OtpVerifyContent extends StatelessWidget {
                 // }
               },
             ),
-            const SizedBox(height: AppSpacing.xlg),
           ],
         );
       },

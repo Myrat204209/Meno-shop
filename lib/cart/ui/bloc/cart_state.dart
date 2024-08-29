@@ -25,7 +25,7 @@ class CartState extends Equatable {
   const CartState.initial() : this(status: CartStatus.initial);
   final CartStatus status;
 
-  final List<CartItem?>? cart;
+  final List<CartItem?> cart;
   final double totalCost;
   @override
   List<Object?> get props => [

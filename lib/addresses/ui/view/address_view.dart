@@ -16,7 +16,7 @@ class AddressView extends StatelessWidget {
         actions: [
           Text('${addressCount.length}/5').paddingOnly(right: 10),
         ],
-        title: Text(context.l10n.addresses),
+        title: Text(context.l10n.myAddresses),
         centerTitle: true,
 
         // actions: [

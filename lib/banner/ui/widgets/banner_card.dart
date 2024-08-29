@@ -31,22 +31,30 @@ class BannerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2 / 1,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          BannerImage(bannerImage: imageUrl),
-          BannerContent(
-            bannerType: bannerType,
-            buttonText: buttonText ?? '',
-            label: label ?? '',
-            title: title ?? '',
-            subtitle: subtitle ?? '',
-            onPressed: onPressed, // Pass the callback to BannerContent
-          ),
-        ],
-      ),
-    ).paddingSymmetric(horizontal: 10, vertical: 5);
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: size.width,
+      child: AspectRatio(
+        aspectRatio: 2 / 1,
+        child: Stack(
+          alignment: Alignment.center,
+          fit: StackFit.expand,
+          children: [
+            BannerImage(
+              bannerImage: imageUrl,
+              fit: BoxFit.cover,
+            ),
+            BannerContent(
+              bannerType: bannerType,
+              buttonText: buttonText ?? '',
+              label: label ?? '',
+              title: title ?? '',
+              subtitle: subtitle ?? '',
+              onPressed: onPressed, // Pass the callback to BannerContent
+            ),
+          ],
+        ),
+      ).paddingSymmetric(horizontal: 5, vertical: 5),
+    );
   }
 }

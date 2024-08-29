@@ -7,6 +7,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_shakemywidget/flutter_shakemywidget.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:meno_shop/auth/auth.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class LoginContent extends HookWidget {
   const LoginContent({super.key});
@@ -36,11 +37,11 @@ class LoginContent extends HookWidget {
                       const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                   children: [
                     Text(
-                      'Telefon belginizi girizin!',
+                      context.l10n.phoneInput,
                       style: const AppTextStyle.text().xxl().bold(),
                     ).centralize().paddingOnly(bottom: 5),
                     Text(
-                      'Biz sizin telefon belginize OTP kodyny \nugradarys!',
+                      context.l10n.otpSending,
                       softWrap: true,
                       textAlign: TextAlign.center,
                       style: const AppTextStyle.text()
@@ -112,7 +113,6 @@ class LoginContent extends HookWidget {
                   }
                 },
               ),
-              const Text('asdas')
             ],
           );
         },

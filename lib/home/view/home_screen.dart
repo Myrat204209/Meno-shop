@@ -28,10 +28,10 @@ class HomeScreen extends StatelessWidget {
         ),
         child: BottomNavBar(
             currentIndex: navigationShell.currentIndex,
-            onTap: (value) {
-              navigationShell.goBranch(value,
-                  initialLocation: value == navigationShell.currentIndex);
-            }),
+            onTap: (value) => navigationShell.goBranch(
+                  value,
+                  initialLocation: value == navigationShell.currentIndex,
+                )),
       ).paddingOnly(top: 5),
     );
   }

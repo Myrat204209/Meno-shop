@@ -1,6 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:meno_shop/banner/banner.dart';
 
 class BannerContent extends StatelessWidget {
@@ -28,30 +28,35 @@ class BannerContent extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width,
-      height: 104,
+      height: 140,
       child: AspectRatio(
         aspectRatio: 360 / 104,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: AppSpacing.md),
-            AutoSizeText(
-              label,
-              style: defaultBannerStyle,
-              overflow: TextOverflow.ellipsis,
-            ),
-            AutoSizeText(
-              title,
-              style: const AppTextStyle.text()
-                  .bold()
-                  .withColor(AppColors.quaterniary),
-              overflow: TextOverflow.ellipsis,
-            ),
-            AutoSizeText(
-              subtitle,
-              style: defaultBannerStyle,
-              overflow: TextOverflow.ellipsis,
-            ),
+            if (bannerType != BannerType.poster.name)
+              AutoSizeText(
+                label,
+                style: defaultBannerStyle,
+                overflow: TextOverflow.ellipsis,
+              ),
+            if (bannerType != BannerType.poster.name)
+              AutoSizeText(
+                title,
+                style: const AppTextStyle.text()
+                    .bold()
+                    .withColor(AppColors.quaterniary),
+                overflow: TextOverflow.ellipsis,
+              ),
+            if (bannerType != BannerType.poster.name)
+              AutoSizeText(
+                subtitle,
+                style: defaultBannerStyle,
+                overflow: TextOverflow.ellipsis,
+              ),
             const SizedBox(height: AppSpacing.md),
             if (bannerType != BannerType.poster.name)
               BannerButton(
@@ -59,10 +64,9 @@ class BannerContent extends StatelessWidget {
                 bannerType: bannerType,
                 text: buttonText,
               ).paddingSymmetric(vertical: 10),
-            const SizedBox(height: AppSpacing.xlg)
           ],
-        ),
-      ).paddingOnly(left: 25),
+        ).paddingOnly(left: 25),
+      ).colorize(Colors.black.withOpacity(0.25)),
     );
   }
 }

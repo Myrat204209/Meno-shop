@@ -26,7 +26,7 @@ class ProfileView extends StatelessWidget {
           onTap: () => context.pushNamed(RouteNames.account.name),
         ),
         ProfilePageButton(
-          title: l10n.addresses,
+          title: l10n.myAddresses,
           onTap: () => context.pushNamed(RouteNames.addresses.name),
         ),
         ProfilePageButton(

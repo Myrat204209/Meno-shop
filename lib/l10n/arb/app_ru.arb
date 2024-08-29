@@ -2,111 +2,112 @@
     "@@locale": "ru",
 
     "networkError": "Нет подключения к интернету.",
-    "networkErrorDescription": "Пожалуйста, попробуйте позже.",
-    "networkErrorButton": "Попробовать снова",
-    
-    "services": "Разделы",
+    "networkErrorDescription": "Пожалуйста, попробуйте еще раз позже.",
+    "networkErrorButton": "Повторить попытку",
 
-    "entryPage": "Главная страница",
-    "main": "Главная",
-    "notification": "Уведомление",
-    "unreadMessage": "Новое",
-
-    "profile": "Профиль",
-    "profileEdit": "Редактировать профиль",
-    
-    "name": "Имя",
-    "phoneNumber": "Номер телефона",
-    "email": "Электронная почта",
-
+    "notification" : "Уведомление",
+    "unreadMessage" : "Новое",
     "technicalSupportTitle": "Техническая поддержка",
     "technicalSupportDescription": "Свяжитесь с нами для получения помощи",
-
-    "manageAddressesTitle": "Управление адресами",
-    "manageAddressesDescription": "Управляйте своими адресами",
-
-    "settings": "Настройки",
 
     "language": "Язык",
     "languageChangeTitle": "Изменить язык",
     "languageSelectDescription": "Выберите язык приложения",
     
-    "searching": "Поиск по магазину...",
-    "startShopping": "Начать покупки",
-    "loadMore": "Загрузить больше",
-    "viewAll": "Посмотреть все",
-    
-    "order": "Заказ",
-    "orderTotal": "Итоговая сумма заказа",
+    "searching": "Поиск в магазине...",
+    "startShopping": "Купить сейчас",
+    "loadMore" : "Загрузить еще",
+    "merchLabel" : "Для торговцев",
+    "merchTitle" : "Специальные предложения",
+    "merchSubtitle" : "Все товары, оптовая цена",
+    "viewAll" : "Посмотреть все",
 
-    "orders": "Мои заказы",
-    "ordersEmptyTitle": "Нет заказов",
-    "ordersEmptyDescription": "Ваши заказы будут отображаться здесь",
-    
-    "discount": "Скидка",
-    "productSize": "Размер",
-    "productColor": "Цвет",
-    "productPrice": "Цена за единицу",
-    "productsAll": "Продукты",
+    "productDetails" : "Детали продукта",
+    "chooseColor" : "Выберите цвет",
+    "selectSize" : "Выберите размер",
+    "addToCart" : "Добавить в корзину",
+    "similarProducts" : "Похожие товары",
 
-    "addresses": "Мои адреса",
-    "addressesCreate": "Добавить новый адрес",
+    "filter" : "Фильтр",
+    "selectAll" : "Выбрать все",
 
-    "checkOutCompleteTitle": "Ваш заказ зарегистрирован.",
-    "checkOutCompleteContent": "Завершенная сделка будет добавлена вам в указанное время. Спасибо за покупку!",
-    "confirm": "Продолжить покупки",
-    
-    "deliveryTime": "Выберите время доставки",
-    "deliverySerice": "Служба доставки",
+    "productsAll" : "Товары ({products})",
+    "@productsAll": {
+        "description": "Количество найденных товаров.",
+        "placeholders": {
+            "products": {
+                "type": "int",
+                "example": "0"
+            }
+        }
+    },
+    "close": "Закрыть",
 
-    "trackOrder": "Отследить заказ",
-    "accepted": "Принято",
-    "expected": "Ожидается",
-
-    "neglection": "Нет",
-    "affirmation": "Да",
-
-    "goToTheCart": "Перейти в корзину",
-    "total": "Общая стоимость",
+    "cart": "Моя корзина",
+    "removeAll" : "Удалить все",
+    "cartConfirmation": "Подтвердить корзину",
+    "totalPrice" : "Общая стоимость",
+    "price" : "Цена",
     "totalCost": "Общая стоимость товаров",
-
+    "deliverySerice": "Служба доставки",
+    "discount" : "Скидка",
+    "cartClearTitle": "Удалить товары",
+    "cartClearContent": "Вы хотите удалить все товары?",
+    "neglection" : "Нет",
+    "affirmation" : "Да",
+    "checkOutCompleteTitle": "Ваш заказ зарегистрирован.",
+    "checkOutCompleteContent": "Завершенный торговый процесс будет добавлен к вам в указанное время. Спасибо за покупку!",
+    "continueShop": "Продолжить покупки",
+    
     "paymentMethod": "Способы оплаты",
     "paymentMethodCash": "Наличные",
     "paymentMethodTerminal": "Терминал",
-
-    "orderType": "Тип заказа",
-
-    "orderConfirmation": "Подтвердить корзину",
-
-    "orderNotes": "Примечания к заказу",
-    "orderNotesDescription": "Дополнительные инструкции или примечания к заказу",
-    "orderNotesDescription2": "Дополнительные инструкции, аллергии, предпочтения",
-
-    "selectAddress": "Выбрать адрес",
+    "selectAddress": "Выберите адрес",
+    "deliveryTime": "Выберите время доставки",
     "selectAddressEmpty": "Не выбрано",
-
-    "cart": "Моя корзина",
-    "cartAdd": "добавлено в корзину",
     
-    "cartClearTitle": "Удалить продукты",
-    "cartClearContent": "Вы хотите удалить все продукты?",
-
-    "cartEmptyTitle": "Корзина пуста",
-    "cartEmptyDescription": "Товары в вашей корзине будут отображаться здесь",
-
-    "placeAnOrder": "Оформить заказ",
-    
-    "filter": "Фильтр",
-    "selectAll": "Выбрать все",
-    
-    "success": "Успех",
+    "addressesCreate": "Добавить новый адрес",
+    "myAddresses": "Мои адреса",
+    "address": "Адрес",
+    "addressName": "Название адреса",
+    "name": "Имя",
+    "phoneNumber": "Номер телефона",
+    "save" : "Сохранить",
+    "favorites" : "Избранное",
+    "profile": "Мой профиль",
+    "account": "Аккаунт",
+    "orders": "Заказы",
+    "orderInformation" : "Информация о заказах",
+    "logout": "Выйти",
+    "region": "Регион",
+    "accepted": "Принято",
+    "expected": "Ожидается",
+    "success": "Успешно",
     "cancel": "Отмена",
-    "close": "Закрыть",
-    "clear": "Очистить",
-
-    "productsEmptyTitle": "Продукты не найдены",
-    "productsEmptyDescription": "В данный момент нет доступных продуктов.",
-    "merchLabel": "Для торговцев",
-    "merchTitle": "Специальные предложения",
-    "merchSubtitle": "Все продукты, оптовая цена"
+    "cartEmptyTitle": "Корзина пуста",
+    "cartEmptyDescription": "Товары в вашей корзине отображаются здесь",
+    
+    "productsEmptyTitle": "Товары не найдены",
+    "productsEmptyDescription": "В настоящее время нет доступных товаров.",
+    
+    "submit" : "Отправить",
+    "phoneInput": "Введите номер телефона!",
+    "otpSending" : "Мы отправим вам код OTP на ваш номер телефона!",
+    "acceptPolice" : "Продолжая, я принимаю политику конфиденциальности и условия использования",
+    "getCode" : "Получить код",
+    "otpEnter" : "Введите код OTP!",
+    "otpSentInformation" : "Мы отправили код OTP на +{phoneNumber}!" , 
+    "@otpSentInformation" : {
+        "description": "Номер телефона для отправки кода OTP.",
+        "placeholders": {
+            "phoneNumber": {
+                "type": "String",
+                "example": "99361234567"
+            }
+        }
+    },
+    "otpError" : "Код не получен.",
+    "sendAgain" : "Отправить повторно",
+    "authSucess" : "Успешно создано!",
+    "ok" : "ОК"
 }

@@ -115,24 +115,6 @@ abstract class AppLocalizations {
   /// **'Try Again'**
   String get networkErrorButton;
 
-  /// No description provided for @services.
-  ///
-  /// In en, this message translates to:
-  /// **'Sections'**
-  String get services;
-
-  /// No description provided for @entryPage.
-  ///
-  /// In en, this message translates to:
-  /// **'Homepage'**
-  String get entryPage;
-
-  /// No description provided for @main.
-  ///
-  /// In en, this message translates to:
-  /// **'Main'**
-  String get main;
-
   /// No description provided for @notification.
   ///
   /// In en, this message translates to:
@@ -145,36 +127,6 @@ abstract class AppLocalizations {
   /// **'New'**
   String get unreadMessage;
 
-  /// No description provided for @profile.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
-
-  /// No description provided for @profileEdit.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Profile'**
-  String get profileEdit;
-
-  /// No description provided for @name.
-  ///
-  /// In en, this message translates to:
-  /// **'Name'**
-  String get name;
-
-  /// No description provided for @phoneNumber.
-  ///
-  /// In en, this message translates to:
-  /// **'Phone number'**
-  String get phoneNumber;
-
-  /// No description provided for @email.
-  ///
-  /// In en, this message translates to:
-  /// **'Email'**
-  String get email;
-
   /// No description provided for @technicalSupportTitle.
   ///
   /// In en, this message translates to:
@@ -186,24 +138,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Contact us for assistance'**
   String get technicalSupportDescription;
-
-  /// No description provided for @manageAddressesTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Manage Addresses'**
-  String get manageAddressesTitle;
-
-  /// No description provided for @manageAddressesDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Manage your addresses'**
-  String get manageAddressesDescription;
-
-  /// No description provided for @settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings;
 
   /// No description provided for @language.
   ///
@@ -241,107 +175,119 @@ abstract class AppLocalizations {
   /// **'Load more'**
   String get loadMore;
 
+  /// No description provided for @merchLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'For Traders'**
+  String get merchLabel;
+
+  /// No description provided for @merchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Offers'**
+  String get merchTitle;
+
+  /// No description provided for @merchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All products, wholesale price'**
+  String get merchSubtitle;
+
   /// No description provided for @viewAll.
   ///
   /// In en, this message translates to:
   /// **'View all'**
   String get viewAll;
 
-  /// No description provided for @order.
+  /// No description provided for @productDetails.
   ///
   /// In en, this message translates to:
-  /// **'Order'**
-  String get order;
+  /// **'Product Details'**
+  String get productDetails;
 
-  /// No description provided for @orderTotal.
+  /// No description provided for @chooseColor.
   ///
   /// In en, this message translates to:
-  /// **'Order Total'**
-  String get orderTotal;
+  /// **'Choose color'**
+  String get chooseColor;
 
-  /// No description provided for @orders.
+  /// No description provided for @selectSize.
   ///
   /// In en, this message translates to:
-  /// **'My Orders'**
-  String get orders;
+  /// **'Select size'**
+  String get selectSize;
 
-  /// No description provided for @ordersEmptyTitle.
+  /// No description provided for @addToCart.
   ///
   /// In en, this message translates to:
-  /// **'No Orders'**
-  String get ordersEmptyTitle;
+  /// **'Add to cart'**
+  String get addToCart;
 
-  /// No description provided for @ordersEmptyDescription.
+  /// No description provided for @similarProducts.
   ///
   /// In en, this message translates to:
-  /// **'Your orders are displayed here'**
-  String get ordersEmptyDescription;
+  /// **'Similar products'**
+  String get similarProducts;
 
-  /// No description provided for @discount.
+  /// No description provided for @filter.
   ///
   /// In en, this message translates to:
-  /// **'Discount'**
-  String get discount;
+  /// **'Filter'**
+  String get filter;
 
-  /// No description provided for @productSize.
+  /// No description provided for @selectAll.
   ///
   /// In en, this message translates to:
-  /// **'Size'**
-  String get productSize;
+  /// **'Select all'**
+  String get selectAll;
 
-  /// No description provided for @productColor.
+  /// Number of products found.
   ///
   /// In en, this message translates to:
-  /// **'Color'**
-  String get productColor;
+  /// **'Products ({products})'**
+  String productsAll(int products);
 
-  /// No description provided for @productPrice.
+  /// No description provided for @close.
   ///
   /// In en, this message translates to:
-  /// **'Price per item'**
-  String get productPrice;
+  /// **'Close'**
+  String get close;
 
-  /// No description provided for @productsAll.
+  /// No description provided for @cart.
   ///
   /// In en, this message translates to:
-  /// **'Products'**
-  String get productsAll;
+  /// **'My cart'**
+  String get cart;
 
-  /// No description provided for @addresses.
+  /// No description provided for @removeAll.
   ///
   /// In en, this message translates to:
-  /// **'My Addresses'**
-  String get addresses;
+  /// **'Remove all'**
+  String get removeAll;
 
-  /// No description provided for @addressesCreate.
+  /// No description provided for @cartConfirmation.
   ///
   /// In en, this message translates to:
-  /// **'Add a new address'**
-  String get addressesCreate;
+  /// **'Confirm cart'**
+  String get cartConfirmation;
 
-  /// No description provided for @checkOutCompleteTitle.
+  /// No description provided for @totalPrice.
   ///
   /// In en, this message translates to:
-  /// **'Your order has been registered.'**
-  String get checkOutCompleteTitle;
+  /// **'Total price'**
+  String get totalPrice;
 
-  /// No description provided for @checkOutCompleteContent.
+  /// No description provided for @price.
   ///
   /// In en, this message translates to:
-  /// **'The completed trade will be added to you at the specified time. Thank you for your shopping!'**
-  String get checkOutCompleteContent;
+  /// **'Price'**
+  String get price;
 
-  /// No description provided for @confirm.
+  /// No description provided for @totalCost.
   ///
   /// In en, this message translates to:
-  /// **'Continue shopping'**
-  String get confirm;
-
-  /// No description provided for @deliveryTime.
-  ///
-  /// In en, this message translates to:
-  /// **'Select when to deliver'**
-  String get deliveryTime;
+  /// **'Total Cost of goods'**
+  String get totalCost;
 
   /// No description provided for @deliverySerice.
   ///
@@ -349,23 +295,23 @@ abstract class AppLocalizations {
   /// **'Delivery service'**
   String get deliverySerice;
 
-  /// No description provided for @trackOrder.
+  /// No description provided for @discount.
   ///
   /// In en, this message translates to:
-  /// **'Track Order'**
-  String get trackOrder;
+  /// **'Discount'**
+  String get discount;
 
-  /// No description provided for @accepted.
+  /// No description provided for @cartClearTitle.
   ///
   /// In en, this message translates to:
-  /// **'Accepted'**
-  String get accepted;
+  /// **'Remove products'**
+  String get cartClearTitle;
 
-  /// No description provided for @expected.
+  /// No description provided for @cartClearContent.
   ///
   /// In en, this message translates to:
-  /// **'Expected'**
-  String get expected;
+  /// **'Do you want all products removed?'**
+  String get cartClearContent;
 
   /// No description provided for @neglection.
   ///
@@ -379,23 +325,23 @@ abstract class AppLocalizations {
   /// **'Yes'**
   String get affirmation;
 
-  /// No description provided for @goToTheCart.
+  /// No description provided for @checkOutCompleteTitle.
   ///
   /// In en, this message translates to:
-  /// **'Go to Cart'**
-  String get goToTheCart;
+  /// **'Your order has been registered.'**
+  String get checkOutCompleteTitle;
 
-  /// No description provided for @total.
+  /// No description provided for @checkOutCompleteContent.
   ///
   /// In en, this message translates to:
-  /// **'Total price'**
-  String get total;
+  /// **'The completed trade will be added to you at the specified time. Thank you for your shopping!'**
+  String get checkOutCompleteContent;
 
-  /// No description provided for @totalCost.
+  /// No description provided for @continueShop.
   ///
   /// In en, this message translates to:
-  /// **'Total Cost of goods'**
-  String get totalCost;
+  /// **'Continue shopping'**
+  String get continueShop;
 
   /// No description provided for @paymentMethod.
   ///
@@ -415,41 +361,17 @@ abstract class AppLocalizations {
   /// **'Terminal'**
   String get paymentMethodTerminal;
 
-  /// No description provided for @orderType.
-  ///
-  /// In en, this message translates to:
-  /// **'Order Type'**
-  String get orderType;
-
-  /// No description provided for @orderConfirmation.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm cart'**
-  String get orderConfirmation;
-
-  /// No description provided for @orderNotes.
-  ///
-  /// In en, this message translates to:
-  /// **'Order Notes'**
-  String get orderNotes;
-
-  /// No description provided for @orderNotesDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Additional instructions or notes for the order'**
-  String get orderNotesDescription;
-
-  /// No description provided for @orderNotesDescription2.
-  ///
-  /// In en, this message translates to:
-  /// **'Additional instructions, allergies, preferences'**
-  String get orderNotesDescription2;
-
   /// No description provided for @selectAddress.
   ///
   /// In en, this message translates to:
-  /// **'Select Address'**
+  /// **'Select address'**
   String get selectAddress;
+
+  /// No description provided for @deliveryTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Select when to deliver'**
+  String get deliveryTime;
 
   /// No description provided for @selectAddressEmpty.
   ///
@@ -457,59 +379,101 @@ abstract class AppLocalizations {
   /// **'Not Selected'**
   String get selectAddressEmpty;
 
-  /// No description provided for @cart.
+  /// No description provided for @addressesCreate.
   ///
   /// In en, this message translates to:
-  /// **'My Cart'**
-  String get cart;
+  /// **'Add a new address'**
+  String get addressesCreate;
 
-  /// No description provided for @cartAdd.
+  /// No description provided for @myAddresses.
   ///
   /// In en, this message translates to:
-  /// **'added to cart'**
-  String get cartAdd;
+  /// **'My Addresses'**
+  String get myAddresses;
 
-  /// No description provided for @cartClearTitle.
+  /// No description provided for @address.
   ///
   /// In en, this message translates to:
-  /// **'Remove products'**
-  String get cartClearTitle;
+  /// **'Address'**
+  String get address;
 
-  /// No description provided for @cartClearContent.
+  /// No description provided for @addressName.
   ///
   /// In en, this message translates to:
-  /// **'Do you want all products removed?'**
-  String get cartClearContent;
+  /// **'Address name'**
+  String get addressName;
 
-  /// No description provided for @cartEmptyTitle.
+  /// No description provided for @name.
   ///
   /// In en, this message translates to:
-  /// **'Cart is Empty'**
-  String get cartEmptyTitle;
+  /// **'Name'**
+  String get name;
 
-  /// No description provided for @cartEmptyDescription.
+  /// No description provided for @phoneNumber.
   ///
   /// In en, this message translates to:
-  /// **'Items in your cart are displayed here'**
-  String get cartEmptyDescription;
+  /// **'Phone number'**
+  String get phoneNumber;
 
-  /// No description provided for @placeAnOrder.
+  /// No description provided for @save.
   ///
   /// In en, this message translates to:
-  /// **'Place an Order'**
-  String get placeAnOrder;
+  /// **'Save'**
+  String get save;
 
-  /// No description provided for @filter.
+  /// No description provided for @favorites.
   ///
   /// In en, this message translates to:
-  /// **'Filter'**
-  String get filter;
+  /// **'Favorites'**
+  String get favorites;
 
-  /// No description provided for @selectAll.
+  /// No description provided for @profile.
   ///
   /// In en, this message translates to:
-  /// **'Select all'**
-  String get selectAll;
+  /// **'My profile'**
+  String get profile;
+
+  /// No description provided for @account.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get account;
+
+  /// No description provided for @orders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get orders;
+
+  /// No description provided for @orderInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Order information'**
+  String get orderInformation;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @region.
+  ///
+  /// In en, this message translates to:
+  /// **'Region'**
+  String get region;
+
+  /// No description provided for @accepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get accepted;
+
+  /// No description provided for @expected.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected'**
+  String get expected;
 
   /// No description provided for @success.
   ///
@@ -523,17 +487,17 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get cancel;
 
-  /// No description provided for @close.
+  /// No description provided for @cartEmptyTitle.
   ///
   /// In en, this message translates to:
-  /// **'Close'**
-  String get close;
+  /// **'Cart is Empty'**
+  String get cartEmptyTitle;
 
-  /// No description provided for @clear.
+  /// No description provided for @cartEmptyDescription.
   ///
   /// In en, this message translates to:
-  /// **'Clear'**
-  String get clear;
+  /// **'Items in your cart are displayed here'**
+  String get cartEmptyDescription;
 
   /// No description provided for @productsEmptyTitle.
   ///
@@ -547,23 +511,71 @@ abstract class AppLocalizations {
   /// **'No products available at this time.'**
   String get productsEmptyDescription;
 
-  /// No description provided for @merchLabel.
+  /// No description provided for @submit.
   ///
   /// In en, this message translates to:
-  /// **'For Traders'**
-  String get merchLabel;
+  /// **'Submit'**
+  String get submit;
 
-  /// No description provided for @merchTitle.
+  /// No description provided for @phoneInput.
   ///
   /// In en, this message translates to:
-  /// **'Special Offers'**
-  String get merchTitle;
+  /// **'Enter your phone number!'**
+  String get phoneInput;
 
-  /// No description provided for @merchSubtitle.
+  /// No description provided for @otpSending.
   ///
   /// In en, this message translates to:
-  /// **'All products, wholesale price'**
-  String get merchSubtitle;
+  /// **'We will send an OTP code to your phone number!'**
+  String get otpSending;
+
+  /// No description provided for @acceptPolice.
+  ///
+  /// In en, this message translates to:
+  /// **'By continuing I accept the privacy policy and terms of use'**
+  String get acceptPolice;
+
+  /// No description provided for @getCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Code'**
+  String get getCode;
+
+  /// No description provided for @otpEnter.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the OTP code!'**
+  String get otpEnter;
+
+  /// Number of products found.
+  ///
+  /// In en, this message translates to:
+  /// **'We have sent the OTP code to +{phoneNumber}!'**
+  String otpSentInformation(String phoneNumber);
+
+  /// No description provided for @otpError.
+  ///
+  /// In en, this message translates to:
+  /// **'Code not received.'**
+  String get otpError;
+
+  /// No description provided for @sendAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Send again'**
+  String get sendAgain;
+
+  /// No description provided for @authSucess.
+  ///
+  /// In en, this message translates to:
+  /// **'Successfully created!'**
+  String get authSucess;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get ok;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

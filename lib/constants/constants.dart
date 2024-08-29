@@ -10,6 +10,6 @@ extension ImagePathExtender on String {
 
 extension LocaleChanger on LanguageModel {
   String changeLocale(String locale) {
-    return locale == 'tk' ? tm! : ru!;
+    return locale == 'tk' ? tm ?? 'testTm' : ru ?? 'testRu';
   }
 }

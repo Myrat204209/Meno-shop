@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class PhoneInput extends StatelessWidget {
   const PhoneInput({
@@ -36,7 +37,7 @@ class PhoneInput extends StatelessWidget {
       },
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
-        labelText: "Telefon belgiňizi giriziň",
+        labelText: context.l10n.phoneInput,
         hintText: "61234567",
         prefixText: "+993 ",
         prefixStyle: const AppTextStyle.text().semiBold().md(),

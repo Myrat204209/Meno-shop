@@ -10,19 +10,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get networkError => 'Нет подключения к интернету.';
 
   @override
-  String get networkErrorDescription => 'Пожалуйста, попробуйте позже.';
+  String get networkErrorDescription => 'Пожалуйста, попробуйте еще раз позже.';
 
   @override
-  String get networkErrorButton => 'Попробовать снова';
-
-  @override
-  String get services => 'Разделы';
-
-  @override
-  String get entryPage => 'Главная страница';
-
-  @override
-  String get main => 'Главная';
+  String get networkErrorButton => 'Повторить попытку';
 
   @override
   String get notification => 'Уведомление';
@@ -31,34 +22,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get unreadMessage => 'Новое';
 
   @override
-  String get profile => 'Профиль';
-
-  @override
-  String get profileEdit => 'Редактировать профиль';
-
-  @override
-  String get name => 'Имя';
-
-  @override
-  String get phoneNumber => 'Номер телефона';
-
-  @override
-  String get email => 'Электронная почта';
-
-  @override
   String get technicalSupportTitle => 'Техническая поддержка';
 
   @override
   String get technicalSupportDescription => 'Свяжитесь с нами для получения помощи';
-
-  @override
-  String get manageAddressesTitle => 'Управление адресами';
-
-  @override
-  String get manageAddressesDescription => 'Управляйте своими адресами';
-
-  @override
-  String get settings => 'Настройки';
 
   @override
   String get language => 'Язык';
@@ -70,76 +37,84 @@ class AppLocalizationsRu extends AppLocalizations {
   String get languageSelectDescription => 'Выберите язык приложения';
 
   @override
-  String get searching => 'Поиск по магазину...';
+  String get searching => 'Поиск в магазине...';
 
   @override
-  String get startShopping => 'Начать покупки';
+  String get startShopping => 'Купить сейчас';
 
   @override
-  String get loadMore => 'Загрузить больше';
+  String get loadMore => 'Загрузить еще';
+
+  @override
+  String get merchLabel => 'Для торговцев';
+
+  @override
+  String get merchTitle => 'Специальные предложения';
+
+  @override
+  String get merchSubtitle => 'Все товары, оптовая цена';
 
   @override
   String get viewAll => 'Посмотреть все';
 
   @override
-  String get order => 'Заказ';
+  String get productDetails => 'Детали продукта';
 
   @override
-  String get orderTotal => 'Итоговая сумма заказа';
+  String get chooseColor => 'Выберите цвет';
 
   @override
-  String get orders => 'Мои заказы';
+  String get selectSize => 'Выберите размер';
 
   @override
-  String get ordersEmptyTitle => 'Нет заказов';
+  String get addToCart => 'Добавить в корзину';
 
   @override
-  String get ordersEmptyDescription => 'Ваши заказы будут отображаться здесь';
+  String get similarProducts => 'Похожие товары';
 
   @override
-  String get discount => 'Скидка';
+  String get filter => 'Фильтр';
 
   @override
-  String get productSize => 'Размер';
+  String get selectAll => 'Выбрать все';
 
   @override
-  String get productColor => 'Цвет';
+  String productsAll(int products) {
+    return 'Товары ($products)';
+  }
 
   @override
-  String get productPrice => 'Цена за единицу';
+  String get close => 'Закрыть';
 
   @override
-  String get productsAll => 'Продукты';
+  String get cart => 'Моя корзина';
 
   @override
-  String get addresses => 'Мои адреса';
+  String get removeAll => 'Удалить все';
 
   @override
-  String get addressesCreate => 'Добавить новый адрес';
+  String get cartConfirmation => 'Подтвердить корзину';
 
   @override
-  String get checkOutCompleteTitle => 'Ваш заказ зарегистрирован.';
+  String get totalPrice => 'Общая стоимость';
 
   @override
-  String get checkOutCompleteContent => 'Завершенная сделка будет добавлена вам в указанное время. Спасибо за покупку!';
+  String get price => 'Цена';
 
   @override
-  String get confirm => 'Продолжить покупки';
-
-  @override
-  String get deliveryTime => 'Выберите время доставки';
+  String get totalCost => 'Общая стоимость товаров';
 
   @override
   String get deliverySerice => 'Служба доставки';
 
   @override
-  String get trackOrder => 'Отследить заказ';
+  String get discount => 'Скидка';
 
   @override
-  String get accepted => 'Принято';
+  String get cartClearTitle => 'Удалить товары';
 
   @override
-  String get expected => 'Ожидается';
+  String get cartClearContent => 'Вы хотите удалить все товары?';
 
   @override
   String get neglection => 'Нет';
@@ -148,13 +123,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get affirmation => 'Да';
 
   @override
-  String get goToTheCart => 'Перейти в корзину';
+  String get checkOutCompleteTitle => 'Ваш заказ зарегистрирован.';
 
   @override
-  String get total => 'Общая стоимость';
+  String get checkOutCompleteContent => 'Завершенный торговый процесс будет добавлен к вам в указанное время. Спасибо за покупку!';
 
   @override
-  String get totalCost => 'Общая стоимость товаров';
+  String get continueShop => 'Продолжить покупки';
 
   @override
   String get paymentMethod => 'Способы оплаты';
@@ -166,77 +141,112 @@ class AppLocalizationsRu extends AppLocalizations {
   String get paymentMethodTerminal => 'Терминал';
 
   @override
-  String get orderType => 'Тип заказа';
+  String get selectAddress => 'Выберите адрес';
 
   @override
-  String get orderConfirmation => 'Подтвердить корзину';
-
-  @override
-  String get orderNotes => 'Примечания к заказу';
-
-  @override
-  String get orderNotesDescription => 'Дополнительные инструкции или примечания к заказу';
-
-  @override
-  String get orderNotesDescription2 => 'Дополнительные инструкции, аллергии, предпочтения';
-
-  @override
-  String get selectAddress => 'Выбрать адрес';
+  String get deliveryTime => 'Выберите время доставки';
 
   @override
   String get selectAddressEmpty => 'Не выбрано';
 
   @override
-  String get cart => 'Моя корзина';
+  String get addressesCreate => 'Добавить новый адрес';
 
   @override
-  String get cartAdd => 'добавлено в корзину';
+  String get myAddresses => 'Мои адреса';
 
   @override
-  String get cartClearTitle => 'Удалить продукты';
+  String get address => 'Адрес';
 
   @override
-  String get cartClearContent => 'Вы хотите удалить все продукты?';
+  String get addressName => 'Название адреса';
 
   @override
-  String get cartEmptyTitle => 'Корзина пуста';
+  String get name => 'Имя';
 
   @override
-  String get cartEmptyDescription => 'Товары в вашей корзине будут отображаться здесь';
+  String get phoneNumber => 'Номер телефона';
 
   @override
-  String get placeAnOrder => 'Оформить заказ';
+  String get save => 'Сохранить';
 
   @override
-  String get filter => 'Фильтр';
+  String get favorites => 'Избранное';
 
   @override
-  String get selectAll => 'Выбрать все';
+  String get profile => 'Мой профиль';
 
   @override
-  String get success => 'Успех';
+  String get account => 'Аккаунт';
+
+  @override
+  String get orders => 'Заказы';
+
+  @override
+  String get orderInformation => 'Информация о заказах';
+
+  @override
+  String get logout => 'Выйти';
+
+  @override
+  String get region => 'Регион';
+
+  @override
+  String get accepted => 'Принято';
+
+  @override
+  String get expected => 'Ожидается';
+
+  @override
+  String get success => 'Успешно';
 
   @override
   String get cancel => 'Отмена';
 
   @override
-  String get close => 'Закрыть';
+  String get cartEmptyTitle => 'Корзина пуста';
 
   @override
-  String get clear => 'Очистить';
+  String get cartEmptyDescription => 'Товары в вашей корзине отображаются здесь';
 
   @override
-  String get productsEmptyTitle => 'Продукты не найдены';
+  String get productsEmptyTitle => 'Товары не найдены';
 
   @override
-  String get productsEmptyDescription => 'В данный момент нет доступных продуктов.';
+  String get productsEmptyDescription => 'В настоящее время нет доступных товаров.';
 
   @override
-  String get merchLabel => 'Для торговцев';
+  String get submit => 'Отправить';
 
   @override
-  String get merchTitle => 'Специальные предложения';
+  String get phoneInput => 'Введите номер телефона!';
 
   @override
-  String get merchSubtitle => 'Все продукты, оптовая цена';
+  String get otpSending => 'Мы отправим вам код OTP на ваш номер телефона!';
+
+  @override
+  String get acceptPolice => 'Продолжая, я принимаю политику конфиденциальности и условия использования';
+
+  @override
+  String get getCode => 'Получить код';
+
+  @override
+  String get otpEnter => 'Введите код OTP!';
+
+  @override
+  String otpSentInformation(String phoneNumber) {
+    return 'Мы отправили код OTP на +$phoneNumber!';
+  }
+
+  @override
+  String get otpError => 'Код не получен.';
+
+  @override
+  String get sendAgain => 'Отправить повторно';
+
+  @override
+  String get authSucess => 'Успешно создано!';
+
+  @override
+  String get ok => 'ОК';
 }

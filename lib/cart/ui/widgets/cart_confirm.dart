@@ -26,7 +26,7 @@ class ConfirmCart extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(context.l10n.total),
+              Text(context.l10n.totalPrice),
               Text('$totalPrice TMT'),
             ],
           ),

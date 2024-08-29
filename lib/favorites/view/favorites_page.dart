@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:meno_shop/favorites/favorites.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});
@@ -18,7 +19,7 @@ class FavoritesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorites'),
+        title: Text(context.l10n.favorites),
         centerTitle: true,
       ),
       body: const FavoritesContent(),

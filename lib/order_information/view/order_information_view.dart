@@ -11,7 +11,7 @@ class OrderInformationView extends StatelessWidget {
       backgroundColor: AppColors.quaterniary,
       appBar: AppBar(
         title: Text(
-          context.l10n.orderNotes,
+          context.l10n.orderInformation,
         ),
         centerTitle: true,
       ),
@@ -41,7 +41,7 @@ class OrderInformationView extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(context.l10n.total),
+                    Text(context.l10n.totalPrice),
                     const Text('3678 TMT'),
                   ],
                 ),

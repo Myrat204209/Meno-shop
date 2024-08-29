@@ -4,28 +4,11 @@
     "networkError": "No internet connection.",
     "networkErrorDescription": "Please try again later.",
     "networkErrorButton": "Try Again",
-    
-    "services": "Sections",
 
-    "entryPage": "Homepage",
-    "main": "Main",
     "notification" : "Notification",
     "unreadMessage" : "New",
-
-    "profile": "Profile",
-    "profileEdit": "Edit Profile",
-    
-    "name": "Name",
-    "phoneNumber": "Phone number",
-    "email": "Email",
-
     "technicalSupportTitle": "Technical Support",
     "technicalSupportDescription": "Contact us for assistance",
-
-    "manageAddressesTitle": "Manage Addresses",
-    "manageAddressesDescription": "Manage your addresses",
-
-    "settings": "Settings",
 
     "language": "Language",
     "languageChangeTitle": "Change Language",
@@ -34,80 +17,97 @@
     "searching": "Search from shop...",
     "startShopping": "Shop now",
     "loadMore" : "Load more",
+    "merchLabel" : "For Traders",
+    "merchTitle" : "Special Offers",
+    "merchSubtitle" : "All products, wholesale price",
     "viewAll" : "View all",
-    
 
-    "order": "Order",
-    "orderTotal": "Order Total",
+    "productDetails" : "Product Details",
+    "chooseColor" : "Choose color",
+    "selectSize" : "Select size",
+    "addToCart" : "Add to cart",
+    "similarProducts" : "Similar products",
 
-    "orders": "My Orders",
-    "ordersEmptyTitle": "No Orders",
-    "ordersEmptyDescription": "Your orders are displayed here",
-    
-    "discount" : "Discount",
-    "productSize": "Size",
-    "productColor": "Color",
-    "productPrice": "Price per item",
-    "productsAll" : "Products",
+    "filter" : "Filter",
+    "selectAll" : "Select all",
 
-    "addresses": "My Addresses",
-    "addressesCreate": "Add a new address",
+    "productsAll" : "Products ({products})",
+    "@productsAll": {
+        "description": "Number of products found.",
+        "placeholders": {
+            "products": {
+                "type": "int",
+                "example": "0"
+            }
+        }
+    },
+    "close": "Close",
 
-    "checkOutCompleteTitle": "Your order has been registered.",
-    "checkOutCompleteContent": "The completed trade will be added to you at the specified time. Thank you for your shopping!",
-    "confirm": "Continue shopping",
-    
-    "deliveryTime": "Select when to deliver",
+    "cart": "My cart",
+    "removeAll" : "Remove all",
+    "cartConfirmation": "Confirm cart",
+    "totalPrice" : "Total price",
+    "price" : "Price",
+    "totalCost": "Total Cost of goods",
     "deliverySerice": "Delivery service",
-
-    "trackOrder": "Track Order",
-    "accepted": "Accepted",
-    "expected": "Expected",
-
+    "discount" : "Discount",
+    "cartClearTitle": "Remove products",
+    "cartClearContent": "Do you want all products removed?",
     "neglection" : "No",
     "affirmation" : "Yes",
-
-    "goToTheCart": "Go to Cart",
-    "total" : "Total price",
-    "totalCost": "Total Cost of goods",
-
+    "checkOutCompleteTitle": "Your order has been registered.",
+    "checkOutCompleteContent": "The completed trade will be added to you at the specified time. Thank you for your shopping!",
+    "continueShop": "Continue shopping",
+    
     "paymentMethod": "Types of payment",
     "paymentMethodCash": "Cash",
     "paymentMethodTerminal": "Terminal",
-
-    "orderType": "Order Type",
-
-    "orderConfirmation": "Confirm cart",
-
-    "orderNotes": "Order Notes",
-    "orderNotesDescription": "Additional instructions or notes for the order",
-    "orderNotesDescription2": "Additional instructions, allergies, preferences",
-
-    "selectAddress": "Select Address",
+    "selectAddress": "Select address",
+    "deliveryTime": "Select when to deliver",
     "selectAddressEmpty": "Not Selected",
-
-    "cart": "My Cart",
-    "cartAdd": "added to cart",
     
-    "cartClearTitle": "Remove products",
-    "cartClearContent": "Do you want all products removed?",
-
-    "cartEmptyTitle": "Cart is Empty",
-    "cartEmptyDescription": "Items in your cart are displayed here",
-
-    "placeAnOrder": "Place an Order",
-    
-    "filter" : "Filter",
-    "selectAll" : "Select all",
-    
+    "addressesCreate": "Add a new address",
+    "myAddresses": "My Addresses",
+    "address": "Address",
+    "addressName": "Address name",
+    "name": "Name",
+    "phoneNumber": "Phone number",
+    "save" : "Save",
+    "favorites" : "Favorites",
+    "profile": "My profile",
+    "account": "Account",
+    "orders": "Orders",
+    "orderInformation" : "Order information",
+    "logout": "Logout",
+    "region": "Region",
+    "accepted": "Accepted",
+    "expected": "Expected",
     "success": "Success",
     "cancel": "Cancel",
-    "close": "Close",
-    "clear": "Clear",
-
+    "cartEmptyTitle": "Cart is Empty",
+    "cartEmptyDescription": "Items in your cart are displayed here",
+    
     "productsEmptyTitle": "No Products Found",
     "productsEmptyDescription": "No products available at this time.",
-    "merchLabel" : "For Traders",
-    "merchTitle" : "Special Offers",
-    "merchSubtitle" : "All products, wholesale price"
+    
+    "submit" : "Submit",
+    "phoneInput": "Enter your phone number!",
+    "otpSending" : "We will send an OTP code to your phone number!",
+    "acceptPolice" : "By continuing I accept the privacy policy and terms of use",
+    "getCode" : "Get Code",
+    "otpEnter" : "Enter the OTP code!",
+    "otpSentInformation" : "We have sent the OTP code to +{phoneNumber}!" , 
+    "@otpSentInformation" : {
+        "description": "Number of products found.",
+        "placeholders": {
+            "phoneNumber": {
+                "type": "String",
+                "example": "99361234567"
+            }
+        }
+    },
+    "otpError" : "Code not received.",
+    "sendAgain" : "Send again",
+    "authSucess" : "Successfully created!",
+    "ok" : "Ok"
 }

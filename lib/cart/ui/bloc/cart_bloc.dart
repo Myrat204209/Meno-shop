@@ -121,13 +121,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }
 
   bool isCartAdded(String productId) {
-    if (state.cart == null) return false;
-    return state.cart!.any((item) => item!.uuid == productId);
+    return state.cart.any((item) => item!.uuid == productId);
   }
 
   int showQuantity(String productId) {
-    if (state.cart == null) return 0;
-    return state.cart!
+    return state.cart
         .firstWhere(
           (element) => element!.uuid == productId,
         )!

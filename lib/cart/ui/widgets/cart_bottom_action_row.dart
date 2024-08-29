@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
@@ -18,8 +19,9 @@ class CartBottomActionRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return AppButton(
-      buttonText: 'Submit',
+      buttonText: l10n.submit,
       onTap: () {
         showModalBottomSheet(
             context: context,
@@ -30,28 +32,22 @@ class CartBottomActionRow extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          context.l10n.productPrice,
+                          l10n.price,
                           style: const AppTextStyle.text().semiBold().xl(),
                         ),
                         IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          highlightColor: AppColors.transparent,
-                          splashColor: AppColors.transparent,
-                          hoverColor: AppColors.transparent,
-                          icon: const Icon(Icons.cancel_outlined)
-                              .paddingOnly(left: 110, right: 30),
+                          onPressed: () => context.pop(),
+                          icon: const Icon(Icons.cancel).paddingOnly(right: 30),
                         )
                       ],
                     ).paddingOnly(top: 20, bottom: 18),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("${context.l10n.totalCost}: ",
+                        Text("${l10n.totalCost}: ",
                             style: const AppTextStyle.text().md()),
                         Text("3880 TMT", style: const AppTextStyle.text().md()),
                       ],
@@ -59,7 +55,7 @@ class CartBottomActionRow extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("${context.l10n.deliverySerice}: ",
+                        Text("${l10n.deliverySerice}: ",
                             style: const AppTextStyle.text().regular()),
                         const Text("20 TMT", style: AppTextStyle.text()),
                       ],
@@ -67,7 +63,7 @@ class CartBottomActionRow extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("${context.l10n.discount}: ",
+                        Text("${l10n.discount}: ",
                             style: const AppTextStyle.text().md()),
                         Text("-50 TMT", style: const AppTextStyle.text().md()),
                       ],

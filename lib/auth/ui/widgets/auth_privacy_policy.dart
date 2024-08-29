@@ -1,5 +1,5 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class AuthPrivacyPolicyText extends StatelessWidget {
   const AuthPrivacyPolicyText({
@@ -8,27 +8,9 @@ class AuthPrivacyPolicyText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      textAlign: TextAlign.left,
-      text: TextSpan(
-        text: 'Dowam etmek bilen Men',
-        style:
-            const AppTextStyle.text().xs().copyWith(color: AppColors.primary),
-        children: <TextSpan>[
-          TextSpan(
-            text: ' gizlinlik syýasatyny we',
-            style: const AppTextStyle.text().xs().withColor(Colors.blue),
-          ),
-          TextSpan(
-            text: ' ulanmak düzgünlerini',
-            style: const AppTextStyle.text().xs().withColor(Colors.blue),
-          ),
-          TextSpan(
-            text: ' kabul edýärin',
-            style: const AppTextStyle.text().xs().withColor(Colors.black),
-          ),
-        ],
-      ),
+    return TextButton(
+      onPressed: () {},
+      child: Text(context.l10n.acceptPolice),
     );
   }
 }

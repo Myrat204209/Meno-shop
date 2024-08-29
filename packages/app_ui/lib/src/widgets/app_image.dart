@@ -21,11 +21,11 @@ class AppImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Check if the imageUrl is empty or invalid
-    if (_imageUrl == null) {
+    if (_imageUrl == null || _imageUrl!.contains('null')) {
       return Assets.images.otpLogo.image(
         height: _height,
         width: _width,
-        fit: _fit ?? BoxFit.cover,
+        fit: BoxFit.contain,
       );
     }
 
@@ -33,7 +33,7 @@ class AppImage extends StatelessWidget {
       imageUrl: _imageUrl!,
       height: _height,
       width: _width,
-      fit: _fit ?? BoxFit.cover,
+      fit: _fit ?? BoxFit.contain,
 
       // Error widget in case of a network error
       errorWidget: (context, url, error) {
@@ -43,7 +43,7 @@ class AppImage extends StatelessWidget {
         return Assets.images.otpLogo.image(
           height: _height,
           width: _width,
-          fit: _fit ?? BoxFit.cover,
+          fit: _fit ?? BoxFit.contain,
         );
       },
       // Display a loading indicator while the image is loading

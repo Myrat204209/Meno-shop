@@ -45,9 +45,7 @@ class HomePageBannerCard extends StatelessWidget {
                       label: banner.label!.changeLocale(locale),
                       title: banner.title!.changeLocale(locale),
                       subtitle: banner.subtitle!.changeLocale(locale),
-                      onPressed: () {
-                        
-                      },
+                      onPressed: () {},
                       buttonText: context.l10n.startShopping,
                     );
                   },
@@ -90,7 +88,7 @@ class BannerDotsCounter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 15,
-      left: MediaQuery.sizeOf(context).width / 2 - 35,
+      left: MediaQuery.sizeOf(context).width / 2 - dotsCount * 7,
       child: DotsIndicator(
         dotsCount: dotsCount,
         position: selectedBanner,
