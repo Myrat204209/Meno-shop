@@ -45,9 +45,11 @@ class AccountView extends StatelessWidget {
           //   hintText: 'Your email address',
           // ),
           const SizedBox(height: 10),
-          AppButton.expanded(
+          AppButton(
             buttonText: 'Save',
             onTap: () {},
+            textColor: AppColors.quaterniary,
+            color: AppColors.secondary,
           ),
         ],
       ),

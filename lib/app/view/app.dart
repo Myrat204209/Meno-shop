@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,8 +11,10 @@ import 'package:meno_shop/auth/auth.dart';
 import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
+import 'package:meno_shop/connectivity/bloc/connectivity_bloc.dart';
 import 'package:meno_shop/favorites/bloc/favorites_bloc.dart';
 import 'package:meno_shop/home/home.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/language/language.dart';
 import 'package:meno_shop/product/product.dart';
 import 'package:meno_shop/subcategories/subcategories.dart';
@@ -49,6 +52,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final connectionBloc = ConnectivityBloc()..add(ConnectivityMonitored());
     // final appCubit = AppCubit();
     final authBloc = AuthBloc(authRepository: _authRepository);
     final languageBloc = LanguageBloc();
@@ -79,7 +83,7 @@ class App extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          // BlocProvider.value(value: appCubit),
+          BlocProvider.value(value: connectionBloc),
           BlocProvider.value(value: homeBloc),
           BlocProvider.value(value: languageBloc),
           BlocProvider.value(value: categoriesBloc),
@@ -89,13 +93,35 @@ class App extends StatelessWidget {
           BlocProvider.value(value: favoritesBloc),
           BlocProvider.value(value: cartBloc),
         ],
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return ScreenUtilInit(
-              designSize: Size(constraints.maxWidth, constraints.maxHeight),
-              builder: (context, child) => const AppView(),
-            );
+        child: BlocListener<ConnectivityBloc, ConnectivityState>(
+          listener: (context, state) {
+            if (state is ConnectivityFailure) {
+              showAdaptiveDialog(
+                context: context,
+                builder: (context) {
+                  return Column(
+                    children: [
+                      Text(context.l10n.networkError),
+                      AppButton(
+                        buttonText: context.l10n.networkErrorButton,
+                        onTap: () {
+                          connectionBloc.add(ConnectivityMonitored());
+                        },
+                      )
+                    ],
+                  );
+                },
+              );
+            }
           },
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return ScreenUtilInit(
+                designSize: Size(constraints.maxWidth, constraints.maxHeight),
+                builder: (context, child) => const AppView(),
+              );
+            },
+          ),
         ),
       ),
     );

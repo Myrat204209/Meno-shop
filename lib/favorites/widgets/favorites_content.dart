@@ -22,40 +22,42 @@ class FavoritesContent extends StatelessWidget {
       children: [
         const SizedBox(height: AppSpacing.xlg),
         Expanded(
-          child: GridView.count(
-            crossAxisCount: favorites.length,
-            scrollDirection: Axis.vertical,
-            childAspectRatio: 160 / 285,
-            mainAxisSpacing: 15,
-            crossAxisSpacing: 5,
-            padding: EdgeInsets.zero,
-            children: favorites
-                .map(
-                  (favorite) => AppProductItem(
-                    onProductPressed: () {
-                      context.pushNamed(
-                        RouteNames.productDetails.name,
-                        extra: favorite,
-                      );
-                    },
-                    onFavoriteAdded: () {
-                      favoritesBloc.add(FavoriteButtonPressed(favorite));
-                    },
-                    onCartAdded: null,
-                    photoPath:
-                        favorite.photo != null && favorite.photo!.isNotEmpty
-                            ? '$kDefaultBaseUrl/${favorite.photo!.first.path}'
-                            : null,
-                    name: favorite.name!.changeLocale(locale),
-                    price: favorite.price!,
-                    originalPrice: favorite.discounts?.originalPrice,
-                    advantages: favorite.advantages,
-                    isFavorite:
-                        favoritesBloc.isProductFavorited(favorite.uuid!),
-                  ),
+          child: favorites.isNotEmpty
+              ? GridView.count(
+                  crossAxisCount: favorites.length,
+                  scrollDirection: Axis.vertical,
+                  childAspectRatio: 160 / 285,
+                  mainAxisSpacing: 15,
+                  crossAxisSpacing: 5,
+                  padding: EdgeInsets.zero,
+                  children: favorites
+                      .map(
+                        (favorite) => AppProductItem(
+                          onProductPressed: () {
+                            context.pushNamed(
+                              RouteNames.productDetails.name,
+                              extra: favorite,
+                            );
+                          },
+                          onFavoriteAdded: () {
+                            favoritesBloc.add(FavoriteButtonPressed(favorite));
+                          },
+                          onCartAdded: null,
+                          photoPath: favorite.photo != null &&
+                                  favorite.photo!.isNotEmpty
+                              ? '$kDefaultBaseUrl/${favorite.photo!.first.path}'
+                              : null,
+                          name: favorite.name!.changeLocale(locale),
+                          price: favorite.price!,
+                          originalPrice: favorite.discounts?.originalPrice,
+                          advantages: favorite.advantages,
+                          isFavorite:
+                              favoritesBloc.isProductFavorited(favorite.uuid!),
+                        ),
+                      )
+                      .toList(),
                 )
-                .toList(),
-          ),
+              : const SizedBox(),
         ),
       ],
     ).paddingOnly(left: 10);

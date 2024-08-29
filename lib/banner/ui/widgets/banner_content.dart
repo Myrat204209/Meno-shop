@@ -25,15 +25,16 @@ class BannerContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final defaultBannerStyle =
         const AppTextStyle.text().regular().withColor(AppColors.quaterniary);
-
-    return FittedBox(
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: size.width,
+      height: 104,
       child: AspectRatio(
-        aspectRatio: 45 / 13,
+        aspectRatio: 360 / 104,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(height: AppSpacing.xlg),
+            const SizedBox(height: AppSpacing.md),
             AutoSizeText(
               label,
               style: defaultBannerStyle,
@@ -52,7 +53,6 @@ class BannerContent extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: AppSpacing.md),
-            
             if (bannerType != BannerType.poster.name)
               BannerButton(
                 onPressed: onPressed, // Ensure the callback is used here

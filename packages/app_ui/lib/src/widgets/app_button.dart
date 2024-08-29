@@ -4,16 +4,20 @@ import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
-    super.key,
+    Key? key,
     required this.buttonText,
     required this.onTap,
     this.icon,
+    this.color,
+    this.textColor,
   }) : width = 130;
   const AppButton.expanded({
     super.key,
     required this.buttonText,
     required this.onTap,
     this.icon,
+    this.color,
+    this.textColor,
   }) : width = double.infinity;
   const AppButton.icon({
     this.buttonText,
@@ -22,21 +26,26 @@ class AppButton extends StatelessWidget {
       Icons.shopping_bag_outlined,
       color: AppColors.quaterniary,
     ),
+    this.color,
+    this.textColor,
   }) : width = 45;
   const AppButton.standard({
     required this.buttonText,
     required this.onTap,
     required this.icon,
+    this.color,
+    this.textColor,
   }) : width = 200;
   final String? buttonText;
   final VoidCallback? onTap;
   final Icon? icon;
   final double? width;
-
+  final Color? color;
+  final Color? textColor;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: AppColors.secondary,
+      color: color,
       disabledColor: AppColors.neutral.shade500,
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
       shape: ShapeBorderX.roundedRectangle(10),
@@ -50,8 +59,7 @@ class AppButton extends StatelessWidget {
           if (icon != null && buttonText != null) SizedBox(width: 10),
           Text(
             buttonText ?? '',
-            style:
-                AppTextStyle.text().medium().withColor(AppColors.quaterniary),
+            style: AppTextStyle.text().medium().withColor(textColor),
           ),
         ],
       ).centralize(),

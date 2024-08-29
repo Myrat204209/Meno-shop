@@ -11,6 +11,8 @@ class NextButton extends StatelessWidget {
     return AppButton(
       onTap: onPressed,
       buttonText: 'Get code',
+      color: AppColors.secondary,
+      textColor: AppColors.quaterniary,
     );
   }
 }

@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meno_shop/app/app.dart';
 
 class OrdersView extends StatelessWidget {
   const OrdersView({super.key});
@@ -8,7 +10,6 @@ class OrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      //TODO: Replace with actual orders count
       itemCount: 3,
       itemBuilder: (context, index) => index < 2
           ? ListTile(
@@ -24,19 +25,11 @@ class OrdersView extends StatelessWidget {
                     '3678 TMT',
                     style: const AppTextStyle.text().semiBold(),
                   ),
-                  IconButton.filled(
-                    splashRadius: 10,
-                    color: Colors.red,
-                    focusColor: Colors.blue,
-                    hoverColor: Colors.black,
-                    highlightColor: Colors.pink,
-                    splashColor: Colors.yellow,
-                    constraints:
-                        const BoxConstraints.tightFor(height: 30, width: 30),
-                    padding: const EdgeInsets.only(left: 2),
-                    onPressed: () {},
-                    icon: const Icon(Icons.arrow_forward_ios_sharp),
-                  ),
+                  InkWell(
+                    onTap: () =>
+                        context.pushNamed(RouteNames.orderInformation.name),
+                    child: Assets.images.rightIcon.svg().paddingOnly(left: 8),
+                  )
                 ],
               ),
             )

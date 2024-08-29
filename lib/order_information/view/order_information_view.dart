@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class OrderInformationView extends StatelessWidget {
   const OrderInformationView({super.key});
@@ -9,8 +10,8 @@ class OrderInformationView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.quaterniary,
       appBar: AppBar(
-        title: const Text(
-          'Order Information',
+        title: Text(
+          context.l10n.orderNotes,
         ),
         centerTitle: true,
       ),
@@ -37,21 +38,19 @@ class OrderInformationView extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Total price',
-                    ),
-                    Text(
-                      '3678 TMT',
-                    ),
+                    Text(context.l10n.total),
+                    const Text('3678 TMT'),
                   ],
                 ),
                 const Expanded(child: SizedBox()),
                 AppButton(
                   buttonText: 'Buy Again',
                   onTap: () {},
+                  textColor: AppColors.quaterniary,
+                  color: AppColors.secondary,
                 )
               ],
             )

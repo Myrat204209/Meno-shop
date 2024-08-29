@@ -11,6 +11,7 @@ enum RouteNames {
   auth('/auth'),
   authVerify('authVerify'),
   orders('orders'),
+  orderInformation('orders_information'),
   categoryProducts('category_products');
 
   const RouteNames(this.path);

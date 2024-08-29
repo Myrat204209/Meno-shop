@@ -1,7 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/language/language.dart';
 
@@ -24,12 +22,12 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () => showLanguageSelectBottomSheet(context: context),
           backgroundColor: AppColors.neutral.shade200,
         ),
-        AppActionsButton(
-          icon: Icons.notifications_none,
-          onPressed: () {
-            context.goNamed(RouteNames.notifications.name);
-          },
-        ),
+        // AppActionsButton(
+        //   icon: Icons.notifications_none,
+        //   onPressed: () {
+        //     context.goNamed(RouteNames.notifications.name);
+        //   },
+        // ),
       ],
     );
   }

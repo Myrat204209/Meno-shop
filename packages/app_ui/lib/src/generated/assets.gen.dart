@@ -50,8 +50,12 @@ class $AssetsImagesGen {
   AssetGenImage get otpLogo =>
       const AssetGenImage('assets/images/otp_logo.png');
 
+  /// File path: assets/images/right_icon.svg
+  SvgGenImage get rightIcon =>
+      const SvgGenImage('assets/images/right_icon.svg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [jeans, merchBanner, otpLogo];
+  List<dynamic> get values => [jeans, merchBanner, otpLogo, rightIcon];
 }
 
 class $AssetsLanguageGen {

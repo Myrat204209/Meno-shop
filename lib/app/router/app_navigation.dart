@@ -13,6 +13,7 @@ import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/notification/notification.dart';
+import 'package:meno_shop/order_information/order_information.dart';
 import 'package:meno_shop/orders/orders.dart';
 import 'package:meno_shop/product_details/product_details.dart';
 import 'package:meno_shop/profile/profile.dart';
@@ -164,10 +165,17 @@ class AppNavigation {
                   //   builder: (context, state) => const AddressPage(),
                   // ),
                   GoRoute(
-                    path: RouteNames.orders.path,
-                    name: RouteNames.orders.name,
-                    builder: (context, state) => const OrdersPage(),
-                  ),
+                      path: RouteNames.orders.path,
+                      name: RouteNames.orders.name,
+                      builder: (context, state) => const OrdersPage(),
+                      routes: <RouteBase>[
+                        GoRoute(
+                          path: RouteNames.orderInformation.path,
+                          name: RouteNames.orderInformation.name,
+                          builder: (context, state) =>
+                              OrderInformationPage(key: state.pageKey),
+                        ),
+                      ]),
                 ],
               ),
             ],
