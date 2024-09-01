@@ -11,6 +11,7 @@ class NotificationRepository {
   }) : _firebaseMessaging = firebaseMessaging {
     _initialize();
   }
+    
 
   void _initialize() {
     _firebaseMessaging.requestPermission();

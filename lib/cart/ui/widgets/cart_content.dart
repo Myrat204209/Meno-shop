@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
 
 import 'package:meno_shop/cart/cart.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/order_information/order_information.dart';
 
 class CartContent extends StatelessWidget {
@@ -30,7 +31,7 @@ class CartContent extends StatelessWidget {
                     return const SizedBox();
                   } else {
                     final cart = carts?[index];
-                    return const ProductListTile();
+                    return AppListTile(cart: cart!);
                   }
                 },
               ),
@@ -42,11 +43,11 @@ class CartContent extends StatelessWidget {
             ///Total price and cancel button
             CartBottomActionRow(
               onBottomRowTap: () => showCartSelectBottomSheet,
-              onButtonPressed: () {
-                context.pushNamed(RouteNames.addresses.name);
-              },
+              onButtonPressed: (carts == null || carts!.isEmpty)
+                  ? () {}
+                  : () => context.pushNamed(RouteNames.addresses.name),
               totalPrice: totalCost,
-              buttonText: 'Confirm Cart',
+              buttonText: context.l10n.cartConfirmation,
             ),
           ],
         );

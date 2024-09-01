@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
+
 import 'package:meno_shop/l10n/l10n.dart';
 
 class OrderInformationView extends StatelessWidget {
@@ -16,17 +19,11 @@ class OrderInformationView extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ProductListTile(),
-            const SizedBox(height: 10),
-            const ProductListTile(),
-            const SizedBox(height: 10),
-            const ProductListTile(),
-            const SizedBox(height: 10),
-            const ProductListTile(),
-            const SizedBox(height: 220),
+            const Spacer(),
             const Divider(
               color: AppColors.primary,
               thickness: 0,
@@ -61,10 +58,12 @@ class OrderInformationView extends StatelessWidget {
   }
 }
 
-class ProductListTile extends StatelessWidget {
-  const ProductListTile({
+class AppListTile extends StatelessWidget {
+  const AppListTile({
     super.key,
+    required this.cart,
   });
+  final CartItem cart;
 
   @override
   Widget build(BuildContext context) {
@@ -82,32 +81,29 @@ class ProductListTile extends StatelessWidget {
               .colorize(Colors.yellow)
               .clipper(10)
               .paddingOnly(bottom: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Friends Printed',
-                  style: const AppTextStyle.text().lg().semiBold(),
-                ),
-                Text(
-                  'Size: L - Color: Pink',
-                  style: const AppTextStyle.text()
-                      .xs()
-                      .regular()
-                      .withColor(AppColors.neutral.shade700),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  '140 TMT',
-                  style: const AppTextStyle.text().semiBold(),
-                ),
-              ],
-            ),
-          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                cart.productName,
+                style: const AppTextStyle.text().lg().semiBold(),
+              ),
+              // Text(
+              //   'Size: L - Color: Pink',
+              //   style: const AppTextStyle.text()
+              //       .xs()
+              //       .regular()
+              //       .withColor(AppColors.neutral.shade700),
+              // ),
+              const SizedBox(height: 10),
+              Text(
+                '${cart.price.toStringAsPrecision(2)} TMT',
+                style: const AppTextStyle.text().semiBold(),
+              ),
+            ],
+          ).paddingSymmetric(vertical: 4, horizontal: 10),
           const Expanded(child: SizedBox()),
-          const Text('8 pcs')
+          Text('${cart.quantity}')
         ],
       ),
     ).paddingSymmetric(horizontal: 10);

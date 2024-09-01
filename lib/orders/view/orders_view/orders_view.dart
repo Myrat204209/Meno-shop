@@ -3,6 +3,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class OrdersView extends StatelessWidget {
   const OrdersView({super.key});
@@ -46,7 +47,7 @@ class OrdersView extends StatelessWidget {
             dense: true,
             visualDensity: VisualDensity.compact,
             title: Text(
-              'Expected - W109JISFD1',
+              '${context.l10n.expected} - W109JISFD1',
               style: const AppTextStyle.text().medium().sm(),
             ),
           ),

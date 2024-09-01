@@ -40,6 +40,7 @@ Future<void> bootStrap(AppBuilder builder) async {
         provisional: false,
         sound: true,
       );
+      await firebaseMessaging.setAutoInitEnabled(true);
       // Lisitnening to the background messages
       // Future<void> firebaseMessagingBackgroundHandler(
       //   RemoteMessage message,
