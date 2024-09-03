@@ -1,5 +1,5 @@
 import 'package:data_provider/data_provider.dart'
-    show SubcategoryClient, GetQueryParameters, SubcategoryItem;
+    show GetSubcategoryQueryParameters, SubcategoryClient, SubcategoryItem;
 import 'package:equatable/equatable.dart';
 
 /// A base failure for the subcategory repository failures
@@ -25,7 +25,7 @@ class SubcategoryRepository {
   final SubcategoryClient _subcategoryClient;
 
   Future<List<SubcategoryItem>?> getSubcategories(
-      [GetQueryParameters? queryParameters]) async {
+      [GetSubcategoryQueryParameters? queryParameters]) async {
     try {
       return await _subcategoryClient.getSubcategories(queryParameters);
     } catch (error, stackTrace) {

@@ -56,7 +56,9 @@ class AuthClient {
     }
   }
 
-  Future<User> putMe({required UserRequestBody userBody}) async {
+  Future<User> putMe({
+    required UserRequestBody userBody,
+  }) async {
     final response = await _http.put<JsonType>(
       '/user/me',
       data: userBody.toJson(),

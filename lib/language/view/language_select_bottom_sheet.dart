@@ -21,51 +21,87 @@ class LanguageSelectBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-        vertical: AppSpacing.lg,
-      ).copyWith(
-        bottom: MediaQuery.of(context).viewInsets.bottom + AppSpacing.lg,
-      ),
-      child: ListView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          Text(
-            l10n.languageChangeTitle,
-            style: const AppTextStyle.text().headline6().semiBold(),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.lg),
-          ...AppLocalizations.supportedLocales.map(
-            (locale) {
-              return LanguageListTile(
-                languageName: locale.languageCode,
-                onChanged: (value) {
-                  context.read<LanguageBloc>().add(LanguageChanged(locale));
-                  Future.delayed(const Duration(milliseconds: 100));
-                  context.pop();
+    return AppBottomSheet(
+      bottomModalChildren: [
+        Text(
+          l10n.languageChangeTitle,
+          style: const AppTextStyle.text().headline6().semiBold(),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: AppSpacing.lg),
+        ...AppLocalizations.supportedLocales.map(
+          (locale) {
+            return LanguageListTile(
+              languageName: locale.languageCode,
+              onChanged: (value) {
+                context.read<LanguageBloc>().add(LanguageChanged(locale));
+                Future.delayed(const Duration(milliseconds: 100));
+                context.pop();
+              },
+              title: Text(
+                switch (locale.languageCode) {
+                  'tk' => 'Türkmen dili',
+                  'ru' => 'Русский язык',
+                  String() => '',
                 },
-                title: Text(
-                  switch (locale.languageCode) {
-                    'ru' => 'Русский язык',
-                    'tk' => 'Türkmen dili',
-                    'en' => 'English',
-                    String() => '',
-                  },
-                  style: const AppTextStyle.text()
-                      .regular()
-                      .sm()
-                      .withColor(Colors.black),
-                ),
-                value: locale.languageCode,
-                groupValue: context.read<LanguageBloc>().state.languageCode,
-              );
-            },
-          ),
-        ],
-      ),
+                style: const AppTextStyle.text()
+                    .regular()
+                    .sm()
+                    .withColor(Colors.black),
+              ),
+              value: locale.languageCode,
+              groupValue: context.read<LanguageBloc>().state.languageCode,
+            );
+          },
+        ),
+      ],
     );
   }
 }
+
+    // Padding(
+    //   padding: const EdgeInsets.symmetric(
+    //     horizontal: AppSpacing.lg,
+    //     vertical: AppSpacing.lg,
+    //   ).copyWith(
+    //     bottom: MediaQuery.of(context).viewInsets.bottom + AppSpacing.lg,
+    //   ),
+    //   child: ListView(
+    //     shrinkWrap: true,
+    //     physics: const NeverScrollableScrollPhysics(),
+    //     children: [
+    //       Text(
+    //         l10n.languageChangeTitle,
+    //         style: const AppTextStyle.text().headline6().semiBold(),
+    //         textAlign: TextAlign.center,
+    //       ),
+    //       const SizedBox(height: AppSpacing.lg),
+    //       ...AppLocalizations.supportedLocales.map(
+    //         (locale) {
+    //           return LanguageListTile(
+    //             languageName: locale.languageCode,
+    //             onChanged: (value) {
+    //               context.read<LanguageBloc>().add(LanguageChanged(locale));
+    //               Future.delayed(const Duration(milliseconds: 100));
+    //               context.pop();
+    //             },
+    //             title: Text(
+    //               switch (locale.languageCode) {
+    //                 'ru' => 'Русский язык',
+    //                 'tk' => 'Türkmen dili',
+    //                 'en' => 'English',
+    //                 String() => '',
+    //               },
+    //               style: const AppTextStyle.text()
+    //                   .regular()
+    //                   .sm()
+    //                   .withColor(Colors.black),
+    //             ),
+    //             value: locale.languageCode,
+    //             groupValue: context.read<LanguageBloc>().state.languageCode,
+    //           );
+    //         },
+    //       ),
+    //     ],
+    //   ),
+    // );

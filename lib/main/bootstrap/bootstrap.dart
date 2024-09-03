@@ -1,11 +1,14 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:meno_shop/firebase_notification_service/firebase_notification_service.dart';
 import 'package:meno_shop/firebase_options.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,7 +26,8 @@ Future<void> bootStrap(AppBuilder builder) async {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
       await Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform);
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
 
       /// Initialize date formatting
       await initializeDateFormatting();
@@ -31,26 +35,22 @@ Future<void> bootStrap(AppBuilder builder) async {
       StreamController<Exception> exceptionStream = StreamController();
 
       final firebaseMessaging = FirebaseMessaging.instance;
-      await firebaseMessaging.requestPermission(
-        alert: true,
-        announcement: false,
-        badge: true,
-        carPlay: false,
-        criticalAlert: false,
-        provisional: false,
-        sound: true,
+      final firebaseToken = await firebaseMessaging.getToken();
+      log('-------------------${firebaseToken!}');
+      const androidNotificationChannel = AndroidNotificationChannel(
+        'high_importance_channel', // id
+        'High Importance Notifications', // title
+        description:
+            'This channel is used for important notifications.', // description
+        importance: Importance.high,
       );
-      await firebaseMessaging.setAutoInitEnabled(true);
-      // Lisitnening to the background messages
-      // Future<void> firebaseMessagingBackgroundHandler(
-      //   RemoteMessage message,
-      // ) async {
-      //   await Firebase.initializeApp(
-      //       options: DefaultFirebaseOptions.currentPlatform);
-      //   log("Handling a background message: ${message.messageId}");
-      // }
+      final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-      // FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+      FirebaseNotificationService(
+        androidNotificationChannel: androidNotificationChannel,
+        firebaseMessaging: firebaseMessaging,
+        flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
+      ).initNotifications();
 
       final blocObserver = AppBlocObserver(
         exceptionStream: exceptionStream,

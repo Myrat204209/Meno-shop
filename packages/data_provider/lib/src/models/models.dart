@@ -7,7 +7,6 @@ export 'cart_item/cart_item.dart';
 export 'category_item/category_item.dart';
 export 'discount_item/discount_item.dart';
 export 'json_response/json_response.dart';
-export 'login_request_body/login_request_body.dart';
 export 'photo_item/photo_item.dart';
 export 'product_item/product_item.dart';
 export 'profile/profile.dart';

@@ -10,11 +10,10 @@ class Http extends DioForNative {
   final String _defaultBaseUrl;
 
   /// Construct a new Http
-  /// Add all interceptors
   Http({
-    String defaultBaseUrl = '',
-    TokenProvider? tokenProvider,
-    LanguageProvider? languageProvider,
+    required String defaultBaseUrl,
+    required TokenProvider? tokenProvider,
+    required LanguageProvider? languageProvider,
     bool enableLogger = true,
   })  : _defaultBaseUrl = defaultBaseUrl,
         super(
@@ -24,6 +23,7 @@ class Http extends DioForNative {
             receiveTimeout: const Duration(milliseconds: 10000),
           ),
         ) {
+    /// Add all interceptors
     interceptors.addAll([
       /// Token Interceptor
       if (tokenProvider != null)
@@ -45,6 +45,9 @@ class Http extends DioForNative {
         PrettyDioLogger(
           requestHeader: true,
           requestBody: true,
+          responseBody: true,
+          responseHeader: true,
+          enabled: true,
           compact: true,
         ),
     ]);

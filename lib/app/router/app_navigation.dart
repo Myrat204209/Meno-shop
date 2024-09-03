@@ -10,6 +10,7 @@ import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/auth/auth.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/categories/categories.dart';
+import 'package:meno_shop/checkout/ui/view/checkout_page.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/notification/notification.dart';
@@ -111,13 +112,13 @@ class AppNavigation {
                   GoRoute(
                     path: RouteNames.checkout.path,
                     name: RouteNames.checkout.name,
-                    builder: (context, state) => const AddressPage(),
+                    builder: (context, state) => const CheckoutPage(),
                     redirect: (context, state) {
                       final isAuthenticated =
                           BlocProvider.of<AuthBloc>(context, listen: false)
                               .state
                               .isAuthenticated;
-                      log('-------------------AuthenticationStatus: $isAuthenticated');
+                      log('-------------------AuthenticationStatus: $isAuthenticated--------------------------------');
                       if (!isAuthenticated) {
                         return context.namedLocation(RouteNames.auth.name);
                       } else {

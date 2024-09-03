@@ -55,6 +55,7 @@ dependencies:
   firebase_messaging: ^14.7.10
   flutter_shakemywidget: ^1.0.5+1
   connectivity_plus: ^6.0.5
+  flutter_local_notifications: ^17.2.2
 
 dev_dependencies:
   flutter_test:

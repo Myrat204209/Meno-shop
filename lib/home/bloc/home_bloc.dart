@@ -29,9 +29,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       emit(state.copyWith(status: HomeStatus.loading));
       final subcategories = await _subcategoryRepository.getSubcategories(
-        GetQueryParameters(
+        GetSubcategoryQueryParameters(
           populate: ['products'],
-          isActive: true,
           limit: 100,
           offset: 0,
         ),

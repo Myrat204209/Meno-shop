@@ -12,10 +12,11 @@ class CategoriesContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (categories.isEmpty) {
-      return SizedBox(
-          height: 20,
-          width: 20,
-          child: const CircularProgressIndicator.adaptive().centralize());
+      return const SizedBox(
+              height: 20,
+              width: 20,
+              child: CircularProgressIndicator.adaptive())
+          .centralize();
     }
 
     return ListView.builder(

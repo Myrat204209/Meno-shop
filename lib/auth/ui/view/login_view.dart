@@ -20,12 +20,14 @@ class LoginView extends StatelessWidget {
         listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) {
           if (state.status == FormzSubmissionStatus.success) {
-            log('----------Routing to OTP');
+            log('----------Routing to OTP----------');
             context
                 .read<AuthBloc>()
                 .add(AuthSendOtpRequested(phone: state.phone.value));
-            context.pushNamed(RouteNames.authVerify.name,
-                extra: state.phone.value);
+            context.pushNamed(
+              RouteNames.authVerify.name,
+              extra: state.phone.value,
+            );
           }
         },
         child: const LoginContent(),

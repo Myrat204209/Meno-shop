@@ -9,7 +9,8 @@
 .history
 .svn/
 migrate_working_dir/
-
+# Google services config file
+android/app/google-services.json
 # Environment variables
 .env
 env.g.dart
@@ -34,6 +35,7 @@ env.g.dart
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.packages
 .pub-cache/
 .pub/
 /build/

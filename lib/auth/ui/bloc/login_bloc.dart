@@ -57,21 +57,4 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       addError(error, stackTrace);
     }
   }
-
-  // FutureOr<void> _onLoginStarted(
-  //   LoginPhoneSubmitted event,
-  //   Emitter<LoginState> emit,
-  // ) async {
-  //   if (!state.valid) return;
-  //   emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-  //   try {
-  //     await _authRepository.login(LoginRequestBody(
-  //       phone: state.phone.value,
-  //     ));
-  //     emit(state.copyWith(status: FormzSubmissionStatus.success));
-  //   } catch (error, stackTrace) {
-  //     emit(state.copyWith(status: FormzSubmissionStatus.failure));
-  //     addError(error, stackTrace);
-  //   }
-  // }
 }

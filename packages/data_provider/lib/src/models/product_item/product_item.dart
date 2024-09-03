@@ -19,7 +19,6 @@ class ProductItem {
     this.advantages,
     this.categories,
     this.subcategories,
-    this.isFavorite,
   });
   @HiveField(0)
   final String? uuid;
@@ -29,19 +28,17 @@ class ProductItem {
   final double? price;
   @HiveField(3)
   final int? stock;
-  @HiveField(4, defaultValue: false)
-  final bool? isFavorite;
-  @HiveField(5)
+  @HiveField(4)
   final LanguageModel? description;
-  @HiveField(6)
+  @HiveField(5)
   final DiscountItem? discounts;
-  @HiveField(7)
+  @HiveField(6)
   final AdvantagesItem? advantages;
-  @HiveField(8)
+  @HiveField(7)
   final List<PhotoItem>? photo;
-  @HiveField(9, defaultValue: null)
+  @HiveField(8, defaultValue: null)
   final List<CategoryItem>? categories;
-  @HiveField(10, defaultValue: null)
+  @HiveField(9, defaultValue: null)
   final List<SubcategoryItem>? subcategories;
 
   factory ProductItem.fromJson(JsonType json) => _$ProductItemFromJson(json);
@@ -52,7 +49,6 @@ class ProductItem {
     LanguageModel? name,
     double? price,
     int? stock,
-    bool? isFavorite,
     LanguageModel? description,
     DiscountItem? discounts,
     AdvantagesItem? advantages,
@@ -65,7 +61,6 @@ class ProductItem {
       name: name ?? this.name,
       price: price ?? this.price,
       stock: stock ?? this.stock,
-      isFavorite: isFavorite ?? this.isFavorite,
       description: description ?? this.description,
       discounts: discounts ?? this.discounts,
       advantages: advantages ?? this.advantages,

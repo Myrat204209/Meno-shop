@@ -43,7 +43,7 @@ class ProductRepository {
 
   /// Remote method to get  products.
   Future<List<ProductItem>?> getProducts([
-    GetQueryParameters? queryParameters,
+    GetProductQueryParameters? queryParameters,
   ]) async {
     try {
       return await _productClient.getProducts(queryParameters);

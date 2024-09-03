@@ -11,13 +11,13 @@ class LoginPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 2 * AppSpacing.xlg),
+            const SizedBox(height: 2 * AppSpacing.xxxlg),
             Assets.auth.otpPage
                 .svg(width: 120, height: 120)
-                .paddingOnly(bottom: 50),
+                .paddingOnly(bottom: 2 * AppSpacing.xxlg),
             const LoginView(),
           ],
-        ).paddingSymmetric(horizontal: 5),
+        ),
       ),
     );
   }

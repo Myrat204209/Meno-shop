@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/cart/cart.dart';
+
 Future<void> showCartSelectBottomSheet({
   required BuildContext context,
 }) async =>
@@ -18,68 +19,58 @@ class CartBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-        vertical: AppSpacing.lg,
-      ).copyWith(
-        bottom: MediaQuery.of(context).viewInsets.bottom + AppSpacing.lg,
-      ),
-      child: ListView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          Text(
-            'Price',
-            style: const AppTextStyle.text().headline6().semiBold(),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.lg),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Total cost of good'),
-                  Text('1234 TMT'),
-                ],
+    return AppBottomSheet(
+      bottomModalChildren: [
+        Text(
+          'Price',
+          style: const AppTextStyle.text().headline6().semiBold(),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: AppSpacing.lg),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Total cost of good'),
+                Text('1234 TMT'),
+              ],
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Delivery service'),
+                Text('123 TMT'),
+              ],
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Discount '),
+                Text('12 TMT'),
+              ],
+            ),
+            const Divider(),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Total price'),
+                Text('12345 TMT'),
+              ],
+            ),
+            SizedBox(
+              child: CartBottomActionRow(
+                onBottomRowTap: () => context.pop(),
+                onButtonPressed: () =>
+                    context.pushNamed(RouteNames.addresses.name),
+                totalPrice: 1234,
+                buttonText: 'Confirm cart',
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Delivery service'),
-                  Text('123 TMT'),
-                ],
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Discount '),
-                  Text('12 TMT'),
-                ],
-              ),
-              const Divider(),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Total price'),
-                  Text('12345 TMT'),
-                ],
-              ),
-              SizedBox(
-                child: CartBottomActionRow(
-                  onBottomRowTap: () => context.pop(),
-                  onButtonPressed: () => context.pushNamed(RouteNames.addresses.name),
-                  totalPrice: 1234,
-
-                  buttonText: 'Confirm cart',
-                ),
-              )
-            ],
-          ),
-        ],
-      ),
+            )
+          ],
+        ),
+      ],
     );
   }
 }

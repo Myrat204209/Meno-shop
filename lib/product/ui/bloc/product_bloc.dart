@@ -56,7 +56,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       emit(state.copyWith(
         status: ProductsStatus.populated,
         products: {...state.products, ...content}.toList(),
-        page: state.page + 1,
         hasMoreContent: content.isNotEmpty,
       ));
     } catch (error, stackTrace) {

@@ -7,7 +7,7 @@ class SubcategoryClient {
 
   final Http _httpClient;
   Future<List<SubcategoryItem>?> getSubcategories([
-    GetQueryParameters? queryParameters,
+    GetSubcategoryQueryParameters? queryParameters,
   ]) async {
     final response = await _httpClient.get<List<dynamic>>(
       '/subcategories',

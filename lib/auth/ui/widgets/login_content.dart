@@ -64,7 +64,6 @@ class LoginContent extends HookWidget {
                 children: [
                   ShakeMe(
                     key: shakeKey,
-                    // configure the animation parameters
                     shakeCount: 3,
                     shakeOffset: 10,
                     shakeDuration: const Duration(milliseconds: 500),
@@ -78,41 +77,29 @@ class LoginContent extends HookWidget {
                       activeColor: AppColors.secondary,
                     ),
                   ),
-                  SizedBox(
-                    width: 310,
-                    child: InkWell(
-                      onTap: () {
-                        showModalBottomSheet(
-                          shape: ShapeBorderX.roundedVertical(10),
-                          backgroundColor: Colors.white,
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (context) {
-                            return const SizedBox();
-                            // return const BottomShet();
-                          },
-                        );
-                      },
-                      child: const AuthPrivacyPolicyText(),
-                    ),
+                  AuthPrivacyPolicyView(
+                    onTap: () => showPrivacyPolicyBottomSheet(context: context),
                   ),
                 ],
               ),
-              const Expanded(child: SizedBox()),
+              const Spacer(),
 
-              /// Next button
-              NextButton(
-                onPressed: () {
+              AppButton(
+                onTap: () {
                   if (formKey.currentState?.validate() ?? false) {
                     if (isPrivate) {
-                      log('----------------Validating to OTP');
+                      log('----------------Validating to OTP----------------');
                       context.read<LoginBloc>().add(LoginPhoneSubmitted());
                     } else {
                       shakeKey.currentState?.shake();
                     }
                   }
                 },
-              ),
+                buttonText: 'Get code',
+                color: AppColors.secondary,
+                textColor: AppColors.quaterniary,
+              ).paddingSymmetric(horizontal: 5),
+              //
             ],
           );
         },

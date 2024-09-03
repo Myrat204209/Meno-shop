@@ -5,9 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
 class AppSearchBar extends HookWidget {
-  const AppSearchBar({
-    super.key,
-  });
+  const AppSearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -77,4 +77,5 @@ class DefaultFirebaseOptions {
     authDomain: 'almaly-backend.firebaseapp.com',
     storageBucket: 'almaly-backend.appspot.com',
   );
+
 }

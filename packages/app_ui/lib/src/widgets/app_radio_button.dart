@@ -1,41 +1,34 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class AppRadioButton extends StatefulWidget {
+class AppRadioButton extends HookWidget {
   const AppRadioButton({
     super.key,
     required this.text,
     required this.values,
   });
+
   final String text;
   final List<String> values;
 
   @override
-  State<AppRadioButton> createState() => _AppRadioButtonState();
-}
-
-class _AppRadioButtonState extends State<AppRadioButton> {
-  int _tapValue = 0;
-  void stateChange(value) {
-    setState(() => _tapValue = value);
-  }
-
-  @override
   Widget build(BuildContext context) {
+    // Use useState to manage the selected radio button value
+    final tapValue = useState(0);
+
     return Column(
       children: [
         AppWrapper(
           borderColor: AppColors.neutral.shade100,
           child: Text(
-            widget.text,
+            text,
           ).centralize(),
         ),
         SizedBox(
-          height: widget.values.length * 100,
+          height: values.length * 100,
           child: ListView.builder(
-            itemCount: widget.values.length,
+            itemCount: values.length,
             itemBuilder: (context, index) {
               return Material(
                 borderRadius: BorderRadius.circular(10),
@@ -44,17 +37,20 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                   radius: 100,
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
-                    //TODO: onTap function must have Logic,
-                    stateChange(index);
+                    // Update the tapValue using useState
+                    tapValue.value = index;
                   },
                   child: ListTile(
                     leading: Radio.adaptive(
                       value: index,
-                      groupValue: _tapValue,
-                      onChanged: stateChange,
+                      groupValue: tapValue.value,
+                      onChanged: (value) {
+                        // Update the tapValue when the radio button is selected
+                        tapValue.value = value as int;
+                      },
                     ),
                     title: Text(
-                      widget.values[index],
+                      values[index],
                     ),
                   ),
                 ),
