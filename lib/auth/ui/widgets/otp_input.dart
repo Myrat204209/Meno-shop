@@ -6,19 +6,18 @@ class OtpInput extends StatelessWidget {
   const OtpInput({
     super.key,
     this.onSubmitPressed,
+    required this.controller,
   });
   final Function(String)? onSubmitPressed;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
-    return
-
-        /// Otp code input
-        Pinput(
+    return Pinput(
       length: 5,
+      controller: controller,
       autofocus: true,
       hapticFeedbackType: HapticFeedbackType.vibrate,
       onSubmitted: onSubmitPressed,
-      
     );
   }
 }

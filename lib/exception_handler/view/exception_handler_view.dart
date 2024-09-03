@@ -31,14 +31,17 @@ class ExceptionHandlerView extends StatelessWidget {
             content = 'Connection timeout';
           }
 
+          // Capture the context
+          final currentContext = context;
+
           showDialog(
-            context: context,
+            context: currentContext,
             builder: (_) => ExceptionDialog(
               title: title,
               content: content,
             ),
           ).then(
-            (_) => context
+            (_) => currentContext
                 .read<ExceptionHandlerBloc>()
                 .add(ExceptionRemoved(state.error!)),
           );

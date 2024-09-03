@@ -19,7 +19,7 @@ class LoginContent extends HookWidget {
     final shakeKey = useMemoized(() => GlobalKey<ShakeWidgetState>());
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.57,
+      height: MediaQuery.of(context).size.height * 0.58,
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
           final readOnly = state.status.isInProgress;
@@ -77,9 +77,7 @@ class LoginContent extends HookWidget {
                       activeColor: AppColors.secondary,
                     ),
                   ),
-                  AuthPrivacyPolicyView(
-                    onTap: () => showPrivacyPolicyBottomSheet(context: context),
-                  ),
+                  const AuthPrivacyPolicyView(),
                 ],
               ),
               const Spacer(),

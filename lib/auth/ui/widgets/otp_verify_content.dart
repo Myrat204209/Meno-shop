@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:async';
 
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +10,9 @@ import 'package:meno_shop/l10n/l10n.dart';
 
 import 'package:meno_shop/auth/auth.dart';
 
+final verifyDescriptionStyle =
+    const AppTextStyle.text().xs().regular().withColor(const Color(0xFF8F8F8F));
+
 class OtpVerifyContent extends HookWidget {
   const OtpVerifyContent({
     super.key,
@@ -20,9 +22,10 @@ class OtpVerifyContent extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
+    final otpController = useTextEditingController();
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.57,
+      height: MediaQuery.of(context).size.height * 0.58,
       child: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           return Column(
@@ -43,40 +46,36 @@ class OtpVerifyContent extends HookWidget {
                       context.l10n.otpSentInformation(phone),
                       softWrap: true,
                       textAlign: TextAlign.center,
-                      style: const AppTextStyle.text()
-                          .xs()
-                          .regular()
-                          .withColor(const Color(0xFF8F8F8F)),
+                      style: verifyDescriptionStyle,
                     ).centralize(),
                     const SizedBox(height: AppSpacing.xxlg),
                     OtpInput(
-                      onSubmitPressed: (value) {
-                        context.read<AuthBloc>().add(
-                              AuthCheckOtpRequested(
-                                phone: phone,
-                                otp: value,
-                              ),
-                            );
-                      },
+                      controller: otpController,
+                      // onSubmitPressed: (value) {
+                      //   context.read<AuthBloc>().add(
+                      //         AuthCheckOtpRequested(
+                      //           phone: phone,
+                      //           otp: value,
+                      //         ),
+                      // );
+                      // },
                     ),
                     const SizedBox(height: AppSpacing.md),
                   ],
                 ),
               ),
-              Text(
-                Timer(const Duration(seconds: 3), () {}).tick.toString(),
-              ),
-
-              TextButton(
-                onPressed: () => context.read<AuthBloc>().add(
+              const OtpTimer(),
+              OtpSendAgain(onSendAgainPressed: () {
+                context.read<AuthBloc>().add(
                       AuthSendOtpRequested(phone: phone),
-                    ),
-                child: Text(context.l10n.otpEnter + context.l10n.sendAgain),
-              ).paddingSymmetric(vertical: 10),
-
-              /// Next button
+                    );
+              }),
               AppButton(
-                onTap: () => context.replaceNamed(RouteNames.home.name),
+                onTap: () {
+                  if (formKey.currentState?.validate() ?? false) {
+                    context.replaceNamed(RouteNames.home.name);
+                  }
+                },
                 buttonText: context.l10n.ok,
                 color: AppColors.secondary,
                 textColor: AppColors.quaterniary,
