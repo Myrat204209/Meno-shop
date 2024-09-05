@@ -21,10 +21,10 @@ class CategoriesFilterBottomSheet extends StatelessWidget {
     final l10n = context.l10n;
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-        vertical: AppSpacing.lg,
+        horizontal: AppSpacing.md,
+        vertical: AppSpacing.md,
       ).copyWith(
-        bottom: MediaQuery.of(context).viewInsets.bottom + AppSpacing.xxlg,
+        bottom: MediaQuery.of(context).viewInsets.bottom + AppSpacing.xlg,
       ),
       child: ListView(
         shrinkWrap: true,

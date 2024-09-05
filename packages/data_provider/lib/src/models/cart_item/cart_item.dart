@@ -1,54 +1,38 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
 part 'cart_item.g.dart';
 
 /// CartItem model to store items in the cart
-@HiveType(typeId: 2)
-class CartItem extends Equatable with HiveObjectMixin {
+@HiveType(typeId: 1)
+class CartItem extends HiveObject with EquatableMixin {
   @HiveField(0)
-  final String uuid;
+  final String productUuid;
 
   @HiveField(1)
-  final String productName;
-
+  final int productQuantity;
   @HiveField(2)
-  final int quantity;
-
-  @HiveField(3)
-  final double price;
-
-  @HiveField(4)
-  final double totalPrice;
+  final String filter; 
 
   CartItem({
-    required this.uuid,
-    required this.productName,
-    required this.quantity,
-    required this.price,
-  }) : totalPrice = quantity * price;
+    required this.productUuid,
+    required this.productQuantity,
+    required this.filter,
+  });
 
   @override
-  List<Object?> get props => [
-        uuid,
-        productName,
-        quantity,
-        price,
-        totalPrice,
-      ];
+  List<Object> get props => [productUuid, productQuantity, filter,];
 
   CartItem copyWith({
-    String? uuid,
-    String? productName,
-    int? quantity,
-    double? price,
-    double? totalPrice,
+    String? productUuid,
+    int? productQuantity,
+    String? filter,
   }) {
     return CartItem(
-      uuid: uuid ?? this.uuid,
-      productName: productName ?? this.productName,
-      quantity: quantity ?? this.quantity,
-      price: price ?? this.price,
+      productUuid: productUuid ?? this.productUuid,
+      productQuantity: productQuantity ?? this.productQuantity,
+      filter: filter ?? this.filter,
     );
   }
 }

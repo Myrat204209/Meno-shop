@@ -1,1 +1,1 @@
-export 'bloc/product_bloc.dart';
+export 'bloc/products_bloc.dart';

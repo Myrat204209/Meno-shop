@@ -23,7 +23,7 @@ class OtpSendAgain extends StatelessWidget {
       softWrap: true,
       maxLines: 2,
       text: TextSpan(
-        text: 'Code gelmedi',
+        text: 'Code gelmedi.  ',
         style: sendAgainDefaultStyle,
         children: <TextSpan>[
           TextSpan(

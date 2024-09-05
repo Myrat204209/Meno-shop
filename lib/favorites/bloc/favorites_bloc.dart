@@ -16,8 +16,6 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     on<FavoritesInitRequested>(_onInitRequested);
     on<FavoritesRequested>(_onRequested);
     on<FavoritesRefreshRequested>(_onRefreshRequested);
-    on<AddFavoriteRequested>(_onAdd);
-    on<RemoveFavoriteRequested>(_onRemove);
     on<FavoriteButtonPressed>(_onFavoriteButtonPressed);
   }
 
@@ -38,11 +36,13 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
       final response = await _productRepository.getFavorites();
 
-      emit(state.copyWith(
-        status: FavoritesStatus.success,
-        products: {...state.products, ...response}.toList(),
-        hasMoreContent: response.isNotEmpty,
-      ));
+      if (response!.isNotEmpty) {
+        emit(state.copyWith(
+          status: FavoritesStatus.success,
+          products: {...state.products, ...response}.toList(),
+          hasMoreContent: response.isNotEmpty,
+        ));
+      }
     } catch (error, stackTrace) {
       emit(state.copyWith(status: FavoritesStatus.failure));
       addError(error, stackTrace);
@@ -68,48 +68,6 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     add(FavoritesRequested());
   }
 
-  FutureOr<void> _onAdd(
-    AddFavoriteRequested event,
-    Emitter<FavoritesState> emit,
-  ) async {
-    try {
-      emit(state.copyWith(status: FavoritesStatus.updating));
-
-      await _productRepository.addFavorite(event.product);
-
-      emit(state.copyWith(
-        status: FavoritesStatus.updatingSuccess,
-        // products: {...state.products, ...content}.toList(),
-      ));
-
-      add(FavoritesRefreshRequested());
-    } catch (error, stackTrace) {
-      emit(state.copyWith(status: FavoritesStatus.updatingFailure));
-      addError(error, stackTrace);
-    }
-  }
-
-  FutureOr<void> _onRemove(
-    RemoveFavoriteRequested event,
-    Emitter<FavoritesState> emit,
-  ) async {
-    try {
-      emit(state.copyWith(status: FavoritesStatus.updating));
-
-      await _productRepository.addFavorite(event.product);
-
-      emit(state.copyWith(
-        status: FavoritesStatus.updatingSuccess,
-        // products: {...state.products, ...content}.toList(),
-      ));
-
-      add(FavoritesRefreshRequested());
-    } catch (error, stackTrace) {
-      emit(state.copyWith(status: FavoritesStatus.updatingFailure));
-      addError(error, stackTrace);
-    }
-  }
-
   FutureOr<void> _onFavoriteButtonPressed(
     FavoriteButtonPressed event,
     Emitter<FavoritesState> emit,
@@ -117,17 +75,9 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     try {
       emit(state.copyWith(status: FavoritesStatus.updating));
 
-      final bool isFavorite =
-          await _productRepository.isFavorite(event.product);
-      if (isFavorite) {
-        await _productRepository.removeFavorite(event.product);
-      } else {
-        await _productRepository.addFavorite(event.product);
-      }
-
+      await _productRepository.favoritePressed(event.productUuid);
       emit(state.copyWith(
         status: FavoritesStatus.updatingSuccess,
-        // products: {...state.products, ...content}.toList(),
       ));
 
       add(FavoritesRefreshRequested());
@@ -137,7 +87,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     }
   }
 
-  bool isProductFavorited(String productId) {
-    return state.products.any((item) => item.uuid == productId);
+  bool isFavorite(String uuid) {
+    return _productRepository.isFavorite(uuid);
   }
 }

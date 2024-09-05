@@ -40,8 +40,8 @@ class HomePageBannerCard extends StatelessWidget {
                     return BannerCard(
                       bannerType: banner.bannerType ?? BannerType.local.name,
                       imageUrl: banner.photo != null
-                          ? '$kDefaultBaseUrl/${banner.photo!.path}'
-                          : '$kDefaultBaseUrl/null',
+                          ? banner.photo!.path!.fullPath()
+                          : 'null',
                       label: banner.label!.changeLocale(locale),
                       title: banner.title!.changeLocale(locale),
                       subtitle: banner.subtitle!.changeLocale(locale),

@@ -171,10 +171,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get save => 'Сохранить';
 
   @override
-  String get favorites => 'Избранное';
+  String get profile => 'Мой профиль';
 
   @override
-  String get profile => 'Мой профиль';
+  String get favorites => 'Избранное';
 
   @override
   String get account => 'Аккаунт';

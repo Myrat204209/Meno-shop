@@ -46,13 +46,14 @@ class CategoryProductsView extends StatelessWidget {
                 isFavorite: true,
                 advantages: null,
                 onProductPressed: () {
-                  context.pushNamed(RouteNames.productDetails.name);
+                  context.pushNamed(RouteNames.productDetails.name,
+                      pathParameters: {'uuid': 'productDetailsasdmlks'});
                 },
               ),
             ],
           ),
         ),
       ],
-    );
+    ).paddingSymmetric(horizontal: 10);
   }
 }

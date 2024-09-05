@@ -39,11 +39,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     try {
       emit(state.copyWith(status: CartStatus.loading));
       final cartResponse = await _cartRepository.getCartItems();
-      final totalCost = totalCostSum(cartResponse);
+      // final totalCost = totalCostSum(cartResponse);
       emit(state.copyWith(
         status: CartStatus.loadingSuccess,
         cart: cartResponse,
-        totalCost: totalCost,
+        // totalCost: totalCost,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.loadingFailure));
@@ -61,12 +61,13 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       await _cartRepository.addCartItem(event.cartItem);
       final cartResponse = await _cartRepository.getCartItems();
-      final totalCost = totalCostSum(cartResponse);
+      // final totalCost = totalCostSum(cartResponse);
       emit(
         state.copyWith(
-            status: CartStatus.loadingSuccess,
-            cart: cartResponse,
-            totalCost: totalCost),
+          status: CartStatus.loadingSuccess,
+          cart: cartResponse,
+          // totalCost: totalCost,
+        ),
       );
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.updatingFailure));
@@ -84,11 +85,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       await _cartRepository.removeCartItem(event.cartItem);
       final cartResponse = await _cartRepository.getCartItems();
-      final totalCost = totalCostSum(cartResponse);
+      // final totalCost = totalCostSum(cartResponse);
       emit(state.copyWith(
         status: CartStatus.loadingSuccess,
         cart: cartResponse,
-        totalCost: totalCost,
+        // totalCost: totalCost,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.updatingFailure));
@@ -116,19 +117,19 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
   }
 
-  double totalCostSum(List<CartItem> carts) {
-    return carts.fold(0.0, (sum, item) => sum + item.totalPrice);
-  }
+  // double totalCostSum(List<CartItem> carts) {
+  //   return carts.fold(0.0, (sum, item) => sum + item.totalPrice);
+  // }
 
-  bool isCartAdded(String productId) {
-    return state.cart.any((item) => item!.uuid == productId);
-  }
+  // bool isCartAdded(String productId) {
+  //   return state.cart.any((item) => item!.uuid == productId);
+  // }
 
-  int showQuantity(String productId) {
-    return state.cart
-        .firstWhere(
-          (element) => element!.uuid == productId,
-        )!
-        .quantity;
-  }
+  // int showQuantity(String productId) {
+  //   return state.cart
+  //       .firstWhere(
+  //         (element) => element!.uuid == productId,
+  //       )!
+  //       .quantity;
+  // }
 }

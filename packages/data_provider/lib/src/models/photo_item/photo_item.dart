@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:data_provider/data_provider.dart' show JsonType;
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'photo_item.g.dart';
@@ -7,13 +8,9 @@ part 'photo_item.g.dart';
 @JsonSerializable(explicitToJson: true)
 class PhotoItem {
   final String? uuid;
-  final String? filename;
-  final String? mimetype;
   final String? path;
   PhotoItem(
     this.uuid,
-    this.filename,
-    this.mimetype,
     this.path,
   );
 

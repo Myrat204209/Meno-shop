@@ -40,7 +40,7 @@ class AuthClient {
   Future<void> checkOtp({
     required AuthRequestBody checkOtpbody,
   }) async {
-    await _http.post<JsonType>(
+    await _http.get<JsonType>(
       'auth/checkOtp',
       queryParameters: checkOtpbody.toJson(),
     );

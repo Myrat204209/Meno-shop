@@ -64,9 +64,8 @@ void main() {
     final cartRepository = CartRepository(cartItemBox: userCartBox);
 
     /// Favorites
-    Hive.registerAdapter(ProductItemAdapter());
     final userFavoritesBox =
-        await Hive.openBox<ProductItem>(HiveBoxKeys.userFavorites);
+        await Hive.openBox<String>(HiveBoxKeys.userFavorites);
 
     /// Products
     final productClient = ProductClient(httpClient: httpClient);

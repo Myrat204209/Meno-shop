@@ -33,6 +33,7 @@ class AppTheme {
       // progressIndicatorTheme: _progressIndicatorTheme,
       tabBarTheme: _tabBarTheme,
       bottomNavigationBarTheme: _bottomAppBarTheme,
+      searchBarTheme: _searchBarTheme,
       // chipTheme: _chipTheme,
     );
   }
@@ -93,7 +94,7 @@ class AppTheme {
   AppBarTheme get _appBarTheme {
     return AppBarTheme(
       iconTheme: _iconTheme.copyWith(color: AppColors.neutral.shade500),
-      titleTextStyle: const AppTextStyle.text().xl().bold().copyWith(
+      titleTextStyle: const AppTextStyle.text().lg().semiBold().copyWith(
             letterSpacing: 1,
             fontFamily: 'Poppins',
             color: AppColors.primary,
@@ -187,15 +188,15 @@ class AppTheme {
     return InputDecorationTheme(
       prefixIconColor: AppColors.neutral.shade700,
       labelStyle:
-          const AppTextStyle.text().md().withColor(AppColors.neutral.shade500),
+          const AppTextStyle.text().sm().withColor(AppColors.neutral.shade500),
       hintStyle: AppTextStyle.text()
           .sm()
           .regular()
           .withColor(AppColors.neutral.shade500),
       prefixStyle:
-          AppTextStyle.text().md().regular().withColor(AppColors.primary),
+          AppTextStyle.text().sm().regular().withColor(AppColors.primary),
 
-      contentPadding: EdgeInsets.only(left: 15),
+      contentPadding: EdgeInsets.only(left: 15, right: 10),
 
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
@@ -222,6 +223,27 @@ class AppTheme {
     );
   }
 
+  SearchBarThemeData get _searchBarTheme {
+    return SearchBarThemeData(
+      backgroundColor: WidgetStatePropertyAll(AppColors.neutral.shade200),
+      textStyle: WidgetStatePropertyAll(
+        const AppTextStyle.text().bodyText2().copyWith(
+              color: AppColors.primary,
+            ),
+      ),
+      shape: WidgetStatePropertyAll(
+        RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSpacing.sm)),
+      ),
+      elevation: WidgetStatePropertyAll<double>(0),
+      constraints: BoxConstraints.tightFor(height: 45),
+      hintStyle: WidgetStatePropertyAll(
+        const AppTextStyle.text().sm().copyWith(
+              color: AppColors.neutral.shade700,
+            ),
+      ),
+    );
+  }
   // ButtonThemeData get _buttonTheme {
   //   return ButtonThemeData(
   //     textTheme: ButtonTextTheme.primary,

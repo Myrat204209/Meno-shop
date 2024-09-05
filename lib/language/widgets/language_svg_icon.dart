@@ -5,7 +5,7 @@ SvgPicture svgPictureFromAsset(String assetName) {
   return switch (assetName) {
     'ru' => Assets.language.russia.svg(width: 35, height: 27),
     'tk' => Assets.language.turkmen.svg(width: 35, height: 27),
-    'en' => Assets.language.english.svg(width: 35, height: 27),
+    // 'en' => Assets.language.english.svg(width: 35, height: 27),
     String() => Assets.language.english.svg(width: 35, height: 27),
   };
 }

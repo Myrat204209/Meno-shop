@@ -49,7 +49,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final appCubit = AppCubit();
     final authBloc = AuthBloc(authRepository: _authRepository);
     final languageBloc = LanguageBloc();
     final homeBloc = HomeBloc(
@@ -63,6 +62,7 @@ class App extends StatelessWidget {
     final addressBloc = AddressBloc(
       addressRepository: _addressRepository,
     )..add(AddressesRequested());
+    final productBloc = ProductsBloc(productRepository: _productRepository);
     final cartBloc = CartBloc(cartRepository: _cartRepository)
       ..add(CartInitRequested());
     final favoritesBloc = FavoritesBloc(productRepository: _productRepository)
@@ -82,7 +82,7 @@ class App extends StatelessWidget {
           BlocProvider.value(value: homeBloc),
           BlocProvider.value(value: languageBloc),
           BlocProvider.value(value: categoriesBloc),
-          // BlocProvider.value(value: subcategoriesBloc),
+          BlocProvider.value(value: productBloc),
           BlocProvider.value(value: addressBloc),
           BlocProvider.value(value: authBloc),
           BlocProvider.value(value: favoritesBloc),

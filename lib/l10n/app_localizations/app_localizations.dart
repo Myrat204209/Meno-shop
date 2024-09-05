@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'app_localizations_en.dart';
 import 'app_localizations_ru.dart';
 import 'app_localizations_tk.dart';
 
@@ -92,489 +91,488 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('en'),
     Locale('ru'),
     Locale('tk')
   ];
 
   /// No description provided for @networkError.
   ///
-  /// In en, this message translates to:
-  /// **'No internet connection.'**
+  /// In tk, this message translates to:
+  /// **'Internet baglanyşygy ýok.'**
   String get networkError;
 
   /// No description provided for @networkErrorDescription.
   ///
-  /// In en, this message translates to:
-  /// **'Please try again later.'**
+  /// In tk, this message translates to:
+  /// **'Biraz wagtdan täzeden synanyşyň.'**
   String get networkErrorDescription;
 
   /// No description provided for @networkErrorButton.
   ///
-  /// In en, this message translates to:
-  /// **'Try Again'**
+  /// In tk, this message translates to:
+  /// **'Täzeden synanyş'**
   String get networkErrorButton;
 
   /// No description provided for @notification.
   ///
-  /// In en, this message translates to:
-  /// **'Notification'**
+  /// In tk, this message translates to:
+  /// **'Bildiriş'**
   String get notification;
 
   /// No description provided for @unreadMessage.
   ///
-  /// In en, this message translates to:
-  /// **'New'**
+  /// In tk, this message translates to:
+  /// **'Täze'**
   String get unreadMessage;
 
   /// No description provided for @technicalSupportTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Technical Support'**
+  /// In tk, this message translates to:
+  /// **'Tehniki goldaw'**
   String get technicalSupportTitle;
 
   /// No description provided for @technicalSupportDescription.
   ///
-  /// In en, this message translates to:
-  /// **'Contact us for assistance'**
+  /// In tk, this message translates to:
+  /// **'Kömek üçin bize ýüz tutuň'**
   String get technicalSupportDescription;
 
   /// No description provided for @language.
   ///
-  /// In en, this message translates to:
-  /// **'Language'**
+  /// In tk, this message translates to:
+  /// **'Dil'**
   String get language;
 
   /// No description provided for @languageChangeTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Change Language'**
+  /// In tk, this message translates to:
+  /// **'Dili üýtgetmek'**
   String get languageChangeTitle;
 
   /// No description provided for @languageSelectDescription.
   ///
-  /// In en, this message translates to:
-  /// **'Choose the application language'**
+  /// In tk, this message translates to:
+  /// **'Programmanyň dilini saýlaň'**
   String get languageSelectDescription;
 
   /// No description provided for @searching.
   ///
-  /// In en, this message translates to:
-  /// **'Search from shop...'**
+  /// In tk, this message translates to:
+  /// **'Dükandan gözläň...'**
   String get searching;
 
   /// No description provided for @startShopping.
   ///
-  /// In en, this message translates to:
-  /// **'Shop now'**
+  /// In tk, this message translates to:
+  /// **'Häzir satyn alyň'**
   String get startShopping;
 
   /// No description provided for @loadMore.
   ///
-  /// In en, this message translates to:
-  /// **'Load more'**
+  /// In tk, this message translates to:
+  /// **'Has köp görkez'**
   String get loadMore;
 
   /// No description provided for @merchLabel.
   ///
-  /// In en, this message translates to:
-  /// **'For Traders'**
+  /// In tk, this message translates to:
+  /// **'Täjirler üçin'**
   String get merchLabel;
 
   /// No description provided for @merchTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Special Offers'**
+  /// In tk, this message translates to:
+  /// **'Ýörite teklipler'**
   String get merchTitle;
 
   /// No description provided for @merchSubtitle.
   ///
-  /// In en, this message translates to:
-  /// **'All products, wholesale price'**
+  /// In tk, this message translates to:
+  /// **'Ähli önümler, lomaý baha'**
   String get merchSubtitle;
 
   /// No description provided for @viewAll.
   ///
-  /// In en, this message translates to:
-  /// **'View all'**
+  /// In tk, this message translates to:
+  /// **'Ählisini görmek'**
   String get viewAll;
 
   /// No description provided for @productDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Product Details'**
+  /// In tk, this message translates to:
+  /// **'Önümiň jikme-jikleri'**
   String get productDetails;
 
   /// No description provided for @chooseColor.
   ///
-  /// In en, this message translates to:
-  /// **'Choose color'**
+  /// In tk, this message translates to:
+  /// **'Reňk saýlaň'**
   String get chooseColor;
 
   /// No description provided for @selectSize.
   ///
-  /// In en, this message translates to:
-  /// **'Select size'**
+  /// In tk, this message translates to:
+  /// **'Ölçegi saýlaň'**
   String get selectSize;
 
   /// No description provided for @addToCart.
   ///
-  /// In en, this message translates to:
-  /// **'Add to cart'**
+  /// In tk, this message translates to:
+  /// **'Sebede goş'**
   String get addToCart;
 
   /// No description provided for @similarProducts.
   ///
-  /// In en, this message translates to:
-  /// **'Similar products'**
+  /// In tk, this message translates to:
+  /// **'Meňzeş önümler'**
   String get similarProducts;
 
   /// No description provided for @filter.
   ///
-  /// In en, this message translates to:
-  /// **'Filter'**
+  /// In tk, this message translates to:
+  /// **'Süzgüç'**
   String get filter;
 
   /// No description provided for @selectAll.
   ///
-  /// In en, this message translates to:
-  /// **'Select all'**
+  /// In tk, this message translates to:
+  /// **'Ählisini saýla'**
   String get selectAll;
 
-  /// Number of products found.
+  /// Tapylan önümleriň sany.
   ///
-  /// In en, this message translates to:
-  /// **'Products ({products})'**
+  /// In tk, this message translates to:
+  /// **'Önümler ({products})'**
   String productsAll(int products);
 
   /// No description provided for @close.
   ///
-  /// In en, this message translates to:
-  /// **'Close'**
+  /// In tk, this message translates to:
+  /// **'Ýap'**
   String get close;
 
   /// No description provided for @cart.
   ///
-  /// In en, this message translates to:
-  /// **'My cart'**
+  /// In tk, this message translates to:
+  /// **'Sebedim'**
   String get cart;
 
   /// No description provided for @removeAll.
   ///
-  /// In en, this message translates to:
-  /// **'Remove all'**
+  /// In tk, this message translates to:
+  /// **'Ählisini aýyr'**
   String get removeAll;
 
   /// No description provided for @cartConfirmation.
   ///
-  /// In en, this message translates to:
-  /// **'Confirm cart'**
+  /// In tk, this message translates to:
+  /// **'Sebedi tassykla'**
   String get cartConfirmation;
 
   /// No description provided for @totalPrice.
   ///
-  /// In en, this message translates to:
-  /// **'Total price'**
+  /// In tk, this message translates to:
+  /// **'Jemi baha'**
   String get totalPrice;
 
   /// No description provided for @price.
   ///
-  /// In en, this message translates to:
-  /// **'Price'**
+  /// In tk, this message translates to:
+  /// **'Baha'**
   String get price;
 
   /// No description provided for @totalCost.
   ///
-  /// In en, this message translates to:
-  /// **'Total Cost of goods'**
+  /// In tk, this message translates to:
+  /// **'Önümleriň jemi bahasy'**
   String get totalCost;
 
   /// No description provided for @deliverySerice.
   ///
-  /// In en, this message translates to:
-  /// **'Delivery service'**
+  /// In tk, this message translates to:
+  /// **'Eltip bermek hyzmaty'**
   String get deliverySerice;
 
   /// No description provided for @discount.
   ///
-  /// In en, this message translates to:
-  /// **'Discount'**
+  /// In tk, this message translates to:
+  /// **'Arzanladyş'**
   String get discount;
 
   /// No description provided for @cartClearTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Remove products'**
+  /// In tk, this message translates to:
+  /// **'Önümleri aýyrmak'**
   String get cartClearTitle;
 
   /// No description provided for @cartClearContent.
   ///
-  /// In en, this message translates to:
-  /// **'Do you want all products removed?'**
+  /// In tk, this message translates to:
+  /// **'Ähli önümleri aýyrmagy isleýärsiňizmi?'**
   String get cartClearContent;
 
   /// No description provided for @neglection.
   ///
-  /// In en, this message translates to:
-  /// **'No'**
+  /// In tk, this message translates to:
+  /// **'Ýok'**
   String get neglection;
 
   /// No description provided for @affirmation.
   ///
-  /// In en, this message translates to:
-  /// **'Yes'**
+  /// In tk, this message translates to:
+  /// **'Hawa'**
   String get affirmation;
 
   /// No description provided for @checkOutCompleteTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Your order has been registered.'**
+  /// In tk, this message translates to:
+  /// **'Sargydyňyz hasaba alyndy.'**
   String get checkOutCompleteTitle;
 
   /// No description provided for @checkOutCompleteContent.
   ///
-  /// In en, this message translates to:
-  /// **'The completed trade will be added to you at the specified time. Thank you for your shopping!'**
+  /// In tk, this message translates to:
+  /// **'Tamamlanan söwda bellenen wagtda size gowşurylar. Satyn alşyňyz üçin sag boluň!'**
   String get checkOutCompleteContent;
 
   /// No description provided for @continueShop.
   ///
-  /// In en, this message translates to:
-  /// **'Continue shopping'**
+  /// In tk, this message translates to:
+  /// **'Söwda etmegi dowam ediň'**
   String get continueShop;
 
   /// No description provided for @paymentMethod.
   ///
-  /// In en, this message translates to:
-  /// **'Types of payment'**
+  /// In tk, this message translates to:
+  /// **'Töleg görnüşleri'**
   String get paymentMethod;
 
   /// No description provided for @paymentMethodCash.
   ///
-  /// In en, this message translates to:
-  /// **'Cash'**
+  /// In tk, this message translates to:
+  /// **'Nagt'**
   String get paymentMethodCash;
 
   /// No description provided for @paymentMethodTerminal.
   ///
-  /// In en, this message translates to:
+  /// In tk, this message translates to:
   /// **'Terminal'**
   String get paymentMethodTerminal;
 
   /// No description provided for @selectAddress.
   ///
-  /// In en, this message translates to:
-  /// **'Select address'**
+  /// In tk, this message translates to:
+  /// **'Salgy saýlaň'**
   String get selectAddress;
 
   /// No description provided for @deliveryTime.
   ///
-  /// In en, this message translates to:
-  /// **'Select when to deliver'**
+  /// In tk, this message translates to:
+  /// **'Eltip bermek wagtyny saýlaň'**
   String get deliveryTime;
 
   /// No description provided for @selectAddressEmpty.
   ///
-  /// In en, this message translates to:
-  /// **'Not Selected'**
+  /// In tk, this message translates to:
+  /// **'Saýlanmady'**
   String get selectAddressEmpty;
 
   /// No description provided for @addressesCreate.
   ///
-  /// In en, this message translates to:
-  /// **'Add a new address'**
+  /// In tk, this message translates to:
+  /// **'Täze salgy goş'**
   String get addressesCreate;
 
   /// No description provided for @myAddresses.
   ///
-  /// In en, this message translates to:
-  /// **'My Addresses'**
+  /// In tk, this message translates to:
+  /// **'Salgylarym'**
   String get myAddresses;
 
   /// No description provided for @address.
   ///
-  /// In en, this message translates to:
-  /// **'Address'**
+  /// In tk, this message translates to:
+  /// **'Salgy'**
   String get address;
 
   /// No description provided for @addressName.
   ///
-  /// In en, this message translates to:
-  /// **'Address name'**
+  /// In tk, this message translates to:
+  /// **'Salgyň ady'**
   String get addressName;
 
   /// No description provided for @name.
   ///
-  /// In en, this message translates to:
-  /// **'Name'**
+  /// In tk, this message translates to:
+  /// **'At'**
   String get name;
 
   /// No description provided for @phoneNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Phone number'**
+  /// In tk, this message translates to:
+  /// **'Telefon belgisi'**
   String get phoneNumber;
 
   /// No description provided for @save.
   ///
-  /// In en, this message translates to:
-  /// **'Save'**
+  /// In tk, this message translates to:
+  /// **'Ýatda sakla'**
   String get save;
-
-  /// No description provided for @favorites.
-  ///
-  /// In en, this message translates to:
-  /// **'Favorites'**
-  String get favorites;
 
   /// No description provided for @profile.
   ///
-  /// In en, this message translates to:
-  /// **'My profile'**
+  /// In tk, this message translates to:
+  /// **'Meniň profilim'**
   String get profile;
+
+  /// No description provided for @favorites.
+  ///
+  /// In tk, this message translates to:
+  /// **'Halanlarym'**
+  String get favorites;
 
   /// No description provided for @account.
   ///
-  /// In en, this message translates to:
-  /// **'Account'**
+  /// In tk, this message translates to:
+  /// **'Hasap'**
   String get account;
 
   /// No description provided for @orders.
   ///
-  /// In en, this message translates to:
-  /// **'Orders'**
+  /// In tk, this message translates to:
+  /// **'Sargytlar'**
   String get orders;
 
   /// No description provided for @orderInformation.
   ///
-  /// In en, this message translates to:
-  /// **'Order information'**
+  /// In tk, this message translates to:
+  /// **'Sargytlar hasabaty'**
   String get orderInformation;
 
   /// No description provided for @logout.
   ///
-  /// In en, this message translates to:
-  /// **'Logout'**
+  /// In tk, this message translates to:
+  /// **'Çyk'**
   String get logout;
 
   /// No description provided for @region.
   ///
-  /// In en, this message translates to:
-  /// **'Region'**
+  /// In tk, this message translates to:
+  /// **'Sebit'**
   String get region;
 
   /// No description provided for @accepted.
   ///
-  /// In en, this message translates to:
-  /// **'Accepted'**
+  /// In tk, this message translates to:
+  /// **'Kabul edildi'**
   String get accepted;
 
   /// No description provided for @expected.
   ///
-  /// In en, this message translates to:
-  /// **'Expected'**
+  /// In tk, this message translates to:
+  /// **'Garaşylýar'**
   String get expected;
 
   /// No description provided for @success.
   ///
-  /// In en, this message translates to:
-  /// **'Success'**
+  /// In tk, this message translates to:
+  /// **'Üstünlik'**
   String get success;
 
   /// No description provided for @cancel.
   ///
-  /// In en, this message translates to:
-  /// **'Cancel'**
+  /// In tk, this message translates to:
+  /// **'Ýatyr'**
   String get cancel;
 
   /// No description provided for @cartEmptyTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Cart is Empty'**
+  /// In tk, this message translates to:
+  /// **'Sebet boş'**
   String get cartEmptyTitle;
 
   /// No description provided for @cartEmptyDescription.
   ///
-  /// In en, this message translates to:
-  /// **'Items in your cart are displayed here'**
+  /// In tk, this message translates to:
+  /// **'Sebediňizdäki önümler şu ýerde görkeziler'**
   String get cartEmptyDescription;
 
   /// No description provided for @productsEmptyTitle.
   ///
-  /// In en, this message translates to:
-  /// **'No Products Found'**
+  /// In tk, this message translates to:
+  /// **'Önüm tapylmady'**
   String get productsEmptyTitle;
 
   /// No description provided for @productsEmptyDescription.
   ///
-  /// In en, this message translates to:
-  /// **'No products available at this time.'**
+  /// In tk, this message translates to:
+  /// **'Häzirlikçe elýeterli önüm ýok.'**
   String get productsEmptyDescription;
 
   /// No description provided for @submit.
   ///
-  /// In en, this message translates to:
-  /// **'Submit'**
+  /// In tk, this message translates to:
+  /// **'Tabşyr'**
   String get submit;
 
   /// No description provided for @phoneInput.
   ///
-  /// In en, this message translates to:
-  /// **'Enter your phone number!'**
+  /// In tk, this message translates to:
+  /// **'Telefon belgiňizi giriziň!'**
   String get phoneInput;
 
   /// No description provided for @otpSending.
   ///
-  /// In en, this message translates to:
-  /// **'We will send an OTP code to your phone number!'**
+  /// In tk, this message translates to:
+  /// **'Telefon belgiňize SMS kody ibereris!'**
   String get otpSending;
 
   /// No description provided for @acceptPolice.
   ///
-  /// In en, this message translates to:
-  /// **'By continuing I accept the privacy policy and terms of use'**
+  /// In tk, this message translates to:
+  /// **'Dowam etmek bilen gizlinlik syýasatyny we ulanyş şertlerini kabul edýärin'**
   String get acceptPolice;
 
   /// No description provided for @getCode.
   ///
-  /// In en, this message translates to:
-  /// **'Get Code'**
+  /// In tk, this message translates to:
+  /// **'Kody al'**
   String get getCode;
 
   /// No description provided for @otpEnter.
   ///
-  /// In en, this message translates to:
-  /// **'Enter the OTP code!'**
+  /// In tk, this message translates to:
+  /// **'SMS kody giriziň!'**
   String get otpEnter;
 
-  /// Number of products found.
+  /// Onümi tapmak.
   ///
-  /// In en, this message translates to:
-  /// **'We have sent the OTP code to +{phoneNumber}!'**
+  /// In tk, this message translates to:
+  /// **'SMS kody +{phoneNumber} belgisine iberdik!'**
   String otpSentInformation(String phoneNumber);
 
   /// No description provided for @otpError.
   ///
-  /// In en, this message translates to:
-  /// **'Code not received.'**
+  /// In tk, this message translates to:
+  /// **'Kod alynmady.'**
   String get otpError;
 
   /// No description provided for @sendAgain.
   ///
-  /// In en, this message translates to:
-  /// **'Send again'**
+  /// In tk, this message translates to:
+  /// **'Täzeden iber'**
   String get sendAgain;
 
   /// No description provided for @authSucess.
   ///
-  /// In en, this message translates to:
-  /// **'Successfully created!'**
+  /// In tk, this message translates to:
+  /// **'Üstünlikli döredildi!'**
   String get authSucess;
 
   /// No description provided for @ok.
   ///
-  /// In en, this message translates to:
-  /// **'Ok'**
+  /// In tk, this message translates to:
+  /// **'Bolýar'**
   String get ok;
 }
 
@@ -587,7 +585,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'ru', 'tk'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ru', 'tk'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -598,7 +596,6 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return AppLocalizationsEn();
     case 'ru': return AppLocalizationsRu();
     case 'tk': return AppLocalizationsTk();
   }

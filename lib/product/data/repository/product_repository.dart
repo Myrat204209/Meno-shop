@@ -16,16 +16,16 @@ class GetProductsFailure extends ProductFailure {
   const GetProductsFailure(super.error);
 }
 
+class GetOneProductFailure extends ProductFailure {
+  const GetOneProductFailure(super.error);
+}
+
 class GetFavoritesFailure extends ProductFailure {
   const GetFavoritesFailure(super.error);
 }
 
-class AddFavoriteFailure extends ProductFailure {
-  const AddFavoriteFailure(super.error);
-}
-
-class RemoveFavoriteFailure extends ProductFailure {
-  const RemoveFavoriteFailure(super.error);
+class FavoritePressedFailure extends ProductFailure {
+  const FavoritePressedFailure(super.error);
 }
 
 class ProductRepository {
@@ -53,46 +53,44 @@ class ProductRepository {
   }
 
   /// Remote method to get  products by uuid.
-  Future<ProductItem?> getProductsByUuid({
+  Future<ProductItem?> getProductByUuid({
     required String uuid,
   }) async {
     try {
-      return await _productClient.getProductsByUuid(uuid: uuid);
+      return await _productClient.getProductByUuid(uuid: uuid);
     } catch (error, stackTrace) {
-      Error.throwWithStackTrace(GetProductsFailure(error), stackTrace);
+      Error.throwWithStackTrace(GetOneProductFailure(error), stackTrace);
     }
   }
 
-  Future<bool> isFavorite(ProductItem product) async {
+  bool isFavorite(String productUuid)  {
     try {
-      return _userFavoritesBox.containsKey(product.uuid);
+      return _userFavoritesBox.containsKey(productUuid);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(error, stackTrace);
     }
   }
 
   ///Local method to fetch favorites.
-  Future<List<ProductItem>> getFavorites() async {
+  Future<List<ProductItem>?> getFavorites() async {
     try {
-      return _userFavoritesBox.values.toList();
+      final favoriteList = _userFavoritesBox.values.toList();
+      //TODO: Discuss with Backend programmer
+      return await _productClient.getFavorites(favoritesUuid: favoriteList);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetFavoritesFailure(error), stackTrace);
     }
   }
 
-  Future<void> addFavorite(ProductItem product) async {
+  Future<void> favoritePressed(String productUuid) async {
     try {
-      await _userFavoritesBox.put(product.uuid, product);
+      if (_userFavoritesBox.containsKey(productUuid)) {
+        await _userFavoritesBox.delete(productUuid);
+      } else {
+        await _userFavoritesBox.put(productUuid, productUuid);
+      }
     } catch (error, stackTrace) {
-      Error.throwWithStackTrace(AddFavoriteFailure(error), stackTrace);
-    }
-  }
-
-  Future<void> removeFavorite(ProductItem product) async {
-    try {
-      await _userFavoritesBox.delete(product.uuid);
-    } catch (error, stackTrace) {
-      Error.throwWithStackTrace(RemoveFavoriteFailure(error), stackTrace);
+      Error.throwWithStackTrace(FavoritePressedFailure(error), stackTrace);
     }
   }
 }

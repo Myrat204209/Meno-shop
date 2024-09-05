@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
-import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
 import 'package:meno_shop/auth/auth.dart';
@@ -61,19 +61,34 @@ class OtpVerifyContent extends HookWidget {
                       // },
                     ),
                     const SizedBox(height: AppSpacing.md),
+                    const OtpTimer(),
                   ],
                 ),
               ),
-              const OtpTimer(),
-              OtpSendAgain(onSendAgainPressed: () {
-                context.read<AuthBloc>().add(
-                      AuthSendOtpRequested(phone: phone),
-                    );
-              }),
+              const Spacer(),
+              OtpSendAgain(
+                onSendAgainPressed: () {
+                  context.read<AuthBloc>().add(
+                        AuthSendOtpRequested(phone: phone),
+                      );
+                },
+              ),
+              const SizedBox(height: AppSpacing.md),
               AppButton(
                 onTap: () {
                   if (formKey.currentState?.validate() ?? false) {
-                    context.replaceNamed(RouteNames.home.name);
+                    if (otpController.text.length == 4) {
+                      context.read<AuthBloc>().add(
+                            AuthCheckOtpRequested(
+                              phone: phone,
+                              otp: otpController.text,
+                            ),
+                          );
+                    } else {
+                      log('-----------OTP field check declined---------');
+                    }
+                    log('--------Routing after successful authentication--------');
+                    // context.replaceNamed(RouteNames.cart.name);
                   }
                 },
                 buttonText: context.l10n.ok,

@@ -7,7 +7,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'language_event.dart';
 
-const kDefaultLocale = Locale('en');
+const kDefaultLocale = Locale('tk');
 
 class LanguageBloc extends HydratedBloc<LanguageEvent, Locale> {
   LanguageBloc() : super(kDefaultLocale) {

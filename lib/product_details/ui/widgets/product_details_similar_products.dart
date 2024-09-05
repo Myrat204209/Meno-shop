@@ -63,7 +63,7 @@
 //               },
 //               locale: context.l10n.localeName,
 //               imageLink: product.photo != null && product.photo!.isNotEmpty
-//                   ? '$kDefaultBaseUrl/${product.photo!.first.path}'
+//                   ? product.photo!.first.path!.fullPath()
 //                   : '$kDefaultBaseUrl/path_to_placeholder_image',
 //             );
 //           },

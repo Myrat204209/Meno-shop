@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
+import 'package:meno_shop/product/product.dart';
 
 class HomePageProductsList extends StatelessWidget {
   const HomePageProductsList({
@@ -24,7 +24,7 @@ class HomePageProductsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = context.l10n.localeName;
-    final cartBloc = context.read<CartBloc>();
+    // final cartBloc = context.read<CartBloc>();
     final favoriteBloc = context.read<FavoritesBloc>();
     return SliverToBoxAdapter(
       child: Column(
@@ -50,35 +50,26 @@ class HomePageProductsList extends StatelessWidget {
 
                 if (products!.isNotEmpty && product != null) {
                   return AppProductItem(
-                    onFavoriteAdded: () {
-                      favoriteBloc.add(FavoriteButtonPressed(product));
-                    },
-                    onCartAdded: cartBloc.isCartAdded(product.uuid!)
-                        ? null
-                        : () {
-                            cartBloc.add(CartItemAdded(CartItem(
-                              uuid: product.uuid!,
-                              productName: product.name!.changeLocale(locale),
-                              quantity: 1,
-                              price: product.price!,
-                            )));
-                          },
+                    onFavoriteAdded: () =>
+                        favoriteBloc.add(FavoriteButtonPressed(product.uuid!)),
+                    //TODO: Cart Add function
+                    onCartAdded: () {},
                     photoPath:
                         product.photo != null && product.photo!.isNotEmpty
-                            ? '$kDefaultBaseUrl/${product.photo!.first.path}'
+                            ? product.photo!.first.path!.fullPath()
                             : null,
                     name: product.name!.changeLocale(locale),
                     price: product.price!,
                     originalPrice: product.discounts?.originalPrice,
-                    isFavorite: favoriteBloc.isProductFavorited(product.uuid!),
+                    isFavorite: favoriteBloc.isFavorite(product.uuid!),
+                    //TODO: Advantages
                     advantages: null,
                     onProductPressed: () {
-                      context.goNamed(
+                      context.read<ProductsBloc>().add(
+                          ProductByUuidRequested(productUuid: product.uuid!));
+                      context.pushNamed(
                         RouteNames.productDetails.name,
-                        pathParameters: {
-                          'uuid': product.uuid!,
-                        },
-                        extra: product,
+                        pathParameters: {'uuid': product.uuid!},
                       );
                     },
                   );
@@ -89,7 +80,7 @@ class HomePageProductsList extends StatelessWidget {
               },
             )
           else
-            const SliverPadding(padding: EdgeInsets.zero),
+            const Padding(padding: EdgeInsets.zero),
           const SizedBox(height: 15),
         ],
       ),

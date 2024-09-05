@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -72,7 +70,6 @@ class AppNavigation {
                     builder: (context, state) => ProductDetailsPage(
                       key: state.pageKey,
                       uuid: state.pathParameters['uuid']!,
-                      product: state.extra as ProductItem,
                     ),
                   ),
                 ],
@@ -121,9 +118,8 @@ class AppNavigation {
                       log('-------------------AuthenticationStatus: $isAuthenticated--------------------------------');
                       if (!isAuthenticated) {
                         return context.namedLocation(RouteNames.auth.name);
-                      } else {
-                        return null;
                       }
+                      return null;
                     },
                   ),
                 ],

@@ -2,6 +2,8 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+final otpTimerStyle = const AppTextStyle.text().withColor(AppColors.secondary);
+
 class OtpTimer extends HookWidget {
   const OtpTimer({super.key});
 
@@ -46,7 +48,7 @@ class Countdown extends AnimatedWidget {
 
     return Text(
       timerText,
-      style: const TextStyle(fontSize: 30, color: Colors.black),
+      style: otpTimerStyle,
     );
   }
 }

@@ -24,7 +24,7 @@ class FavoritesContent extends StatelessWidget {
         Expanded(
           child: favorites.isNotEmpty
               ? GridView.count(
-                  crossAxisCount: favorites.length,
+                  crossAxisCount: 2,
                   scrollDirection: Axis.vertical,
                   childAspectRatio: 160 / 285,
                   mainAxisSpacing: 15,
@@ -40,19 +40,19 @@ class FavoritesContent extends StatelessWidget {
                             );
                           },
                           onFavoriteAdded: () {
-                            favoritesBloc.add(FavoriteButtonPressed(favorite));
+                            favoritesBloc
+                                .add(FavoriteButtonPressed(favorite.uuid!));
                           },
                           onCartAdded: null,
                           photoPath: favorite.photo != null &&
                                   favorite.photo!.isNotEmpty
-                              ? '$kDefaultBaseUrl/${favorite.photo!.first.path}'
+                              ? favorite.photo!.first.path!.fullPath()
                               : null,
                           name: favorite.name!.changeLocale(locale),
                           price: favorite.price!,
                           originalPrice: favorite.discounts?.originalPrice,
                           advantages: favorite.advantages,
-                          isFavorite:
-                              favoritesBloc.isProductFavorited(favorite.uuid!),
+                          isFavorite: true,
                         ),
                       )
                       .toList(),

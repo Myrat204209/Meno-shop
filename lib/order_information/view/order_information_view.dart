@@ -85,7 +85,7 @@ class AppListTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                cart.productName,
+                "cart.productName",
                 style: const AppTextStyle.text().lg().semiBold(),
               ),
               // Text(
@@ -97,13 +97,14 @@ class AppListTile extends StatelessWidget {
               // ),
               const SizedBox(height: 10),
               Text(
-                '${cart.price.toStringAsPrecision(2)} TMT',
+                "",
+                // '${cart .price.toStringAsPrecision(2)} TMT',
                 style: const AppTextStyle.text().semiBold(),
               ),
             ],
           ).paddingSymmetric(vertical: 4, horizontal: 10),
           const Expanded(child: SizedBox()),
-          Text('${cart.quantity}')
+          const Text('{cart.quantity}')
         ],
       ),
     ).paddingSymmetric(horizontal: 10);

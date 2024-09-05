@@ -171,10 +171,10 @@ class AppLocalizationsTk extends AppLocalizations {
   String get save => 'Ýatda sakla';
 
   @override
-  String get favorites => 'Halanlarym';
+  String get profile => 'Meniň profilim';
 
   @override
-  String get profile => 'Meniň profilim';
+  String get favorites => 'Halanlarym';
 
   @override
   String get account => 'Hasap';

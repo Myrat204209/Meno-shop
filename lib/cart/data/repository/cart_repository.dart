@@ -58,15 +58,15 @@ class CartRepository {
   /// Add  cart item
   Future<void> addCartItem(CartItem cartItem) async {
     try {
-      if (_cartItemBox.containsKey(cartItem.uuid)) {
-        log('-----------------Is it Changed?---------------- ${cartItem.quantity} before adding');
-        cartItem.copyWith(quantity: cartItem.quantity + 1);
-        log('-----------------Is it Changed?---------------- ${cartItem.quantity} after adding');
-        await _cartItemBox.put(cartItem.uuid, cartItem);
+      if (_cartItemBox.containsKey(cartItem.productUuid)) {
+        log('-----------------Is it Changed?---------------- ${cartItem.productQuantity} before adding');
+        cartItem.copyWith(productQuantity: cartItem.productQuantity + 1);
+        log('-----------------Is it Changed?---------------- ${cartItem.productQuantity} after adding');
+        await _cartItemBox.put(cartItem.productUuid, cartItem);
       } else {
-        log('-----------------Is it Changed?---------------- ${cartItem.quantity} before creating');
-        await _cartItemBox.put(cartItem.uuid, cartItem);
-        log('-----------------Is it Changed?---------------- ${cartItem.quantity} after creating');
+        log('-----------------Is it Changed?---------------- ${cartItem.productQuantity} before creating');
+        await _cartItemBox.put(cartItem.productUuid, cartItem);
+        log('-----------------Is it Changed?---------------- ${cartItem.productQuantity} after creating');
       }
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(DeleteCartItemFailure(error), stackTrace);
@@ -76,14 +76,14 @@ class CartRepository {
   /// Remove cart item
   Future<void> removeCartItem(CartItem cartItem) async {
     try {
-      if (cartItem.quantity == 1) {
-        await _cartItemBox.delete(cartItem.uuid);
+      if (cartItem.productQuantity == 1) {
+        await _cartItemBox.delete(cartItem.productUuid);
       } else {
-        log('-----------------Is it Changed?---------------- ${cartItem.quantity} before removing');
-        cartItem.copyWith(quantity: cartItem.quantity - 1);
-        log('-----------------Is it Changed?---------------- ${cartItem.quantity} after removing');
-        await _cartItemBox.put(cartItem.uuid, cartItem);
-        log('-----------------Is it Changed?---------------- ${cartItem.quantity} after awaiting ');
+        log('-----------------Is it Changed?---------------- ${cartItem.productQuantity} before removing');
+        cartItem.copyWith(productQuantity: cartItem.productQuantity - 1);
+        log('-----------------Is it Changed?---------------- ${cartItem.productQuantity} after removing');
+        await _cartItemBox.put(cartItem.productUuid, cartItem);
+        log('-----------------Is it Changed?---------------- ${cartItem.productQuantity} after awaiting ');
       }
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(DeleteCartItemFailure(error), stackTrace);

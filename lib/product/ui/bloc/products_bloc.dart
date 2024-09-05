@@ -6,8 +6,8 @@ import 'package:equatable/equatable.dart';
 import 'package:meno_shop/product/product.dart';
 import 'package:rxdart/rxdart.dart';
 
-part 'product_event.dart';
-part 'product_state.dart';
+part 'products_event.dart';
+part 'products_state.dart';
 
 EventTransformer<Event> debounceSequential<Event>(Duration duration) {
   return (events, mapper) => events.debounceTime(duration).asyncExpand(mapper);
@@ -15,12 +15,12 @@ EventTransformer<Event> debounceSequential<Event>(Duration duration) {
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ProductsBloc({
-    this.category,
     required ProductRepository productRepository,
   })  : _productRepository = productRepository,
         super(const ProductsState.initial()) {
     on<ProductsRequested>(_onProductsRequested);
     on<ProductsRefreshRequested>(_onProductsRefreshRequested);
+    on<ProductByUuidRequested>(_onProductByUuidRequested);
     on<ProductsSearchUpdated>(
       _onSearchUpdated,
       transformer: debounceSequential(const Duration(milliseconds: 500)),
@@ -28,7 +28,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   }
 
   final ProductRepository _productRepository;
-  final CategoryItem? category;
 
   bool _isFetching = false;
 
@@ -43,13 +42,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     try {
       emit(state.copyWith(status: ProductsStatus.loading));
 
-      final response = await _productRepository.getProducts(
-          // GetQueryParameters(
-          //   search: state.search,
-          //   categoryId: category?.id,
-          //   page: state.page + 1,
-          // ),
-          );
+      final response = await _productRepository.getProducts();
 
       final content = response ?? const [];
 
@@ -60,6 +53,31 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: ProductsStatus.failure));
+      addError(error, stackTrace);
+    } finally {
+      _isFetching = false;
+    }
+  }
+
+  FutureOr<void> _onProductByUuidRequested(
+    ProductByUuidRequested event,
+    Emitter<ProductsState> emit,
+  ) async {
+    if (_isFetching) return;
+    _isFetching = true;
+    try {
+      emit(state.copyWith(status: ProductsStatus.singleProductLoading));
+
+      final response =
+          await _productRepository.getProductByUuid(uuid: event.productUuid);
+
+      emit(state.copyWith(
+        status: ProductsStatus.singleProductPopulated,
+        singleProduct: response,
+        hasMoreContent: false,
+      ));
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: ProductsStatus.singleProductFailure));
       addError(error, stackTrace);
     } finally {
       _isFetching = false;

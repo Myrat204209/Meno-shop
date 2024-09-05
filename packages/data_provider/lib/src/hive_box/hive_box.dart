@@ -13,7 +13,7 @@ abstract class HiveBoxKeys {
 typedef UserAddressBox = Box<AddressModel>;
 
 /// User favorites box
-typedef UserFavoritesBox = Box<ProductItem>;
+typedef UserFavoritesBox = Box<String>;
 
 /// User cart box
 typedef UserCartBox = Box<CartItem>;

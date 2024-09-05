@@ -1,4 +1,4 @@
-part of 'product_bloc.dart';
+part of 'products_bloc.dart';
 
 sealed class ProductsEvent extends Equatable {
   const ProductsEvent();
@@ -10,6 +10,15 @@ sealed class ProductsEvent extends Equatable {
 final class ProductsRequested extends ProductsEvent {}
 
 final class ProductsRefreshRequested extends ProductsEvent {}
+
+final class ProductByUuidRequested extends ProductsEvent {
+  final String productUuid;
+
+  const ProductByUuidRequested({required this.productUuid});
+
+  @override
+  List<Object> get props => [productUuid];
+}
 
 final class ProductsSearchUpdated extends ProductsEvent {
   final String search;
