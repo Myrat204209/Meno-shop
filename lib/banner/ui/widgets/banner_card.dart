@@ -2,11 +2,6 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:meno_shop/banner/banner.dart';
 
-enum BannerType {
-  ad,
-  poster,
-  local,
-}
 
 /// A widget representing a banner card that displays an image, label, title, subtitle, and a button.
 class BannerCard extends StatelessWidget {

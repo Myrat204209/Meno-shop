@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:data_provider/data_provider.dart';
@@ -10,6 +12,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/banner/banner.dart';
 import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/l10n/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+// final Uri _url = Uri.parse('https://flutter.dev');
 
 class HomePageBannerCard extends StatelessWidget {
   const HomePageBannerCard({
@@ -29,8 +34,6 @@ class HomePageBannerCard extends StatelessWidget {
           return Stack(
             alignment: Alignment.topLeft,
             children: [
-              if (banners.isEmpty)
-                const CircularProgressIndicator.adaptive().centralize(),
               if (banners.isNotEmpty)
                 CarouselSlider.builder(
                   itemCount: banners.length,
@@ -38,14 +41,21 @@ class HomePageBannerCard extends StatelessWidget {
                     final banner = banners[index];
 
                     return BannerCard(
-                      bannerType: banner.bannerType ?? BannerType.local.name,
+                      bannerType: banner.bannerType!,
                       imageUrl: banner.photo != null
                           ? banner.photo!.path!.fullPath()
                           : 'null',
                       label: banner.label!.changeLocale(locale),
                       title: banner.title!.changeLocale(locale),
                       subtitle: banner.subtitle!.changeLocale(locale),
-                      onPressed: () {},
+                      onPressed: () {
+                        final Uri url = Uri.parse(banner.path!);
+                        if (banner.bannerType == 'ad') {
+                          _launchUrl(url);
+                        } else if (banner.bannerType == 'local') {
+                          log('------------We need to navigate to the given location');
+                        }
+                      },
                       buttonText: context.l10n.startShopping,
                     );
                   },
@@ -64,13 +74,17 @@ class HomePageBannerCard extends StatelessWidget {
                   dotsCount: banners.length,
                   selectedBanner: selectedBanner,
                 )
-              else
-                const SizedBox(),
             ],
           );
         },
       ).paddingOnly(bottom: 15),
     );
+  }
+
+  Future<void> _launchUrl(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
 

@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meno_shop/product/product.dart';
 import 'package:meno_shop/product_details/product_details.dart'
     show ProductDetailsContent;
 
@@ -18,23 +16,15 @@ class ProductDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     // final cartBloc = context.read<CartBloc>();
 
-    return Column(
+    return const Column(
       children: [
         Flexible(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.only(
+            padding: EdgeInsets.only(
               left: 16,
               right: 16,
             ),
-            child: BlocBuilder<ProductsBloc, ProductsState>(
-              builder: (context, state) {
-                final singleProduct = context
-                    .select((ProductsBloc bloc) => bloc.state.singleProduct);
-                return ProductDetailsContent(
-                  product: singleProduct!,
-                );
-              },
-            ),
+            child: ProductDetailsContent(),
           ),
         ),
         // BlocBuilder<CartBloc, CartState>(

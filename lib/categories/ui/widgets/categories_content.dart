@@ -2,6 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:meno_shop/categories/categories.dart';
+import 'package:meno_shop/shimmer/shimmer.dart';
 
 class CategoriesContent extends StatelessWidget {
   const CategoriesContent({
@@ -12,11 +13,7 @@ class CategoriesContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (categories.isEmpty) {
-      return const SizedBox(
-              height: 20,
-              width: 20,
-              child: CircularProgressIndicator.adaptive())
-          .centralize();
+      return const CategoryLoadingView().paddingSymmetric(horizontal: 5);
     }
 
     return ListView.builder(

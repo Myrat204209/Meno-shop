@@ -37,13 +37,12 @@ class BannerContent extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: AppSpacing.md),
-            if (bannerType != BannerType.poster.name)
+            if (bannerType != 'poster') ...[
               AutoSizeText(
                 label,
                 style: defaultBannerStyle,
                 overflow: TextOverflow.ellipsis,
               ),
-            if (bannerType != BannerType.poster.name)
               AutoSizeText(
                 title,
                 style: const AppTextStyle.text()
@@ -51,19 +50,18 @@ class BannerContent extends StatelessWidget {
                     .withColor(AppColors.quaterniary),
                 overflow: TextOverflow.ellipsis,
               ),
-            if (bannerType != BannerType.poster.name)
               AutoSizeText(
                 subtitle,
                 style: defaultBannerStyle,
                 overflow: TextOverflow.ellipsis,
               ),
-            const SizedBox(height: AppSpacing.md),
-            if (bannerType != BannerType.poster.name)
+              const SizedBox(height: AppSpacing.md),
               BannerButton(
                 onPressed: onPressed, // Ensure the callback is used here
                 bannerType: bannerType,
                 text: buttonText,
               ).paddingSymmetric(vertical: 10),
+            ],
           ],
         ).paddingOnly(left: 25),
       ).colorize(Colors.black.withOpacity(0.25)).clipper(10),

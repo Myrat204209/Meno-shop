@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -35,8 +34,8 @@ Future<void> bootStrap(AppBuilder builder) async {
       StreamController<Exception> exceptionStream = StreamController();
 
       final firebaseMessaging = FirebaseMessaging.instance;
-      final firebaseToken = await firebaseMessaging.getToken();
-      log('-------------------${firebaseToken!}');
+      // final firebaseToken = await firebaseMessaging.getToken();
+      // log('-------------------${firebaseToken!}');
       const androidNotificationChannel = AndroidNotificationChannel(
         'high_importance_channel', // id
         'High Importance Notifications', // title

@@ -6,6 +6,7 @@ import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
+import 'package:meno_shop/shimmer/shimmer.dart';
 
 class FavoritesContent extends StatelessWidget {
   const FavoritesContent({super.key});
@@ -20,7 +21,6 @@ class FavoritesContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: AppSpacing.xlg),
         Expanded(
           child: favorites.isNotEmpty
               ? GridView.count(
@@ -57,7 +57,7 @@ class FavoritesContent extends StatelessWidget {
                       )
                       .toList(),
                 )
-              : const SizedBox(),
+              : const FavoritesLoadingView(),
         ),
       ],
     ).paddingOnly(left: 10);

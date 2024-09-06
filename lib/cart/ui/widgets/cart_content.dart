@@ -9,6 +9,7 @@ import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/order_information/order_information.dart';
+import 'package:meno_shop/shimmer/shimmer.dart';
 
 class CartContent extends StatelessWidget {
   const CartContent({
@@ -21,6 +22,7 @@ class CartContent extends StatelessWidget {
     final totalCost = context.select((CartBloc bloc) => bloc.state.totalCost);
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
+        if (state.status == CartStatus.loading) return const CartLoadingView();
         return Column(
           children: [
             Expanded(
