@@ -15,4 +15,6 @@ export 'subcategory_item/subcategory_item.dart';
 export 'user/user.dart';
 
 export 'language_model/language_model.dart';
+export 'creator_item/creator_item.dart';
+export 'size_item/size_item.dart';
 export 'user_request_body/user_request_body.dart';

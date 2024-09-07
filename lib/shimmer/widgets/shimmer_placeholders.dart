@@ -34,10 +34,12 @@ class MiddlePlaceholder extends StatelessWidget {
       baseColor: Colors.grey.shade300,
       highlightColor: Colors.grey.shade100,
       enabled: true,
-      child: const SizedBox(
+      child: SizedBox(
         width: double.infinity,
         height: 124,
-        child: ColoredBox(color: Colors.white),
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: const ColoredBox(color: Colors.white)),
       ).paddingOnly(top: 15),
     );
   }

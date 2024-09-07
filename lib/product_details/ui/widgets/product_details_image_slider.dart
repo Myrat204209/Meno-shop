@@ -16,20 +16,24 @@ class ProductDetailsImageSlider extends StatelessWidget {
         border: Border.all(color: AppColors.primary),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: flexi_image_slider(
-        context: context,
-        duration: const Duration(seconds: 3),
-        indicatorAlignment: IndicatorAlignment.center,
-        indicatorActiveColor: AppColors.secondary,
-        indicatorPosition: IndicatorPosition.overImage,
-        indicatorDeactiveColor: AppColors.neutral.shade300,
-        aspectRatio: 15 / 11,
-        arrayImages: imageLinks == null
-            ? [Assets.images.otpLogo.extendPath()]
-            : imageLinks!,
-        boxFit: BoxFit.cover,
-        borderRadius: 8,
-      ),
+      child: imageLinks == []
+          ? Assets.images.otpLogo.image(
+              width: 328,
+              height: 235,
+              fit: BoxFit.cover,
+            )
+          : flexi_image_slider(
+              context: context,
+              duration: const Duration(seconds: 3),
+              indicatorAlignment: IndicatorAlignment.center,
+              indicatorActiveColor: AppColors.secondary,
+              indicatorPosition: IndicatorPosition.overImage,
+              indicatorDeactiveColor: AppColors.neutral.shade300,
+              aspectRatio: 15 / 11,
+              arrayImages: imageLinks!,
+              boxFit: BoxFit.cover,
+              borderRadius: 8,
+            ),
     );
   }
 }

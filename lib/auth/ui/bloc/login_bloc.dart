@@ -37,19 +37,17 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginPrivacyChanged event,
     Emitter<LoginState> emit,
   ) {
-    emit(state.copyWith(
-      isPrivacyPolicyChecked: event.privacy,
-    ));
+    emit(state.copyWith(isPrivacyPolicyChecked: event.privacy));
   }
 
-  Future<FutureOr<void>> _onLoginSubmitted(
+  Future<void> _onLoginSubmitted(
     LoginPhoneSubmitted event,
     Emitter<LoginState> emit,
   ) async {
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
     try {
-      await _authRepository.auth(
-        AuthRequestBody.fromJson({'phoneNumber': state.phone.value}),
+      await _authRepository.sendOtp(
+        sendOtp: AuthRequestBody.fromJson({'phoneNumber': state.phone.value}),
       );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
     } catch (error, stackTrace) {

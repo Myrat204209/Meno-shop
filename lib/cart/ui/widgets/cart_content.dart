@@ -22,7 +22,7 @@ class CartContent extends StatelessWidget {
     final totalCost = context.select((CartBloc bloc) => bloc.state.totalCost);
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
-        if (state.status == CartStatus.loading) return const CartLoadingView();
+        if (state.status == CartStatus.loading || carts!.isEmpty || carts == null) return const CartLoadingView();
         return Column(
           children: [
             Expanded(

@@ -7,13 +7,15 @@ class CartLoadingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          const TextPlaceholder(),
-          for (int i = 0; i < 10; i++) const MiddlePlaceholder(),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            for (int i = 0; i < 4; i++) const MiddlePlaceholder(),
+          ],
+        ),
       ),
     );
   }

@@ -14,6 +14,7 @@ class BannerItem {
   final String? bannerType;
   final bool? isActive;
   final PhotoItem? photo;
+  final CreatorItem? creator;
   const BannerItem({
     this.uuid,
     this.label,
@@ -23,6 +24,7 @@ class BannerItem {
     this.bannerType,
     this.isActive,
     this.photo,
+    this.creator,
   });
   factory BannerItem.fromJson(JsonType json) => _$BannerItemFromJson(json);
   JsonType toJson() => _$BannerItemToJson(this);
