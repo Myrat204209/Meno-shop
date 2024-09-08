@@ -70,8 +70,8 @@ class OtpVerifyContent extends HookWidget {
               const Spacer(),
               OtpSendAgain(
                 onSendAgainPressed: () {
-                  context.read<AuthBloc>().add(
-                        AuthSendOtpRequested(phone: phone),
+                  context.read<LoginBloc>().add(
+                        LoginSendOtpRequested(),
                       );
                 },
               ),
@@ -79,7 +79,7 @@ class OtpVerifyContent extends HookWidget {
               AppButton(
                 onTap: () {
                   if (formKey.currentState?.validate() ?? false) {
-                    if (otpController.text.length == 4) {
+                    if (otpController.text.length == 5) {
                       context.read<AuthBloc>().add(
                             AuthCheckOtpRequested(
                               phone: phone,

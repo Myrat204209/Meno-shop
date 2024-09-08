@@ -41,30 +41,30 @@ class AuthClient {
     required AuthRequestBody checkOtpbody,
   }) async {
     await _http.get<JsonType>(
-      'auth/checkOtp',
+      '/auth/checkOtp',
       queryParameters: checkOtpbody.toJson(),
     );
   }
 
-  Future<User> getMe() async {
-    final response = await _http.get<JsonType>('/user/me');
-    final userToken = await _tokenStorage.readToken();
-    if (response.statusCode == 200) {
-      return User.fromJson(response.data!);
-    } else {
-      return User.anonymous(userId: userToken);
-    }
-  }
+  // Future<User> getMe() async {
+  //   final response = await _http.get<JsonType>('/user/me');
+  //   final userToken = await _tokenStorage.readToken();
+  //   if (response.statusCode == 200) {
+  //     return User.fromJson(response.data!);
+  //   } else {
+  //     return User.anonymous(userId: userToken);
+  //   }
+  // }
 
-  Future<User> putMe({
-    required UserRequestBody userBody,
-  }) async {
-    final response = await _http.put<JsonType>(
-      '/user/me',
-      data: userBody.toJson(),
-    );
-    return User.fromJson(response.data!);
-  }
+  // Future<User> putMe({
+  //   required UserRequestBody userBody,
+  // }) async {
+  //   final response = await _http.put<JsonType>(
+  //     '/user/me',
+  //     data: userBody.toJson(),
+  //   );
+  //   return User.fromJson(response.data!);
+  // }
 
   ///Log out
   Future<void> logOut({String? deviceToken}) async {

@@ -17,15 +17,14 @@ class LoginContent extends HookWidget {
     final formKey = useMemoized(() => GlobalKey<FormState>());
 
     final shakeKey = useMemoized(() => GlobalKey<ShakeWidgetState>());
+    final checkBoxKey = useState(false);
 
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.58,
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
           final readOnly = state.status.isInProgress;
-          final bool isPrivate = context.select(
-            (LoginBloc bloc) => bloc.state.isPrivacyPolicyChecked,
-          );
+
           return Column(
             children: [
               Form(
@@ -68,12 +67,8 @@ class LoginContent extends HookWidget {
                     shakeOffset: 10,
                     shakeDuration: const Duration(milliseconds: 500),
                     child: Checkbox(
-                      value: isPrivate,
-                      onChanged: (value) {
-                        context.read<LoginBloc>().add(
-                              LoginPrivacyChanged(!isPrivate),
-                            );
-                      },
+                      value: checkBoxKey.value,
+                      onChanged: (_) => checkBoxKey.value = !checkBoxKey.value,
                       activeColor: AppColors.secondary,
                     ),
                   ),
@@ -85,15 +80,15 @@ class LoginContent extends HookWidget {
               AppButton(
                 onTap: () {
                   if (formKey.currentState?.validate() ?? false) {
-                    if (isPrivate) {
+                    if (checkBoxKey.value) {
                       log('----------------Validating to OTP----------------');
-                      context.read<LoginBloc>().add(LoginPhoneSubmitted());
+                      context.read<LoginBloc>().add(LoginSendOtpRequested());
                     } else {
                       shakeKey.currentState?.shake();
                     }
                   }
                 },
-                buttonText: 'Get code',
+                buttonText: context.l10n.getCode,
                 color: AppColors.secondary,
                 textColor: AppColors.quaterniary,
               ).paddingSymmetric(horizontal: 5),

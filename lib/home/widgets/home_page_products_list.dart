@@ -18,7 +18,7 @@ class HomePageProductsList extends StatelessWidget {
     required this.title,
   });
 
-  final List<ProductItem?>? products;
+  final List<ProductItem>? products;
   final String? title;
 
   @override
@@ -48,7 +48,7 @@ class HomePageProductsList extends StatelessWidget {
               itemBuilder: (context, index) {
                 var product = products![index];
 
-                if (products!.isNotEmpty && product != null) {
+                if (products!.isNotEmpty) {
                   return AppProductItem(
                     onFavoriteAdded: () =>
                         favoriteBloc.add(FavoriteButtonPressed(product.uuid!)),
@@ -81,7 +81,7 @@ class HomePageProductsList extends StatelessWidget {
             )
           else
             const Padding(padding: EdgeInsets.zero),
-          const SizedBox(height: 15),
+          const SizedBox(height: AppSpacing.lg),
         ],
       ),
     );

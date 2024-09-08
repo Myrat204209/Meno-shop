@@ -13,29 +13,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required AuthRepository authRepository,
   })  : _authRepository = authRepository,
         super(const AuthState.initial()) {
-    on<AuthSendOtpRequested>(_onSendOtpRequested);
     on<AuthCheckOtpRequested>(_onCheckOtpRequested);
-    on<AuthUserGetRequested>(_onUserGetRequested);
-    on<AuthUserPutRequested>(_onUserPutRequested);
+    on<AuthLoginRequested>(_onLoginRequested);
+    // on<AuthUserPutRequested>(_onUserPutRequested);
   }
   final AuthRepository _authRepository;
-  FutureOr<void> _onSendOtpRequested(
-    AuthSendOtpRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    try {
-      emit(state.copyWith(status: AuthStatus.loading));
-
-      await _authRepository.sendOtp(
-        sendOtp: AuthRequestBody(event.phone, null),
-      );
-
-      emit(state.copyWith(status: AuthStatus.success));
-    } catch (error, stackTrace) {
-      emit(state.copyWith(status: AuthStatus.failure));
-      addError(error, stackTrace);
-    }
-  }
 
   FutureOr<void> _onCheckOtpRequested(
     AuthCheckOtpRequested event,
@@ -46,6 +28,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       await _authRepository.checkOtp(
         checkOtp: AuthRequestBody(event.phone, event.otp),
+      );
+      add(AuthLoginRequested(phone: event.phone));
+      emit(state.copyWith(
+        status: AuthStatus.success,
+        user: User.anonymous(phoneNumber: event.phone),
+      ));
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: AuthStatus.failure));
+      addError(error, stackTrace);
+    }
+  }
+
+  FutureOr<void> _onLoginRequested(
+    AuthLoginRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: AuthStatus.loading));
+
+      await _authRepository.auth(
+        AuthRequestBody(event.phone,null),
       );
 
       emit(state.copyWith(
@@ -58,41 +61,41 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  FutureOr<void> _onUserGetRequested(
-    AuthUserGetRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    try {
-      emit(state.copyWith(status: AuthStatus.loading));
+  // FutureOr<void> _onUserGetRequested(
+  //   AuthUserGetRequested event,
+  //   Emitter<AuthState> emit,
+  // ) async {
+  //   try {
+  //     emit(state.copyWith(status: AuthStatus.loading));
 
-      final user = await _authRepository.getMe();
+  //     final user = await _authRepository.getMe();
 
-      emit(state.copyWith(
-        status: AuthStatus.success,
-        user: user,
-      ));
-    } catch (error, stackTrace) {
-      emit(state.copyWith(status: AuthStatus.failure));
-      addError(error, stackTrace);
-    }
-  }
+  //     emit(state.copyWith(
+  //       status: AuthStatus.success,
+  //       user: user,
+  //     ));
+  //   } catch (error, stackTrace) {
+  //     emit(state.copyWith(status: AuthStatus.failure));
+  //     addError(error, stackTrace);
+  //   }
+  // }
 
-  FutureOr<void> _onUserPutRequested(
-    AuthUserPutRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    try {
-      emit(state.copyWith(status: AuthStatus.loading));
+  // FutureOr<void> _onUserPutRequested(
+  //   AuthUserPutRequested event,
+  //   Emitter<AuthState> emit,
+  // ) async {
+  //   try {
+  //     emit(state.copyWith(status: AuthStatus.loading));
 
-      final user = await _authRepository.putMe(userBody: event.userBody);
+  //     final user = await _authRepository.putMe(userBody: event.userBody);
 
-      emit(state.copyWith(
-        status: AuthStatus.success,
-        user: user,
-      ));
-    } catch (error, stackTrace) {
-      emit(state.copyWith(status: AuthStatus.failure));
-      addError(error, stackTrace);
-    }
-  }
+  //     emit(state.copyWith(
+  //       status: AuthStatus.success,
+  //       user: user,
+  //     ));
+  //   } catch (error, stackTrace) {
+  //     emit(state.copyWith(status: AuthStatus.failure));
+  //     addError(error, stackTrace);
+  //   }
+  // }
 }

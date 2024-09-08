@@ -11,11 +11,9 @@ class ProductDetailsImageSlider extends StatelessWidget {
   final List<String>? imageLinks;
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.primary),
-        borderRadius: BorderRadius.circular(10),
-      ),
+    return AppWrapper(
+      borderColor: AppColors.primary.withOpacity(0.5),
+      expand: 2,
       child: imageLinks == []
           ? Assets.images.otpLogo.image(
               width: 328,

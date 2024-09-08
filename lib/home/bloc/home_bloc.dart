@@ -31,8 +31,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final subcategories = await _subcategoryRepository.getSubcategories(
         GetSubcategoryQueryParameters(
           populate: ['products'],
-          limit: 100,
-          offset: 0,
+          limit: 30,
+          hasProduct: true,
         ),
       );
       emit(state.copyWith(

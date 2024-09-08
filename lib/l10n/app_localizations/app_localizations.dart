@@ -200,7 +200,7 @@ abstract class AppLocalizations {
   /// No description provided for @productDetails.
   ///
   /// In tk, this message translates to:
-  /// **'Önümiň jikme-jikleri'**
+  /// **'Harydyň maglumatlary'**
   String get productDetails;
 
   /// No description provided for @chooseColor.

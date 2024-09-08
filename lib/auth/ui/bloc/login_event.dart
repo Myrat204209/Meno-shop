@@ -16,13 +16,4 @@ final class LoginPhoneChanged extends LoginEvent {
   List<Object> get props => [phone];
 }
 
-final class LoginPrivacyChanged extends LoginEvent {
-  const LoginPrivacyChanged(this.privacy);
-
-  final bool privacy;
-
-  @override
-  List<Object> get props => [privacy];
-}
-
-final class LoginPhoneSubmitted extends LoginEvent {}
+final class LoginSendOtpRequested extends LoginEvent {}

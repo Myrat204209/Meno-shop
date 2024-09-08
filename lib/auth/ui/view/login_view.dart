@@ -21,9 +21,6 @@ class LoginView extends StatelessWidget {
         listener: (context, state) {
           if (state.status == FormzSubmissionStatus.success) {
             log('----------Routing to OTP----------');
-            context
-                .read<AuthBloc>()
-                .add(AuthSendOtpRequested(phone: state.phone.value));
             context.pushNamed(
               RouteNames.authVerify.name,
               extra: state.phone.value,

@@ -22,6 +22,8 @@ class GetSubcategoryQueryParameters {
   final String? search;
   @JsonKey(includeIfNull: false)
   final String? input;
+  @JsonKey(includeIfNull: false)
+  final bool? hasProduct;
   GetSubcategoryQueryParameters({
     // this.attributes,
     this.offset,
@@ -31,6 +33,7 @@ class GetSubcategoryQueryParameters {
     this.populate,
     this.search,
     this.input,
+    this.hasProduct,
   });
 
   factory GetSubcategoryQueryParameters.fromJson(JsonType json) =>

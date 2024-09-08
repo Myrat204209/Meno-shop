@@ -49,7 +49,7 @@ class AppViewAllText extends StatelessWidget {
       child: Text(
         text ?? 'View All',
         style:
-            AppTextStyle.text().regular().sm().withColor(AppColors.secondary2),
+            AppTextStyle.text().regular().sm().withColor(AppColors.secondary),
       ),
       onPressed: onTap,
     );

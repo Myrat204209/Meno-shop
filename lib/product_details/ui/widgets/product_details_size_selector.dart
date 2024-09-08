@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/product_details/product_details.dart';
 
 class ProductDetailsSizeSelector extends StatelessWidget {
@@ -13,7 +14,7 @@ class ProductDetailsSizeSelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Select size',
+          context.l10n.selectSize,
           style: kAppTitleTextStyle,
         ),
         const SizedBox(height: 10),

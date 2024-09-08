@@ -13,7 +13,7 @@ class OtpInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Pinput(
-      length: 4,
+      length: 5,
       controller: controller,
       autofocus: true,
       hapticFeedbackType: HapticFeedbackType.vibrate,

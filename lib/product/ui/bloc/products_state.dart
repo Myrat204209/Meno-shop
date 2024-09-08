@@ -2,12 +2,25 @@
 part of 'products_bloc.dart';
 
 enum ProductsStatus {
+  /// Initial state before any action is taken
   initial,
+
+  /// Loading the list of products
   loading,
+
+  /// Products have been successfully loaded
   populated,
+
+  /// Failed to load products
   failure,
+
+  /// Loading a single product by its UUID
   singleProductLoading,
+
+  /// Successfully loaded a single product
   singleProductPopulated,
+
+  /// Failed to load a single product
   singleProductFailure,
 }
 
@@ -43,13 +56,14 @@ final class ProductsState extends Equatable {
     List<ProductItem>? products,
     bool? hasMoreContent,
     ProductItem? singleProduct,
+    bool overrideSingleProduct = false,
     String? search,
   }) {
     return ProductsState(
       status: status ?? this.status,
       products: products ?? this.products,
       hasMoreContent: hasMoreContent ?? this.hasMoreContent,
-      singleProduct: singleProduct ?? this.singleProduct,
+      singleProduct: overrideSingleProduct ? singleProduct : (singleProduct ?? this.singleProduct),
       search: search ?? this.search,
     );
   }

@@ -15,8 +15,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   })  : _authRepository = authRepository,
         super(const LoginState()) {
     on<LoginPhoneChanged>(_onLoginPhoneChanged);
-    on<LoginPrivacyChanged>(_onLoginPrivacyChanged);
-    on<LoginPhoneSubmitted>(_onLoginSubmitted);
+    on<LoginSendOtpRequested>(_onSendOtpRequested);
   }
 
   final AuthRepository _authRepository;
@@ -33,15 +32,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     ));
   }
 
-  FutureOr<void> _onLoginPrivacyChanged(
-    LoginPrivacyChanged event,
-    Emitter<LoginState> emit,
-  ) {
-    emit(state.copyWith(isPrivacyPolicyChecked: event.privacy));
-  }
-
-  Future<void> _onLoginSubmitted(
-    LoginPhoneSubmitted event,
+  Future<void> _onSendOtpRequested(
+    LoginSendOtpRequested event,
     Emitter<LoginState> emit,
   ) async {
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));

@@ -75,6 +75,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         status: ProductsStatus.singleProductPopulated,
         singleProduct: response,
         hasMoreContent: false,
+        overrideSingleProduct: true,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: ProductsStatus.singleProductFailure));
@@ -88,6 +89,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     ProductsRefreshRequested event,
     Emitter<ProductsState> emit,
   ) {
+    emit(state.copyWith(status: ProductsStatus.initial));
     emit(const ProductsState.initial());
     add(ProductsRequested());
   }

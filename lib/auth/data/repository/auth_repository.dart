@@ -64,19 +64,19 @@ class AuthRepository {
     }
   }
 
-  Future<User> getMe() async {
-    try {
-      return await _authClient.getMe();
-    } catch (error, stackTrace) {
-      Error.throwWithStackTrace(GetMeFailure(error), stackTrace);
-    }
-  }
+  // Future<User> getMe() async {
+  //   try {
+  //     return await _authClient.getMe();
+  //   } catch (error, stackTrace) {
+  //     Error.throwWithStackTrace(GetMeFailure(error), stackTrace);
+  //   }
+  // }
 
-  Future<User> putMe({required UserRequestBody userBody}) async {
-    try {
-      return await _authClient.putMe(userBody: userBody);
-    } catch (error, stackTrace) {
-      Error.throwWithStackTrace(GetMeFailure(error), stackTrace);
-    }
-  }
+  // Future<User> putMe({required UserRequestBody userBody}) async {
+  //   try {
+  //     return await _authClient.putMe(userBody: userBody);
+  //   } catch (error, stackTrace) {
+  //     Error.throwWithStackTrace(GetMeFailure(error), stackTrace);
+  //   }
+  // }
 }

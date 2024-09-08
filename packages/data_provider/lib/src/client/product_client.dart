@@ -39,6 +39,7 @@ class ProductClient {
   }) async {
     final response = await _httpClient.get<dynamic>(
       '/products/$uuid',
+      queryParameters: {'hasSimilar': true},
     );
     final product = ProductItem.fromJson(response.data);
 

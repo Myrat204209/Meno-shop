@@ -58,7 +58,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get viewAll => 'Ählisini görmek';
 
   @override
-  String get productDetails => 'Önümiň jikme-jikleri';
+  String get productDetails => 'Harydyň maglumatlary';
 
   @override
   String get chooseColor => 'Reňk saýlaň';

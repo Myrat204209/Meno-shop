@@ -117,6 +117,6 @@ class ProductDetailsName extends StatelessWidget {
     return Text(
       productName,
       style: const AppTextStyle.text().headline6().semiBold(),
-    ).paddingOnly(bottom: 10);
+    ).paddingSymmetric(vertical: 10);
   }
 }

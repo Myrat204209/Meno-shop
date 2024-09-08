@@ -2,6 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/favorites/favorites.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 class ProductDetailsAppBar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -15,7 +16,7 @@ class ProductDetailsAppBar extends StatelessWidget
     final isFavorite =
         context.select((FavoritesBloc bloc) => bloc.isFavorite(productUuid));
     return AppBar(
-      title: const Text('Product Details'),
+      title:  Text(context.l10n.productDetails),
       scrolledUnderElevation: 0,
       centerTitle: true,
       actions: [
