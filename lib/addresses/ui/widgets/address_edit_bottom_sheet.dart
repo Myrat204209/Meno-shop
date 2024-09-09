@@ -38,8 +38,8 @@ class AddressEditBottomSheet extends HookWidget {
           children: [
             UITextField(
               controller: addressNameController,
-              hintText: 'Enter your address name here',
-              labelText: 'Address Name',
+              hintText: 'Şu ýere salgyňyzyň adyny girizin',
+              labelText: context.l10n.addressName,
               keyboardType: TextInputType.name,
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -70,10 +70,9 @@ class AddressEditBottomSheet extends HookWidget {
 
             const SizedBox(height: AppSpacing.md),
 
-            const SizedBox(height: AppSpacing.md),
             UITextField(
               controller: nameController,
-              hintText: 'Enter your name here',
+              hintText: 'Şu ýere adyňyzy girizin',
               labelText: context.l10n.name,
               keyboardType: TextInputType.name,
               validator: (value) {
@@ -86,16 +85,18 @@ class AddressEditBottomSheet extends HookWidget {
             const SizedBox(height: AppSpacing.md),
             UITextField(
               controller: addressController,
-              hintText: 'Enter your address here',
-              labelText: context.l10n.name,
+              hintText: 'Şu ýere salgyňyzy girizin',
+              labelText: context.l10n.address,
               keyboardType: TextInputType.multiline,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Address cannot be empty';
+                  return 'Addressi dolduruň';
                 }
                 return null;
               },
             ),
+
+            const SizedBox(height: AppSpacing.md),
 
             /// CONFIRM BUTTON
             SizedBox(
@@ -103,7 +104,11 @@ class AddressEditBottomSheet extends HookWidget {
               child: AppButton.expanded(
                 onTap: () {
                   if (formKey.currentState?.validate() ?? false) {
-                    if (address == null) {
+                    if (address == null &&
+                        nameController.text != '' &&
+                        addressNameController.text != '' &&
+                        addressNameController.text != '' &&
+                        phoneNumberController.text != "") {
                       context.read<AddressBloc>().add(
                             AddressCreateRequested(
                               AddressModel(
@@ -133,7 +138,7 @@ class AddressEditBottomSheet extends HookWidget {
                 },
                 buttonText: address == null
                     ? context.l10n.addressesCreate
-                    : 'Edit the address',
+                    : 'Addresi üýtget',
               ),
             ),
           ],

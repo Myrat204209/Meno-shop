@@ -32,7 +32,7 @@ class AuthClient {
     required AuthRequestBody sendOtpbody,
   }) async {
     await _http.get<JsonType>(
-      '/auth/sendOtp',
+      '/sms/sendOtp',
       queryParameters: sendOtpbody.toJson(),
     );
   }
@@ -41,7 +41,7 @@ class AuthClient {
     required AuthRequestBody checkOtpbody,
   }) async {
     await _http.get<JsonType>(
-      '/auth/checkOtp',
+      '/sms/checkOtp',
       queryParameters: checkOtpbody.toJson(),
     );
   }

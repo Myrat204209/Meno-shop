@@ -1,6 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 
-final advantagesSvg = Assets.advantages;
+const advantagesSvg = Assets.advantages;
 final kAdvantagesJsonBody = <String, dynamic>{
   'ru': {
     "fastDelivery": advantagesSvg.ru.fastDelivery,
@@ -18,7 +18,6 @@ final kAdvantagesJsonBody = <String, dynamic>{
   },
   'tk': {
     "fastDelivery": advantagesSvg.tk.fastDelivery,
-
     "freeDelivery": advantagesSvg.tk.freeDelivery,
     "oneToOne": advantagesSvg.tk.oneToOne,
     "twoToOne": advantagesSvg.tk.twoToOne,

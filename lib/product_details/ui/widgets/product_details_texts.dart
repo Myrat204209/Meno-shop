@@ -42,7 +42,7 @@ class ProductDetailsDiscount extends StatelessWidget {
       ),
       subtitle: Text(
         '$originalPrice TMT',
-        style: const AppTextStyle.text().md().bold(),
+        style: const AppTextStyle.text().lg().bold(),
       ),
       // trailing: Text(
       //   '3 offers from (550 TMT)',

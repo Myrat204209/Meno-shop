@@ -28,7 +28,6 @@ class OtpVerifyContent extends HookWidget {
       height: MediaQuery.of(context).size.height * 0.58,
       child: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
-          
           return Column(
             children: [
               Form(
@@ -63,7 +62,6 @@ class OtpVerifyContent extends HookWidget {
                     ),
                     const SizedBox(height: AppSpacing.md),
                     const OtpTimer(),
-                    
                   ],
                 ),
               ),

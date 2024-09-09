@@ -12,14 +12,16 @@ class ProductDetailsImageSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppWrapper(
-      borderColor: AppColors.primary.withOpacity(0.5),
-      expand: 2,
-      child: imageLinks == []
-          ? Assets.images.otpLogo.image(
-              width: 328,
-              height: 235,
-              fit: BoxFit.cover,
-            )
+      borderColor: AppColors.primary.withOpacity(0.1),
+      expand: 3,
+      child: imageLinks!.isEmpty
+          ? Assets.images.otpLogo
+              .image(
+                width: 328,
+                height: 235,
+                fit: BoxFit.cover,
+              )
+              .centralize()
           : flexi_image_slider(
               context: context,
               duration: const Duration(seconds: 3),

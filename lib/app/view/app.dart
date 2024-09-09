@@ -65,8 +65,7 @@ class App extends StatelessWidget {
     final productBloc = ProductsBloc(productRepository: _productRepository);
     final cartBloc = CartBloc(cartRepository: _cartRepository)
       ..add(CartInitRequested());
-    final favoritesBloc = FavoritesBloc(productRepository: _productRepository)
-      ..add(FavoritesInitRequested());
+    final favoritesBloc = FavoritesBloc(productRepository: _productRepository);
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider.value(value: _bannerRepository),

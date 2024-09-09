@@ -35,8 +35,13 @@ Future<void> bootStrap(AppBuilder builder) async {
       StreamController<Exception> exceptionStream = StreamController();
 
       final firebaseMessaging = FirebaseMessaging.instance;
-      final firebaseToken = await firebaseMessaging.getToken();
-      log('-------------------${firebaseToken!}');
+      late final String? firebaseToken;
+      try {
+        // firebaseToken = await firebaseMessaging.getToken();
+        // log('-------------------${firebaseToken!}');
+      } catch (error, stackTrace) {
+        log('-------------------FirebaseMessaging error: $error$stackTrace');
+      }
       const androidNotificationChannel = AndroidNotificationChannel(
         'high_importance_channel', // id
         'High Importance Notifications', // title
@@ -46,11 +51,11 @@ Future<void> bootStrap(AppBuilder builder) async {
       );
       final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-      FirebaseNotificationService(
-        androidNotificationChannel: androidNotificationChannel,
-        firebaseMessaging: firebaseMessaging,
-        flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
-      ).initNotifications();
+      // FirebaseNotificationService(
+      //   androidNotificationChannel: androidNotificationChannel,
+      //   firebaseMessaging: firebaseMessaging,
+      //   flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
+      // ).initNotifications();
 
       final blocObserver = AppBlocObserver(
         exceptionStream: exceptionStream,

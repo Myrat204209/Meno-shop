@@ -43,6 +43,7 @@ class FavoritesContent extends StatelessWidget {
                             favoritesBloc
                                 .add(FavoriteButtonPressed(favorite.uuid!));
                           },
+                          locale: locale,
                           onCartAdded: null,
                           photoPath: favorite.photo != null &&
                                   favorite.photo!.isNotEmpty

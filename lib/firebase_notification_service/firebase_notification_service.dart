@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
@@ -62,8 +63,9 @@ class FirebaseNotificationService {
       badge: true,
       sound: true,
     );
-    FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
-    await _firebaseMessaging.subscribeToTopic('all');
+    unawaited(FirebaseMessaging.instance.getInitialMessage().then(handleMessage));
+    unawaited(_firebaseMessaging.subscribeToTopic('all'));
+    // await _firebaseMessaging.subscribeToTopic('all');
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
     FirebaseMessaging.onMessage.listen(
@@ -90,8 +92,8 @@ class FirebaseNotificationService {
   }
 
   Future<void> initNotifications() async {
-    await _firebaseMessaging.setAutoInitEnabled(true);
-    await _firebaseMessaging.requestPermission();
+    // await _firebaseMessaging.setAutoInitEnabled(true);
+    // await _firebaseMessaging.requestPermission();
     initPushNotifications();
     initLocalNotifications();
   }

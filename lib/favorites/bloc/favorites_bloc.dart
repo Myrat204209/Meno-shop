@@ -34,7 +34,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     try {
       emit(state.copyWith(status: FavoritesStatus.loading));
 
-      final response = await _productRepository.getFavorites();
+      final response = await _productRepository.getProductsList();
 
       if (response!.isNotEmpty) {
         emit(state.copyWith(

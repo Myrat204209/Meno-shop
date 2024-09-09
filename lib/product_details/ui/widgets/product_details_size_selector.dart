@@ -1,5 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/product_details/product_details.dart';
 
@@ -12,20 +17,27 @@ class ProductDetailsSizeSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           context.l10n.selectSize,
           style: kAppTitleTextStyle,
         ),
         const SizedBox(height: 10),
-        Wrap(
-          spacing: 10,
-          children: sizes
-              .map((element) => ProductSizeChip(
-                    isSelected: element == 'M' ? true : false,
-                    label: element,
-                  ))
-              .toList(),
+        SizedBox(
+          // fit: BoxFit.contain,
+          height: 55,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: sizes
+                .map((element) => ProductSizeChip(
+                      label: element,
+                      onPressed: () {
+                        log('----------$element      shu Size Saylandy----------------------');
+                      },
+                    ).paddingOnly(right: 10))
+                .toList(),
+          ),
         ),
       ],
     );
@@ -38,38 +50,43 @@ final Color disabledColor = AppColors.neutral.shade500;
 Color changeColor(bool isSelected) =>
     isSelected ? selectedColor : disabledColor;
 
-class ProductSizeChip extends StatelessWidget {
+class ProductSizeChip extends HookWidget {
   const ProductSizeChip({
     super.key,
-    required this.isSelected,
+    required this.onPressed,
     required this.label,
   });
-  final bool isSelected;
+  final VoidCallback onPressed;
   final String? label;
   @override
   Widget build(BuildContext context) {
+    final isSelected = useState(false);
     return ChoiceChip(
-      showCheckmark: false,
-      disabledColor: disabledColor,
-      selectedColor: selectedColor,
-      color: const WidgetStatePropertyAll(AppColors.quaterniary),
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      labelPadding: const EdgeInsets.symmetric(horizontal: -5),
-      label: SizedBox(
-        height: 30,
-        width: 40,
+      avatar: SizedBox(
+        height: 50,
+        width: 80,
         child: Text(
           label ?? '',
           style: const AppTextStyle.text()
               .medium()
               .lg()
-              .withColor(changeColor(isSelected)),
+              .semiBold()
+              .withColor(changeColor(isSelected.value)),
         ).centralize(),
       ),
-      selected: isSelected,
-      side: BorderSide(color: changeColor(isSelected)),
+      showCheckmark: false,
+      disabledColor: disabledColor,
+      selectedColor: selectedColor,
+      color: const WidgetStatePropertyAll(AppColors.quaterniary),
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      labelPadding: const EdgeInsets.only(bottom: 17, right: 0, left: 0),
+      label: const SizedBox(),
+      selected: isSelected.value,
+      side: BorderSide(color: changeColor(isSelected.value)),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      onSelected: (bool value) {},
+      onSelected: (bool value) {
+        isSelected.value = !isSelected.value;
+      },
     );
   }
 }

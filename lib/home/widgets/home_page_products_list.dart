@@ -63,7 +63,9 @@ class HomePageProductsList extends StatelessWidget {
                     originalPrice: product.discounts?.originalPrice,
                     isFavorite: favoriteBloc.isFavorite(product.uuid!),
                     //TODO: Advantages
-                    advantages: null,
+                    locale: locale,
+                    advantages: product.advantages,
+                    
                     onProductPressed: () {
                       context.read<ProductsBloc>().add(
                           ProductByUuidRequested(productUuid: product.uuid!));

@@ -11,7 +11,12 @@ export 'product_details_visit_counter.dart';
 export 'product_details_cart_counter.dart';
 
 final kAppTitleTextStyle = const AppTextStyle.text().semiBold().lg();
-const List<String> sizes = ['S', 'M', 'L', 'XL', 'XXL'];
+const List<String> sizes = [
+  'XS',
+  'S',
+  'M',
+  'L',
+];
 
 const productDetailsColors = [
   AppColors.accepted,

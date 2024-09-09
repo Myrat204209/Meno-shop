@@ -27,17 +27,16 @@ class ProductDetailsContent extends StatelessWidget {
               final discount = product.discounts;
               final description = product.description;
               final sizes = product.sizes;
-              log('Populated product: $photos');
+              log('Populated product: $product');
+              log('Populated photos: $photos');
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProductDetailsImageSlider(
-                    imageLinks: photos == []
-                        ? []
-                        : photos
-                            ?.map((photo) => (photo.path ?? '').fullPath())
-                            .toList(),
+                    imageLinks: photos
+                        ?.map((photo) => (photo.path ?? '').fullPath())
+                        .toList(),
                   ),
                   ProductDetailsName(
                     productName: product.name!.changeLocale(locale),
@@ -51,11 +50,13 @@ class ProductDetailsContent extends StatelessWidget {
                   ProductDetailsDescriptionText(
                     description: description!.changeLocale(locale),
                   ),
-                  if (sizes != null) const ProductDetailsSizeSelector(),
+                  // if (sizes != null)
+                   const ProductDetailsSizeSelector(),
                   if (product.subcategories != null)
                     ProductDetailsSimilarProducts(
                         products: product.subcategories!.products)
                 ],
+
               );
             } else {
               // If state.singleProduct is null, return a fallback UI

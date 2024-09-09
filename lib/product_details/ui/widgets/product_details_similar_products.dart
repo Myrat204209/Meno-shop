@@ -51,7 +51,8 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
                   price: product.price!,
                   originalPrice: product.discounts?.originalPrice,
                   isFavorite: favoriteBloc.isFavorite(product.uuid!),
-                  advantages: null,
+                  advantages: product.advantages,
+                  locale: locale,
                   onCartAdded: () {},
                   onFavoriteAdded: () =>
                       favoriteBloc.add(FavoriteButtonPressed(product.uuid!)),

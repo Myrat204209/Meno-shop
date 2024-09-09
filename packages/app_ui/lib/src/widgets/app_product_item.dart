@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ class AppProductItem extends StatelessWidget {
     required this.name,
     required this.price,
     required this.originalPrice,
+    this.locale,
     required this.isFavorite,
     required this.advantages,
     required this.onCartAdded,
@@ -20,6 +23,7 @@ class AppProductItem extends StatelessWidget {
   final String name;
   final double price;
   final double? originalPrice;
+  final String? locale;
   final bool isFavorite;
   final AdvantagesItem? advantages;
   final VoidCallback? onCartAdded;
@@ -83,10 +87,10 @@ class AppProductItem extends StatelessWidget {
                   ],
                 ).paddingAll(5).paddingOnly(bottom: 5),
                 ProductDetailsPrices(price: price).paddingOnly(left: 5),
-
-                // ProductAdvantagesList(
-                //   advantages: product.advantages,
-                // ),
+                ProductAdvantagesList(
+                  advantages: advantages,
+                  locale: locale ?? 'tk',
+                ),
               ],
             ),
           ),
@@ -148,6 +152,7 @@ class ProductAdvantagesList extends StatelessWidget {
         .toList();
 
     if (advantagesList != null && advantagesList.isNotEmpty) {
+      log('--------------This product has advantages : $advantagesList');
       return Expanded(
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -160,7 +165,7 @@ class ProductAdvantagesList extends StatelessWidget {
               height: 46,
               width: 35,
               // Placeholder for advantage icons based on locale and advantage type
-              // child: ((kAdvantagesJsonBody[locale][advantagesList[index]] != null)
+              // child: ((kAdvantagesJsonBody['tk'][advantagesList[index]] != null)
               //         as SvgGenImage)
               //     .svg(fit: BoxFit.cover),
             ),

@@ -63,7 +63,7 @@ class ProductRepository {
     }
   }
 
-  bool isFavorite(String productUuid)  {
+  bool isFavorite(String productUuid) {
     try {
       return _userFavoritesBox.containsKey(productUuid);
     } catch (error, stackTrace) {
@@ -72,11 +72,10 @@ class ProductRepository {
   }
 
   ///Local method to fetch favorites.
-  Future<List<ProductItem>?> getFavorites() async {
+  Future<List<ProductItem>?> getProductsList() async {
     try {
       final favoriteList = _userFavoritesBox.values.toList();
-      //TODO: Discuss with Backend programmer
-      return await _productClient.getFavorites(favoritesUuid: favoriteList);
+      return await _productClient.getProductsList(uuids: favoriteList);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetFavoritesFailure(error), stackTrace);
     }

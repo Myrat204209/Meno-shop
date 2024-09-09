@@ -22,11 +22,12 @@ class ProductClient {
     return products;
   }
 
-  Future<List<ProductItem>?> getFavorites({
-    required List<String> favoritesUuid,
+  Future<List<ProductItem>?> getProductsList({
+    required List<String> uuids,
   }) async {
     final response = await _httpClient.get<List<dynamic>>(
-      '/favorites',
+      '/products/list',
+      data: {'uuids': uuids},
     );
     final List<ProductItem>? products =
         response.data!.map((json) => ProductItem.fromJson(json)).toList();
