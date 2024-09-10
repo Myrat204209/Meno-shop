@@ -9,10 +9,7 @@ class OrdersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          context.l10n.orders,
-        ),
-        centerTitle: true,
+        title: Text(context.l10n.orders),
       ),
       body: const OrdersView(),
     );

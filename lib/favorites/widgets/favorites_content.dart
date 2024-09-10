@@ -1,11 +1,8 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/favorites/favorites.dart';
-import 'package:meno_shop/l10n/l10n.dart';
+import 'package:meno_shop/products/products.dart';
 import 'package:meno_shop/shimmer/shimmer.dart';
 
 class FavoritesContent extends StatelessWidget {
@@ -17,10 +14,12 @@ class FavoritesContent extends StatelessWidget {
     final favorites =
         context.select((FavoritesBloc bloc) => bloc.state.products);
 
-    final locale = context.l10n.localeName;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if (favoritesBloc.state.status == FavoritesStatus.loading ||
+            favoritesBloc.state.status == FavoritesStatus.updating)
+          const FavoritesLoadingView(),
         Expanded(
           child: favorites.isNotEmpty
               ? GridView.count(
@@ -32,33 +31,18 @@ class FavoritesContent extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   children: favorites
                       .map(
-                        (favorite) => AppProductItem(
-                          onProductPressed: () {
-                            context.pushNamed(
-                              RouteNames.productDetails.name,
-                              extra: favorite,
-                            );
-                          },
-                          onFavoriteAdded: () {
-                            favoritesBloc
-                                .add(FavoriteButtonPressed(favorite.uuid!));
-                          },
-                          locale: locale,
-                          onCartAdded: null,
-                          photoPath: favorite.photo != null &&
-                                  favorite.photo!.isNotEmpty
-                              ? favorite.photo!.first.path!.fullPath()
-                              : null,
-                          name: favorite.name!.changeLocale(locale),
-                          price: favorite.price!,
-                          originalPrice: favorite.discounts?.originalPrice,
-                          advantages: favorite.advantages,
-                          isFavorite: true,
+                        (favorite) => ProductCard(
+                          product: favorite,
+
+                          // photoPath: favorite.photo != null &&
+                          //         favorite.photo!.isNotEmpty
+                          //     ? favorite.photo!.first.path!.fullPath()
+                          //     : null,
                         ),
                       )
                       .toList(),
                 )
-              : const FavoritesLoadingView(),
+              : const Text('Halanlarymda haryt ýok').centralize(),
         ),
       ],
     ).paddingOnly(left: 10);

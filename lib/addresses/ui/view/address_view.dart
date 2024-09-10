@@ -17,7 +17,7 @@ class AddressView extends StatelessWidget {
           Text('${addressCount.length}/5').paddingOnly(right: 10),
         ],
         title: Text(context.l10n.myAddresses),
-        centerTitle: true,
+
 
         // actions: [
         //   IconButton(

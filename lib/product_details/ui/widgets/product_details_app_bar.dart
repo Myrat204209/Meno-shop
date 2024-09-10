@@ -16,9 +16,7 @@ class ProductDetailsAppBar extends StatelessWidget
     final isFavorite =
         context.select((FavoritesBloc bloc) => bloc.isFavorite(productUuid));
     return AppBar(
-      title:  Text(context.l10n.productDetails),
-      scrolledUnderElevation: 0,
-      centerTitle: true,
+      title: Text(context.l10n.productDetails),
       actions: [
         AppActionsButton(
           onPressed: () {

@@ -1,38 +1,48 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
+import 'package:data_provider/data_provider.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'cart_item.g.dart';
 
 /// CartItem model to store items in the cart
 @HiveType(typeId: 1)
+@JsonSerializable(explicitToJson: true)
 class CartItem extends HiveObject with EquatableMixin {
   @HiveField(0)
-  final String productUuid;
-
+  final String uuid;
   @HiveField(1)
-  final int productQuantity;
+  final int quantity;
   @HiveField(2)
-  final String filter; 
-
+  final String size;
+  @HiveField(3)
+  final String creator;
   CartItem({
-    required this.productUuid,
-    required this.productQuantity,
-    required this.filter,
+    required this.uuid,
+    required this.quantity,
+    required this.size,
+    required this.creator,
   });
 
   @override
-  List<Object> get props => [productUuid, productQuantity, filter,];
+  List<Object?> get props => [uuid, quantity, size, creator];
 
   CartItem copyWith({
-    String? productUuid,
-    int? productQuantity,
-    String? filter,
+    String? uuid,
+    int? quantity,
+    String? size,
+    String? creator,
   }) {
     return CartItem(
-      productUuid: productUuid ?? this.productUuid,
-      productQuantity: productQuantity ?? this.productQuantity,
-      filter: filter ?? this.filter,
+      uuid: uuid ?? this.uuid,
+      quantity: quantity ?? this.quantity,
+      size: size ?? this.size,
+      creator: creator ?? this.creator,
     );
   }
+
+  factory CartItem.fromJson(JsonType json) => _$CartItemFromJson(json);
+  JsonType toJson() => _$CartItemToJson(this);
 }

@@ -16,8 +16,6 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         context.l10n.cart,
       ),
-      scrolledUnderElevation: 0,
-      centerTitle: true,
       actions: [
         TextButton(
           onPressed: () {
@@ -58,6 +56,7 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
                                 context
                                     .read<CartBloc>()
                                     .add(CartClearRequested());
+                                context.pop();
                               },
                               color: AppColors.secondary,
                               textColor: AppColors.quaterniary,

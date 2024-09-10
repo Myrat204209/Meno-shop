@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:app_ui/app_ui.dart';
@@ -8,13 +7,18 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/product_details/product_details.dart';
 
-class ProductDetailsSizeSelector extends StatelessWidget {
+class ProductDetailsSizeSelector extends HookWidget {
   const ProductDetailsSizeSelector({
     super.key,
+    required this.uuid,
   });
+  final String uuid;
 
   @override
   Widget build(BuildContext context) {
+    // Manage selected size state using hooks
+    final selectedSize = useState<String?>(null);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -25,15 +29,16 @@ class ProductDetailsSizeSelector extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         SizedBox(
-          // fit: BoxFit.contain,
           height: 55,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: sizes
                 .map((element) => ProductSizeChip(
                       label: element,
+                      isSelected: selectedSize.value == element,
                       onPressed: () {
-                        log('----------$element      shu Size Saylandy----------------------');
+                        log('Selected Size: $element');
+                        selectedSize.value = element;
                       },
                     ).paddingOnly(right: 10))
                 .toList(),
@@ -44,23 +49,20 @@ class ProductDetailsSizeSelector extends StatelessWidget {
   }
 }
 
-const Color selectedColor = AppColors.secondary;
-final Color disabledColor = AppColors.neutral.shade500;
-
-Color changeColor(bool isSelected) =>
-    isSelected ? selectedColor : disabledColor;
-
-class ProductSizeChip extends HookWidget {
+class ProductSizeChip extends StatelessWidget {
   const ProductSizeChip({
     super.key,
     required this.onPressed,
     required this.label,
+    required this.isSelected,
   });
+
   final VoidCallback onPressed;
   final String? label;
+  final bool isSelected;
+
   @override
   Widget build(BuildContext context) {
-    final isSelected = useState(false);
     return ChoiceChip(
       avatar: SizedBox(
         height: 50,
@@ -71,7 +73,7 @@ class ProductSizeChip extends HookWidget {
               .medium()
               .lg()
               .semiBold()
-              .withColor(changeColor(isSelected.value)),
+              .withColor(changeColor(isSelected)),
         ).centralize(),
       ),
       showCheckmark: false,
@@ -81,12 +83,18 @@ class ProductSizeChip extends HookWidget {
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       labelPadding: const EdgeInsets.only(bottom: 17, right: 0, left: 0),
       label: const SizedBox(),
-      selected: isSelected.value,
-      side: BorderSide(color: changeColor(isSelected.value)),
+      selected: isSelected,
+      side: BorderSide(color: changeColor(isSelected)),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      onSelected: (bool value) {
-        isSelected.value = !isSelected.value;
+      onSelected: (_) {
+        onPressed(); // Trigger the onPressed callback
       },
     );
   }
 }
+
+const Color selectedColor = AppColors.secondary;
+final Color disabledColor = AppColors.neutral.shade500;
+
+Color changeColor(bool isSelected) =>
+    isSelected ? selectedColor : disabledColor;

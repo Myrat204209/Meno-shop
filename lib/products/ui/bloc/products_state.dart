@@ -2,33 +2,17 @@
 part of 'products_bloc.dart';
 
 enum ProductsStatus {
-  /// Initial state before any action is taken
   initial,
-
-  /// Loading the list of products
   loading,
-
-  /// Products have been successfully loaded
   populated,
-
-  /// Failed to load products
   failure,
-
-  /// Loading a single product by its UUID
-  singleProductLoading,
-
-  /// Successfully loaded a single product
-  singleProductPopulated,
-
-  /// Failed to load a single product
-  singleProductFailure,
 }
 
 final class ProductsState extends Equatable {
   const ProductsState({
     required this.status,
+    this.offset = 0,
     this.products = const [],
-    this.singleProduct,
     this.hasMoreContent = true,
     this.search,
   });
@@ -37,16 +21,14 @@ final class ProductsState extends Equatable {
 
   final ProductsStatus status;
   final List<ProductItem> products;
-  final ProductItem? singleProduct;
-
   final bool hasMoreContent;
   final String? search;
-
+  final int offset;
   @override
   List<Object?> get props => [
         status,
         products,
-        singleProduct,
+        offset,
         hasMoreContent,
         search,
       ];
@@ -55,16 +37,15 @@ final class ProductsState extends Equatable {
     ProductsStatus? status,
     List<ProductItem>? products,
     bool? hasMoreContent,
-    ProductItem? singleProduct,
-    bool overrideSingleProduct = false,
     String? search,
+    int? offset,
   }) {
     return ProductsState(
       status: status ?? this.status,
       products: products ?? this.products,
       hasMoreContent: hasMoreContent ?? this.hasMoreContent,
-      singleProduct: overrideSingleProduct ? singleProduct : (singleProduct ?? this.singleProduct),
       search: search ?? this.search,
+      offset: offset ?? this.offset,
     );
   }
 }

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meno_shop/product/product.dart';
+import 'package:meno_shop/products/products.dart';
 
 part 'favorites_event.dart';
 part 'favorites_state.dart';

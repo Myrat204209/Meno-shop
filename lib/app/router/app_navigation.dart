@@ -87,10 +87,13 @@ class AppNavigation {
                 builder: (context, state) => CategoriesPage(key: state.pageKey),
                 routes: <RouteBase>[
                   GoRoute(
-                    path: RouteNames.categoryProducts.path,
-                    name: RouteNames.categoryProducts.name,
-                    builder: (context, state) =>
-                        CategoryProductsPage(key: state.pageKey),
+                    path: RouteNames.products.path,
+                    name: RouteNames.products.name,
+                    builder: (context, state) => ProductsPage(
+                      key: state.pageKey,
+                      categoryName: (state.extra as List<String>)[0],
+                      subcategoryName: (state.extra as List<String>)[1],
+                    ),
                   ),
                 ],
               ),
@@ -178,8 +181,8 @@ class AppNavigation {
         ],
       ),
       // GoRoute(
-      //   path: RouteNames.categoryProducts.path,
-      //   name: RouteNames.categoryProducts.name,
+      //   path: RouteNames.products.path,
+      //   name: RouteNames.products.name,
       //   builder: (context, state) => CategoryProductsPage(
       //     key: state.pageKey,
       //   ),

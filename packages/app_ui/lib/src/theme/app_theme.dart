@@ -99,8 +99,10 @@ class AppTheme {
             fontFamily: 'Poppins',
             color: AppColors.primary,
           ),
+      scrolledUnderElevation: 0,
+      centerTitle: true,
       elevation: 0,
-      toolbarHeight: 64,
+      toolbarHeight: 70,
       backgroundColor: AppColors.quaterniary,
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,

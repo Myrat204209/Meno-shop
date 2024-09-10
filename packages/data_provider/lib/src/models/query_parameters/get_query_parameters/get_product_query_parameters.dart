@@ -22,6 +22,10 @@ class GetProductQueryParameters {
   final String? search;
   @JsonKey(includeIfNull: false)
   final bool? hasSimilar;
+  @JsonKey(name: 'relationFilter[subcategories][uuid]',includeIfNull: false)
+  final String? relationFilterSubcategory;
+  @JsonKey(name: 'relationFilter[categories][uuid]',includeIfNull: false)
+  final String? relationFilterCategory;
   GetProductQueryParameters({
     this.offset,
     this.limit,
@@ -31,6 +35,8 @@ class GetProductQueryParameters {
     this.populate,
     this.search,
     this.hasSimilar,
+    this.relationFilterSubcategory,
+    this.relationFilterCategory,
   });
   JsonType toJson() => _$GetProductQueryParametersToJson(this);
   factory GetProductQueryParameters.fromJson(JsonType json) =>

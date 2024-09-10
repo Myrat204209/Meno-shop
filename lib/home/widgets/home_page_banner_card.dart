@@ -62,6 +62,7 @@ class HomePageBannerCard extends StatelessWidget {
                   options: CarouselOptions(
                     autoPlay: true,
                     enlargeCenterPage: false,
+                    autoPlayCurve: Curves.linear,
                     viewportFraction: 0.95,
                     initialPage: 0,
                     onPageChanged: (index, reason) {

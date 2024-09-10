@@ -19,6 +19,7 @@ class ProductItem {
     this.photo,
     this.categories,
     this.subcategories,
+    this.subcategoryId,
   });
   final String? uuid;
   final LanguageModel? name;
@@ -32,7 +33,7 @@ class ProductItem {
   final List<PhotoItem>? photo;
   final CategoryItem? categories;
   final SubcategoryItem? subcategories;
-
+  final String? subcategoryId;
   factory ProductItem.fromJson(JsonType json) => _$ProductItemFromJson(json);
   JsonType toJson() => _$ProductItemToJson(this);
 

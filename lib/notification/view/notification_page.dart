@@ -8,13 +8,7 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          context.l10n.notification,
-        ),
-      ),
+      appBar: AppBar(title: Text(context.l10n.notification)),
       body: ListView.builder(
         itemCount: 3,
         itemBuilder: (context, index) {

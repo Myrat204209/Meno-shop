@@ -13,7 +13,7 @@ enum RouteNames {
   authVerify('authVerify'),
   orders('orders'),
   orderInformation('orders_information'),
-  categoryProducts('category_products');
+  products('products');
 
   const RouteNames(this.path);
   final String path;

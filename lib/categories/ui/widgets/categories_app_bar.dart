@@ -9,7 +9,6 @@ class CategoriesAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: const AppSearchBar(),
-      scrolledUnderElevation: 0,
       backgroundColor: AppColors.quaterniary,
     );
   }

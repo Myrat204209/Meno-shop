@@ -14,10 +14,24 @@ class SubcategoryClient {
       queryParameters: queryParameters?.toJson(),
     );
 
-    List<SubcategoryItem>? categories;
-    categories = response.data!
-        .map((category) => SubcategoryItem.fromJson(category))
+    List<SubcategoryItem>? subcategories;
+    subcategories = response.data!
+        .map((subcategory) => SubcategoryItem.fromJson(subcategory))
         .toList();
-    return categories;
+    return subcategories;
+  }
+
+  Future<List<ProductItem>?> getSubcategoryProducts([
+    GetSubcategoryQueryParameters? queryParameters,
+  ]) async {
+    final response = await _httpClient.get<List<dynamic>>(
+      '/products',
+      queryParameters: queryParameters?.toJson(),
+    );
+
+    List<ProductItem>? products;
+    products =
+        response.data!.map((product) => ProductItem.fromJson(product)).toList();
+    return products;
   }
 }

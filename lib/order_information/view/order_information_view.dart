@@ -13,10 +13,7 @@ class OrderInformationView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.quaterniary,
       appBar: AppBar(
-        title: Text(
-          context.l10n.orderInformation,
-        ),
-        centerTitle: true,
+        title: Text(context.l10n.orderInformation),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -74,8 +71,8 @@ class AppListTile extends StatelessWidget {
         children: [
           Assets.images.jeans
               .image(
-                height: 80,
-                width: 80,
+                height: 70,
+                width: 70,
                 fit: BoxFit.cover,
               )
               .colorize(Colors.yellow)
@@ -84,9 +81,13 @@ class AppListTile extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "cart.productName",
-                style: const AppTextStyle.text().lg().semiBold(),
+              SizedBox(
+                width: 160,
+                child: Text(
+                  "cart.productNameasdl;askd;lksa",
+                  overflow: TextOverflow.ellipsis,
+                  style: const AppTextStyle.text().md().medium(),
+                ),
               ),
               // Text(
               //   'Size: L - Color: Pink',
@@ -102,11 +103,65 @@ class AppListTile extends StatelessWidget {
                 style: const AppTextStyle.text().semiBold(),
               ),
             ],
-          ).paddingSymmetric(vertical: 4, horizontal: 10),
+          ).paddingSymmetric(vertical: 6, horizontal: 8),
           const Expanded(child: SizedBox()),
-          const Text('{cart.quantity}')
+          CartCounter(
+            addOneButton: () {},
+            removeOneButton: () {},
+            counterQuantity: 2,
+          ),
         ],
       ),
     ).paddingSymmetric(horizontal: 10);
+  }
+}
+
+class CartCounter extends StatelessWidget {
+  const CartCounter({
+    super.key,
+    required this.addOneButton,
+    required this.removeOneButton,
+    required this.counterQuantity,
+  });
+  final VoidCallback addOneButton;
+  final VoidCallback removeOneButton;
+  final int counterQuantity;
+  @override
+  Widget build(BuildContext context) {
+    return AppWrapper(
+      borderColor: AppColors.neutral.shade300,
+      expand: 1,
+      child: SizedBox(
+        width: 118,
+        height: 40,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              padding: EdgeInsets.zero,
+              onPressed: removeOneButton,
+              icon: const Icon(
+                Icons.remove,
+                size: 25,
+                color: AppColors.primary,
+              ),
+            ),
+            Text(
+              '$counterQuantity',
+              style: const AppTextStyle.text().md().semiBold(),
+            ),
+            IconButton(
+              padding: EdgeInsets.zero,
+              onPressed: addOneButton,
+              icon: const Icon(
+                Icons.add,
+                size: 25,
+                color: AppColors.primary,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

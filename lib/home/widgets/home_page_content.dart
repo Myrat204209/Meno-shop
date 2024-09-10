@@ -43,6 +43,8 @@ class HomePageContent extends StatelessWidget {
                 HomePageProductsList(
                   products: subcategory.products,
                   title: subcategory.name!.changeLocale(locale),
+                  subcategoryName: subcategory.name!.changeLocale(locale),
+                  categoryName: subcategory.category?.name!.changeLocale(locale) ?? 'categoryName',
                 ),
           ],
         );

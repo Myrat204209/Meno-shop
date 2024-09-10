@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:data_provider/data_provider.dart';
@@ -18,7 +19,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartInitRequested>(_onInitRequested);
     on<CartRequested>(_onRequested);
     on<CartItemAdded>(_onCartItemAdded);
-    on<CartItemRemoved>(_onCartItemRemoved);
     on<CartClearRequested>(_onClearRequested);
   }
 
@@ -75,28 +75,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
   }
 
-  /// Removes a cart item from the cart repository
-  FutureOr<void> _onCartItemRemoved(
-    CartItemRemoved event,
-    Emitter<CartState> emit,
-  ) async {
-    try {
-      emit(state.copyWith(status: CartStatus.loading));
-
-      await _cartRepository.removeCartItem(event.cartItem);
-      final cartResponse = await _cartRepository.getCartItems();
-      // final totalCost = totalCostSum(cartResponse);
-      emit(state.copyWith(
-        status: CartStatus.loadingSuccess,
-        cart: cartResponse,
-        // totalCost: totalCost,
-      ));
-    } catch (error, stackTrace) {
-      emit(state.copyWith(status: CartStatus.updatingFailure));
-      addError(error, stackTrace);
-    }
-  }
-
   ///Clear the cart
   FutureOr<void> _onClearRequested(
     CartClearRequested event,
@@ -125,11 +103,18 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   //   return state.cart.any((item) => item!.uuid == productId);
   // }
 
-  // int showQuantity(String productId) {
-  //   return state.cart
-  //       .firstWhere(
-  //         (element) => element!.uuid == productId,
-  //       )!
-  //       .quantity;
-  // }
+  int showQuantity(String productId) {
+    try {
+      log('--------state cart ${state.cart}------');
+      return state.cart.isEmpty
+          ? 0
+          : state.cart
+              .firstWhere(
+                (element) => element!.uuid == productId,
+              )!
+              .quantity;
+    } catch (e) {
+      return 0;
+    }
+  }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/cart/cart.dart';
+import 'package:meno_shop/l10n/l10n.dart';
 
 Future<void> showCartSelectBottomSheet({
   required BuildContext context,
@@ -19,10 +20,11 @@ class CartBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return AppBottomSheet(
       bottomModalChildren: [
         Text(
-          'Price',
+          context.l10n.price,
           style: const AppTextStyle.text().headline6().semiBold(),
           textAlign: TextAlign.center,
         ),
@@ -30,33 +32,33 @@ class CartBottomSheet extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Total cost of good'),
-                Text('1234 TMT'),
+                Text(l10n.totalCost),
+                const Text('1234 TMT'),
               ],
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Delivery service'),
-                Text('123 TMT'),
+                Text(l10n.deliverySerice),
+                const Text('123 TMT'),
               ],
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Discount '),
-                Text('12 TMT'),
+                Text(l10n.discount),
+                const Text(' 12 TMT'),
               ],
             ),
             const Divider(),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Total price'),
-                Text('12345 TMT'),
+                Text(l10n.totalPrice),
+                const Text('12345 TMT'),
               ],
             ),
             SizedBox(
@@ -65,7 +67,7 @@ class CartBottomSheet extends StatelessWidget {
                 onButtonPressed: () =>
                     context.pushNamed(RouteNames.addresses.name),
                 totalPrice: 1234,
-                buttonText: 'Confirm cart',
+                buttonText: l10n.cartConfirmation,
               ),
             )
           ],

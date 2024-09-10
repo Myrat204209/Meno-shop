@@ -8,8 +8,8 @@ class CheckoutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //TODO: L10n check out
         title: const Text('Checkout'),
-        centerTitle: true,
       ),
       body: const CheckoutContent(),
     );

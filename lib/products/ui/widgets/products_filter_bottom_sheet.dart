@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:meno_shop/favorites/favorites.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
-Future<void> showCategoriesFilterBottomSheet({
+Future<void> showFilterBottomSheet({
   required BuildContext context,
 }) async =>
     showModalBottomSheet(
       context: context,
       useSafeArea: true,
       isScrollControlled: true,
-      builder: (_) => const CategoriesFilterBottomSheet(),
+      builder: (_) => const FilterBottomSheet(),
     );
 
-class CategoriesFilterBottomSheet extends StatelessWidget {
-  const CategoriesFilterBottomSheet({super.key});
+class FilterBottomSheet extends StatelessWidget {
+  const FilterBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +39,13 @@ class CategoriesFilterBottomSheet extends StatelessWidget {
             children: [
               FilterPageChip(
                 isSelected: true,
-                label: 'Categories Accessories',
+                label: ' Accessories',
               )
             ],
           ),
           const FilterPageWrap(
             children: categoryChipList,
-            label: 'Categories',
+            label: '',
           ),
           const FilterPageWrap(children: sizeChipList, label: 'Size'),
           const FilterPageWrap(children: brandChipList, label: 'Brands'),

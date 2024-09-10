@@ -24,6 +24,8 @@ class GetSubcategoryQueryParameters {
   final String? input;
   @JsonKey(includeIfNull: false)
   final bool? hasProduct;
+  @JsonKey(name: 'relationFilter[subcategories][uuid]',includeIfNull: false)
+  final String? relationFilter;
   GetSubcategoryQueryParameters({
     // this.attributes,
     this.offset,
@@ -34,6 +36,7 @@ class GetSubcategoryQueryParameters {
     this.search,
     this.input,
     this.hasProduct,
+    this.relationFilter,
   });
 
   factory GetSubcategoryQueryParameters.fromJson(JsonType json) =>

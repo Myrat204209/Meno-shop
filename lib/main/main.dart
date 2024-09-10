@@ -9,7 +9,7 @@ import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/main/bootstrap/bootstrap.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:meno_shop/categories/categories.dart';
-import 'package:meno_shop/product/product.dart';
+import 'package:meno_shop/products/products.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meno_shop/subcategories/subcategories.dart';
 import '../app/app.dart';

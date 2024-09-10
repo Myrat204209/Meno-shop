@@ -1,19 +1,25 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailsDiscount extends StatelessWidget {
   const ProductDetailsDiscount({
     super.key,
-    required this.originalPrice,
-    required this.discountedPrice,
-    required this.onSalePercent,
+    required this.price,
+    this.discount,
   });
-  final double originalPrice;
-  final double discountedPrice;
-  final int onSalePercent;
+  final double price;
+  final DiscountItem? discount;
   @override
   Widget build(BuildContext context) {
+    if (discount == null) {
+      return Text(
+        '$price TMT',
+        style: const AppTextStyle.text().xl().bold(),
+      );
+    }
+
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 0),
       leading: Material(
@@ -21,27 +27,27 @@ class ProductDetailsDiscount extends StatelessWidget {
         shape: ShapeBorderX.roundedRectangle(10),
         child: ConstrainedBox(
           constraints: const BoxConstraints(
-            maxHeight: 50,
-            maxWidth: 50,
+            maxHeight: 65,
+            maxWidth: 57,
           ),
           child: Text(
-            '-$onSalePercent%',
+            '-${discount?.percentage}%',
             style: const AppTextStyle.text()
-                .semiBold()
-                .sm()
+                .lg()
+                .bold()
                 .withColor(AppColors.quaterniary),
           ).centralize(),
         ),
       ),
       title: Text(
-        '$discountedPrice TMT',
+        '${discount?.originalPrice} TMT',
         style: const AppTextStyle.text()
             .sm()
             .regular()
             .copyWith(decoration: TextDecoration.lineThrough),
       ),
       subtitle: Text(
-        '$originalPrice TMT',
+        '${discount?.discountedPrice} TMT',
         style: const AppTextStyle.text().lg().bold(),
       ),
       // trailing: Text(
@@ -116,7 +122,7 @@ class ProductDetailsName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       productName,
-      style: const AppTextStyle.text().headline6().semiBold(),
+      style: const AppTextStyle.text().headline4().semiBold(),
     ).paddingSymmetric(vertical: 10);
   }
 }

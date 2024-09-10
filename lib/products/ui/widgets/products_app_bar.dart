@@ -4,14 +4,14 @@ import 'package:meno_shop/search/search.dart';
 
 import 'widgets.dart';
 
-class CategoryProductsAppBar extends StatelessWidget
+
+class ProductsAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const CategoryProductsAppBar({super.key});
+  const ProductsAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      scrolledUnderElevation: 0,
       title: const AppSearchBar(),
       actions: [
         IconButton(
@@ -20,7 +20,7 @@ class CategoryProductsAppBar extends StatelessWidget
             size: 30,
             color: AppColors.primary,
           ),
-          onPressed: () => showCategoriesFilterBottomSheet(context: context),
+          onPressed: () => showFilterBottomSheet(context: context),
         ).paddingOnly(right: 16),
       ],
     );

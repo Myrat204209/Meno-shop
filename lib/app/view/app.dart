@@ -13,7 +13,8 @@ import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/bloc/favorites_bloc.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/language/language.dart';
-import 'package:meno_shop/product/product.dart';
+import 'package:meno_shop/product_details/product_details.dart';
+import 'package:meno_shop/products/products.dart';
 import 'package:meno_shop/subcategories/subcategories.dart';
 
 /// The main application widget that initializes and provides necessary repositories and blocs to the app.
@@ -58,14 +59,15 @@ class App extends StatelessWidget {
     final categoriesBloc =
         CategoriesBloc(categoryRepository: _categoryRepository)
           ..add(const CategoriesRequested());
-
+    final subcategoriesBloc =
+        SubcategoriesBloc(subcategoryRepository: _subcategoryRepository);
     final addressBloc = AddressBloc(
       addressRepository: _addressRepository,
     )..add(AddressesRequested());
-    final productBloc = ProductsBloc(productRepository: _productRepository);
     final cartBloc = CartBloc(cartRepository: _cartRepository)
       ..add(CartInitRequested());
     final favoritesBloc = FavoritesBloc(productRepository: _productRepository);
+
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider.value(value: _bannerRepository),
@@ -81,10 +83,15 @@ class App extends StatelessWidget {
           BlocProvider.value(value: homeBloc),
           BlocProvider.value(value: languageBloc),
           BlocProvider.value(value: categoriesBloc),
-          BlocProvider.value(value: productBloc),
+          BlocProvider.value(value: subcategoriesBloc),
           BlocProvider.value(value: addressBloc),
           BlocProvider.value(value: authBloc),
           BlocProvider.value(value: favoritesBloc),
+          BlocProvider<ProductDetailsBloc>(
+            create: (context) =>
+                ProductDetailsBloc(productRepository: _productRepository),
+            lazy: true,
+          ),
           BlocProvider.value(value: cartBloc),
         ],
         child: LayoutBuilder(

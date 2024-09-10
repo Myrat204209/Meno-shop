@@ -14,6 +14,7 @@ class SubcategoryItem {
     this.creator,
     this.category,
     this.products,
+    this.categoryId,
   });
   final String? uuid;
   final LanguageModel? name;
@@ -22,6 +23,7 @@ class SubcategoryItem {
   final CreatorItem? creator;
   final CategoryItem? category;
   final List<ProductItem>? products;
+  final String? categoryId;
   factory SubcategoryItem.fromJson(JsonType json) =>
       _$SubcategoryItemFromJson(json);
 

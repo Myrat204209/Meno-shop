@@ -35,7 +35,7 @@ class ProductClient {
     return products;
   }
 
-  Future<ProductItem?> getProductByUuid({
+  Future<ProductItem?> getProductDetails({
     required String uuid,
   }) async {
     final response = await _httpClient.get<dynamic>(

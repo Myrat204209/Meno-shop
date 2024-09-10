@@ -12,8 +12,6 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: const AppSearchBar(),
-      scrolledUnderElevation: 0,
-      backgroundColor: AppColors.quaterniary,
       actions: [
         AppActionsButton(
           icon: Icons.language,

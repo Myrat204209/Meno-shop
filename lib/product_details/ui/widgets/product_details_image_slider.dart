@@ -24,13 +24,14 @@ class ProductDetailsImageSlider extends StatelessWidget {
               .centralize()
           : flexi_image_slider(
               context: context,
+              autoScroll: imageLinks?.length != 1  ,
               duration: const Duration(seconds: 3),
               indicatorAlignment: IndicatorAlignment.center,
               indicatorActiveColor: AppColors.secondary,
               indicatorPosition: IndicatorPosition.overImage,
               indicatorDeactiveColor: AppColors.neutral.shade300,
               aspectRatio: 15 / 11,
-              arrayImages: imageLinks!,
+              arrayImages: imageLinks?.nonNulls.toList() ?? [],
               boxFit: BoxFit.cover,
               borderRadius: 8,
             ),

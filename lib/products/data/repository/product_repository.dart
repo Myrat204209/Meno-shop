@@ -16,8 +16,8 @@ class GetProductsFailure extends ProductFailure {
   const GetProductsFailure(super.error);
 }
 
-class GetOneProductFailure extends ProductFailure {
-  const GetOneProductFailure(super.error);
+class GetProductDetailsFailure extends ProductFailure {
+  const GetProductDetailsFailure(super.error);
 }
 
 class GetFavoritesFailure extends ProductFailure {
@@ -53,13 +53,11 @@ class ProductRepository {
   }
 
   /// Remote method to get  products by uuid.
-  Future<ProductItem?> getProductByUuid({
-    required String uuid,
-  }) async {
+  Future<ProductItem?> getProductDetails({required String uuid}) async {
     try {
-      return await _productClient.getProductByUuid(uuid: uuid);
+      return await _productClient.getProductDetails(uuid: uuid);
     } catch (error, stackTrace) {
-      Error.throwWithStackTrace(GetOneProductFailure(error), stackTrace);
+      Error.throwWithStackTrace(GetProductDetailsFailure(error), stackTrace);
     }
   }
 

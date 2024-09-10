@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meno_shop/product/product.dart';
+import 'package:meno_shop/products/products.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'products_event.dart';
@@ -20,10 +20,9 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         super(const ProductsState.initial()) {
     on<ProductsRequested>(_onProductsRequested);
     on<ProductsRefreshRequested>(_onProductsRefreshRequested);
-    on<ProductByUuidRequested>(_onProductByUuidRequested);
     on<ProductsSearchUpdated>(
       _onSearchUpdated,
-      transformer: debounceSequential(const Duration(milliseconds: 500)),
+      transformer: debounceSequential(const Duration(milliseconds: 1000)),
     );
   }
 
@@ -42,43 +41,24 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     try {
       emit(state.copyWith(status: ProductsStatus.loading));
 
-      final response = await _productRepository.getProducts();
+      final response = await _productRepository.getProducts(
+        GetProductQueryParameters(
+          search: state.search,
+          offset: state.offset + 10,
+          relationFilterSubcategory: event.subcategoryId,
+        ),
+      );
 
       final content = response ?? const [];
 
       emit(state.copyWith(
         status: ProductsStatus.populated,
         products: {...state.products, ...content}.toList(),
+        offset: state.offset + 10,
         hasMoreContent: content.isNotEmpty,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: ProductsStatus.failure));
-      addError(error, stackTrace);
-    } finally {
-      _isFetching = false;
-    }
-  }
-
-  FutureOr<void> _onProductByUuidRequested(
-    ProductByUuidRequested event,
-    Emitter<ProductsState> emit,
-  ) async {
-    if (_isFetching) return;
-    _isFetching = true;
-    try {
-      emit(state.copyWith(status: ProductsStatus.singleProductLoading));
-
-      final response =
-          await _productRepository.getProductByUuid(uuid: event.productUuid);
-
-      emit(state.copyWith(
-        status: ProductsStatus.singleProductPopulated,
-        singleProduct: response,
-        hasMoreContent: false,
-        overrideSingleProduct: true,
-      ));
-    } catch (error, stackTrace) {
-      emit(state.copyWith(status: ProductsStatus.singleProductFailure));
       addError(error, stackTrace);
     } finally {
       _isFetching = false;
@@ -91,7 +71,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ) {
     emit(state.copyWith(status: ProductsStatus.initial));
     emit(const ProductsState.initial());
-    add(ProductsRequested());
+    add(const ProductsRequested());
   }
 
   FutureOr<void> _onSearchUpdated(
@@ -101,6 +81,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     emit(const ProductsState.initial().copyWith(
       search: event.search,
     ));
-    add(ProductsRequested());
+    add(const ProductsRequested());
   }
 }
