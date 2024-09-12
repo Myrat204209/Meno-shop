@@ -37,8 +37,8 @@ Future<void> bootStrap(AppBuilder builder) async {
       final firebaseMessaging = FirebaseMessaging.instance;
       late final String? firebaseToken;
       try {
-        // firebaseToken = await firebaseMessaging.getToken();
-        // log('-------------------${firebaseToken!}');
+        firebaseToken = await firebaseMessaging.getToken();
+        log('-------------------${firebaseToken!}');
       } catch (error, stackTrace) {
         log('-------------------FirebaseMessaging error: $error$stackTrace');
       }
@@ -51,11 +51,11 @@ Future<void> bootStrap(AppBuilder builder) async {
       );
       final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-      // FirebaseNotificationService(
-      //   androidNotificationChannel: androidNotificationChannel,
-      //   firebaseMessaging: firebaseMessaging,
-      //   flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
-      // ).initNotifications();
+      FirebaseNotificationService(
+        androidNotificationChannel: androidNotificationChannel,
+        firebaseMessaging: firebaseMessaging,
+        flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
+      ).initNotifications();
 
       final blocObserver = AppBlocObserver(
         exceptionStream: exceptionStream,

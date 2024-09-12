@@ -35,7 +35,8 @@ class CategoriesExpansionTile extends StatelessWidget {
       children: subcategories!.map((subcategory) {
         return InkWell(
           onTap: () {
-            context.pushNamed(RouteNames.products.name);
+            context.pushNamed(RouteNames.products.name,
+                pathParameters: {'uuid': subcategory.uuid!});
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),

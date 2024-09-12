@@ -92,8 +92,8 @@ class FirebaseNotificationService {
   }
 
   Future<void> initNotifications() async {
-    // await _firebaseMessaging.setAutoInitEnabled(true);
-    // await _firebaseMessaging.requestPermission();
+    await _firebaseMessaging.setAutoInitEnabled(true);
+    await _firebaseMessaging.requestPermission();
     initPushNotifications();
     initLocalNotifications();
   }

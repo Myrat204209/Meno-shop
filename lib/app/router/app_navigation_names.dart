@@ -1,7 +1,7 @@
 enum RouteNames {
   home('/home'),
   notifications('notifications'),
-  productDetails('products/:uuid'),
+  productDetails('/products_details/:uuid'),
   category('/category'),
   cart('/cart'),
   favorites('/favorites'),
@@ -13,7 +13,7 @@ enum RouteNames {
   authVerify('authVerify'),
   orders('orders'),
   orderInformation('orders_information'),
-  products('products');
+  products('/products/:uuid');
 
   const RouteNames(this.path);
   final String path;

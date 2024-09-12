@@ -53,9 +53,15 @@ class ProductRepository {
   }
 
   /// Remote method to get  products by uuid.
-  Future<ProductItem?> getProductDetails({required String uuid}) async {
+  Future<ProductItem?> getProductDetails({
+    required String uuid,
+    bool hasSimilar = true,
+  }) async {
     try {
-      return await _productClient.getProductDetails(uuid: uuid);
+      return await _productClient.getProductDetails(
+        uuid: uuid,
+        hasSimilar: hasSimilar,
+      );
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetProductDetailsFailure(error), stackTrace);
     }

@@ -79,10 +79,7 @@ class ProductCard extends StatelessWidget {
                             .withColor(AppColors.primary),
                       ),
                     ),
-                    ProductCartAddButton(
-                      productUuid: product.uuid!,
-                      creatorUuid: product.creator?.uuid,
-                    ),
+                    ProductCartAddButton(productUuid: product.uuid!),
                   ],
                 ).paddingAll(10),
                 ProductDetailsPrices(

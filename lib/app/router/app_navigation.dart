@@ -64,14 +64,7 @@ class AppNavigation {
                     builder: (context, state) =>
                         NotificationsPage(key: state.pageKey),
                   ),
-                  GoRoute(
-                    path: RouteNames.productDetails.path,
-                    name: RouteNames.productDetails.name,
-                    builder: (context, state) => ProductDetailsPage(
-                      key: state.pageKey,
-                      uuid: state.pathParameters['uuid']!,
-                    ),
-                  ),
+                  
                 ],
               ),
             ],
@@ -85,17 +78,6 @@ class AppNavigation {
                 path: RouteNames.category.path,
                 name: RouteNames.category.name,
                 builder: (context, state) => CategoriesPage(key: state.pageKey),
-                routes: <RouteBase>[
-                  GoRoute(
-                    path: RouteNames.products.path,
-                    name: RouteNames.products.name,
-                    builder: (context, state) => ProductsPage(
-                      key: state.pageKey,
-                      categoryName: (state.extra as List<String>)[0],
-                      subcategoryName: (state.extra as List<String>)[1],
-                    ),
-                  ),
-                ],
               ),
             ],
           ),
@@ -180,13 +162,24 @@ class AppNavigation {
           ),
         ],
       ),
-      // GoRoute(
-      //   path: RouteNames.products.path,
-      //   name: RouteNames.products.name,
-      //   builder: (context, state) => CategoryProductsPage(
-      //     key: state.pageKey,
-      //   ),
-      // ),
+      GoRoute(
+                    path: RouteNames.productDetails.path,
+                    name: RouteNames.productDetails.name,
+                    builder: (context, state) => ProductDetailsPage(
+                      key: state.pageKey,
+                      uuid: state.pathParameters['uuid']!,
+                    ),
+                  ),
+      GoRoute(
+        path: RouteNames.products.path,
+        name: RouteNames.products.name,
+        builder: (context, state) => ProductsPage(
+          key: state.pageKey,
+          // categoryName: (state.extra as List<String>)[0],
+          // subcategoryName: (state.extra as List<String>)[1],
+          subcategoryId: state.pathParameters['uuid']!,
+        ),
+      ),
       GoRoute(
         path: RouteNames.auth.path,
         name: RouteNames.auth.name,

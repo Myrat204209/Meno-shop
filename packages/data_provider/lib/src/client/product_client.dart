@@ -37,10 +37,11 @@ class ProductClient {
 
   Future<ProductItem?> getProductDetails({
     required String uuid,
+    bool hasSimilar = true,
   }) async {
     final response = await _httpClient.get<dynamic>(
       '/products/$uuid',
-      queryParameters: {'hasSimilar': true},
+      queryParameters: {'hasSimilar': hasSimilar},
     );
     final product = ProductItem.fromJson(response.data);
 

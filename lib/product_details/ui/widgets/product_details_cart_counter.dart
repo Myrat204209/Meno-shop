@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class ProductDetailsCartCounter extends StatelessWidget {
+class ProductDetailsCartCounter extends HookWidget {
   const ProductDetailsCartCounter({
     super.key,
     required this.addOneButton,
@@ -14,6 +15,7 @@ class ProductDetailsCartCounter extends StatelessWidget {
   final int counterQuantity;
   @override
   Widget build(BuildContext context) {
+    final quantity = useState(counterQuantity);
     return AppWrapper(
       borderColor: AppColors.neutral.shade300,
       child: SizedBox(
@@ -22,7 +24,12 @@ class ProductDetailsCartCounter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-              onPressed: removeOneButton,
+              onPressed: () {
+                removeOneButton.call();
+                if (quantity.value > 0) {
+                  quantity.value--;
+                }
+              },
               icon: const Icon(
                 Icons.remove,
                 size: 30,
@@ -30,11 +37,14 @@ class ProductDetailsCartCounter extends StatelessWidget {
               ),
             ),
             Text(
-              '$counterQuantity',
+              '${quantity.value}',
               style: const AppTextStyle.text().lg().semiBold(),
             ),
             IconButton(
-              onPressed: addOneButton,
+              onPressed: () {
+                addOneButton.call();
+                quantity.value++;
+              },
               icon: const Icon(
                 Icons.add,
                 size: 30,

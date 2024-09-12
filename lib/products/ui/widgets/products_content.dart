@@ -1,37 +1,47 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:meno_shop/products/products.dart';
 
 class ProductsContent extends StatelessWidget {
   const ProductsContent({
     super.key,
-    required this.category,
-    required this.subcategory,
+    this.category,
+    this.subcategoryId,
+    this.subcategory,
   });
 
-  final String category;
-  final String subcategory;
+  final String? category;
+  final String? subcategoryId;
+  final String? subcategory;
 
   @override
   Widget build(BuildContext context) {
     final (products, hasMoreContent) = context.select(
       (ProductsBloc bloc) => (bloc.state.products, bloc.state.hasMoreContent),
     );
+    log('----------------RelationFilter subcategory achdyyyyyyyy--------------------------------');
+    log('----------------products $products--------------------------------');
     return Stack(
       fit: StackFit.expand,
       children: [
-        CustomScrollView(
-          slivers: [
-            const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.md)),
-            const ProductSearchField(),
-            ProductsGridView(
-              products: products,
-              hasMoreContent: hasMoreContent,
-              onLoadMore: () =>
-                  context.read<ProductsBloc>().add(const ProductsRequested()),
-            )
-          ],
+        ProductsRefreshIndicator(
+          child: CustomScrollView(
+            slivers: [
+              const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.xs)),
+              ProductsGridView(
+                products: products,
+                hasMoreContent: hasMoreContent,
+                onLoadMore: () => context
+                    .read<ProductsBloc>()
+                    .add(ProductsRequested(subcategoryId: subcategoryId)),
+              )
+            ],
+          ),
         ),
         if (products.isEmpty && !hasMoreContent)
           const SizedBox(

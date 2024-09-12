@@ -13,9 +13,7 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
-        context.l10n.cart,
-      ),
+      title: Text(context.l10n.cart),
       actions: [
         TextButton(
           onPressed: () {
@@ -54,9 +52,8 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
                               buttonText: context.l10n.affirmation,
                               onTap: () {
                                 context
-                                    .read<CartBloc>()
-                                    .add(CartClearRequested());
-                                context.pop();
+                                  ..read<CartBloc>().add(CartClearRequested())
+                                  ..pop();
                               },
                               color: AppColors.secondary,
                               textColor: AppColors.quaterniary,
@@ -71,6 +68,7 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Text(
             context.l10n.cartClearTitle,
             style: const AppTextStyle.text()
+                .sm()
                 .regular()
                 .withColor(AppColors.secondary),
           ),

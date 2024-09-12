@@ -13,33 +13,33 @@ class ProductSearchField extends HookWidget {
   Widget build(BuildContext context) {
     final isSearchEmpty = useState(true);
     final controller = useSearchController();
-    return SliverToBoxAdapter(
-      child: SearchBar(
-        controller: controller,
-        leading: Icon(
-          Icons.search,
-          color: AppColors.neutral.shade700,
-        ),
-        hintText: context.l10n.searching,
-        trailing: <Widget>[
-          if (!isSearchEmpty.value)
-            Tooltip(
-              message: 'Clear search',
-              child: IconButton(
-                onPressed: () {
-                  controller.clear();
-                  context.read<ProductsBloc>().add(const ProductsSearchUpdated(''));
-                  isSearchEmpty.value = true;
-                },
-                icon: const Icon(Icons.clear_rounded),
-              ),
-            )
-        ],
-        onSubmitted: (String value) {
-          context.read<ProductsBloc>().add(ProductsSearchUpdated(value));
-          isSearchEmpty.value = value.isEmpty;
-        },
-      ).paddingSymmetric(horizontal: AppSpacing.md),
+    return SearchBar(
+      controller: controller,
+      leading: Icon(
+        Icons.search,
+        color: AppColors.neutral.shade700,
+      ),
+      hintText: context.l10n.searching,
+      trailing: <Widget>[
+        if (!isSearchEmpty.value)
+          Tooltip(
+            message: 'Clear search',
+            child: IconButton(
+              onPressed: () {
+                controller.clear();
+                context
+                    .read<ProductsBloc>()
+                    .add(const ProductsSearchUpdated(''));
+                isSearchEmpty.value = true;
+              },
+              icon: const Icon(Icons.clear_rounded),
+            ),
+          )
+      ],
+      onSubmitted: (String value) {
+        context.read<ProductsBloc>().add(ProductsSearchUpdated(value));
+        isSearchEmpty.value = value.isEmpty;
+      },
     );
     //   return SearchAnchor.bar(
     //     isFullScreen: false,
@@ -83,4 +83,3 @@ class ProductSearchField extends HookWidget {
     //   );
   }
 }
-

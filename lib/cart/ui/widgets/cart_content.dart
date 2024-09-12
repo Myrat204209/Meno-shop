@@ -9,6 +9,7 @@ import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/order_information/order_information.dart';
+import 'package:meno_shop/product_details/product_details.dart';
 import 'package:meno_shop/shimmer/shimmer.dart';
 
 class CartContent extends StatelessWidget {
@@ -28,19 +29,24 @@ class CartContent extends StatelessWidget {
         }
         return Column(
           children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: carts?.length,
-                itemBuilder: (context, index) {
-                  if (carts == null || carts == []) {
-                    return const SizedBox();
-                  } else {
+            if (carts == null || carts == [])
+              const SizedBox()
+            else
+              Expanded(
+                child: ListView.builder(
+                  itemCount: carts?.length,
+                  itemBuilder: (context, index) {
                     final cart = carts?[index];
-                    return AppListTile(cart: cart!);
-                  }
-                },
+                    context
+                        .read<ProductDetailsBloc>()
+                        .add(ProductDetailsRequested(
+                          productUuid: cart!.uuid,
+                          hasSimilar: false,
+                        ));
+                    return AppListTile(cart: cart);
+                  },
+                ),
               ),
-            ),
 
             ///Divider
             Divider(color: AppColors.neutral.shade300),

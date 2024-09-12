@@ -44,7 +44,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       final response = await _productRepository.getProducts(
         GetProductQueryParameters(
           search: state.search,
-          offset: state.offset + 10,
+          offset: state.offset,
           relationFilterSubcategory: event.subcategoryId,
         ),
       );

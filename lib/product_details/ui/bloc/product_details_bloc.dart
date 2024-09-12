@@ -29,8 +29,10 @@ class ProductDetailsBloc
     try {
       emit(state.copyWith(status: ProductDetailsStatus.loading));
 
-      final response =
-          await _productRepository.getProductDetails(uuid: event.productUuid);
+      final response = await _productRepository.getProductDetails(
+        uuid: event.productUuid,
+        hasSimilar: event.hasSimilar,
+      );
 
       emit(state.copyWith(
         status: ProductDetailsStatus.populated,

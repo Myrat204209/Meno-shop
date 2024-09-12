@@ -19,27 +19,41 @@ class CartItem extends HiveObject with EquatableMixin {
   final String size;
   @HiveField(3)
   final String creator;
+  @HiveField(4)
+  @JsonKey(includeToJson: false)
+  final double price;
   CartItem({
     required this.uuid,
     required this.quantity,
     required this.size,
     required this.creator,
+    required this.price,
   });
 
   @override
-  List<Object?> get props => [uuid, quantity, size, creator];
+  List<Object> get props {
+    return [
+      uuid,
+      quantity,
+      size,
+      creator,
+      price,
+    ];
+  }
 
   CartItem copyWith({
     String? uuid,
     int? quantity,
     String? size,
     String? creator,
+    double? price,
   }) {
     return CartItem(
       uuid: uuid ?? this.uuid,
       quantity: quantity ?? this.quantity,
       size: size ?? this.size,
       creator: creator ?? this.creator,
+      price: price ?? this.price,
     );
   }
 

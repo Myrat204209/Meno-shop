@@ -9,8 +9,11 @@ sealed class ProductDetailsEvent extends Equatable {
 
 final class ProductDetailsRequested extends ProductDetailsEvent {
   final String productUuid;
-
-  const ProductDetailsRequested({required this.productUuid});
+  final bool hasSimilar;
+  const ProductDetailsRequested({
+    required this.productUuid,
+    this.hasSimilar = true,
+  });
 
   @override
   List<Object> get props => [productUuid];

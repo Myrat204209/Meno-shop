@@ -4,13 +4,9 @@ part of 'cart_bloc.dart';
 
 enum CartStatus {
   initial,
-
-  ///Fetching cart process
   loading,
   loadingSuccess,
   loadingFailure,
-
-  /// Updating cart process
   updating,
   updatingSuccess,
   updatingFailure,
@@ -20,13 +16,15 @@ class CartState extends Equatable {
   const CartState({
     required this.status,
     this.cart = const [],
-    this.totalCost = 0,
+    this.totalCost = 0.0,
   });
-  const CartState.initial() : this(status: CartStatus.initial);
-  final CartStatus status;
 
+  const CartState.initial() : this(status: CartStatus.initial);
+
+  final CartStatus status;
   final List<CartItem?> cart;
   final double totalCost;
+
   @override
   List<Object?> get props => [
         status,
@@ -44,5 +42,14 @@ class CartState extends Equatable {
       cart: cart ?? this.cart,
       totalCost: totalCost ?? this.totalCost,
     );
+  }
+
+  /// Calculates the total cost based on the current cart items
+  CartState calculateTotalCost() {
+    final total = cart.fold(
+      0.0,
+      (sum, item) => sum + (item?.price ?? 0.0) * (item?.quantity ?? 0),
+    );
+    return copyWith(totalCost: total);
   }
 }

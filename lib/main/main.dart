@@ -58,11 +58,6 @@ void main() {
         await Hive.openBox<AddressModel>(HiveBoxKeys.userAddresses);
     final addressRepository = AddressRepository(userAddressBox: userAddressBox);
 
-    /// Cart
-    Hive.registerAdapter(CartItemAdapter());
-    final userCartBox = await Hive.openBox<CartItem>(HiveBoxKeys.userCart);
-    final cartRepository = CartRepository(cartItemBox: userCartBox);
-
     /// Favorites
     final userFavoritesBox =
         await Hive.openBox<String>(HiveBoxKeys.userFavorites);
@@ -72,6 +67,14 @@ void main() {
     final productRepository = ProductRepository(
       productClient: productClient,
       userFavoritesBox: userFavoritesBox,
+    );
+
+    /// Cart
+    Hive.registerAdapter(CartItemAdapter());
+    final userCartBox = await Hive.openBox<CartItem>(HiveBoxKeys.userCart);
+    final cartRepository = CartRepository(
+      cartItemBox: userCartBox,
+      productRepository: productRepository,
     );
 
     /// Auth

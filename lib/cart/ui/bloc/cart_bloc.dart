@@ -1,10 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
-import 'package:data_provider/data_provider.dart';
 import 'package:equatable/equatable.dart';
+import 'package:data_provider/data_provider.dart';
 
 import 'package:meno_shop/cart/cart.dart';
 
@@ -12,6 +9,8 @@ part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
+  final CartRepository _cartRepository;
+
   CartBloc({
     required CartRepository cartRepository,
   })  : _cartRepository = cartRepository,
@@ -20,10 +19,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartRequested>(_onRequested);
     on<CartItemAdded>(_onCartItemAdded);
     on<CartClearRequested>(_onClearRequested);
+    on<CartItemQuantityUpdated>(_onCartItemQuantityUpdated);
+    on<CartItemSizeSelected>(_onCartItemSizeSelected);
   }
 
-  final CartRepository _cartRepository;
-
+  // Initialize the cart
   FutureOr<void> _onInitRequested(
     CartInitRequested event,
     Emitter<CartState> emit,
@@ -32,6 +32,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     add(CartRequested());
   }
 
+  // Handle loading the cart items
   FutureOr<void> _onRequested(
     CartRequested event,
     Emitter<CartState> emit,
@@ -39,51 +40,90 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     try {
       emit(state.copyWith(status: CartStatus.loading));
       final cartResponse = await _cartRepository.getCartItems();
-      // final totalCost = totalCostSum(cartResponse);
-      emit(state.copyWith(
-        status: CartStatus.loadingSuccess,
-        cart: cartResponse,
-        // totalCost: totalCost,
-      ));
+      emit(state
+          .copyWith(
+            status: CartStatus.loadingSuccess,
+            cart: cartResponse,
+          )
+          .calculateTotalCost()); // Update total cost
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.loadingFailure));
       addError(error, stackTrace);
     }
   }
 
-  /// Add a new cart item to the cart repository
+  // Add item to cart
   FutureOr<void> _onCartItemAdded(
     CartItemAdded event,
     Emitter<CartState> emit,
   ) async {
     try {
-      emit(state.copyWith(status: CartStatus.loading));
-
-      await _cartRepository.addCartItem(event.cartItem);
+      emit(state.copyWith(status: CartStatus.updating));
+      await _cartRepository.addCartItem(event.productUuid); // Pass only UUID
       final cartResponse = await _cartRepository.getCartItems();
-      // final totalCost = totalCostSum(cartResponse);
-      emit(
-        state.copyWith(
-          status: CartStatus.loadingSuccess,
-          cart: cartResponse,
-          // totalCost: totalCost,
-        ),
-      );
+      emit(state
+          .copyWith(
+            status: CartStatus.updatingSuccess,
+            cart: cartResponse,
+          )
+          .calculateTotalCost()); // Update total cost
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.updatingFailure));
       addError(error, stackTrace);
     }
   }
 
-  ///Clear the cart
+  // Update item quantity in the cart
+  FutureOr<void> _onCartItemQuantityUpdated(
+    CartItemQuantityUpdated event,
+    Emitter<CartState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: CartStatus.updating));
+      await _cartRepository.updateCartItemQuantity(
+          event.productId, event.quantity);
+      final cartResponse = await _cartRepository.getCartItems();
+      emit(state
+          .copyWith(
+            status: CartStatus.updatingSuccess,
+            cart: cartResponse,
+          )
+          .calculateTotalCost()); // Update total cost
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: CartStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
+  }
+
+  // Select size for the product
+  FutureOr<void> _onCartItemSizeSelected(
+    CartItemSizeSelected event,
+    Emitter<CartState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: CartStatus.updating));
+      await _cartRepository.updateCartItemSize(event.productId, event.size);
+      final cartResponse = await _cartRepository.getCartItems();
+      emit(state
+          .copyWith(
+            status: CartStatus.updatingSuccess,
+            cart: cartResponse,
+          )
+          .calculateTotalCost()); // Update total cost
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: CartStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
+  }
+
+  // Clear the cart
   FutureOr<void> _onClearRequested(
     CartClearRequested event,
     Emitter<CartState> emit,
-  ) {
+  ) async {
     try {
       emit(state.copyWith(status: CartStatus.loading));
-
-      _cartRepository.clearCart();
+      await _cartRepository.clearCart();
       emit(state.copyWith(
         status: CartStatus.loadingSuccess,
         cart: [],
@@ -95,26 +135,21 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
   }
 
-  // double totalCostSum(List<CartItem> carts) {
-  //   return carts.fold(0.0, (sum, item) => sum + item.totalPrice);
-  // }
-
-  // bool isCartAdded(String productId) {
-  //   return state.cart.any((item) => item!.uuid == productId);
-  // }
-
+  // Additional utility methods
   int showQuantity(String productId) {
     try {
-      log('--------state cart ${state.cart}------');
       return state.cart.isEmpty
           ? 0
           : state.cart
-              .firstWhere(
-                (element) => element!.uuid == productId,
-              )!
-              .quantity;
+                  .firstWhere((item) => item?.uuid == productId)
+                  ?.quantity ??
+              0;
     } catch (e) {
       return 0;
     }
+  }
+
+  bool isCartAdded(String productId) {
+    return state.cart.any((item) => item?.uuid == productId);
   }
 }

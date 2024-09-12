@@ -3,6 +3,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/products/products.dart';
@@ -11,8 +12,10 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
   const ProductDetailsSimilarProducts({
     super.key,
     required this.products,
+    required this.subcategoryId,
   });
   final List<ProductItem>? products;
+  final String subcategoryId;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,9 +26,8 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
         ProductsViewAll(
           padding: 0,
           title: context.l10n.similarProducts,
-          onViewAllTap: () => context.pushNamed(
-            RouteNames.products.name,
-          ),
+          onViewAllTap: () => context.pushNamed(RouteNames.products.name,
+              pathParameters: {'uuid': subcategoryId}),
         ),
         const SizedBox(height: AppSpacing.md),
         if (products != null)

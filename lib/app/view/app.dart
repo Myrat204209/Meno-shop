@@ -59,8 +59,8 @@ class App extends StatelessWidget {
     final categoriesBloc =
         CategoriesBloc(categoryRepository: _categoryRepository)
           ..add(const CategoriesRequested());
-    final subcategoriesBloc =
-        SubcategoriesBloc(subcategoryRepository: _subcategoryRepository);
+    // final subcategoriesBloc =
+    //     SubcategoriesBloc(subcategoryRepository: _subcategoryRepository);
     final addressBloc = AddressBloc(
       addressRepository: _addressRepository,
     )..add(AddressesRequested());
@@ -83,10 +83,15 @@ class App extends StatelessWidget {
           BlocProvider.value(value: homeBloc),
           BlocProvider.value(value: languageBloc),
           BlocProvider.value(value: categoriesBloc),
-          BlocProvider.value(value: subcategoriesBloc),
+          // BlocProvider.value(value: subcategoriesBloc),
           BlocProvider.value(value: addressBloc),
           BlocProvider.value(value: authBloc),
           BlocProvider.value(value: favoritesBloc),
+          BlocProvider<ProductsBloc>(
+            create: (context) =>
+                ProductsBloc(productRepository: _productRepository),
+            lazy: true,
+          ),
           BlocProvider<ProductDetailsBloc>(
             create: (context) =>
                 ProductDetailsBloc(productRepository: _productRepository),

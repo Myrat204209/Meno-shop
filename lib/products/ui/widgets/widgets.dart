@@ -1,4 +1,5 @@
 export 'product_card.dart';
+export 'product_refresh_indicator.dart';
 export 'products_advantages.dart';
 export 'products_app_bar.dart';
 export 'products_cart_add_button.dart';

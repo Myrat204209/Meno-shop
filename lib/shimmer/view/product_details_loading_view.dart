@@ -16,7 +16,6 @@ class ProductDetailsLoadingView extends StatelessWidget {
           MiddlePlaceholder(),
           TextPlaceholder(),
           TextPlaceholder(),
-          ProductsPlaceholder(),
           MiddlePlaceholder(),
         ],
       ),

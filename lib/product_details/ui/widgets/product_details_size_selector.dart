@@ -1,8 +1,11 @@
-import 'dart:developer';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:app_ui/app_ui.dart';
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:meno_shop/cart/cart.dart';
 
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/product_details/product_details.dart';
@@ -11,11 +14,15 @@ class ProductDetailsSizeSelector extends HookWidget {
   const ProductDetailsSizeSelector({
     super.key,
     required this.uuid,
+    required this.sizes,
   });
   final String uuid;
-
+  final SizeItem sizes;
   @override
   Widget build(BuildContext context) {
+    final sizesJson = sizes.toJson();
+    final sizesList =
+        sizesJson.keys.where((key) => sizesJson[key] == true).toList();
     // Manage selected size state using hooks
     final selectedSize = useState<String?>(null);
 
@@ -32,12 +39,13 @@ class ProductDetailsSizeSelector extends HookWidget {
           height: 55,
           child: ListView(
             scrollDirection: Axis.horizontal,
-            children: sizes
+            children: sizesList
                 .map((element) => ProductSizeChip(
                       label: element,
                       isSelected: selectedSize.value == element,
                       onPressed: () {
-                        log('Selected Size: $element');
+                        context.read<CartBloc>().add(CartItemSizeSelected(
+                            productId: uuid, size: element));
                         selectedSize.value = element;
                       },
                     ).paddingOnly(right: 10))
