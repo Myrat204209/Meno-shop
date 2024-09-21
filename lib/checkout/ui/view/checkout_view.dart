@@ -9,7 +9,7 @@ class CheckoutView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         //TODO: L10n check out
-        title: const Text('Checkout'),
+        title: const Text('Sargyt'),
       ),
       body: const CheckoutContent(),
     );

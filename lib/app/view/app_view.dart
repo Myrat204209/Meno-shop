@@ -31,9 +31,13 @@ class _AppViewState extends State<AppView> {
   Widget build(BuildContext context) {
     final router = AppNavigation.router;
     return BlocConsumer<LanguageBloc, Locale>(
-      listener: (context, state) {},
-      listenWhen: (previous, current) => previous.countryCode != current.countryCode,
-      buildWhen: (previous, current) => previous != current,
+      listener: (context, state) {
+        state.languageCode;
+      },
+      listenWhen: (previous, current) =>
+          previous.countryCode != current.countryCode,
+      buildWhen: (previous, current) =>
+          previous.languageCode != current.languageCode,
       builder: (context, state) {
         return MaterialApp.router(
           locale: state,

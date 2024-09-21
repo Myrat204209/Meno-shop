@@ -9,6 +9,7 @@ export 'creator_item/creator_item.dart';
 export 'discount_item/discount_item.dart';
 export 'json_response/json_response.dart';
 export 'language_model/language_model.dart';
+export 'order_create_request_body/order_create_request_body.dart';
 export 'order_item/order_item.dart';
 export 'photo_item/photo_item.dart';
 export 'product_item/product_item.dart';

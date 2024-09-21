@@ -12,10 +12,10 @@ class AuthClient {
         _tokenStorage = tokenStorage;
 
   /// Log In endpoints using phone
-  Future<AuthResponse> auth(AuthRequestBody body) async {
+  Future<AuthResponse> auth({required String phone}) async {
     final response = await _http.post<JsonType>(
       '/auth',
-      data: body.toJson(),
+      data: {'phone': phone},
     );
     if (response.statusCode == 200) {
       final authResponse = AuthResponse.fromJson(response.data!);

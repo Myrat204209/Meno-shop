@@ -40,7 +40,7 @@ class AppHorizontalListView extends StatelessWidget {
       }
 
       return separatorBuilder == null
-          ? const SizedBox()
+          ? const SizedBox.shrink()
           : separatorBuilder!(context, itemIndex);
     }).toList();
 

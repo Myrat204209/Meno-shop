@@ -25,9 +25,11 @@ class ProductClient {
   Future<List<ProductItem>?> getProductsList({
     required List<String> uuids,
   }) async {
-    final response = await _httpClient.get<List<dynamic>>(
+    final response = await _httpClient.post<List<dynamic>>(
       '/products/list',
-      data: {'uuids': uuids},
+      data: {
+        'uuids': uuids,
+      },
     );
     final List<ProductItem>? products =
         response.data!.map((json) => ProductItem.fromJson(json)).toList();

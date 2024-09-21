@@ -1,7 +1,4 @@
-import 'package:app_ui/app_ui.dart';
-
-extension AssetExtender on AssetGenImage {
-  String extendPath() {
-    return 'packages/app_ui/$path';
-  }
+extension AdvantageExtender on String {
+  String extendAdvantages({required String locale}) =>
+      'packages/app_ui/assets/advantages/$locale/$this.svg';
 }

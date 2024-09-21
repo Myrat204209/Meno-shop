@@ -11,7 +11,6 @@ final class FavoritesInitRequested extends FavoritesEvent {}
 
 final class FavoritesRequested extends FavoritesEvent {}
 
-final class FavoritesRefreshRequested extends FavoritesEvent {}
 
 final class FavoriteButtonPressed extends FavoritesEvent {
   final String productUuid;

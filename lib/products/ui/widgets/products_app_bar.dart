@@ -1,4 +1,3 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets.dart';
@@ -14,16 +13,16 @@ class ProductsAppBar extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 0,
       leadingWidth: 45,
       title: const ProductSearchField(),
-      actions: [
-        IconButton(
-          icon: const Icon(
-            Icons.filter_list,
-            size: 30,
-            color: AppColors.primary,
-          ),
-          onPressed: () => showFilterBottomSheet(context: context),
-        ).paddingOnly(right: 16),
-      ],
+      // actions: [cart
+      //   IconButton(
+      //     icon: const Icon(
+      //       Icons.filter_list,
+      //       size: 30,
+      //       color: AppColors.primary,
+      //     ),
+      //     onPressed: () => showFilterBottomSheet(context: context),
+      //   ).paddingOnly(right: 16),
+      // ],
     );
   }
 

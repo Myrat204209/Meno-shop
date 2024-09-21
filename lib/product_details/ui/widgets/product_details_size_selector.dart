@@ -13,10 +13,8 @@ import 'package:meno_shop/product_details/product_details.dart';
 class ProductDetailsSizeSelector extends HookWidget {
   const ProductDetailsSizeSelector({
     super.key,
-    required this.uuid,
     required this.sizes,
   });
-  final String uuid;
   final SizeItem sizes;
   @override
   Widget build(BuildContext context) {
@@ -44,8 +42,9 @@ class ProductDetailsSizeSelector extends HookWidget {
                       label: element,
                       isSelected: selectedSize.value == element,
                       onPressed: () {
-                        context.read<CartBloc>().add(CartItemSizeSelected(
-                            productId: uuid, size: element));
+                        context
+                            .read<CartBloc>()
+                            .add(CartItemSizeSelected(size: element));
                         selectedSize.value = element;
                       },
                     ).paddingOnly(right: 10))
@@ -90,7 +89,7 @@ class ProductSizeChip extends StatelessWidget {
       color: const WidgetStatePropertyAll(AppColors.quaterniary),
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       labelPadding: const EdgeInsets.only(bottom: 17, right: 0, left: 0),
-      label: const SizedBox(),
+      label: const SizedBox.shrink(),
       selected: isSelected,
       side: BorderSide(color: changeColor(isSelected)),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

@@ -46,7 +46,7 @@ class AccountView extends StatelessWidget {
           // ),
           const SizedBox(height: 10),
           AppButton(
-            buttonText: 'Save',
+            buttonText: context.l10n.save,
             onTap: () {},
             textColor: AppColors.quaterniary,
             color: AppColors.secondary,

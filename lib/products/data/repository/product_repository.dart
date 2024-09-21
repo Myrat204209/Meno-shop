@@ -20,6 +20,9 @@ class GetProductDetailsFailure extends ProductFailure {
   const GetProductDetailsFailure(super.error);
 }
 
+class GetProductsListFailure extends ProductFailure {
+  const GetProductsListFailure(super.error);
+}
 class GetFavoritesFailure extends ProductFailure {
   const GetFavoritesFailure(super.error);
 }
@@ -76,12 +79,21 @@ class ProductRepository {
   }
 
   ///Local method to fetch favorites.
-  Future<List<ProductItem>?> getProductsList() async {
+  Future<List<ProductItem>?> getFavoritesList() async {
     try {
-      final favoriteList = _userFavoritesBox.values.toList();
-      return await _productClient.getProductsList(uuids: favoriteList);
+      final productsList = _userFavoritesBox.keys.cast<String>().toList();
+      return await _productClient.getProductsList(uuids: productsList);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetFavoritesFailure(error), stackTrace);
+    }
+  }
+
+  ///Local method to fetch favorites.
+  Future<List<ProductItem>?> getProductsList({required List<String> uuids}) async {
+    try {
+      return await _productClient.getProductsList(uuids: uuids);
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(GetProductsListFailure(error), stackTrace);
     }
   }
 

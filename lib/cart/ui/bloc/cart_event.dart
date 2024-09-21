@@ -13,31 +13,39 @@ final class CartClearRequested extends CartEvent {}
 
 final class CartRequested extends CartEvent {}
 
-final class CartItemAdded extends CartEvent {
-  final String productUuid;
+final class CartCurrentItemCreated extends CartEvent {
+  final String uuid;
 
-  const CartItemAdded({required this.productUuid});
-
+  const CartCurrentItemCreated({required this.uuid});
   @override
-  List<Object?> get props => [productUuid];
+  List<Object?> get props => [uuid];
 }
 
-final class CartItemQuantityUpdated extends CartEvent {
-  final String productId;
-  final int quantity;
+final class CartProductsAdded extends CartEvent {
+  final List<String> productUuids; // List of product UUIDs
 
-  const CartItemQuantityUpdated({required this.productId, required this.quantity});
+  const CartProductsAdded({required this.productUuids});
 
   @override
-  List<Object?> get props => [productId, quantity];
+  List<Object?> get props => [productUuids];
+}
+
+final class CartItemAdded extends CartEvent {}
+
+final class CartItemOneUpdated extends CartEvent {
+  final bool isForAdding;
+
+  const CartItemOneUpdated({required this.isForAdding});
+  
+  @override
+  List<Object?> get props => [isForAdding];
 }
 
 final class CartItemSizeSelected extends CartEvent {
-  final String productId;
   final String size;
 
-  const CartItemSizeSelected({required this.productId, required this.size});
+  const CartItemSizeSelected({required this.size});
 
   @override
-  List<Object?> get props => [productId, size];
+  List<Object?> get props => [size];
 }

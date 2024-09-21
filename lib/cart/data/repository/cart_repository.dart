@@ -21,6 +21,10 @@ class ClearCartFailure extends CartFailure {
   const ClearCartFailure(super.error);
 }
 
+class CreateCurrentFailure extends CartFailure {
+  const CreateCurrentFailure(super.error);
+}
+
 class UpdateCartItemFailure extends CartFailure {
   const UpdateCartItemFailure(super.error);
 }
@@ -52,6 +56,7 @@ class CartRepository {
     }
   }
 
+
   /// Clear all cart items
   Future<void> clearCart() async {
     try {
@@ -61,9 +66,12 @@ class CartRepository {
     }
   }
 
-  /// Add a new cart item based on the productUuid
-  Future<void> addCartItem(String productUuid) async {
+  Future<CartItem> createCurrent({required String productUuid}) async {
     try {
+      if (_cartItemBox.containsKey(productUuid)) {
+        return _cartItemBox.get(productUuid)!;
+      }
+
       final product = await _productRepository.getProductDetails(
         uuid: productUuid,
         hasSimilar: false,
@@ -76,55 +84,22 @@ class CartRepository {
         size: '',
         creator: product.creator?.uuid ?? '',
         price: discount == null ? price : discount.discountedPrice!,
+        nameTk: product.name?.tm ?? '',
+        nameRu: product.name?.ru ?? '',
+        photoPath: product.photo?.first.path ?? '-',
       );
+      return cartItem;
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(CreateCurrentFailure(error), stackTrace);
+    }
+  }
 
-      // Check if the item already exists
-      if (_cartItemBox.containsKey(productUuid)) {
-        final existingCartItem = _cartItemBox.get(productUuid);
-        final updatedCartItem = existingCartItem!.copyWith(
-          quantity: existingCartItem.quantity + 1,
-        );
-        await _cartItemBox.put(productUuid, updatedCartItem);
-      } else {
-        await _cartItemBox.put(productUuid, cartItem);
-      }
+  /// Add a new cart item based on the productUuid
+  Future<void> addCartItem(CartItem cartItem) async {
+    try {
+      await _cartItemBox.put(cartItem.uuid, cartItem);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(UpdateCartItemFailure(error), stackTrace);
-    }
-  }
-
-  /// Update the quantity of an existing cart item
-  Future<void> updateCartItemQuantity(String productUuid, int quantity) async {
-    try {
-      // Ensure the item exists in the cart, add if missing
-      var cartItem = _cartItemBox.get(productUuid);
-      if (cartItem == null) {
-        await addCartItem(productUuid);
-        cartItem = _cartItemBox.get(productUuid);
-      }
-
-      final updatedCartItem = cartItem!.copyWith(quantity: quantity);
-      await _cartItemBox.put(productUuid, updatedCartItem);
-    } catch (error, stackTrace) {
-      Error.throwWithStackTrace(
-          UpdateCartItemQuantityFailure(error), stackTrace);
-    }
-  }
-
-  /// Update the size of an existing cart item
-  Future<void> updateCartItemSize(String productUuid, String size) async {
-    try {
-      // Ensure the item exists in the cart, add if missing
-      var cartItem = _cartItemBox.get(productUuid);
-      if (cartItem == null) {
-        await addCartItem(productUuid);
-        cartItem = _cartItemBox.get(productUuid);
-      }
-
-      final updatedCartItem = cartItem!.copyWith(size: size);
-      await _cartItemBox.put(productUuid, updatedCartItem);
-    } catch (error, stackTrace) {
-      Error.throwWithStackTrace(UpdateCartItemSizeFailure(error), stackTrace);
     }
   }
 }

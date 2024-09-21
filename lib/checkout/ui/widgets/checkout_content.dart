@@ -7,26 +7,27 @@ class CheckoutContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
-          AppRadioButton(
-            text: context.l10n.paymentMethod,
-            values: [
-              context.l10n.paymentMethodCash,
-              context.l10n.paymentMethodTerminal,
-            ],
-          ),
-          AppRadioButton(
-            text: context.l10n.deliveryTime,
-            values: const [
-              '09:00 - 13:00',
-              '13:00 - 17:00',
-              '17:00 - 21:00',
-            ],
-          ),
+          
+          // AppRadioButton(
+          //   text: context.l10n.paymentMethod,
+          //   values: [
+          //     context.l10n.paymentMethodCash,
+          //     context.l10n.paymentMethodTerminal,
+          //   ],
+          // ),
+          // AppRadioButton(
+          //   text: context.l10n.deliveryTime,
+          //   values: const [
+          //     '09:00 - 13:00',
+          //     '13:00 - 17:00',
+          //     '17:00 - 21:00',
+          //   ],
+          // ),
         ],
       ),
     );

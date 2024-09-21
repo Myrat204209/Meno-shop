@@ -25,7 +25,7 @@ class CategoriesContent extends StatelessWidget {
 
         return CategoriesExpansionTile(category: category);
         // if (subcategory!.isEmpty) {
-        //   return const SizedBox();
+        //   return const SizedBox.shrink();
         // }
         // if (subcategory != [] && subcategory.isNotEmpty) {
         //   return CategoriesExpansionTile(category: category);

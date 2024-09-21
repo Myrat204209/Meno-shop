@@ -64,7 +64,7 @@ class FirebaseNotificationService {
       sound: true,
     );
     unawaited(FirebaseMessaging.instance.getInitialMessage().then(handleMessage));
-    unawaited(_firebaseMessaging.subscribeToTopic('all'));
+    // unawaited(_firebaseMessaging.subscribeToTopic('all'));
     // await _firebaseMessaging.subscribeToTopic('all');
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);

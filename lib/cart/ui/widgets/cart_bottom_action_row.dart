@@ -52,14 +52,14 @@ class CartBottomActionRow extends StatelessWidget {
                         Text("3880 TMT", style: const AppTextStyle.text().md()),
                       ],
                     ).paddingSymmetric(horizontal: 25),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("${l10n.deliverySerice}: ",
-                            style: const AppTextStyle.text().regular()),
-                        const Text("20 TMT", style: AppTextStyle.text()),
-                      ],
-                    ).paddingSymmetric(horizontal: 25, vertical: 7),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Text("${l10n.deliverySerice}: ",
+                    //         style: const AppTextStyle.text().regular()),
+                    //     const Text("20 TMT", style: AppTextStyle.text()),
+                    //   ],
+                    // ).paddingSymmetric(horizontal: 25, vertical: 7),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

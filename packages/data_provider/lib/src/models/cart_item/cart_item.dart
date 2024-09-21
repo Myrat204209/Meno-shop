@@ -22,14 +22,36 @@ class CartItem extends HiveObject with EquatableMixin {
   @HiveField(4)
   @JsonKey(includeToJson: false)
   final double price;
+  @HiveField(5)
+  @JsonKey(includeToJson: false)
+  final String nameTk;
+  @HiveField(6)
+  @JsonKey(includeToJson: false)
+  final String nameRu;
+  @HiveField(7)
+  @JsonKey(includeToJson: false)
+  final String photoPath;
   CartItem({
     required this.uuid,
     required this.quantity,
     required this.size,
     required this.creator,
     required this.price,
+    required this.nameTk,
+    required this.nameRu,
+    required this.photoPath,
   });
-
+  CartItem.initial({
+    required this.uuid,
+    this.quantity = 1,
+    this.size = '',
+    required this.creator,
+    required this.price,
+    required this.nameRu,
+    required this.nameTk,
+    required this.photoPath,
+    
+  });
   @override
   List<Object> get props {
     return [
@@ -38,6 +60,9 @@ class CartItem extends HiveObject with EquatableMixin {
       size,
       creator,
       price,
+      nameTk,
+      nameRu,
+      photoPath,
     ];
   }
 
@@ -47,6 +72,9 @@ class CartItem extends HiveObject with EquatableMixin {
     String? size,
     String? creator,
     double? price,
+    String? nameTk,
+    String? nameRu,
+    String? photoPath,
   }) {
     return CartItem(
       uuid: uuid ?? this.uuid,
@@ -54,6 +82,9 @@ class CartItem extends HiveObject with EquatableMixin {
       size: size ?? this.size,
       creator: creator ?? this.creator,
       price: price ?? this.price,
+      nameTk: nameTk ?? this.nameTk,
+      nameRu: nameRu ?? this.nameRu,
+      photoPath: photoPath ?? this.photoPath,
     );
   }
 

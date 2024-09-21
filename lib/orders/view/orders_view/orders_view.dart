@@ -34,7 +34,7 @@ class OrdersView extends StatelessWidget {
                 ],
               ),
             )
-          : const SizedBox(),
+          : const SizedBox.shrink(),
       separatorBuilder: (context, index) => Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

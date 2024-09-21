@@ -27,7 +27,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   }
 
   final ProductRepository _productRepository;
-
   bool _isFetching = false;
 
   FutureOr<void> _onProductsRequested(
@@ -45,6 +44,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         GetProductQueryParameters(
           search: state.search,
           offset: state.offset,
+          limit: 10,
           relationFilterSubcategory: event.subcategoryId,
         ),
       );

@@ -16,28 +16,24 @@ enum FavoritesStatus {
 class FavoritesState extends Equatable {
   const FavoritesState({
     required this.status,
-    this.products = const [],
-    this.hasMoreContent = true,
+    this.favorites = const [],
   });
 
   const FavoritesState.initial() : this(status: FavoritesStatus.initial);
 
   final FavoritesStatus status;
-  final List<ProductItem> products;
-  final bool hasMoreContent;
+  final List<ProductItem> favorites;
 
   @override
-  List<Object> get props => [status, products, hasMoreContent];
+  List<Object> get props => [status, favorites];
 
   FavoritesState copyWith({
     FavoritesStatus? status,
-    List<ProductItem>? products,
-    bool? hasMoreContent,
+    List<ProductItem>? favorites,
   }) {
     return FavoritesState(
       status: status ?? this.status,
-      products: products ?? this.products,
-      hasMoreContent: hasMoreContent ?? this.hasMoreContent,
+      favorites: favorites ?? this.favorites,
     );
   }
 }

@@ -58,6 +58,7 @@ dependencies:
   flutter_local_notifications: ^17.2.2
   shimmer: ^3.0.0
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -71,3 +72,6 @@ dependency_overrides:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - packages/app_ui/assets/advantages/ru/
+    - packages/app_ui/assets/advantages/tk/

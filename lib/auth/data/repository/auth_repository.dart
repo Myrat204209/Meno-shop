@@ -35,9 +35,9 @@ class AuthRepository {
   }) : _authClient = authClient;
   final AuthClient _authClient;
 
-  Future<String?> auth(AuthRequestBody body) async {
+  Future<String?> auth({required String phone}) async {
     try {
-      final response = await _authClient.auth(body);
+      final response = await _authClient.auth(phone: phone);
       final token = response.token;
       if (token != null) {
         return token;

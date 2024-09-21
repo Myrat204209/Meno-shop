@@ -1,7 +1,7 @@
 import 'package:data_provider/data_provider.dart';
 
-// const kDefaultBaseUrl = 'http://192.168.68.217:3000';
-const kDefaultBaseUrl = 'http://10.10.16.224:3000';
+// const kDefaultBaseUrl = 'http://192.168.1.114:3000';
+const kDefaultBaseUrl = 'http://10.10.17.33:3000';
 
 extension ImagePathExtender on String {
   String fullPath() {

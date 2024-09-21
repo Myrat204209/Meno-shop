@@ -72,6 +72,6 @@ class ProductDetailsPrices extends StatelessWidget {
             ),
           )
       ],
-    ).paddingSymmetric(horizontal: 10);
+    );
   }
 }

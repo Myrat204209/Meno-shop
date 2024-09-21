@@ -10,41 +10,42 @@ class FavoritesContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoritesBloc = context.read<FavoritesBloc>();
     final favorites =
-        context.select((FavoritesBloc bloc) => bloc.state.products);
+        context.select((FavoritesBloc bloc) => bloc.state.favorites);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (favoritesBloc.state.status == FavoritesStatus.loading ||
-            favoritesBloc.state.status == FavoritesStatus.updating)
-          const FavoritesLoadingView(),
-        Expanded(
-          child: favorites.isNotEmpty
-              ? GridView.count(
-                  crossAxisCount: 2,
-                  scrollDirection: Axis.vertical,
-                  childAspectRatio: 160 / 285,
-                  mainAxisSpacing: 15,
-                  crossAxisSpacing: 5,
-                  padding: EdgeInsets.zero,
-                  children: favorites
-                      .map(
-                        (favorite) => ProductCard(
-                          product: favorite,
-
-                          // photoPath: favorite.photo != null &&
-                          //         favorite.photo!.isNotEmpty
-                          //     ? favorite.photo!.first.path!.fullPath()
-                          //     : null,
-                        ),
-                      )
-                      .toList(),
-                )
-              : const Text('Halanlarymda haryt ýok').centralize(),
-        ),
-      ],
-    ).paddingOnly(left: 10);
+    return BlocBuilder<FavoritesBloc, FavoritesState>(
+      // listener: (context, state) => state.favorites,
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (state.status == FavoritesStatus.loading ||
+                state.status == FavoritesStatus.updating)
+              const FavoritesLoadingView()
+            else if (state.status == FavoritesStatus.success ||
+                state.status == FavoritesStatus.updatingSuccess)
+              Expanded(
+                  child: favorites.isNotEmpty
+                      ? GridView.count(
+                          crossAxisCount: 2,
+                          scrollDirection: Axis.vertical,
+                          childAspectRatio: 160 / 285,
+                          mainAxisSpacing: 15,
+                          crossAxisSpacing: 10,
+                          children: favorites
+                              .map(
+                                (favorite) => ProductCard(
+                                  product: favorite,
+                                ),
+                              )
+                              .toList(),
+                        )
+                      : const SizedBox.shrink())
+            else
+              const Text('Halanlarymda haryt ýok').centralize(),
+          ],
+        );
+      },
+    ).paddingSymmetric(horizontal: 10);
   }
 }

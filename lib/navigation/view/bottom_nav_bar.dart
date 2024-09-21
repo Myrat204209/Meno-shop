@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +17,13 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
+      // listener: (context, state) {
+      //   if (state.status == CartStatus.loadingSuccess) {}
+      // },
+      buildWhen: (previous, current) {
+        log('-----------cart size uytgedii-----${current.cart.length} ');
+        return current.cart.length != previous.cart.length;
+      },
       builder: (context, state) {
         final String badgeText =
             state.cart.isNotEmpty ? state.cart.length.toString() : '';
@@ -34,6 +43,7 @@ class BottomNavBar extends StatelessWidget {
 }
 
 List<BottomNavBarIcon> _buildBottomNavBarList(String badgeText) {
+  log('------------bottomNavBartlisst changeeedd---- $badgeText------');
   return [
     const BottomNavBarIcon(icon: Icons.home_outlined),
     const BottomNavBarIcon(icon: Icons.grid_view_outlined),

@@ -30,7 +30,7 @@ class ConfirmCart extends StatelessWidget {
               Text('$totalPrice TMT'),
             ],
           ),
-          const Expanded(child: SizedBox()),
+          const Expanded(child: SizedBox.shrink()),
           AppButton(
             buttonText: buttonText,
             onTap: onButtonPressed,

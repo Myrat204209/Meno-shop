@@ -64,7 +64,6 @@ class AppNavigation {
                     builder: (context, state) =>
                         NotificationsPage(key: state.pageKey),
                   ),
-                  
                 ],
               ),
             ],
@@ -95,17 +94,19 @@ class AppNavigation {
                     path: RouteNames.checkout.path,
                     name: RouteNames.checkout.name,
                     builder: (context, state) => const CheckoutPage(),
-                    redirect: (context, state) {
-                      final isAuthenticated =
-                          BlocProvider.of<AuthBloc>(context, listen: false)
-                              .state
-                              .isAuthenticated;
-                      log('-------------------AuthenticationStatus: $isAuthenticated--------------------------------');
-                      if (!isAuthenticated) {
-                        return context.namedLocation(RouteNames.auth.name);
-                      }
-                      return null;
-                    },
+                    // redirect: (context, state) {
+                    //   final isAuthenticated =
+                    //       BlocProvider.of<AuthBloc>(context, listen: false)
+                    //           .state
+                    //           .isAuthenticated;
+                    //   log('-------------------AuthenticationStatus: $isAuthenticated--------------------------------');
+                    //   if (!isAuthenticated) {
+                    //     return RouteNames.auth.path;
+                    //     // '/auth';
+                    //     // context.pushNamed(RouteNames.auth.path);
+                    //   }
+                    //   return null;
+                    // },
                   ),
                 ],
               ),
@@ -163,13 +164,13 @@ class AppNavigation {
         ],
       ),
       GoRoute(
-                    path: RouteNames.productDetails.path,
-                    name: RouteNames.productDetails.name,
-                    builder: (context, state) => ProductDetailsPage(
-                      key: state.pageKey,
-                      uuid: state.pathParameters['uuid']!,
-                    ),
-                  ),
+        path: RouteNames.productDetails.path,
+        name: RouteNames.productDetails.name,
+        builder: (context, state) => ProductDetailsPage(
+          key: state.pageKey,
+          uuid: state.pathParameters['uuid']!,
+        ),
+      ),
       GoRoute(
         path: RouteNames.products.path,
         name: RouteNames.products.name,

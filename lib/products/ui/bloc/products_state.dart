@@ -24,6 +24,7 @@ final class ProductsState extends Equatable {
   final bool hasMoreContent;
   final String? search;
   final int offset;
+
   @override
   List<Object?> get props => [
         status,

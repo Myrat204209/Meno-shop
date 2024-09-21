@@ -1,7 +1,6 @@
 import 'package:data_provider/data_provider.dart'
     show
         GetSubcategoryQueryParameters,
-        ProductItem,
         SubcategoryClient,
         SubcategoryItem;
 import 'package:equatable/equatable.dart';
@@ -41,13 +40,4 @@ class SubcategoryRepository {
     }
   }
 
-  Future<List<ProductItem>?> getSubcategoryProducts(
-      [GetSubcategoryQueryParameters? queryParameters]) async {
-    try {
-      return await _subcategoryClient.getSubcategoryProducts(queryParameters);
-    } catch (error, stackTrace) {
-      Error.throwWithStackTrace(
-          GetSubcategoryProductsFailure(error), stackTrace);
-    }
-  }
 }

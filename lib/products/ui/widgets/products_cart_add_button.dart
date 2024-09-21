@@ -2,8 +2,11 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:go_router/go_router.dart';
+import 'package:meno_shop/app/app.dart';
 import 'package:meno_shop/cart/cart.dart';
+
+import 'package:meno_shop/product_details/product_details.dart';
 
 class ProductCartAddButton extends StatelessWidget {
   const ProductCartAddButton({
@@ -17,7 +20,14 @@ class ProductCartAddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton.icon(
       onTap: () {
-        context.read<CartBloc>().add(CartItemAdded(productUuid: productUuid));
+        context
+          ..read<CartBloc>().add(CartCurrentItemCreated(uuid: productUuid))
+          ..read<ProductDetailsBloc>()
+              .add(ProductDetailsRequested(productUuid: productUuid))
+          ..pushNamed(
+            RouteNames.productDetails.name,
+            pathParameters: {'uuid': productUuid},
+          );
       },
       color: AppColors.secondary,
     ).paddingOnly(left: 7);

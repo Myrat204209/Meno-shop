@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:app_ui/app_ui.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meno_shop/app/app.dart';
+import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/product_details/product_details.dart';
@@ -22,6 +22,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final locale = context.l10n.localeName;
+
     return AppWrapper(
       expand: 2.0,
       borderColor: AppColors.neutral.shade300,
@@ -32,6 +33,8 @@ class ProductCard extends StatelessWidget {
           child: InkWell(
             onTap: () {
               context
+                ..read<CartBloc>()
+                    .add(CartCurrentItemCreated(uuid: product.uuid!))
                 ..read<ProductDetailsBloc>()
                     .add(ProductDetailsRequested(productUuid: product.uuid!))
                 ..pushNamed(
@@ -44,22 +47,24 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AspectRatio(
-                  aspectRatio: 149 / 157,
+                  aspectRatio: 150 / 160,
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      /// Product image
-
                       ProductImage(
                         imageUrl:
                             product.photo != null && product.photo!.isNotEmpty
                                 ? product.photo!.first.path!.fullPath()
                                 : null,
                       ),
-
-                      /// Product favorite button and advantages icon
-                      ProductFavoritesButton(uuid: product.uuid!)
-                      // ProductAdvantageSticker(product: product),
+                      ProductFavoritesButton(uuid: product.uuid!),
+                      if (product.advantages != null)
+                        Positioned(
+                          top: 8,
+                          left: 8,
+                          child:
+                              AdvantageCircle(advantages: product.advantages!),
+                        ),
                     ],
                   ),
                 ),
@@ -73,26 +78,24 @@ class ProductCard extends StatelessWidget {
                         softWrap: true,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: const AppTextStyle.text()
-                            .semiBold()
-                            .sm()
-                            .withColor(AppColors.primary),
+                        style: const AppTextStyle.text().semiBold(),
                       ),
                     ),
                     ProductCartAddButton(productUuid: product.uuid!),
                   ],
-                ).paddingAll(10),
+                ).paddingSymmetric(horizontal: 5),
                 ProductDetailsPrices(
                   price: product.discounts?.discountedPrice ?? product.price!,
                   originalPrice: product.discounts?.originalPrice,
-                ),
-                ProductAdvantagesList(advantages: product.advantages),
+                ).paddingOnly(left: 5),
+                if (product.advantages != null)
+                  ProductAdvantagesList(advantages: product.advantages!),
               ],
             ),
           ),
         ),
       ),
-    ).paddingOnly(right: 10);
+    );
   }
 }
 

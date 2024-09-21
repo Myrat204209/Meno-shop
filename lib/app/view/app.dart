@@ -13,6 +13,7 @@ import 'package:meno_shop/categories/categories.dart';
 import 'package:meno_shop/favorites/bloc/favorites_bloc.dart';
 import 'package:meno_shop/home/home.dart';
 import 'package:meno_shop/language/language.dart';
+import 'package:meno_shop/orders/data/data.dart';
 import 'package:meno_shop/product_details/product_details.dart';
 import 'package:meno_shop/products/products.dart';
 import 'package:meno_shop/subcategories/subcategories.dart';
@@ -32,11 +33,13 @@ class App extends StatelessWidget {
     required AddressRepository addressRepository,
     required AuthRepository authRepository,
     required CartRepository cartRepository,
+    required OrderRepository orderRepository,
   })  : _categoryRepository = categoryRepository,
         _productRepository = productRepository,
         _bannerRepository = bannerRepository,
         _addressRepository = addressRepository,
         _cartRepository = cartRepository,
+        _orderRepository = orderRepository,
         _authRepository = authRepository,
         _subcategoryRepository = subcategoryRepository;
 
@@ -47,7 +50,7 @@ class App extends StatelessWidget {
   final AddressRepository _addressRepository;
   final AuthRepository _authRepository;
   final CartRepository _cartRepository;
-
+  final OrderRepository _orderRepository;
   @override
   Widget build(BuildContext context) {
     final authBloc = AuthBloc(authRepository: _authRepository);
@@ -66,7 +69,8 @@ class App extends StatelessWidget {
     )..add(AddressesRequested());
     final cartBloc = CartBloc(cartRepository: _cartRepository)
       ..add(CartInitRequested());
-    final favoritesBloc = FavoritesBloc(productRepository: _productRepository);
+    final favoritesBloc = FavoritesBloc(productRepository: _productRepository)
+      ..add(FavoritesInitRequested());
 
     return MultiRepositoryProvider(
       providers: [
@@ -77,6 +81,7 @@ class App extends StatelessWidget {
         RepositoryProvider.value(value: _cartRepository),
         RepositoryProvider.value(value: _authRepository),
         RepositoryProvider.value(value: _addressRepository),
+        RepositoryProvider.value(value: _orderRepository),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -90,7 +95,7 @@ class App extends StatelessWidget {
           BlocProvider<ProductsBloc>(
             create: (context) =>
                 ProductsBloc(productRepository: _productRepository),
-            lazy: true,
+            // lazy: true,
           ),
           BlocProvider<ProductDetailsBloc>(
             create: (context) =>

@@ -5,17 +5,16 @@ part 'order_item.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class OrderItem {
-  final CartItem? products;
+  final List<CartItem>? products;
   final String? address;
   final String? notes;
 
-  const OrderItem(
+  const OrderItem({
     this.products,
     this.address,
     this.notes,
-  );
-  factory OrderItem.fromJson(JsonType json) =>
-      _$OrderItemFromJson(json);
+  });
+  factory OrderItem.fromJson(JsonType json) => _$OrderItemFromJson(json);
 
   JsonType toJson() => _$OrderItemToJson(this);
 }

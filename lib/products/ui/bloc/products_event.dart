@@ -9,16 +9,10 @@ sealed class ProductsEvent extends Equatable {
 
 final class ProductsRequested extends ProductsEvent {
   final String? subcategoryId;
-  // final String? categoryId;
-  const ProductsRequested({
-    this.subcategoryId,
-    // this.categoryId,
-  });
+  const ProductsRequested({this.subcategoryId});
+  
   @override
-  List<Object?> get props => [
-        subcategoryId,
-        // categoryId,
-      ];
+  List<Object?> get props => [subcategoryId];
 }
 
 final class ProductsRefreshRequested extends ProductsEvent {}
@@ -30,13 +24,4 @@ final class ProductsSearchUpdated extends ProductsEvent {
 
   @override
   List<Object> get props => [search];
-}
-
-final class ProductsFilterRequested extends ProductsEvent {
-  final String filter;
-
-  const ProductsFilterRequested(this.filter);
-
-  @override
-  List<Object> get props => [filter];
 }

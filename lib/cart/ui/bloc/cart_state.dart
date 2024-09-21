@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 part of 'cart_bloc.dart';
 
@@ -17,6 +16,7 @@ class CartState extends Equatable {
     required this.status,
     this.cart = const [],
     this.totalCost = 0.0,
+    this.currentItem,
   });
 
   const CartState.initial() : this(status: CartStatus.initial);
@@ -24,23 +24,27 @@ class CartState extends Equatable {
   final CartStatus status;
   final List<CartItem?> cart;
   final double totalCost;
+  final CartItem? currentItem;
 
   @override
   List<Object?> get props => [
         status,
         cart,
         totalCost,
+        currentItem,
       ];
 
   CartState copyWith({
     CartStatus? status,
     List<CartItem?>? cart,
     double? totalCost,
+    CartItem? currentItem,
   }) {
     return CartState(
       status: status ?? this.status,
       cart: cart ?? this.cart,
       totalCost: totalCost ?? this.totalCost,
+      currentItem: currentItem ?? this.currentItem
     );
   }
 

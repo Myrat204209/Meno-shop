@@ -6,12 +6,12 @@ class FavoritesLoadingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          for (int i = 0; i < 10; i++) const ProductsPlaceholder(),
+          ProductsPlaceholder(),
         ],
       ),
     );

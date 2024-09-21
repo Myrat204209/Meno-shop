@@ -49,7 +49,7 @@ class FilterBottomSheet extends StatelessWidget {
           ),
           const FilterPageWrap(children: sizeChipList, label: 'Size'),
           const FilterPageWrap(children: brandChipList, label: 'Brands'),
-          const Expanded(child: SizedBox()),
+          const Expanded(child: SizedBox.shrink()),
           AppButton.expanded(
             buttonText: 'Close',
             onTap: () {},
