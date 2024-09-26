@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:app_ui/app_ui.dart';
-import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -9,7 +10,6 @@ import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/checkout/checkout.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/orders/orders.dart';
-import 'package:meno_shop/products/products.dart';
 import 'package:meno_shop/shimmer/shimmer.dart';
 
 class CartContent extends StatelessWidget {
@@ -25,8 +25,9 @@ class CartContent extends StatelessWidget {
           cartRepository: context.read<CartRepository>(),
           orderRepository: context.read<OrderRepository>()),
       child: BlocBuilder<CartBloc, CartState>(
-        buildWhen: (previous, current) => previous.status != current.status,
+        // listener: (context, state) => state.cart,
         builder: (context, state) {
+          log('\x1B[33m------------------Sebetdaki  cart    ${state.cart} ---------------------');
           if (state.status == CartStatus.loading) {
             return const CartLoadingView();
           } else if (state.cart.isEmpty || state.cart == []) {
@@ -40,10 +41,7 @@ class CartContent extends StatelessWidget {
                     itemCount: cartProducts.length,
                     itemBuilder: (context, index) {
                       final cart = cartProducts[index];
-                      
-                      return CartTile(
-                        cart: cart!,
-                      );
+                      return CartTile(cart: cart!);
                     },
                   ),
                 ),

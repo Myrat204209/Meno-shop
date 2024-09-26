@@ -38,10 +38,8 @@ class ExceptionHandlerBloc
       }
 
       /// UserException
-      // if (error is UserException) {
-      //   content = error.error.toString();
-      //   checkForDioException(error.error);
-      // }
+      content = error.toString();
+      checkForDioException(error);
 
       /// DioException badResponse
       if (dioException?.type == DioExceptionType.badResponse) {

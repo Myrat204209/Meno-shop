@@ -21,7 +21,7 @@ class BottomNavBar extends StatelessWidget {
       //   if (state.status == CartStatus.loadingSuccess) {}
       // },
       buildWhen: (previous, current) {
-        log('-----------cart size uytgedii-----${current.cart.length} ');
+        log('\x1B[31m-----------cart size uytgedii-----${current.cart.length}         bu-da \x1B[34m${current.cart}');
         return current.cart.length != previous.cart.length;
       },
       builder: (context, state) {
@@ -43,7 +43,7 @@ class BottomNavBar extends StatelessWidget {
 }
 
 List<BottomNavBarIcon> _buildBottomNavBarList(String badgeText) {
-  log('------------bottomNavBartlisst changeeedd---- $badgeText------');
+  log('\x1B[32m------------bottomNavBartlisst changeeedd---- $badgeText------');
   return [
     const BottomNavBarIcon(icon: Icons.home_outlined),
     const BottomNavBarIcon(icon: Icons.grid_view_outlined),

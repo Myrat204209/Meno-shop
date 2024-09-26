@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:data_provider/data_provider.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meno_shop/products/products.dart';
@@ -56,10 +58,10 @@ class CartRepository {
     }
   }
 
-
   /// Clear all cart items
   Future<void> clearCart() async {
     try {
+      _cartItemBox.deleteAll(_cartItemBox.keys);
       await _cartItemBox.clear();
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(ClearCartFailure(error), stackTrace);
@@ -69,26 +71,27 @@ class CartRepository {
   Future<CartItem> createCurrent({required String productUuid}) async {
     try {
       if (_cartItemBox.containsKey(productUuid)) {
+        log('\x1B[35m------------------------- Cart in this uuid $productUuid   exists-------------------------');
         return _cartItemBox.get(productUuid)!;
+      } else {
+        final product = await _productRepository.getProductDetails(
+          uuid: productUuid,
+          hasSimilar: false,
+        );
+        final price = product!.price!;
+        final discount = product.discounts;
+        final cartItem = CartItem(
+          uuid: productUuid,
+          quantity: 1,
+          size: '',
+          creator: product.creator?.uuid ?? '',
+          price: discount == null ? price : discount.discountedPrice!,
+          nameTk: product.name?.tm ?? '',
+          nameRu: product.name?.ru ?? '',
+          photoPath: product.photo?.first.path ?? '-',
+        );
+        return cartItem;
       }
-
-      final product = await _productRepository.getProductDetails(
-        uuid: productUuid,
-        hasSimilar: false,
-      );
-      final price = product!.price!;
-      final discount = product.discounts;
-      final cartItem = CartItem(
-        uuid: productUuid,
-        quantity: 1,
-        size: '',
-        creator: product.creator?.uuid ?? '',
-        price: discount == null ? price : discount.discountedPrice!,
-        nameTk: product.name?.tm ?? '',
-        nameRu: product.name?.ru ?? '',
-        photoPath: product.photo?.first.path ?? '-',
-      );
-      return cartItem;
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(CreateCurrentFailure(error), stackTrace);
     }
@@ -97,6 +100,9 @@ class CartRepository {
   /// Add a new cart item based on the productUuid
   Future<void> addCartItem(CartItem cartItem) async {
     try {
+      if (_cartItemBox.containsKey(cartItem.uuid)) {
+        _cartItemBox.delete(cartItem.uuid);
+      }
       await _cartItemBox.put(cartItem.uuid, cartItem);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(UpdateCartItemFailure(error), stackTrace);

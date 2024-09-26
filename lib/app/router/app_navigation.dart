@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -37,7 +37,7 @@ class AppNavigation {
 
   /// Go Router Configuration
   static final GoRouter router = GoRouter(
-    debugLogDiagnostics: true,
+    // debugLogDiagnostics: true,
     initialLocation: initR,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[

@@ -50,7 +50,6 @@ class CartItem extends HiveObject with EquatableMixin {
     required this.nameRu,
     required this.nameTk,
     required this.photoPath,
-    
   });
   @override
   List<Object> get props {
@@ -90,4 +89,19 @@ class CartItem extends HiveObject with EquatableMixin {
 
   factory CartItem.fromJson(JsonType json) => _$CartItemFromJson(json);
   JsonType toJson() => _$CartItemToJson(this);
+
+  @override
+  String toString() {
+    return '''
+    CartItem:
+    - uuid: ${uuid.isEmpty ? 'NULL' : uuid}
+    - quantity: $quantity
+    - size: ${size.isEmpty ? 'NULL' : size}
+    - creator: ${creator.isEmpty ? 'NULL' : creator}
+    - price: $price
+    - nameTk: ${nameTk.isEmpty ? 'NULL' : nameTk}
+    - nameRu: ${nameRu.isEmpty ? 'NULL' : nameRu}
+    - photoPath: ${photoPath.isEmpty ? 'NULL' : photoPath}
+    ''';
+  }
 }

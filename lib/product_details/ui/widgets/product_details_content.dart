@@ -69,15 +69,19 @@ class ProductDetailsContent extends StatelessWidget {
                   buildWhen: (previous, current) =>
                       previous.totalCost != current.totalCost,
                   builder: (context, state) {
-                    return ProductDetailsCartCounter(
-                      counterQuantity: state.currentItem!.quantity,
-                      addOneButton: () => context
-                          .read<CartBloc>()
-                          .add(const CartItemOneUpdated(isForAdding: true)),
-                      removeOneButton: () => context
-                          .read<CartBloc>()
-                          .add(const CartItemOneUpdated(isForAdding: false)),
-                    );
+                    if (state.currentItem != null) {
+                      return ProductDetailsCartCounter(
+                        counterQuantity: state.currentItem!.quantity,
+                        addOneButton: () => context
+                            .read<CartBloc>()
+                            .add(const CartItemOneUpdated(isForAdding: true)),
+                        removeOneButton: () => context
+                            .read<CartBloc>()
+                            .add(const CartItemOneUpdated(isForAdding: false)),
+                      );
+                    } else {
+                      return const SizedBox.shrink();
+                    }
                   },
                 ),
                 AppButton.standard(

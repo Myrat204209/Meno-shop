@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:data_provider/data_provider.dart';
-import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart' show Hive;
 import 'package:meno_shop/addresses/address.dart';
 import 'package:meno_shop/auth/auth.dart';
@@ -31,7 +30,8 @@ void main() {
 
     /// HTTP Client
     final httpClient = Http(
-      enableLogger: kDebugMode,
+      // enableLogger: kDebugMode,
+      enableLogger: false,
       defaultBaseUrl: defaultBaseUrl,
       tokenProvider: tokenStorage.readToken,
       languageProvider: () async => 'tm',

@@ -65,10 +65,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       final currentItemCart =
           await _cartRepository.createCurrent(productUuid: event.uuid);
 
-      emit(state.copyWith(
-        status: CartStatus.updatingSuccess,
-        currentItem: currentItemCart,
-      ));
+      emit(state
+          .copyWith(
+            status: CartStatus.updatingSuccess,
+            currentItem: currentItemCart,
+          )
+          .calculateTotalCost());
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.updatingFailure));
       addError(error, stackTrace);
@@ -129,12 +131,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     try {
       emit(state.copyWith(status: CartStatus.updating));
       await _cartRepository.clearCart();
-      emit(state.copyWith(
-        status: CartStatus.updatingSuccess,
-        cart: [],
-        currentItem: null,
-        totalCost: 0,
-      ));
+      emit(const CartState.initial());
       add(CartRequested());
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.updatingFailure));

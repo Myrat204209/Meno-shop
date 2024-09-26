@@ -41,6 +41,7 @@ class ExceptionHandlerView extends StatelessWidget {
               content: content,
             ),
           ).then(
+            // ignore: use_build_context_synchronously
             (_) => currentContext
                 .read<ExceptionHandlerBloc>()
                 .add(ExceptionRemoved(state.error!)),

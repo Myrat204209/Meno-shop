@@ -11,10 +11,12 @@ class ProductDetailsAppBar extends StatelessWidget
     required this.productUuid,
   });
   final String productUuid;
+
   @override
   Widget build(BuildContext context) {
     final isFavorite =
         context.select((FavoritesBloc bloc) => bloc.isFavorite(productUuid));
+
     return AppBar(
       title: Text(context.l10n.productDetails),
       actions: [
@@ -28,7 +30,7 @@ class ProductDetailsAppBar extends StatelessWidget
           backgroundColor: AppColors.quaterniary,
           iconColor:
               isFavorite ? AppColors.secondary : AppColors.neutral.shade500,
-        )
+        ),
       ],
     );
   }

@@ -21,7 +21,6 @@ class CategoriesContent extends StatelessWidget {
       itemBuilder: (context, index) {
         final category = categories[index];
         // final subcategory = category.subcategories;
-        //TODO: Must check for the subcategory
 
         return CategoriesExpansionTile(category: category);
         // if (subcategory!.isEmpty) {

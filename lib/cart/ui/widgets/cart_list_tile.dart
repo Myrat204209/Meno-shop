@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/constants/constants.dart';
 import 'package:meno_shop/l10n/l10n.dart';
-import 'package:meno_shop/products/ui/widgets/product_card.dart';
 
 class CartTile extends StatelessWidget {
   const CartTile({
