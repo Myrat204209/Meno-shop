@@ -1,60 +1,60 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductDetailsCartCounter extends HookWidget {
+import 'package:meno_shop/cart/cart.dart';
+
+class ProductDetailsCartCounter extends StatelessWidget {
   const ProductDetailsCartCounter({
     super.key,
     required this.addOneButton,
     required this.removeOneButton,
-    required this.counterQuantity,
   });
   final VoidCallback addOneButton;
   final VoidCallback removeOneButton;
-  final int counterQuantity;
   @override
   Widget build(BuildContext context) {
-    final quantity = useState(counterQuantity);
-  return AppWrapper(
+    final cartQuantity =
+        context.select((CartBloc bloc) => bloc.state.currentItem?.quantity);
+    return AppWrapper(
       borderColor: AppColors.neutral.shade300,
       child: SizedBox(
         width: 150,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              onPressed: () {
-                removeOneButton.call();
-                if (quantity.value > 0) {
-                  quantity.value--;
-                } else {
-                  quantity.value = 0;
-                }
-              },
-              icon: const Icon(
-                Icons.remove,
-                size: 30,
-                color: AppColors.primary,
-              ),
-            ),
+            ProductCounterIcon(onCallBack: removeOneButton),
             Text(
-              '${quantity.value}',
+              '$cartQuantity',
               style: const AppTextStyle.text().lg().semiBold(),
             ),
-            IconButton(
-              onPressed: () {
-                addOneButton.call();
-                quantity.value++;
-              },
-              icon: const Icon(
-                Icons.add,
-                size: 30,
-                color: AppColors.primary,
-              ),
-            ),
+            ProductCounterIcon(onCallBack: addOneButton,isAdd: true),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ProductCounterIcon extends StatelessWidget {
+  const ProductCounterIcon({
+    super.key,
+    required this.onCallBack,
+    this.isAdd = false,
+  });
+
+  final VoidCallback onCallBack;
+  final bool isAdd;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () => onCallBack(),
+      icon: Icon(
+        isAdd ? Icons.add : Icons.remove,
+        size: 30,
+        color: AppColors.primary,
       ),
     );
   }

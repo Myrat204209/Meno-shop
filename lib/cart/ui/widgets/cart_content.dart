@@ -27,7 +27,7 @@ class CartContent extends StatelessWidget {
       child: BlocBuilder<CartBloc, CartState>(
         // listener: (context, state) => state.cart,
         builder: (context, state) {
-          log('\x1B[33m------------------Sebetdaki  cart    ${state.cart} ---------------------');
+          // log('\x1B[33m------------------Sebetdaki  cart    ${state.cart} ---------------------');
           if (state.status == CartStatus.loading) {
             return const CartLoadingView();
           } else if (state.cart.isEmpty || state.cart == []) {

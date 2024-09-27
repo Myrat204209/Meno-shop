@@ -16,6 +16,8 @@ class CartTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartQuantity =
+        context.select((CartBloc bloc) => bloc.showQuantity(cart.uuid));
     return SizedBox(
       height: 100,
       child: Row(
@@ -52,7 +54,7 @@ class CartTile extends StatelessWidget {
                 style: const AppTextStyle.text().lg().semiBold(),
               ),
             ],
-          ).paddingSymmetric(horizontal: 8),
+          ).paddingSymmetric(horizontal: 7),
           const Expanded(child: SizedBox.shrink()),
           CartCounter(
             addOneButton: () {
@@ -67,10 +69,10 @@ class CartTile extends StatelessWidget {
                 ..read<CartBloc>()
                     .add(const CartItemOneUpdated(isForAdding: false));
             },
-            counterQuantity: cart.quantity,
+            counterQuantity: cartQuantity,
           ),
         ],
       ),
-    );
+    ).paddingSymmetric(horizontal: 8);
   }
 }

@@ -36,7 +36,7 @@ final class CartItemOneUpdated extends CartEvent {
   final bool isForAdding;
 
   const CartItemOneUpdated({required this.isForAdding});
-  
+
   @override
   List<Object?> get props => [isForAdding];
 }

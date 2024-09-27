@@ -159,19 +159,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   ) async {
     try {
       emit(state.copyWith(status: CartStatus.updating));
+      
       final updatedItem = state.currentItem!.copyWith(
           quantity: state.currentItem!.quantity + (event.isForAdding ? 1 : -1));
 
       emit(state.copyWith(
         currentItem: updatedItem,
       ));
-      final cartResponse = await _cartRepository.getCartItems();
-      emit(state
-          .copyWith(
-            status: CartStatus.updatingSuccess,
-            cart: cartResponse,
-          )
-          .calculateTotalCost()); // Update total cost
+      add(CartItemAdded());
     } catch (error, stackTrace) {
       emit(state.copyWith(status: CartStatus.updatingFailure));
       addError(error, stackTrace);

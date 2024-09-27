@@ -1,8 +1,7 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
-class CartCounter extends HookWidget {
+class CartCounter extends StatelessWidget {
   const CartCounter({
     super.key,
     required this.addOneButton,
@@ -14,7 +13,6 @@ class CartCounter extends HookWidget {
   final int counterQuantity;
   @override
   Widget build(BuildContext context) {
-    final quantity = useState(counterQuantity);
     return AppWrapper(
       borderColor: AppColors.neutral.shade300,
       expand: 1,
@@ -24,41 +22,38 @@ class CartCounter extends HookWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {
-                removeOneButton.call();
-                if (quantity.value > 0) {
-                  quantity.value--;
-                } else {
-                  quantity.value = 0;
-                }
-              },
-              icon: const Icon(
-                Icons.remove,
-                size: 25,
-                color: AppColors.primary,
-              ),
-            ),
+            CounterIcon(onCallBack: removeOneButton),
             Text(
-              '${quantity.value}',
-              style: const AppTextStyle.text().md().semiBold(),
+              '$counterQuantity',
+              style: const AppTextStyle.text().lg().semiBold(),
             ),
-            IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {
-                addOneButton.call();
-
-                quantity.value++;
-              },
-              icon: const Icon(
-                Icons.add,
-                size: 25,
-                color: AppColors.primary,
-              ),
-            ),
+            CounterIcon(onCallBack: addOneButton, isAdd: true),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CounterIcon extends StatelessWidget {
+  const CounterIcon({
+    super.key,
+    required this.onCallBack,
+    this.isAdd = false,
+  });
+
+  final VoidCallback onCallBack;
+  final bool isAdd;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      padding: EdgeInsets.zero,
+      onPressed: () => onCallBack(),
+      icon: Icon(
+        isAdd ? Icons.add : Icons.remove,
+        size: 28,
+        color: AppColors.primary,
       ),
     );
   }

@@ -97,11 +97,7 @@ class CartItem extends HiveObject with EquatableMixin {
     - uuid: ${uuid.isEmpty ? 'NULL' : uuid}
     - quantity: $quantity
     - size: ${size.isEmpty ? 'NULL' : size}
-    - creator: ${creator.isEmpty ? 'NULL' : creator}
     - price: $price
-    - nameTk: ${nameTk.isEmpty ? 'NULL' : nameTk}
-    - nameRu: ${nameRu.isEmpty ? 'NULL' : nameRu}
-    - photoPath: ${photoPath.isEmpty ? 'NULL' : photoPath}
     ''';
   }
 }

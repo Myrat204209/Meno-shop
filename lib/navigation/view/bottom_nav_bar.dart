@@ -16,41 +16,31 @@ class BottomNavBar extends StatelessWidget {
   final ValueSetter<int> onTap;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CartBloc, CartState>(
-      // listener: (context, state) {
-      //   if (state.status == CartStatus.loadingSuccess) {}
-      // },
-      buildWhen: (previous, current) {
-        log('\x1B[31m-----------cart size uytgedii-----${current.cart.length}         bu-da \x1B[34m${current.cart}');
-        return current.cart.length != previous.cart.length;
-      },
-      builder: (context, state) {
-        final String badgeText =
-            state.cart.isNotEmpty ? state.cart.length.toString() : '';
-        return NavigationBar(
-          backgroundColor: AppColors.quaterniary,
-          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-          height: 65,
-          indicatorColor: AppColors.transparent,
-          elevation: 5,
-          destinations: _buildBottomNavBarList(badgeText),
-          selectedIndex: currentIndex,
-          onDestinationSelected: onTap,
-        );
-      },
+    final cartLength =
+        context.select((CartBloc bloc) => bloc.state.cart.length);
+
+    return NavigationBar(
+      backgroundColor: AppColors.quaterniary,
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+      height: 65,
+      indicatorColor: AppColors.transparent,
+      elevation: 5,
+      destinations: _buildBottomNavBarList(badgeNumber: cartLength),
+      selectedIndex: currentIndex,
+      onDestinationSelected: onTap,
     );
   }
 }
 
-List<BottomNavBarIcon> _buildBottomNavBarList(String badgeText) {
-  log('\x1B[32m------------bottomNavBartlisst changeeedd---- $badgeText------');
+List<BottomNavBarIcon> _buildBottomNavBarList({int badgeNumber = 0}) {
+  log('\x1B[32m---------bottomNavBartlist changeed---- $badgeNumber------');
   return [
     const BottomNavBarIcon(icon: Icons.home_outlined),
     const BottomNavBarIcon(icon: Icons.grid_view_outlined),
     BottomNavBarIcon(
       icon: Icons.shopping_bag_outlined,
-      isBadged: badgeText.isNotEmpty,
-      badgeText: badgeText,
+      isBadged: badgeNumber != 0,
+      badgeText: badgeNumber == 0 ? '' : badgeNumber.toString(),
     ),
     const BottomNavBarIcon(icon: Icons.favorite_border_outlined),
     const BottomNavBarIcon(icon: Icons.person_outlined),
