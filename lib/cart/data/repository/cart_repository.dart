@@ -88,9 +88,8 @@ class CartRepository {
           price: discount == null ? price : discount.discountedPrice!,
           nameTk: product.name?.tm ?? '',
           nameRu: product.name?.ru ?? '',
-          photoPath: (photos == null || photos.isEmpty)
-              ? 'INVALID_PHOTO'
-              : photos.first.path!,
+          photoPath:
+              (photos == null || photos.isEmpty) ? 'NULL' : photos.first.path!,
         );
         return cartItem;
       }

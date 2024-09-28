@@ -19,7 +19,7 @@ class AppImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Check if the imageUrl is empty or invalid
-    if (_imageUrl == null || _imageUrl!.contains('null')) {
+    if (_imageUrl == null || _imageUrl!.toLowerCase().contains('null')) {
       return Assets.images.otpLogo.image(
         height: _height,
         width: _width,
