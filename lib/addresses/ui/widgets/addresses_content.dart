@@ -29,13 +29,10 @@ class AddressesContent extends StatelessWidget {
                 height: 40,
                 child: AppButton.expanded(
                   buttonText: context.l10n.addressesCreate,
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (_) => const AddressEditBottomSheet(),
-                    );
-                  },
+                  onTap: () => AppBottomSheet.show(
+                    context: context,
+                    bottomModalChildren: const AddressEditBottomSheet(),
+                  ),
                 ),
               );
             } else {
@@ -45,13 +42,10 @@ class AddressesContent extends StatelessWidget {
                 onPressed: () {
                   context.read<AddressBloc>().add(AddressSelected(address));
                 },
-                onEditPressed: () {
-                  showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (_) => AddressEditBottomSheet(address: address),
-                  );
-                },
+                onEditPressed: () => AppBottomSheet.show(
+                  context: context,
+                  bottomModalChildren: AddressEditBottomSheet(address: address),
+                ),
               );
             }
           },

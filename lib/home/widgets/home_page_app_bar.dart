@@ -15,7 +15,10 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         AppActionsButton(
           icon: Icons.language,
-          onPressed: () => showLanguageSelectBottomSheet(context: context),
+          onPressed: () => AppBottomSheet.show(
+            context: context,
+            bottomModalChildren: const LanguageBottomSheetContent(),
+          ),
           backgroundColor: AppColors.neutral.shade200,
         ),
         // AppActionsButton(

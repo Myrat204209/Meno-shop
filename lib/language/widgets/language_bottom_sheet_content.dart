@@ -5,24 +5,14 @@ import 'package:go_router/go_router.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 import 'package:meno_shop/language/language.dart';
 
-Future<void> showLanguageSelectBottomSheet({
-  required BuildContext context,
-}) async =>
-    showModalBottomSheet(
-      context: context,
-      useSafeArea: true,
-      isScrollControlled: true,
-      builder: (_) => const LanguageSelectBottomSheet(),
-    );
-
-class LanguageSelectBottomSheet extends StatelessWidget {
-  const LanguageSelectBottomSheet({super.key});
+class LanguageBottomSheetContent extends StatelessWidget {
+  const LanguageBottomSheetContent({super.key});
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return AppBottomSheet(
-      bottomModalChildren: [
+    return Column(
+      children: [
         Text(
           l10n.languageChangeTitle,
           style: const AppTextStyle.text().headline6().semiBold(),

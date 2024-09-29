@@ -8,6 +8,20 @@ class AppBottomSheet extends StatelessWidget {
     required this.bottomModalChildren,
   });
   final List<Widget> bottomModalChildren;
+  static Future<void> show({
+    required BuildContext context,
+    required Widget bottomModalChildren,
+  }) async {
+    return showModalBottomSheet(
+      context: context,
+      useSafeArea: true,
+      useRootNavigator: true,
+      isScrollControlled: true,
+      builder: (_) => AppBottomSheet(
+        bottomModalChildren: [bottomModalChildren],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

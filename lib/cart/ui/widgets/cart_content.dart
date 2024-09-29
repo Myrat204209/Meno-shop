@@ -49,16 +49,18 @@ class CartContent extends StatelessWidget {
                 Divider(color: AppColors.neutral.shade300),
 
                 ///Total price and cancel button
-                CartBottomActionRow(
-                  onBottomRowTap: () => showCartSelectBottomSheet,
-                  onButtonPressed: (cartProducts.isEmpty)
-                      ? () {}
-                      : () => context.pushNamed(
-                            RouteNames.checkout.name,
-                          ),
-                  totalPrice: totalCost,
+                AppButton(
                   buttonText: context.l10n.cartConfirmation,
+                  onTap: () => showCartSelectBottomSheet(context: context),
                 ),
+
+                //   onBottomRowTap: () => showCartSelectBottomSheet,
+                //   onButtonPressed: (cartProducts.isEmpty)
+                //       ? () => showCartConfirmBottomSheet
+                //       : () => context.pushNamed(
+                //             RouteNames.checkout.name,
+                //           ),
+                // ),
               ],
             ).paddingOnly(right: 5);
           }

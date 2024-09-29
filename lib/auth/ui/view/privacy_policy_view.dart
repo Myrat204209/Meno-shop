@@ -22,46 +22,33 @@ class AuthPrivacyPolicyView extends StatelessWidget {
         style: defaultStyle,
         children: <TextSpan>[
           TextSpan(
-              text: ' gizlinlik syýasatyny ',
-              style: linkStyle,
-              recognizer: TapGestureRecognizer()
-                ..onTap = () => showPrivacyPolicyBottomSheet(context: context)),
+            text: ' gizlinlik syýasatyny ',
+            style: linkStyle,
+            recognizer: TapGestureRecognizer()
+              ..onTap = () => AppBottomSheet.show(
+                    context: context,
+                    bottomModalChildren: const SizedBox.shrink(),
+                  ),
+          ),
           TextSpan(
             text: 'we\n',
             style: defaultStyle,
           ),
           TextSpan(
-              text: 'ulanmak düzgünlerini',
-              style: linkStyle,
-              recognizer: TapGestureRecognizer()
-                ..onTap = () => showPrivacyPolicyBottomSheet(context: context)),
+            text: 'ulanmak düzgünlerini',
+            style: linkStyle,
+            recognizer: TapGestureRecognizer()
+              ..onTap = () => AppBottomSheet.show(
+                    context: context,
+                    bottomModalChildren: const SizedBox.shrink(),
+                  ),
+          ),
           TextSpan(
             text: ' kabul edýärin',
             style: defaultStyle,
           ),
         ],
       ),
-    );
-  }
-}
-
-Future<void> showPrivacyPolicyBottomSheet({
-  required BuildContext context,
-}) async =>
-    showModalBottomSheet(
-      context: context,
-      useSafeArea: true,
-      isScrollControlled: true,
-      builder: (_) => const PrivacyPolicyBottomSheet(),
-    );
-
-class PrivacyPolicyBottomSheet extends StatelessWidget {
-  const PrivacyPolicyBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const AppBottomSheet(
-      bottomModalChildren: [],
     );
   }
 }

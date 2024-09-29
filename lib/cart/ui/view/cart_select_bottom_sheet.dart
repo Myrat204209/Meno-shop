@@ -1,19 +1,10 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:meno_shop/app/app.dart';
-import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/l10n/l10n.dart';
 
-Future<void> showCartSelectBottomSheet({
-  required BuildContext context,
-}) async =>
-    showModalBottomSheet(
-      context: context,
-      useSafeArea: true,
-      isScrollControlled: true,
-      builder: (_) => const CartBottomSheet(),
-    );
+final kCartDescriptionStyle = const AppTextStyle.text().md().regular();
+final kCartPriceStyle = const AppTextStyle.text().md().medium();
+final kCartTotalTextStyle = const AppTextStyle.text().md().semiBold();
 
 class CartBottomSheet extends StatelessWidget {
   const CartBottomSheet({super.key});
@@ -21,8 +12,8 @@ class CartBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return AppBottomSheet(
-      bottomModalChildren: [
+    return Column(
+      children: [
         Text(
           context.l10n.price,
           style: const AppTextStyle.text().headline6().semiBold(),
@@ -35,41 +26,37 @@ class CartBottomSheet extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(l10n.totalCost),
-                const Text('1234 TMT'),
+                Text(l10n.totalCost, style: kCartDescriptionStyle),
+                Text('1234 TMT', style: kCartPriceStyle),
               ],
             ),
+            const SizedBox(height: AppSpacing.lg),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(l10n.deliverySerice),
-                const Text('123 TMT'),
+                Text('123 TMT', style: kCartPriceStyle),
               ],
             ),
+            const SizedBox(height: AppSpacing.lg),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(l10n.discount),
-                const Text(' 12 TMT'),
+                Text(l10n.discount, style: kCartDescriptionStyle),
+                Text(' 12 TMT', style: kCartPriceStyle),
               ],
             ),
+            const SizedBox(height: AppSpacing.lg),
             const Divider(),
+            const SizedBox(height: AppSpacing.lg),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(l10n.totalPrice),
-                const Text('12345 TMT'),
+                Text(l10n.totalPrice, style: kCartTotalTextStyle),
+                Text('12345 TMT', style: kCartTotalTextStyle),
               ],
             ),
-            SizedBox(
-              child: CartBottomActionRow(
-                onBottomRowTap: () => context.pop(),
-                onButtonPressed: () =>
-                    context.pushNamed(RouteNames.addresses.name),
-                totalPrice: 1234,
-                buttonText: l10n.cartConfirmation,
-              ),
-            )
+            const SizedBox(height: AppSpacing.lg),
           ],
         ),
       ],

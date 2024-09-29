@@ -13,14 +13,17 @@ class ProductsAppBar extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 0,
       leadingWidth: 45,
       title: const ProductSearchField(),
-      // actions: [cart
+      // actions: [
       //   IconButton(
       //     icon: const Icon(
       //       Icons.filter_list,
       //       size: 30,
       //       color: AppColors.primary,
       //     ),
-      //     onPressed: () => showFilterBottomSheet(context: context),
+      //     onPressed: () => AppBottomSheet.show(
+      //       bottomModalChildren: const FilterBottomSheetContent(),
+      //       context: context,
+      //     ),
       //   ).paddingOnly(right: 16),
       // ],
     );

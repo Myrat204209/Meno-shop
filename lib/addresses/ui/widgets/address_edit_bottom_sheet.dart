@@ -25,124 +25,117 @@ class AddressEditBottomSheet extends HookWidget {
     final phoneNumberController =
         useTextEditingController(text: address?.phoneNumber);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-        vertical: AppSpacing.xlg,
-      ).copyWith(
-          bottom: MediaQuery.of(context).viewInsets.bottom + AppSpacing.lg),
-      child: Form(
-        key: formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            UITextField(
-              controller: addressNameController,
-              hintText: 'Şu ýere salgyňyzyň adyny girizin',
-              labelText: context.l10n.addressName,
-              keyboardType: TextInputType.name,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Address Name cannot be empty';
-                }
-                return null;
-              },
-            ),
+    return Form(
+      key: formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          UITextField(
+            controller: addressNameController,
+            hintText: 'Şu ýere salgyňyzyň adyny girizin',
+            labelText: context.l10n.addressName,
+            keyboardType: TextInputType.name,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Address Name cannot be empty';
+              }
+              return null;
+            },
+          ),
 
-            const SizedBox(height: AppSpacing.md),
-            UITextField(
-              controller: phoneNumberController,
-              labelText: context.l10n.phoneNumber,
-              keyboardType: TextInputType.phone,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                LengthLimitingTextInputFormatter(8),
-              ],
-              autocorrect: false,
-              prefixText: '+993 ',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Phone Number cannot be empty';
-                }
-                return null;
-              },
-            ),
+          const SizedBox(height: AppSpacing.md),
+          UITextField(
+            controller: phoneNumberController,
+            labelText: context.l10n.phoneNumber,
+            keyboardType: TextInputType.phone,
+            inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(8),
+            ],
+            autocorrect: false,
+            prefixText: '+993 ',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Phone Number cannot be empty';
+              }
+              return null;
+            },
+          ),
 
-            const SizedBox(height: AppSpacing.md),
+          const SizedBox(height: AppSpacing.md),
 
-            UITextField(
-              controller: nameController,
-              hintText: 'Şu ýere adyňyzy girizin',
-              labelText: context.l10n.name,
-              keyboardType: TextInputType.name,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Name cannot be empty';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: AppSpacing.md),
-            UITextField(
-              controller: addressController,
-              hintText: 'Şu ýere salgyňyzy girizin',
-              labelText: context.l10n.address,
-              keyboardType: TextInputType.multiline,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Addressi dolduruň';
-                }
-                return null;
-              },
-            ),
+          UITextField(
+            controller: nameController,
+            hintText: 'Şu ýere adyňyzy girizin',
+            labelText: context.l10n.name,
+            keyboardType: TextInputType.name,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Name cannot be empty';
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: AppSpacing.md),
+          UITextField(
+            controller: addressController,
+            hintText: 'Şu ýere salgyňyzy girizin',
+            labelText: context.l10n.address,
+            keyboardType: TextInputType.multiline,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Addressi dolduruň';
+              }
+              return null;
+            },
+          ),
 
-            const SizedBox(height: AppSpacing.md),
+          const SizedBox(height: AppSpacing.md),
 
-            /// CONFIRM BUTTON
-            SizedBox(
-              height: 40,
-              child: AppButton.expanded(
-                onTap: () {
-                  if (formKey.currentState?.validate() ?? false) {
-                    if (address == null &&
-                        nameController.text != '' &&
-                        addressNameController.text != '' &&
-                        addressNameController.text != '' &&
-                        phoneNumberController.text != "") {
-                      context.read<AddressBloc>().add(
-                            AddressCreateRequested(
-                              AddressModel(
-                                name: nameController.text,
-                                address: addressController.text,
-                                phoneNumber: phoneNumberController.text,
-                                addressName: '',
-                              ),
+          /// CONFIRM BUTTON
+          SizedBox(
+            height: 40,
+            child: AppButton.expanded(
+              onTap: () {
+                if (formKey.currentState?.validate() ?? false) {
+                  if (address == null &&
+                      nameController.text != '' &&
+                      addressNameController.text != '' &&
+                      addressNameController.text != '' &&
+                      phoneNumberController.text != "") {
+                    context.read<AddressBloc>().add(
+                          AddressCreateRequested(
+                            AddressModel(
+                              name: nameController.text,
+                              address: addressController.text,
+                              phoneNumber: phoneNumberController.text,
+                              addressName: '',
                             ),
-                          );
-                    } else {
-                      context.read<AddressBloc>().add(
-                            AddressUpdateRequested(
-                              AddressModel(
-                                uuid: address?.uuid,
-                                addressName: addressNameController.text,
-                                name: nameController.text,
-                                phoneNumber: phoneNumberController.text,
-                                address: addressController.text,
-                              ),
+                          ),
+                        );
+                  } else {
+                    context.read<AddressBloc>().add(
+                          AddressUpdateRequested(
+                            AddressModel(
+                              uuid: address?.uuid,
+                              addressName: addressNameController.text,
+                              name: nameController.text,
+                              phoneNumber: phoneNumberController.text,
+                              address: addressController.text,
                             ),
-                          );
-                    }
+                          ),
+                        );
                   }
+                }
 
-                  Navigator.pop(context);
-                },
-                buttonText: address == null
-                    ? context.l10n.addressesCreate
-                    : 'Addresi üýtget',
-              ),
+                Navigator.pop(context);
+              },
+              buttonText: address == null
+                  ? context.l10n.addressesCreate
+                  : 'Addresi üýtget',
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

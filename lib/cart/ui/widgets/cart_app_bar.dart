@@ -17,12 +17,11 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         TextButton(
           onPressed: () {
-            showModalBottomSheet(
+            AppBottomSheet.show(
                 context: context,
-                builder: (BuildContext context) {
-                  return SizedBox(
+                bottomModalChildren: SizedBox(
                     width: double.infinity,
-                    height: 240,
+                    height: 210,
                     child: Column(
                       children: [
                         Align(
@@ -61,9 +60,9 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
                           ],
                         )
                       ],
-                    ).paddingSymmetric(horizontal: 20, vertical: 10),
-                  );
-                });
+                    ).paddingSymmetric(
+                      horizontal: 20,
+                    )));
           },
           child: Text(
             context.l10n.cartClearTitle,

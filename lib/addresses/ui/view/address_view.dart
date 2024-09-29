@@ -17,20 +17,6 @@ class AddressView extends StatelessWidget {
           Text('${addressCount.length}/5').paddingOnly(right: 10),
         ],
         title: Text(context.l10n.myAddresses),
-
-
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {
-        //       showModalBottomSheet(
-        //         context: context,
-        //         isScrollControlled: true,
-        //         builder: (_) => const AddressEditBottomSheet(),
-        //       );
-        //     },
-        //     icon: const Icon(Icons.add_rounded),
-        //   ),
-        // ],
       ),
       body: const AddressesContent(),
     );
