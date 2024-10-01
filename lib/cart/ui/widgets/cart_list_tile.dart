@@ -19,60 +19,69 @@ class CartTile extends StatelessWidget {
     final cartQuantity =
         context.select((CartBloc bloc) => bloc.showQuantity(cart.uuid));
     return SizedBox(
-      height: 100,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppImage(
-            imageUrl: cart.photoPath.fullPath(),
-            height: 70,
-            width: 70,
-            fit: BoxFit.cover,
-          ).clipper(10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 160,
-                child: Text(
-                  context.l10n.localeName == 'tk' ? cart.nameTk : cart.nameRu,
-                  overflow: TextOverflow.ellipsis,
-                  style: const AppTextStyle.text().md().medium(),
-                ),
+      width: double.infinity,
+      child: AspectRatio(
+        aspectRatio: 324 / 81,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 80,
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: AppImage(
+                  imageUrl: cart.photoPath.fullPath(),
+                  fit: BoxFit.cover,
+                ).clipper(10),
               ),
-              if (cart.size != '')
-                Text(
-                  'Size: ${cart.size} ',
-                  style: const AppTextStyle.text()
-                      .xs()
-                      .regular()
-                      .withColor(AppColors.neutral.shade700),
-                ),
-              const SizedBox(height: 10),
-              Text(
-                '${cart.price} TMT',
-                style: const AppTextStyle.text().lg().semiBold(),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    context.l10n.localeName == 'tk' ? cart.nameTk : cart.nameRu,
+                    overflow: TextOverflow.ellipsis,
+                    style: const AppTextStyle.text().lg().semiBold(),
+                  ),
+                  if (cart.size != '')
+                    Text(
+                      'Size: ${cart.size} ',
+                      style: const AppTextStyle.text()
+                          .xs()
+                          .regular()
+                          .withColor(AppColors.neutral.shade700),
+                    ),
+                  const SizedBox(height: 10),
+                  Text(
+                    '${cart.price} TMT',
+                    style: const AppTextStyle.text().md().semiBold(),
+                  ),
+                ],
               ),
-            ],
-          ).paddingSymmetric(horizontal: 7),
-          const Expanded(child: SizedBox.shrink()),
-          CartCounter(
-            addOneButton: () {
-              context
-                ..read<CartBloc>().add(CartCurrentItemCreated(uuid: cart.uuid))
-                ..read<CartBloc>()
-                    .add(const CartItemOneUpdated(isForAdding: true));
-            },
-            removeOneButton: () {
-              context
-                ..read<CartBloc>().add(CartCurrentItemCreated(uuid: cart.uuid))
-                ..read<CartBloc>()
-                    .add(const CartItemOneUpdated(isForAdding: false));
-            },
-            counterQuantity: cartQuantity,
-          ),
-        ],
+            ),
+            CartCounter(
+              addOneButton: () {
+                context
+                  ..read<CartBloc>()
+                      .add(CartCurrentItemCreated(uuid: cart.uuid))
+                  ..read<CartBloc>()
+                      .add(const CartItemOneUpdated(isForAdding: true));
+              },
+              removeOneButton: () {
+                context
+                  ..read<CartBloc>()
+                      .add(CartCurrentItemCreated(uuid: cart.uuid))
+                  ..read<CartBloc>()
+                      .add(const CartItemOneUpdated(isForAdding: false));
+              },
+              counterQuantity: cartQuantity,
+            ),
+          ],
+        ),
       ),
-    ).paddingSymmetric(horizontal: 8);
+    );
   }
 }

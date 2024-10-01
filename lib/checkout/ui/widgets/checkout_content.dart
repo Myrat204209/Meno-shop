@@ -14,7 +14,6 @@ class CheckoutContent extends HookWidget {
     final isLoading = context.select(
         (CheckoutBloc bloc) => bloc.state.status == CheckoutStatus.loading);
 
-    final phoneController = useTextEditingController();
     final notesController = useTextEditingController();
 
     final isAddressSelected = useState<bool?>(null);
@@ -46,7 +45,7 @@ class CheckoutContent extends HookWidget {
                 const SizedBox(height: AppSpacing.md),
 
                 // / NOTES
-                // CheckoutNotesField(controller: notesController),
+                CheckoutNotesField(controller: notesController),
 
                 const SizedBox(height: AppSpacing.md),
 

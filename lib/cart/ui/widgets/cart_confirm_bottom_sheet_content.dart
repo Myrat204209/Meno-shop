@@ -1,24 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:meno_shop/l10n/l10n.dart';
 
-final kCheckoutDescriptionStyle = const AppTextStyle.text().md().regular();
-final kCheckoutPriceStyle = const AppTextStyle.text().md().medium();
-final kCheckoutTotalTextStyle = const AppTextStyle.text().md().semiBold();
+final kCartDescriptionStyle = const AppTextStyle.text().md().regular();
+final kCartPriceStyle = const AppTextStyle.text().md().medium();
+final kCartTotalTextStyle = const AppTextStyle.text().md().semiBold();
+// final kCartDescriptionStyle = const AppTextStyle.text().md().regular();
+// final kCartPriceStyle = const AppTextStyle.text().md().medium();
+// final kCartTotalTextStyle = const AppTextStyle.text().md().semiBold();
 
 class CartConfirmBottomSheetContent extends StatelessWidget {
   const CartConfirmBottomSheetContent({
     super.key,
-    required this.onBottomRowTap,
-    required this.onButtonPressed,
-    required this.totalPrice,
-    required this.buttonText,
+    required this.totalCost,
   });
-  final VoidCallback onBottomRowTap;
-  final VoidCallback onButtonPressed;
-  final double totalPrice;
-  final String buttonText;
+  final double totalCost;
 
   @override
   Widget build(BuildContext context) {
@@ -50,43 +49,42 @@ class CartConfirmBottomSheetContent extends StatelessWidget {
             children: [
               Text(
                 "${l10n.totalCost}: ",
-                style: kCheckoutDescriptionStyle,
+                style: kCartDescriptionStyle,
               ),
               Text(
-                "$totalPrice TMT",
-                style: kCheckoutPriceStyle,
+                "$totalCost TMT",
+                style: kCartPriceStyle,
               ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("${l10n.deliverySerice}: ",
-                  style: kCheckoutDescriptionStyle),
-              Text("20 TMT", style: kCheckoutPriceStyle),
+              Text("${l10n.deliverySerice}: ", style: kCartDescriptionStyle),
+              Text("20 TMT", style: kCartPriceStyle),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("${l10n.discount}: ", style: kCheckoutDescriptionStyle),
-              Text("-0 TMT", style: kCheckoutPriceStyle),
+              Text("${l10n.discount}: ", style: kCartDescriptionStyle),
+              Text("-0 TMT", style: kCartPriceStyle),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("${l10n.totalPrice}: ", style: kCheckoutTotalTextStyle),
-              Text("${totalPrice - 20} TMT", style: kCheckoutTotalTextStyle),
+              Text("${l10n.totalPrice}: ", style: kCartTotalTextStyle),
+              Text("${totalCost - 20} TMT", style: kCartTotalTextStyle),
             ],
           ),
           Divider(color: AppColors.neutral.shade300),
-          ConfirmCart(
-            onBottomRowTap: onBottomRowTap,
-            totalPrice: totalPrice,
-            buttonText: buttonText,
-            onButtonPressed: onButtonPressed,
-          )
+          // ConfirmCart(
+          //   onBottomRowTap: onBottomRowTap,
+          //   totalPrice: totalPrice,
+          //   buttonText: buttonText,
+          //   onButtonPressed: onButtonPressed,
+          // )
         ],
       ),
     );
@@ -119,11 +117,11 @@ class ConfirmCart extends StatelessWidget {
             children: [
               Text(
                 context.l10n.totalPrice,
-                style: kCheckoutTotalTextStyle,
+                style: kCartTotalTextStyle,
               ),
               Text(
                 '${totalPrice - 20} TMT',
-                style: kCheckoutTotalTextStyle,
+                style: kCartTotalTextStyle,
               ),
             ],
           ),

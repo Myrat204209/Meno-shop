@@ -29,7 +29,7 @@ class ProductAdvantagesList extends StatelessWidget {
     }
     if (advantagesList.isNotEmpty) {
       return SizedBox(
-        height: 55,
+        height: 50,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
@@ -39,14 +39,13 @@ class ProductAdvantagesList extends StatelessWidget {
             return SvgPicture.asset(
               advantageName.extendAdvantages(locale: locale),
               width: 38,
-              // height: 60,
               fit: BoxFit.cover,
             ).clipper(5).paddingOnly(left: 5);
           },
           // shrinkWrap: true,
           padding: EdgeInsets.zero,
         ),
-      ).paddingOnly(top: 10);
+      ).paddingOnly(top: 5);
     }
 
     return const SizedBox.shrink();

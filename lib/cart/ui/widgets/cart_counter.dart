@@ -15,23 +15,24 @@ class CartCounter extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppWrapper(
       borderColor: AppColors.neutral.shade300,
-      expand: 1,
       child: SizedBox(
-        width: 118,
+        width: 110,
         height: 40,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CounterIcon(onCallBack: removeOneButton),
-            Text(
-              '$counterQuantity',
-              style: const AppTextStyle.text().lg().semiBold(),
+            Expanded(child: CounterIcon(onCallBack: removeOneButton)),
+            Expanded(
+              child: Text(
+                '$counterQuantity',
+                textAlign: TextAlign.center,
+                style: const AppTextStyle.text().lg().semiBold(),
+              ),
             ),
-            CounterIcon(onCallBack: addOneButton, isAdd: true),
+            Expanded(child: CounterIcon(onCallBack: addOneButton, isAdd: true)),
           ],
         ),
       ),
-    );
+    ).paddingOnly(right: 5);
   }
 }
 
@@ -48,11 +49,12 @@ class CounterIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      iconSize: 26,
+      visualDensity: VisualDensity.compact,
       padding: EdgeInsets.zero,
       onPressed: () => onCallBack(),
       icon: Icon(
         isAdd ? Icons.add : Icons.remove,
-        size: 28,
         color: AppColors.primary,
       ),
     );
