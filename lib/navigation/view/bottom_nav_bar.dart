@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +31,6 @@ class BottomNavBar extends StatelessWidget {
 }
 
 List<BottomNavBarIcon> _buildBottomNavBarList({int badgeNumber = 0}) {
-  log('\x1B[32m---------bottomNavBartlist changeed---- $badgeNumber------');
   return [
     const BottomNavBarIcon(icon: Icons.home_outlined),
     const BottomNavBarIcon(icon: Icons.grid_view_outlined),

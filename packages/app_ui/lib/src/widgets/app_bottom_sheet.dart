@@ -15,7 +15,6 @@ class AppBottomSheet extends StatelessWidget {
   }) async {
     return showModalBottomSheet(
       context: context,
-      useSafeArea: true,
       useRootNavigator: useRootNavigator ?? true,
       isScrollControlled: true,
       builder: (_) => AppBottomSheet(
@@ -38,6 +37,6 @@ class AppBottomSheet extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: bottomModalChildren,
       ),
-    ).paddingOnly(bottom: 50);
+    );
   }
 }

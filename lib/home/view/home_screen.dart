@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                   value,
                   initialLocation: value == navigationShell.currentIndex,
                 )),
-      ).paddingOnly(top: 5),
+      ),
     );
   }
 }
