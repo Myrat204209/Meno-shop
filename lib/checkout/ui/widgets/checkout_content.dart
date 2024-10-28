@@ -2,10 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:meno_shop/addresses/address.dart';
-import 'package:meno_shop/cart/cart.dart';
 import 'package:meno_shop/checkout/checkout.dart';
-import 'package:meno_shop/l10n/l10n.dart';
 
 
 class CheckoutContent extends HookWidget {
@@ -20,13 +17,13 @@ class CheckoutContent extends HookWidget {
 
     final isAddressSelected = useState<bool?>(null);
 
-    final _formKey = useMemoized(() => GlobalKey<FormState>());
+    final formKey = useMemoized(() => GlobalKey<FormState>());
 
     if (isLoading) {
       return const AppLoadingIndicator();
     }
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Column(
         children: [
           Expanded(

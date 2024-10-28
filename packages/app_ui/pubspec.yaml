@@ -40,9 +40,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    # - assets/advantages/
-    # - assets/advantages/ru/
-    # - assets/advantages/tk/
     - assets/auth/
     - assets/images/
     - assets/language/

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:app_ui/app_ui.dart'; // Assuming this is where Assets and AppColors are defined.
+import 'package:app_ui/app_ui.dart';
 
 class AppImage extends StatelessWidget {
   final String? _imageUrl;
@@ -18,7 +18,6 @@ class AppImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Check if the imageUrl is empty or invalid
     if (_imageUrl == null || _imageUrl!.toLowerCase().contains('null')) {
       return Assets.images.otpLogo.image(
         height: _height,

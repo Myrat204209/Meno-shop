@@ -38,7 +38,7 @@ Future<void> bootStrap(AppBuilder builder) async {
       late final String? firebaseToken;
       try {
         firebaseToken = await firebaseMessaging.getToken();
-        log('-------------------${firebaseToken!}');
+        log('-------------------$firebaseToken');
       } catch (error, stackTrace) {
         log('-------------------FirebaseMessaging error: $error$stackTrace');
       }
